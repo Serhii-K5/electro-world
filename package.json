@@ -1,0 +1,44 @@
+{
+  "name": "electro-world",
+  "homepage": "https://github.com/Serhii-K5/electro-world/",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Serhii-K5/electro-world.git"
+  },
+  "author": "Kotkov Serhii Mykolayovych",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Serhii-K5/electro-world/issues"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.9.7",
+    "axios": "^1.6.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.12.0",
+    "react-redux": "^8.1.3",
+    "react-router-dom": "^6.19.0",
+    "react-scripts": "^5.0.1",
+    "redux-persist": "^6.0.0",
+    "styled-components": "^6.1.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

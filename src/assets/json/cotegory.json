@@ -1,0 +1,12 @@
+[
+  {
+    "cat_id": 871,
+    "cat_name": "DC-link",
+    "cat_parentId": 0
+  },
+  {
+    "cat_id": 859,
+    "cat_name": "ЮГ-СМ",
+    "cat_parentId": 0
+  }
+]
