@@ -1,12 +1,21 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-import BgLogoImg from "assets/images/logo.png";
+// import BgLogoImg from "assets/images/logo.png";
+
+// export const BgLogo = styled.div`
+//   position: relative;
+//   top: 8px;  
+//   width: 130px;
+//   background-image: url(${BgLogoImg});
+//   background-repeat: no-repeat;
+//   // background-position: 50% 0;
+//   background-size: 100%;
+// `;
 
 export const BgLogo = styled.div`
   position: relative;
   top: 8px;  
   width: 130px;
-  background-image: url(${BgLogoImg});
   background-repeat: no-repeat;
   // background-position: 50% 0;
   background-size: 100%;

@@ -2,20 +2,28 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addOrders, deleteOrders } from "redux/slice/orderSlice";
 import { selectOrders } from "redux/selectors";
-import CardModal from "components/ProductModal/ProductModal";
+// import CardModal from "components/ProductModal/ProductModal";
 import {
   Container,
-  OrderBtn,
+  // OrderBtn,
+  OptionDiv,
   Img,
-  Title,
-  RentalPrice,
-  TitleContainer,
-  Span,
-  Year,
-  Ul,
-  Li,
-  Button,
-} from "./ Card.styled";
+  OptionContainer,
+  Price,
+  PriceOld,
+  Input,
+  QuantityDiv,
+  Div,
+  ButtonDiv,
+  // Title,
+  // RentalPrice,
+  // TitleContainer,
+  // Span,
+  // Year,
+  // Ul,
+  // Li,
+  // Button,
+} from "./ProductCard.styled";
 
 // import HeartActive from "assets/images/svg/heart-active.svg";
 // import Heart from "assets/images/svg/heart.svg";
@@ -74,24 +82,41 @@ export default function Product({ card }) {
         )} */}      
         
         
-        <div>
+        <OptionDiv>
           <Img src={card.photo} alt={card.name} />
-          <TitleContainer>
+          <OptionContainer>
+            <PriceOld>{card.oldPrice} грн.</PriceOld>
+            <Price>{card.price} грн.</Price>
+            <hr />
+            <QuantityDiv>
+              <Div>-</Div>
+              <Input
+                defaultValue={1}
+              />
+              <Div>+</Div>
+            </QuantityDiv>
+            
+          <ButtonDiv>
+            Додати до замовлення
+          </ButtonDiv> 
+          </OptionContainer>
+          
+          {/* <TitleContainer>
             <Title>
-              {card.price}
-              {card.oldPrice}              
+              <p>{card.price}</p>
+              <p>{card.oldPrice} </p>              */}
               {/* <Span>{card.model}</Span>,
               <Year>{card.year}</Year> */}
-            </Title>
-            <br />
+            {/* </Title>
+            <br /> */}
             {/* <RentalPrice>{card.rentalPrice}</RentalPrice> */}
-          </TitleContainer>
-          <div>-</div>
+          {/* </TitleContainer> */}
+          {/* <div>-</div>
           <div>1</div>
-          <div>+</div>
-          <div>
+          <div>+</div> */}
+          {/* <div>
             Додати до замовлення
-          </div>          
+          </div>           */}
           
           {/* <Ul>
             <Li>{productName(card.name)}</Li>
@@ -111,7 +136,7 @@ export default function Product({ card }) {
               {card.accessories[0]}
             </Li>
           </Ul> */}
-        </div>
+        </OptionDiv>
         <p>Код: {card.code}</p>
         <p>{card.name}</p>
         <p>{card.memo}</p>

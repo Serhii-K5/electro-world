@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { fetchAdverts } from "redux/operations";
+import { fetchProducts } from "redux/operations";
 
 import CarCard from "components/ProductCard/ProductCard";
-import { selectAdverts } from "redux/selectors";
+import { selectProducts } from "redux/selectors";
 
 import {
   Ul,
@@ -13,20 +13,20 @@ import {
   DivPage,    // V2 - пагінація з заміщенням елементів
 } from './CatalogPage.styled';
 
-import FilterPanel from 'components/FilterPanel/FilterPanel';
+// import FilterPanel from 'components/FilterPanel/FilterPanel';
 
 
 // V1 - пагінація з додаванням елементів по натисканню кнопки
 // const CatalogCarsPage = () => {
 //   const dispatch = useDispatch();
-//   const adverts = useSelector(selectAdverts);
-//   const [filteredData, setFilteredData] = useState(adverts);
+//   const products = useSelector(selectProducts);
+//   const [filteredData, setFilteredData] = useState(products);
 
 //   const [activePage, setActivePage] = useState(0);
 //   const [activeFilter, setActiveFilter] = useState(false);
   
 //   useEffect(() => {
-//     dispatch(fetchAdverts());
+//     dispatch(fetchProducts());
 //   }, [dispatch]);
 
 //   const handleFilter = filteredData => {
@@ -42,8 +42,8 @@ import FilterPanel from 'components/FilterPanel/FilterPanel';
 
 //   return (
 //     <div style={{ padding: '50px' }}>
-//       <FilterPanel data={adverts} onFilter={handleFilter} />
-//       {filteredData.length === 0 && adverts.length > 0 && !activeFilter && setFilteredData(adverts)}
+//       <FilterPanel data={products} onFilter={handleFilter} />
+//       {filteredData.length === 0 && products.length > 0 && !activeFilter && setFilteredData(products)}
 //       {filteredData.length > 0 && (
 //         <Ul>
 //           {filteredData.map((item, index) => (            
@@ -69,15 +69,15 @@ import FilterPanel from 'components/FilterPanel/FilterPanel';
 // V2 - пагінація з заміщенням елементів
 const CatalogCarsPage = () => {
   const dispatch = useDispatch();
-  const adverts = useSelector(selectAdverts);
-  const [filteredData, setFilteredData] = useState(adverts);
+  const products = useSelector(selectProducts);
+  const [filteredData, setFilteredData] = useState(products);
 
   const [activePage, setActivePage] = useState(1);
   const [activeFilter, setActiveFilter] = useState(false);
 
   
   useEffect(() => {
-    dispatch(fetchAdverts());
+    dispatch(fetchProducts());
   }, [dispatch]);
 
   const handleFilter = filteredData => {
@@ -96,8 +96,8 @@ const CatalogCarsPage = () => {
 
   return (
     <div style={{ padding: '50px' }}>
-      <FilterPanel data={adverts} onFilter={handleFilter} />
-      {filteredData.length === 0 && adverts.length > 0 && !activeFilter && setFilteredData(adverts)}
+      {/* <FilterPanel data={products} onFilter={handleFilter} /> */}
+      {filteredData.length === 0 && products.length > 0 && !activeFilter && setFilteredData(products)}
       {filteredData.length > 0 && (
         <Ul>
           {filteredData.map((item, index) => (            

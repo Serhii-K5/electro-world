@@ -10,7 +10,7 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { configureStore } from '@reduxjs/toolkit';
-import { productsReducer } from './slice/productsSlice';
+import { productsReducer } from './slice/productSlice';
 import { orderReducer } from './slice/orderSlice';
 // import formReducer from './sliceForm';
 

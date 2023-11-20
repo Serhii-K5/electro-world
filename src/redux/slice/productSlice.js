@@ -10,7 +10,7 @@ const handleRejected = (state, action) => {
   state.error = action.payload;
 };
 
-const sliceProducts = createSlice({
+const productSlice = createSlice({
   name: 'products',
   initialState: {
     items: [],
@@ -28,4 +28,4 @@ const sliceProducts = createSlice({
   },
 });
 
-export const productsReducer = productsSlice.reducer;
+export const productsReducer = productSlice.reducer;
