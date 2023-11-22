@@ -5,20 +5,32 @@ export const Container = styled.div`
   display: flex;
   width: 420px;
   flex-direction: column;
-  gap: 28px;
+  gap: 28px; 
+  }  
+`;
+
+export const DivHov = styled.div`
+   &:hover {
+    position: relative;
+    // top: 0px;
+    right: 80px;
+    width: 500px;
+    height: 350px;
+    
 `;
 
 export const OptionDiv = styled.div`
   display: flex;
   text-align: end;
   padding: 0 10px;
+  justify-content: flex-end;
 `;
 
 export const Img = styled.img`
   margin-bottom: 14px;
   // width: 100%;
   width: 150px;
-  // height: 150px;
+  height: 150px;
   object-fit: cover;
   // border-radius: 14px;
 `;

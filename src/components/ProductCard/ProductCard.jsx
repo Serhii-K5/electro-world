@@ -6,6 +6,7 @@ import { selectOrders } from "redux/selectors";
 import {
   Container,
   // OrderBtn,
+  DivHov,
   OptionDiv,
   Img,
   OptionContainer,
@@ -27,6 +28,7 @@ import {
 
 // import HeartActive from "assets/images/svg/heart-active.svg";
 // import Heart from "assets/images/svg/heart.svg";
+import noPhoto from "../../assets/image/no_photo.jpg";
 
 export default function Product({ card }) {
   const dispatch = useDispatch();
@@ -80,10 +82,13 @@ export default function Product({ card }) {
             <img src={Heart} alt="Order button" />
           </OrderBtn>
         )} */}      
-        
+        <DivHov>
         
         <OptionDiv>
-          <Img src={card.photo} alt={card.name} />
+          {card.photo === "" ?
+            <Img src={noPhoto} alt={card.name} />
+            : <Img src={card.photo} alt={card.name} />          
+          }
           <OptionContainer>
             <PriceOld>{card.oldPrice} грн.</PriceOld>
             <Price>{card.price} грн.</Price>
@@ -145,6 +150,8 @@ export default function Product({ card }) {
         {/* <Button type="button" onClick={onOpenModal}>
           Learn more
         </Button> */}
+          
+        </DivHov>
       </Container>
       {/* {isModalShown && <CardModal card={card} onClose={onCloseModal} />} */}
     </>
