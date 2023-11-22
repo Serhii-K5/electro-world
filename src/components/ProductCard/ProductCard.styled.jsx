@@ -3,20 +3,30 @@ import styled from "styled-components";
 export const Container = styled.div`
   position: relative;
   display: flex;
-  width: 420px;
+  // max-width: 420px;
+  width: 425px;
+  height: 240px;
   flex-direction: column;
-  gap: 28px; 
+  gap: 10px; 
+  border: solid 3px var(--text-color-grey);
+  // z-index: 102;
   }  
 `;
 
 export const DivHov = styled.div`
+  position: absolute;
+  background-color: var(--bg-primary);
+  // box-shadow: 0px 5px 5px gray;
    &:hover {
-    position: relative;
+    // position: relative;
     // top: 0px;
-    right: 80px;
+    // right: 80px;
+    right: 0;
     width: 500px;
     height: 350px;
-    
+    z-index: 100;
+    filter: drop-shadow(0 0 0.75rem gray);
+   }
 `;
 
 export const OptionDiv = styled.div`
@@ -39,6 +49,7 @@ export const OptionContainer = styled.div`
   // display: flex;
   display: block;
   margin-left: 10px;
+  min-width: 245px;
 `;
 
 export const PriceOld = styled.p`
@@ -69,7 +80,7 @@ export const QuantityDiv = styled.div`
   display: flex;
   margin: 20px;
   justify-content: flex-end;
-  overflow: visible;
+  // overflow: visible;
   // color: var(--text-color-primary-black); 
   // width: 30px;
   // height: 30px;
@@ -77,9 +88,9 @@ export const QuantityDiv = styled.div`
   // text-align: center;
   // font-size: 20px;
 
-  &:hover {
-    overflow: visible;
-  }
+  // &:hover {
+  //   // overflow: visible;
+  // }
 `;
 
 export const Div = styled.div` 
@@ -112,11 +123,23 @@ export const ButtonDiv = styled.div`
   }
 `;
 
+export const Name = styled.p`
+  color: var(--text-color-blue);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.5;
 
+  &:hover {    
+    color: var( --text-color-active-blue);
+  }
+`;
 
-
-
-
+export const Memo = styled.p`
+  // color: var(--bg-second-green);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+`;
 
 export const TitleContainer = styled.div`
   display: flex;

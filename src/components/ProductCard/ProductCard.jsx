@@ -16,6 +16,8 @@ import {
   QuantityDiv,
   Div,
   ButtonDiv,
+  Name,
+  Memo,
   // Title,
   // RentalPrice,
   // TitleContainer,
@@ -35,6 +37,9 @@ export default function Product({ card }) {
   const orderProducts = useSelector(selectOrders);
   const [isModalShown, setIsModalShown] = useState(false);
   const [isOrder, setIsOrder] = useState(false);
+  
+  
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const isCurrentOrder = orderProducts.find(
@@ -69,6 +74,15 @@ export default function Product({ card }) {
   const onOpenModal = () => {
     setIsModalShown(true);
   };
+
+  const onMouseMove = () => {
+    setIsVisible(true);
+  };
+
+  const onMouseOut = () => {
+    setIsVisible(false);
+  };
+
   
   return (
     <>
@@ -82,74 +96,90 @@ export default function Product({ card }) {
             <img src={Heart} alt="Order button" />
           </OrderBtn>
         )} */}      
-        <DivHov>
-        
-        <OptionDiv>
-          {card.photo === "" ?
-            <Img src={noPhoto} alt={card.name} />
-            : <Img src={card.photo} alt={card.name} />          
-          }
-          <OptionContainer>
-            <PriceOld>{card.oldPrice} грн.</PriceOld>
-            <Price>{card.price} грн.</Price>
-            <hr />
-            <QuantityDiv>
-              <Div>-</Div>
-              <Input
-                defaultValue={1}
-              />
-              <Div>+</Div>
-            </QuantityDiv>
+        <DivHov onMouseMove={onMouseMove} onMouseOut={onMouseOut}>        
+          <OptionDiv>
+            {card.photo === "" ?
+              <Img src={noPhoto} alt={card.name} />
+              : <Img src={card.photo} alt={card.name} />          
+            }
+            <OptionContainer>
+              <PriceOld>{card.oldPrice} грн.</PriceOld>
+              <Price>{card.price} грн.</Price>
+              <hr />
+              {/* <QuantityDiv style={isVisible ? {zIndex: 100} : {zIndex: 0}}> */}
+              <QuantityDiv>
+                <Div style={isVisible ? {color: "black", borderColor: "grey"} : {color: "white", borderColor: "white"}}>-</Div>
+                <Input
+                    defaultValue={1}
+                    style={isVisible ? {color: "black", borderColor: "grey"} : {color: "white", borderColor: "white"}}
+                />
+                <Div  style={isVisible ? {color: "black", borderColor: "grey"} : {color: "white", borderColor: "white"}}>+</Div>
+              </QuantityDiv>
+              
+                
+              {/* {isVisible ? <QuantityDiv style={{ zIndex: "-1" }}>
+                <Div>-</Div>
+                <Input
+                  defaultValue={1}
+                />
+                <Div>+</Div>
+                : <QuantityDiv>
+                <Div>-</Div>
+                <Input
+                  defaultValue={1}
+                />
+                <Div>+</Div>
+              </QuantityDiv>} */}
+              
+            <ButtonDiv>
+              Додати до замовлення
+            </ButtonDiv> 
+            </OptionContainer>
             
-          <ButtonDiv>
-            Додати до замовлення
-          </ButtonDiv> 
-          </OptionContainer>
-          
-          {/* <TitleContainer>
-            <Title>
-              <p>{card.price}</p>
-              <p>{card.oldPrice} </p>              */}
-              {/* <Span>{card.model}</Span>,
-              <Year>{card.year}</Year> */}
-            {/* </Title>
-            <br /> */}
-            {/* <RentalPrice>{card.rentalPrice}</RentalPrice> */}
-          {/* </TitleContainer> */}
-          {/* <div>-</div>
-          <div>1</div>
-          <div>+</div> */}
-          {/* <div>
-            Додати до замовлення
-          </div>           */}
-          
-          {/* <Ul>
-            <Li>{productName(card.name)}</Li>
-            <Li>{addressCountry(card.address)}</Li>
-            <Li>{card.rentalCompany}</Li>
-          </Ul>
-          <Ul style={{ marginBottom: 0 }}>
-            <Li>{card.type}</Li>
-            <Li>{card.mileage}</Li>
-            <Li
-              // style={{
-              //   overflow: "hidden",
-              //   whiteSpace: "wrap",
-              //   textOverflow: "ellipsis",
-              // }}
-            >
-              {card.accessories[0]}
-            </Li>
-          </Ul> */}
-        </OptionDiv>
-        <p>Код: {card.code}</p>
-        <p>{card.name}</p>
-        <p>{card.memo}</p>
+            {/* <TitleContainer>
+              <Title>
+                <p>{card.price}</p>
+                <p>{card.oldPrice} </p>              */}
+                {/* <Span>{card.model}</Span>,
+                <Year>{card.year}</Year> */}
+              {/* </Title>
+              <br /> */}
+              {/* <RentalPrice>{card.rentalPrice}</RentalPrice> */}
+            {/* </TitleContainer> */}
+            {/* <div>-</div>
+            <div>1</div>
+            <div>+</div> */}
+            {/* <div>
+              Додати до замовлення
+            </div>           */}
+            
+            {/* <Ul>
+              <Li>{productName(card.name)}</Li>
+              <Li>{addressCountry(card.address)}</Li>
+              <Li>{card.rentalCompany}</Li>
+            </Ul>
+            <Ul style={{ marginBottom: 0 }}>
+              <Li>{card.type}</Li>
+              <Li>{card.mileage}</Li>
+              <Li
+                // style={{
+                //   overflow: "hidden",
+                //   whiteSpace: "wrap",
+                //   textOverflow: "ellipsis",
+                // }}
+              >
+                {card.accessories[0]}
+              </Li>
+            </Ul> */}
+          </OptionDiv>
+          <p>Код: {card.code}</p>
+          <Name>{card.name}</Name>
+          <Memo>{card.memo}</Memo>
 
 
-        {/* <Button type="button" onClick={onOpenModal}>
-          Learn more
-        </Button> */}
+          {/* <Button type="button" onClick={onOpenModal}>
+            Learn more
+          </Button> */}
           
         </DivHov>
       </Container>
