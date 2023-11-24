@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+const transition = `250ms linear`;
+
 export const Container = styled.div`
   position: relative;
   display: flex;
@@ -8,21 +10,76 @@ export const Container = styled.div`
   height: 240px;
   flex-direction: column;
   gap: 10px; 
-  border: solid 3px var(--text-color-grey);
-  // z-index: 102;
-  }  
+  border: solid 1px var(--text-color-grey);
+  cursor: pointer;
+`;
+
+export const Aside = styled.aside`
+  padding-left: 0.5rem;
+  margin-left: 0.5rem;
+  float: left;
+  text-align: start;
+  // box-shadow: inset 5px 0 5px -5px #29627e;
+  // font-style: italic;
+  // color: #29627e;
+
+  // & > p {
+  //   margin: 0.5rem;
+  // }
+`
+
+export const ImgDiv = styled.div`
+  display: flex;
+  margin: 0 auto;  
+  margin-top: 20px;
+  align-items: center;
+  justify-content: center;
+  // width: 100%;
+  width: 45px;
+  height: 45px;
+  // object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid grey;
+
+  &:hover {
+    border-color: green;
+  }
+`;
+
+export const ImgAside = styled.img`
+  margin: 0 auto;  
+  // margin-top: 20px;
+  // justify-content: center;
+  // text-align: center;
+  // width: 100%;
+  // width: 25px;
+  // height: 25px;
+  object-fit: cover;
+  // fill: grey;
+  fill: red;
+  // stroke: red;
+  fill: inherit;
+  // all: inherit;
+  
+  &:hover {
+    fill: green;
+  }
+  
 `;
 
 export const DivHov = styled.div`
   position: absolute;
+  right: 0;
   background-color: var(--bg-primary);
   // box-shadow: 0px 5px 5px gray;
+  // transition: all 1250ms linear;
+  transition: width ${transition}, height ${transition}, filter ${transition};
+
+  width: 425px;
+  height: 240px;
+
    &:hover {
-    // position: relative;
-    // top: 0px;
-    // right: 80px;
-    right: 0;
-    width: 500px;
+    width: 550px;
     height: 350px;
     z-index: 100;
     filter: drop-shadow(0 0 0.75rem gray);
@@ -39,10 +96,9 @@ export const OptionDiv = styled.div`
 export const Img = styled.img`
   margin-bottom: 14px;
   // width: 100%;
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  // border-radius: 14px;
+  width: 140px;
+  height: 140px;
+  // object-fit: cover;
 `;
 
 export const OptionContainer = styled.div`
@@ -66,8 +122,6 @@ export const Price = styled.p`
 `;
 
 export const Input = styled.input` 
-  // display: inline;
-  // display: block;
   display: flex;
   color: var(--text-color-primary-black); 
   width: 35px;
@@ -116,6 +170,7 @@ export const ButtonDiv = styled.div`
   text-align: center;
   font-size: 20px;
   background-color: var(--bg-second-green);
+  transition: background-color 1250ms linear, color 1250ms linear;
   
   &:hover {
     background-color: transparent;
@@ -128,6 +183,9 @@ export const Name = styled.p`
   font-size: 20px;
   font-weight: 600;
   line-height: 1.5;
+  overflow: hidden;
+  whiteSpace: wrap;
+  textOverflow: ellipsis;
 
   &:hover {    
     color: var( --text-color-active-blue);
@@ -139,6 +197,9 @@ export const Memo = styled.p`
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
+  overflow: hidden;
+  whiteSpace: wrap;
+  textOverflow: ellipsis;
 `;
 
 export const TitleContainer = styled.div`
@@ -207,7 +268,7 @@ export const Button = styled.button`
   line-height: 1.43;
   border: none;
   border-radius: 12px;
-  transition: background-color 250ms linear;
+  transition: background-color ${transition};
 
   &:hover {
     background-color: var(--bg-active-button-color);
@@ -227,7 +288,7 @@ export const OrderBtn = styled.button`
   justify-content: center;
   border: none;
   background: transparent;
-  transition: transform 250ms linear;
+  transition: transform ${transition};
 
   &:hover {
     transform: scale(1.2);

@@ -95,7 +95,12 @@ const CatalogCarsPage = () => {
   };
 
   return (
-    <div style={{ padding: '50px' }}>
+    <div style={{ padding: '50px', display: 'flex' }}>
+      <aside>
+        <p>fjslkj</p>
+        <p>gfjdfg</p>
+      </aside>
+      <section>        
       {/* <FilterPanel data={products} onFilter={handleFilter} /> */}
       {filteredData.length === 0 && products.length > 0 && !activeFilter && setFilteredData(products)}
       {filteredData.length > 0 && (
@@ -117,6 +122,8 @@ const CatalogCarsPage = () => {
         {filteredData.length / 8 > activePage + 1 && <DivPage>{"..."}</DivPage>}
         {filteredData.length / 8 > activePage + 1 && <DivShift onClick={onClickIncrease}>{">>"}</DivShift>}
       </DivPagination>
+      
+      </section>
     </div>
   );
 };
