@@ -46,7 +46,7 @@ import {
 //       {filteredData.length === 0 && products.length > 0 && !activeFilter && setFilteredData(products)}
 //       {filteredData.length > 0 && (
 //         <Ul>
-//           {filteredData.map((item, index) => (            
+//           {filteredData.map((item, index) => (
 //             index < activePage + 8 && <li key={item.id}>
 //               <CarCard card={item} />
 //             </li>
@@ -67,10 +67,11 @@ import {
 
 
 // V2 - пагінація з заміщенням елементів
+import products1 from "../../assets/json/products.json";
 const CatalogCarsPage = () => {
   const dispatch = useDispatch();
   const products = useSelector(selectProducts);
-  const [filteredData, setFilteredData] = useState(products);
+  const [filteredData, setFilteredData] = useState(products.length > 0 ? products : products1);
 
   const [activePage, setActivePage] = useState(1);
   const [activeFilter, setActiveFilter] = useState(false);

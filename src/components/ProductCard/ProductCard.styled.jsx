@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const transition = `250ms linear`;
+const transition = `150ms linear`;
 
 export const Container = styled.div`
   position: relative;
@@ -32,6 +32,7 @@ export const ImgDiv = styled.div`
   display: flex;
   margin: 0 auto;  
   margin-top: 20px;
+  // padding: 10px;
   align-items: center;
   justify-content: center;
   // width: 100%;
@@ -40,9 +41,11 @@ export const ImgDiv = styled.div`
   // object-fit: cover;
   border-radius: 50%;
   border: 1px solid grey;
+  transition: border-color ${transition}, fill ${transition};
 
   &:hover {
-    border-color: green;
+    border-color: var(--bg-second-green);
+    fill: var(--bg-second-green);
   }
 `;
 
@@ -63,8 +66,7 @@ export const ImgAside = styled.img`
   
   &:hover {
     fill: green;
-  }
-  
+  }  
 `;
 
 export const DivHov = styled.div`
@@ -72,7 +74,6 @@ export const DivHov = styled.div`
   right: 0;
   background-color: var(--bg-primary);
   // box-shadow: 0px 5px 5px gray;
-  // transition: all 1250ms linear;
   transition: width ${transition}, height ${transition}, filter ${transition};
 
   width: 425px;
@@ -170,7 +171,7 @@ export const ButtonDiv = styled.div`
   text-align: center;
   font-size: 20px;
   background-color: var(--bg-second-green);
-  transition: background-color 1250ms linear, color 1250ms linear;
+  transition: background-color ${transition}, color ${transition};
   
   &:hover {
     background-color: transparent;

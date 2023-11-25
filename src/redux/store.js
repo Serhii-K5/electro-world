@@ -19,6 +19,11 @@ const ordersPersistConfig = {
   storage,
 };
 
+const numberPurchasesPersistConfig = {
+  key: 'purchases',
+  storage,
+};
+
 export const store = configureStore({
   reducer: {
     products: productsReducer,

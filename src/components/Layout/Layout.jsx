@@ -6,9 +6,13 @@ import {
   NavContainer,
   NavLinkStyle,
   Div,
+  // Quantity,
 } from "./Layout.styled";
 
 import AdressBar from "../AdressBar/AdressBar";
+import ShoppingCart from "../../components/NumberPurchases/NumberPurchases";
+
+// import { GiShoppingCart } from "react-icons/gi";
 
 // import logo from "../../assets/images/logo.png";
 
@@ -32,6 +36,11 @@ export default function Layout() {
             <NavLinkStyle to="/orders">Orders</NavLinkStyle>
           </NavContainer>
           <AdressBar />
+          <ShoppingCart quantity={0} />
+          {/* <div style={{ position: 'relative' }}>
+            <GiShoppingCart style={{width: '60px', height: '60px', fill: "blue" }} />
+            <Quantity>100</Quantity>
+          </div> */}
         </Header>
       </Div>
       
