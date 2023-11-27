@@ -12,6 +12,7 @@ import storage from 'redux-persist/lib/storage';
 import { configureStore } from '@reduxjs/toolkit';
 import { productsReducer } from './slice/productSlice';
 import { orderReducer } from './slice/orderSlice';
+import { ordersAllReducer } from './slice/ordersAllSlice';
 // import formReducer from './sliceForm';
 
 const ordersPersistConfig = {
@@ -28,6 +29,7 @@ export const store = configureStore({
   reducer: {
     products: productsReducer,
     orders: persistReducer(ordersPersistConfig, orderReducer),
+    ordersAll: persistReducer(numberPurchasesPersistConfig, ordersAllReducer),
     // form: formReducer,
   },
   middleware: getDefaultMiddleware =>

@@ -16,7 +16,11 @@ import ShoppingCart from "../../components/NumberPurchases/NumberPurchases";
 
 // import logo from "../../assets/images/logo.png";
 
+import { useSelector } from "react-redux";
+import { selectOrdersAll } from "redux/selectors";
+
 export default function Layout() {
+  const ordersAll = useSelector(selectOrdersAll);
   
   return (
     <>
@@ -36,7 +40,7 @@ export default function Layout() {
             <NavLinkStyle to="/orders">Orders</NavLinkStyle>
           </NavContainer>
           <AdressBar />
-          <ShoppingCart quantity={0} />
+          <ShoppingCart quantity={ordersAll} />
           {/* <div style={{ position: 'relative' }}>
             <GiShoppingCart style={{width: '60px', height: '60px', fill: "blue" }} />
             <Quantity>100</Quantity>

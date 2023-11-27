@@ -158,6 +158,12 @@ export const Div = styled.div`
   // text-align: center;
   justify-content: center;
   font-size: 20px;
+
+  &:hover {
+    font-size: 22px;
+    font-weight: bold;
+    // transform: scale(1.2);
+  }
 `;
 
 export const ButtonDiv = styled.div` 

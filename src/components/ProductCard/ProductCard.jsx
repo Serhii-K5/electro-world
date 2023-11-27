@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addOrders, deleteOrders } from "redux/slice/orderSlice";
 import { selectOrders } from "redux/selectors";
+import { selectOrdersAll } from "redux/selectors";
 // import CardModal from "components/ProductModal/ProductModal";
 // import { changeQuantity } from "redux/slice/numberPurchasesSlice";
 
@@ -46,14 +47,16 @@ import sprite from "../../assets/images/svg/sprite.svg";
 export default function Product({ card }) {
   const dispatch = useDispatch();
   const orderProducts = useSelector(selectOrders);
+  const ordersAll = useSelector(selectOrdersAll);
   const [isModalShown, setIsModalShown] = useState(false);
   const [isOrder, setIsOrder] = useState(false);
 
-  const [NumberPurchases, setNumberPurchases] = useState(0);
+  // const [NumberPurchases, setNumberPurchases] = useState(0);
+  const [qualitity, setQqualitity] = useState(1);
   
   
   const [isVisible, setIsVisible] = useState(false);
-
+  
   useEffect(() => {
     const isCurrentOrder = orderProducts.find(
       (order) => order.id === card.id
@@ -101,6 +104,16 @@ export default function Product({ card }) {
     dispatch(changeQuantity(card));
     setIsOrder(true);
   };
+
+  const handleChange = (e) => {
+    try {
+      Number(e.target.value)
+    } catch (error) {
+      console.log("Значення не є числом. ", error);
+    }
+  }
+
+
   
   return (
     <>
@@ -142,12 +155,23 @@ export default function Product({ card }) {
               <hr />
               {/* <QuantityDiv style={isVisible ? {zIndex: 100} : {zIndex: 0}}> */}
               <QuantityDiv>
-                <Div style={isVisible ? {color: "black", borderColor: "grey"} : {color: "white", borderColor: "white"}}>-</Div>
+                <Div
+                  style={isVisible ? { color: "black", borderColor: "grey"} : { color: "white", borderColor: "white" }} 
+                  onClick={e => qualitity > 1 && setQqualitity(qualitity - 1)}>
+                  -
+                </Div>
                 <Input
-                    defaultValue={1}
-                    style={isVisible ? {color: "black", borderColor: "grey"} : {color: "white", borderColor: "white"}}
+                  // type="number"
+                  defaultValue={1}
+                  style={isVisible ? {color: "black", borderColor: "grey"} : {color: "white", borderColor: "white"}}
+                  onChange={handleChange}
+                  value={qualitity}
                 />
-                <Div  style={isVisible ? {color: "black", borderColor: "grey"} : {color: "white", borderColor: "white"}}>+</Div>
+                <Div  
+                  style={isVisible ? {color: "black", borderColor: "grey"} : {color: "white", borderColor: "white"}}
+                  onClick={e => setQqualitity(qualitity + 1)}>
+                  +
+                </Div>
               </QuantityDiv>
               
                 
@@ -165,8 +189,8 @@ export default function Product({ card }) {
                 <Div>+</Div>
               </QuantityDiv>} */}
               
-            <ButtonDiv>
-              Додати до замовлення
+            <ButtonDiv onClick={}>
+             {isOrder ? "Видалит замовлення" : "Додати до замовлення"}
             </ButtonDiv> 
             </OptionContainer>
             
