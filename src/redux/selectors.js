@@ -2,7 +2,9 @@ export const selectProducts = (state) => state.products.items;
 
 export const selectOrders = (state) => state.orders.items;
 
-export const selectOrdersAll = (state) => state.ordersAll.qualitity;
+export const selectLanguages = state => state.languages.language;
+
+// export const selectOrdersAll = (state) => state.ordersAll.qualitity;
 
 // export const selectIsLoading = (state) => state.adverts.isLoading;
 

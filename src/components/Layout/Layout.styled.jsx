@@ -13,20 +13,24 @@ import { NavLink } from "react-router-dom";
 // `;
 
 export const BgLogo = styled.div`
-  position: relative;
-  top: 8px;  
-  width: 130px;
+  // position: relative;
+  // top: 8px;  
+  // width: 130px;
   background-repeat: no-repeat;
   // background-position: 50% 0;
   background-size: 100%;
+  border: 5px double orangered;
+  padding: 8px 16px;
+  border-radius: 50%;
 `;
 
 export const TextLogo = styled.p`
-  position: relative;
-  top: -12px;
-  text-align: left;
-  font-size: 40px;
+  // position: relative;
+  // top: -12px;
+  // text-align: left;
+  font-size: 20px;
   text-shadow: 1px 1px 0px rgba(255,255,255,20);
+  color: #d96040;
 `;
 
 
@@ -36,16 +40,17 @@ export const Header = styled.div`
   // width: 1440px;
   margin: 0 auto;
   gap: 20px;
-  padding: 7px 16px;
+  padding: 7px 0px;
   // box-shadow: 0px 4px 4px rgba(0,0,0,0.5);  
   max-width: 1440px;
-  text-align: center;
+  // text-align: center;
   align-items: center;
+  // align-items: flex-end;
 `;
 
 export const Div = styled.div`
   // margin-bottom: 50px;
-  padding: 7px;
+  padding: 7px 16px;
   background-color: transparent;
   box-shadow: 0px 4px 4px rgba(0,0,0,0.5);
   background: linear-gradient(to top, var(--bg-primary-green), var(--bg-second-green), var(--bg-second-green), var(--bg-primary-green)); 

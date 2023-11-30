@@ -96,7 +96,7 @@ const CatalogCarsPage = () => {
   };
 
   return (
-    <div style={{ padding: '50px', display: 'flex' }}>
+    <div style={{display: 'flex', padding: '16px', width: '1440px', margin: '0 auto'}}>
       <aside>
         <p>fjslkj</p>
         <p>gfjdfg</p>
@@ -107,21 +107,22 @@ const CatalogCarsPage = () => {
       {filteredData.length > 0 && (
         <Ul>
           {filteredData.map((item, index) => (            
-            index < activePage * 8 && <li key={item.id}>
-              <CarCard card={item} />
-            </li>
+            index > (activePage - 1) * 8 && index < activePage * 8 &&
+              <li key={item.id}>
+                <CarCard card={item} />
+              </li>
           ))}
         </Ul>
       )}
       <DivPagination>
         {activePage > 1 && <DivShift onClick={onClickDecrease}>{"<<"}</DivShift>}
         {activePage === 1 && <DivPage style={{ backgroundColor: 'green' }}>{activePage}</DivPage>}
+        {activePage > 2 && <div style={{width: '50px', textAlign: "center"}}>{"..."}</div>}
         {activePage > 1 && <DivPage onClick={onClickDecrease}>{activePage - 1}</DivPage>}
-        {activePage > 1 && <DivPage>{"..."}</DivPage>}
         {activePage > 1 && <DivPage style={{ backgroundColor: 'green' }}>{activePage}</DivPage>}
         {filteredData.length / 8 > activePage && <DivPage onClick={onClickIncrease}>{activePage + 1}</DivPage>}
-        {filteredData.length / 8 > activePage + 1 && <DivPage>{"..."}</DivPage>}
-        {filteredData.length / 8 > activePage + 1 && <DivShift onClick={onClickIncrease}>{">>"}</DivShift>}
+        {filteredData.length / 8 > activePage + 1 && <div style={{width: '50px', textAlign: "center"}}>{"..."}</div>}
+        {filteredData.length / 8 > activePage  && <DivShift onClick={onClickIncrease}>{">>"}</DivShift>}
       </DivPagination>
       
       </section>

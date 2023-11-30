@@ -3,6 +3,7 @@
   --bg-primary: #FFFFFF;
   --bg-primary-green: #9ee2ac;
   --bg-second-green: #02bd2a;
+  --bg-second-orange: #f07555;
   --bg-button-color: #3470FF;
   --bg-active-button-color: #0B44CD;
 
@@ -12,6 +13,8 @@
   --text-color-grey: #8a8a8957;
   --text-color-blue: #3470FF;
   --text-color-active-blue: #0B44CD;
+  --text-second-green: #02bd2a;
+  --text-second-orange: #f07555;
 
   --input-background-color: #F7F7FB;
 }
@@ -28,7 +31,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--bg-primary);
-  color: var(--text-color-primary-white);}
+  color: var(--text-color-primary-white);
+}
 
 ul {
   list-style: none;

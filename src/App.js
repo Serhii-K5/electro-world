@@ -26,6 +26,7 @@ export default function App() {
         <Route index element={<HomePage />} />
         <Route path="catalog" element={<CatalogPage data={[]} />} />
         <Route path="orders" element={<OrdersPage />} />
+        <Route path="orders" element={<OrdersPage />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

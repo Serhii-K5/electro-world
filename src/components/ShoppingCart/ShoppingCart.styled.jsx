@@ -13,5 +13,8 @@ export const Quantity = styled.div`
   background-color: var(--bg-button-color);
   border-radius: 50%;
   color: var(--text-color-white);
-  
+
+  font-size: 16px;
+  font-weight: normal;
+  text-shadow: none;  
 `;

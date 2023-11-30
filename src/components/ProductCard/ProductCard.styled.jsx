@@ -5,20 +5,33 @@ const transition = `150ms linear`;
 export const Container = styled.div`
   position: relative;
   display: flex;
+  // padding: 1px;
   // max-width: 420px;
-  width: 425px;
-  height: 240px;
+  width: 430px;
+  height: 260px;
   flex-direction: column;
   gap: 10px; 
-  border: solid 1px var(--text-color-grey);
-  cursor: pointer;
+  // border: solid 1px var(--text-color-grey);
+  cursor: pointer;  
+
+  // overflow: hidden;
+  border: 1px solid var(--text-color-grey);
+
+  // &:hover {
+  //   top: 45px;
+  //   right: 63px;
+  //   // overflow: auto;
+  //   z-index: 50;
+  //   width: 550px;
+  //   height: 350px;
+  // }
 `;
 
 export const Aside = styled.aside`
   padding-left: 0.5rem;
   margin-left: 0.5rem;
   float: left;
-  text-align: start;
+  text-align: center;
   // box-shadow: inset 5px 0 5px -5px #29627e;
   // font-style: italic;
   // color: #29627e;
@@ -49,49 +62,52 @@ export const ImgDiv = styled.div`
   }
 `;
 
-export const ImgAside = styled.img`
-  margin: 0 auto;  
-  // margin-top: 20px;
-  // justify-content: center;
-  // text-align: center;
-  // width: 100%;
-  // width: 25px;
-  // height: 25px;
-  object-fit: cover;
-  // fill: grey;
-  fill: red;
-  // stroke: red;
-  fill: inherit;
-  // all: inherit;
-  
-  &:hover {
-    fill: green;
-  }  
-`;
-
 export const DivHov = styled.div`
   position: absolute;
+  padding: 15px;
   right: 0;
   background-color: var(--bg-primary);
   // box-shadow: 0px 5px 5px gray;
   transition: width ${transition}, height ${transition}, filter ${transition};
 
-  width: 425px;
-  height: 240px;
+  overflow: hidden;
+  width: 426px;
+  height: 256px;
 
-   &:hover {
-    width: 550px;
+  &:hover {
+    width: 555px;
     height: 350px;
     z-index: 100;
     filter: drop-shadow(0 0 0.75rem gray);
    }
 `;
 
+// export const ImgAside = styled.img`
+//   margin: 0 auto;  
+//   // margin-top: 20px;
+//   // justify-content: center;
+//   // text-align: center;
+//   // width: 100%;
+//   // width: 25px;
+//   // height: 25px;
+//   object-fit: cover;
+//   // fill: grey;
+//   fill: red;
+//   // stroke: red;
+//   fill: inherit;
+//   // all: inherit;
+  
+//   &:hover {
+//     fill: green;  
+//   }  
+// `;
+
 export const OptionDiv = styled.div`
   display: flex;
-  text-align: end;
+  margin-bottom: 20px;
   padding: 0 10px;
-  justify-content: flex-end;
+  justify-content: flex-end;  
+  text-align: end;
 `;
 
 export const Img = styled.img`
@@ -123,11 +139,12 @@ export const Price = styled.p`
 `;
 
 export const Input = styled.input` 
-  display: flex;
-  color: var(--text-color-primary-black); 
+  display: flex; 
   width: 35px;
   height: 30px;
   font-size: 20px;
+  text-align: center;
+  // color: var(--text-color-primary-black);
   border: solid 1px var(--text-color-grey);
 `;
 
@@ -150,7 +167,7 @@ export const QuantityDiv = styled.div`
 
 export const Div = styled.div` 
   // display: inline;
-  display: flex;
+  // display: flex;
   color: var(--text-color-primary-black); 
   width: 30px;
   height: 30px;
@@ -164,6 +181,8 @@ export const Div = styled.div`
     font-weight: bold;
     // transform: scale(1.2);
   }
+
+
 `;
 
 export const ButtonDiv = styled.div` 
@@ -173,21 +192,34 @@ export const ButtonDiv = styled.div`
   color: var(--text-color-white); 
   // width: 30px;
   // height: 30px;
+  border-radius: 5px;
   border: solid 1px var(--bg-second-green);
   text-align: center;
   font-size: 20px;
   background-color: var(--bg-second-green);
   transition: background-color ${transition}, color ${transition};
   
+  &.isOrder {
+    border-color: var(--bg-second-orange);
+    background-color: var(--bg-second-orange);
+  }
+  
   &:hover {
     background-color: transparent;
-    color: var(--text-color-primary-black);
+    color: var(--text-second-green);
   }
+  
+  &.isOrder:hover {
+    background-color: transparent;
+    color: var(--text-second-orange);
+  }
+
+
 `;
 
 export const Name = styled.p`
   color: var(--text-color-blue);
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   line-height: 1.5;
   overflow: hidden;
@@ -209,35 +241,35 @@ export const Memo = styled.p`
   textOverflow: ellipsis;
 `;
 
-export const TitleContainer = styled.div`
-  display: flex;
-  margin-bottom: 8px;
-  justify-content: space-between;
-  align-items: center;
-`;
+// export const TitleContainer = styled.div`
+//   display: flex;
+//   margin-bottom: 8px;
+//   justify-content: space-between;
+//   align-items: center;
+// `;
 
-export const Title = styled.p`
-  color: var(--text-color-primary-black);
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.5;
-`;
+// export const Title = styled.p`
+//   color: var(--text-color-primary-black);
+//   font-size: 16px;
+//   font-weight: 500;
+//   line-height: 1.5;
+// `;
 
-export const Span = styled.span`
-  color: var(--text-color-blue);
-  margin-left: 4px;
-`;
+// export const Span = styled.span`
+//   color: var(--text-color-blue);
+//   margin-left: 4px;
+// `;
 
-export const Year = styled.span`
-  margin-left: 4px;
-`;
+// export const Year = styled.span`
+//   margin-left: 4px;
+// `;
 
-export const RentalPrice = styled.p`
-  color: var(--text-color-primary-black);
-  font-size: 16px;
-  line-height: 1.5;
-  font-weight: 500;
-`;
+// export const RentalPrice = styled.p`
+//   color: var(--text-color-primary-black);
+//   font-size: 16px;
+//   line-height: 1.5;
+//   font-weight: 500;
+// `;
 
 export const Ul = styled.ul`
   display: flex;

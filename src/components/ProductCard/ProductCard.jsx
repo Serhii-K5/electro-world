@@ -2,16 +2,17 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addOrders, deleteOrders } from "redux/slice/orderSlice";
 import { selectOrders } from "redux/selectors";
-import { selectOrdersAll } from "redux/selectors";
-// import CardModal from "components/ProductModal/ProductModal";
+// import { selectOrdersAll } from "redux/selectors";
+import CardModal from "components/ProductModal/ProductModal";
 // import { changeQuantity } from "redux/slice/numberPurchasesSlice";
+import { increaseOrder, decreaseOrder } from "redux/slice/ordersAllSlice";
 
 import {
   Container,
   // OrderBtn,
   Aside,
   ImgDiv,
-  ImgAside,
+  // ImgAside,
   DivHov,
   OptionDiv,
   Img,
@@ -38,16 +39,16 @@ import {
 // import Heart from "assets/images/svg/heart.svg";
 import noPhoto from "../../assets/images/no_photo.jpg";
 // import alternative from "../../assets/images/svg/alternativeProducts.svg";
-import alternative from "../../assets/images/svg/shuffle-arrows.svg";
+// import alternative from "../../assets/images/svg/shuffle-arrows.svg";
 // import related from "../../assets/images/svg/relatedProducts.svg";
 // import related from "../../assets/images/svg/link1.svg";
-import related from "../../assets/images/svg/link_.svg";
-import sprite from "../../assets/images/svg/sprite.svg";
+// import related from "../../assets/images/svg/link_.svg";
+// import sprite from "../../assets/images/svg/sprite.svg";
 
 export default function Product({ card }) {
   const dispatch = useDispatch();
   const orderProducts = useSelector(selectOrders);
-  const ordersAll = useSelector(selectOrdersAll);
+  // const ordersAll = useSelector(selectOrdersAll);
   const [isModalShown, setIsModalShown] = useState(false);
   const [isOrder, setIsOrder] = useState(false);
 
@@ -63,7 +64,10 @@ export default function Product({ card }) {
     );
     if (isCurrentOrder) {
       setIsOrder(true);
-      setNumberPurchases(NumberPurchases + 1);
+      // setNumberPurchases(NumberPurchases + 1);
+      // ordersAll += 1;
+      // dispatch(increaseOrder(ordersAll + 1));
+      // isOrder ? dispatch(increaseOrder(ordersAll)) : dispatch(decreaseOrder(ordersAll));
     } else {
       setIsOrder(false);
     }
@@ -84,9 +88,9 @@ export default function Product({ card }) {
     setIsOrder(false);
   };
   
-  const productName = (name) => {
-    return name.replace('\"'/i,'"');
-  };
+  // const productName = (name) => {
+  //   return name.replace('\"'/i,'"');
+  // };
   
   const onOpenModal = () => {
     setIsModalShown(true);
@@ -100,21 +104,54 @@ export default function Product({ card }) {
     setIsVisible(false);
   };
   
-  const onAdd1 = () => {
-    dispatch(changeQuantity(card));
-    setIsOrder(true);
-  };
+  // const onAdd1 = () => {
+  //   dispatch(changeQuantity(card));
+  //   setIsOrder(true);
+  // };
 
   const handleChange = (e) => {
     try {
-      Number(e.target.value)
+      Number(e.target.value);
+      // e.target.value = e.target.value;
     } catch (error) {
       console.log("Значення не є числом. ", error);
     }
   }
 
+  const handleClick = (e) => {
+    {
+      isOrder ? onDelete() : onAdd();
+    } 
+    // e.target
+    // try {
+    //   Number(e.target.value)
+    // } catch (error) {
+    //   console.log("Значення не є числом. ", error);
+    // }
+  }
 
-  
+  // const nameClick = (e) => {
+  //   {
+  //     isOrder ? onDelete() : onAdd()
+  //   } 
+  //   // e.target
+  //   // try {
+  //   //   Number(e.target.value)
+  //   // } catch (error) {
+  //   //   console.log("Значення не є числом. ", error);
+  //   // }
+  // }
+
+  // const decrease = () => {
+  //   qualitity > 1 && setQqualitity(qualitity - 1);
+  //   qualitity > 1 && dispatch(decreaseOrder(ordersAll - 1));
+  // }
+
+  // const increase = () => {
+  //   setQqualitity(qualitity + 1);
+  //   dispatch(increaseOrder(ordersAll + 1));
+  // }
+
   return (
     <>
       <Container>
@@ -156,20 +193,25 @@ export default function Product({ card }) {
               {/* <QuantityDiv style={isVisible ? {zIndex: 100} : {zIndex: 0}}> */}
               <QuantityDiv>
                 <Div
-                  style={isVisible ? { color: "black", borderColor: "grey"} : { color: "white", borderColor: "white" }} 
-                  onClick={e => qualitity > 1 && setQqualitity(qualitity - 1)}>
+                  style={isVisible ? {display: isOrder ? "none" : "flex",  color: "var(--text-color-primary-black)", borderColor: "var(--text-color-grey)"} : { color: "white", borderColor: "white" }} 
+                  onClick={e => qualitity > 1 && setQqualitity(qualitity - 1)}
+                  // onClick={decrease}
+                >
                   -
                 </Div>
                 <Input
                   // type="number"
-                  defaultValue={1}
-                  style={isVisible ? {color: "black", borderColor: "grey"} : {color: "white", borderColor: "white"}}
+                  // defaultValue={1}
+                  // defaultValue={qualitity}  
+                  style={isVisible ? {color: "var(--text-color-primary-black)", borderColor: "var(--text-color-grey)"} : isOrder ? {color: "var(-text-color-white)", borderColor: "var(-text-color-white)"} : {color: "white", borderColor: "white"}}
                   onChange={handleChange}
-                  value={qualitity}
+                  value= {qualitity}
                 />
                 <Div  
-                  style={isVisible ? {color: "black", borderColor: "grey"} : {color: "white", borderColor: "white"}}
-                  onClick={e => setQqualitity(qualitity + 1)}>
+                  style={isVisible ? {display: isOrder ? "none" : "flex", color: "var(--text-color-primary-black)", borderColor: "var(--text-color-grey)"} : {display: isOrder ? "none" : "flex", color: "white", borderColor: "white"}}
+                  onClick={e => (setQqualitity(qualitity + 1))}
+                  // onClick={increase}
+                >
                   +
                 </Div>
               </QuantityDiv>
@@ -189,10 +231,28 @@ export default function Product({ card }) {
                 <Div>+</Div>
               </QuantityDiv>} */}
               
-            <ButtonDiv onClick={}>
-             {isOrder ? "Видалит замовлення" : "Додати до замовлення"}
+            <ButtonDiv 
+              className={isOrder && "isOrder"}
+              onClick={handleClick}
+              // style={{ backgroundColor: isOrder ? "var(--bg-second-orange)" : "var(--bg-second-green)" }}
+            >
+            {isOrder ? "Видалити замовлення" : "Додати до замовлення"}
             </ButtonDiv> 
             </OptionContainer>
+            
+            {/* {isOrder ? (
+          <OrderBtn onClick={onDelete}>
+            <img src={HeartActive} alt="Order button" />
+          </OrderBtn>
+        ) : (
+          <OrderBtn onClick={onAdd}>
+            <img src={Heart} alt="Order button" />
+          </OrderBtn>
+        )} */}  
+
+
+
+
             
             {/* <TitleContainer>
               <Title>
@@ -231,7 +291,7 @@ export default function Product({ card }) {
             </Ul> */}
           </OptionDiv>
           <p>Код: {card.code}</p>
-          <Name>{card.name}</Name>
+          <Name onClick={onOpenModal}>{card.name}</Name>
           <Memo>{card.memo}</Memo>
 
 
@@ -242,7 +302,7 @@ export default function Product({ card }) {
           </div>
         </DivHov>
       </Container>
-      {/* {isModalShown && <CardModal card={card} onClose={onCloseModal} />} */}
+      {isModalShown && <CardModal card={card} onClose={onCloseModal} />}
     </>
   );
 }

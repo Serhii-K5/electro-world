@@ -20,8 +20,8 @@ import {
 import Cross from "assets/images/svg/cross.svg";
 
 export default function AdvertModal({ card, onClose }) {
-  const arrayConditions = card.rentalConditions.split("\n");  
-  const mileage = String(card.mileage / 1000).replace(/\./g, ",");
+  // const arrayConditions = card.rentalConditions.split("\n");  
+  // const mileage = String(card.mileage / 1000).replace(/\./g, ",");
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -41,27 +41,42 @@ export default function AdvertModal({ card, onClose }) {
     }
   };
 
-  const addressCity = (address) => {
-    const addressArr = address.split(', ');
-    return addressArr[1];
-  };
+  // const addressCity = (address) => {
+  //   const addressArr = address.split(', ');
+  //   return addressArr[1];
+  // };
   
-  const addressCountry = (address) => {
-    const addressArr = address.split(', ');
-    return addressArr[2];
-  };
+  // const addressCountry = (address) => {
+  //   const addressArr = address.split(', ');
+  //   return addressArr[2];
+  // };
 
   return (
     <Overlay onClick={handleOverlayClick}>
       <Modal>
+        {/* <p>Module page</p> */}
+
         <CloseBtn type="button" onClick={onClose}>
           <img src={Cross} alt="close button" />
         </CloseBtn>
-        <Img src={card.img} alt={card.model} />
+        {card.photo === '' ? (
+          <Img src={noPhoto} alt={card.name} />
+        ) : (
+          <Img src={card.photo} alt={card.name} />
+        )}
+
+        <div>
+          <p>Код: {card.code}</p>
+          <Name onClick={onOpenModal}>{card.name}</Name>
+          
+
+          <Memo>{card.memo}</Memo>
+        </div>
+
+        {/* <Img src={card.img} alt={card.model} />
         <Title>
           {card.make}
-          <Span>{card.model}</Span>,
-          <Year>{card.year}</Year>
+          <Span>{card.model}</Span>,<Year>{card.year}</Year>
         </Title>
         <Ul>
           <Li>{addressCity(card.address)}</Li>
@@ -79,12 +94,12 @@ export default function AdvertModal({ card, onClose }) {
           <div>
             <SubTitle>Accessories and functionalities:</SubTitle>
             <Ul>
-              {card.accessories.map((item) => {
+              {card.accessories.map(item => {
                 return <Li key={nanoid()}>{item}</Li>;
               })}
             </Ul>
             <Ul style={{ marginBottom: 0 }}>
-              {card.functionalities.map((item) => {
+              {card.functionalities.map(item => {
                 return <Li key={nanoid()}>{item}</Li>;
               })}
             </Ul>
@@ -92,7 +107,7 @@ export default function AdvertModal({ card, onClose }) {
           <div>
             <SubTitle>Rental Conditions:</SubTitle>
             <ConditionsUl>
-              {arrayConditions.map((item) => {
+              {arrayConditions.map(item => {
                 return <ConditionLi key={nanoid()}>{item}</ConditionLi>;
               })}
               <ConditionLi>
@@ -104,7 +119,7 @@ export default function AdvertModal({ card, onClose }) {
             </ConditionsUl>
           </div>
           <A href="tel:+380730000000">Rental car</A>
-        </Container>
+        </Container> */}
       </Modal>
     </Overlay>
   );

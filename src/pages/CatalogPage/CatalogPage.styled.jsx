@@ -8,7 +8,7 @@ export const Ul = styled.ul`
   align-items: center;
   justify-content: center;
   column-gap: 10px;
-  row-gap: 30px;
+  row-gap: 10px;
   padding-bottom: 30px;
 `;
 
