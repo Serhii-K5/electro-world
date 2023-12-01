@@ -46,6 +46,7 @@ export const Header = styled.div`
   // text-align: center;
   align-items: center;
   // align-items: flex-end;
+  justify-content: space-between;
 `;
 
 export const Div = styled.div`

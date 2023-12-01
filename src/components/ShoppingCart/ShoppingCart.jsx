@@ -7,6 +7,7 @@
 // } from "../Layout/Layout.styled";
 
 import {
+  Div,
   Quantity,
 } from "./ShoppingCart.styled";
 
@@ -25,12 +26,12 @@ const ShoppingCart = ({ quantity }) => {
     // {/* <div style={{ position: 'absolute', left: (window.innerWidth - 16) +'px', bottom: '-38px'}}> */}
     // {/* <div style={{ position: 'absolute', left: (document.body.clientWidth - 16) +'px', bottom: '-38px'}}> */}
     // <div style={{ position: 'absolute', left: (window.screen.availWidth - 16) +'px', bottom: '-38px'}}>
-    <div style={{ position: 'absolute', left: '800px', bottom: '-38px'}}>
-      <GiShoppingCart style={{width: '60px', height: '60px', fill: "blue" }} />
+    // <div style={{ position: 'absolute', left: '800px', bottom: '-38px'}}>
+    <Div>
+      <GiShoppingCart style={{width: '60px', height: '60px', fill: "var(--bg-active-button-color)" }} />
       <Quantity>{quantity}</Quantity>
-    </div>
+    </Div>
   )
 }
-
 
 export default ShoppingCart;

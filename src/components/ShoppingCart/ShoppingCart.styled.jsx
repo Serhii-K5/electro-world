@@ -10,7 +10,7 @@ export const Quantity = styled.div`
   width: 30px;
   height: 30px;
   fill: var(--bg-button-color);
-  background-color: var(--bg-button-color);
+  background-color: var(--bg-active-button-color);
   border-radius: 50%;
   color: var(--text-color-white);
 
@@ -18,3 +18,9 @@ export const Quantity = styled.div`
   font-weight: normal;
   text-shadow: none;  
 `;
+
+export const Div = styled.div`
+  position: relative;
+  left: 0px;
+  bottom: 0px;
+`

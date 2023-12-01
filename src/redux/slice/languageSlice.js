@@ -5,9 +5,9 @@ const sliceLanguage = createSlice({
   initialState: {
     // language: Boolean,
     // language: String,
-    // language: 'UK',
+    language: 'UK',
     // language: '',
-    language: 0,
+    // language: 0,
   },
   reducers: {
     changeLanguage(state, action) {

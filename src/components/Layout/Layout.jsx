@@ -1,5 +1,6 @@
 // import { useState } from "react";
 import { Outlet } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import {
   BgLogo,
   TextLogo,
@@ -21,7 +22,8 @@ import { useSelector } from "react-redux";
 // import { selectOrdersAll } from "redux/selectors";
 import { selectOrders } from "redux/selectors";
 import CardModal from "components/ProductModal/ProductModal";
-import LanguageBar from "components/LanguageBar/LanguageBar";
+import {LanguageBar} from "components/LanguageBar/LanguageBar";
+import lang from "assets/json/language.json";
 
 
 export default function Layout() {
@@ -44,10 +46,18 @@ export default function Layout() {
   
   return (
     <>
-      <ul style={{ textAlign: "right",  padding: '5px', fontSize: '16px', width:'1440px', margin: '0 auto'}}>
+      <LanguageBar/>
+      {/* <ul>
+        {lang.map((el, index)=> 
+          <li key={index}>{el.lang_name}</li>
+        )} */}
+      {/* <li style={{ display: 'inline-block', padding: '5px', backgroundColor: 'blue', border: '1px solid blue', color: 'white', borderRadius: '5px' }}>UK</li>
+      <li style={{display: 'inline-block', padding: '5px', border: '1px solid blue', borderRadius: '5px', marginLeft: '5px'}}>RU</li> */}
+    {/* </ul> */}
+      {/* <ul style={{ textAlign: "right",  padding: '5px', fontSize: '16px', maxWidth:'1440px', margin: '0 auto'}}>
         <li style={{display: 'inline-block', padding: '5px', backgroundColor: 'blue', border: '1px solid blue', color: 'white', borderRadius: '5px'}}>UK</li>
         <li style={{display: 'inline-block', padding: '5px', border: '1px solid blue', borderRadius: '5px', marginLeft: '5px'}}>RU</li>
-      </ul>
+      </ul> */}
       {/* <div style={{ textAlign: "right",  padding: '5px', fontSize: '16px'}}> */}
         {/* <div style={(languages === "" || languages === "UK") && { backgroundColor: 'var(--bg-second-green)' }}>UK</div>
         <div style={languages === "RU" && { backgroundColor: 'var(--bg-second-green)' }}>RU</div> */}
@@ -71,9 +81,9 @@ export default function Layout() {
             </NavLinkStyle>
             <NavLinkStyle to="/orders">Orders</NavLinkStyle>
             
-            <NavLinkStyle to="/orders">
+            {/* <NavLinkStyle to="/orders">
               <ShoppingCart quantity={orderProducts.length}/>
-            </NavLinkStyle>
+            </NavLinkStyle> */}
             
           </NavContainer>
           {/* <AdressBar /> */}
@@ -85,10 +95,12 @@ export default function Layout() {
             <Quantity>100</Quantity>
           </div> */}
           {/* <ShoppingCart quantity={orderProducts.length} onClick={e => <NavLinkStyle to="/orders"/>}></ShoppingCart> */}
+          <Link to="/orders">
+            <ShoppingCart quantity={orderProducts.length}/>
+          </Link>
         </Header>
       </Div>
       {/* {isModalShown && <CardModal card={card} onClose={onCloseModal} />} */}
-
       <div>
         <Outlet />
       </div>
