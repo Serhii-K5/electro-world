@@ -17,14 +17,21 @@ export const Ul = styled.ul `
 
 export const Li = styled.li `
   display: inline-block;
+  // marginLeft: 3px;
   padding: 5px;
   // background-color: var(--bg-button-color);
   border: 1px solid var(--bg-button-color);
   border-radius: 5px;
-  color: var(--text-color-white);
+  color: var(--text-color-primary-black);
+  // margin-left: 3px; 
+
+  &:not(:first-child) {
+    margin-left: 3px;
+  }
 
   &:hover {
     background-color: var(--bg-active-button-color);
     border-color: var(--bg-active-button-color);
+    color: var(--text-color-white);
   }
 `

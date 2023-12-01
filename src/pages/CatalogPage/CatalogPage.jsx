@@ -57,7 +57,8 @@ const CatalogCarsPage = () => {
         {filteredData.length > 0 && (
           <Ul>
             {filteredData.map((item, index) => (            
-              index > (activePage - 1) * 8 && index < activePage * 8 &&
+              // index > (activePage - 1) * 8 && index < activePage * 8 &&
+              index > (activePage - 1) * 8 -1 && index < activePage * 8 &&
                 <li key={item.id}>
                   <CarCard card={item} />
                 </li>

@@ -1,12 +1,14 @@
 [
   {
     "lang_id": 0,
-    "lang_name": "UK",
+    "lang_name": "UA",
     "lang_title": "Українська",
     "navLinkHome": "Домашня",
     "navLinkCatalog": "Каталог",
     "navLinkOrders": "Замовлення",
     "ordersInputLog": "Значення не є числом. ",
+    "alternatives": "Альтернативи",
+    "related": "Пов'язані",
     "orderAdd": "Додати до замовлення",
     "orderDel": "Видалити замовлення",
     "codeTitle": "Код"
@@ -15,10 +17,12 @@
     "lang_id": 1,
     "lang_name": "RU",
     "lang_title": "Русский",
-    "navLinkHome": "Домашня",
+    "navLinkHome": "Домашняя",
     "navLinkCatalog": "Каталог",
     "navLinkOrders": "Заказ",
     "ordersInputLog": "Значение не является числом. ",
+    "alternatives": "Альтернативы",
+    "related": "Связанные",
     "orderAdd": "Добавить к заказу",
     "orderDel": "Удалить заказ",
     "codeTitle": "Код"

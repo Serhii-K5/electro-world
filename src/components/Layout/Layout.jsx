@@ -24,11 +24,13 @@ import { selectOrders } from "redux/selectors";
 import CardModal from "components/ProductModal/ProductModal";
 import {LanguageBar} from "components/LanguageBar/LanguageBar";
 import lang from "assets/json/language.json";
+import { selectLanguages } from "redux/selectors";
 
 
 export default function Layout() {
   // const ordersAll = useSelector(selectOrdersAll);
   const orderProducts = useSelector(selectOrders);  
+  const languages = useSelector(selectLanguages);
   // const [isModalShown, setIsModalShown] = useState(false);
   // const onCloseModal = () => {
   //   setIsModalShown(false);
@@ -42,7 +44,6 @@ export default function Layout() {
   //   setIsModalShown(true);
   // };
 
-  const languages = "";
   
   return (
     <>
@@ -74,12 +75,17 @@ export default function Layout() {
           {/* <img src={logo} alt="Logo company" style={{width: "120px", boxShadow: "1px 1px 0px rgba(255,255,255)"}} /> */}
           <NavContainer>
             <NavLinkStyle to="/" >
-                Home
+              {/* Home */}
+              {lang[languages].navLinkHome}
             </NavLinkStyle>
             <NavLinkStyle to="/catalog">
-              Catalog
+              {/* Catalog */}
+              {lang[languages].navLinkCatalog}
             </NavLinkStyle>
-            <NavLinkStyle to="/orders">Orders</NavLinkStyle>
+            <NavLinkStyle to="/orders">
+              {/* Orders */}
+              {lang[languages].navLinkOrders}
+            </NavLinkStyle>
             
             {/* <NavLinkStyle to="/orders">
               <ShoppingCart quantity={orderProducts.length}/>
