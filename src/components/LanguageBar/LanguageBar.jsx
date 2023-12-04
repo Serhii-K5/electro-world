@@ -27,4 +27,4 @@ export const LanguageBar = () => {
   )
 };
 
-// export default LanguageBar();
+// export default LanguageBar;

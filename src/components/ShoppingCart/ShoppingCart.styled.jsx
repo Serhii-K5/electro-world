@@ -4,7 +4,7 @@ export const Quantity = styled.div`
   display: flex;
   position: absolute;
   top: 0;
-  right: 0;
+  left: 25px;
   align-items: center;
   justify-content: center;
   width: 30px;
@@ -20,7 +20,9 @@ export const Quantity = styled.div`
 `;
 
 export const Div = styled.div`
+  display: flex;
   position: relative;
   left: 0px;
   bottom: 0px;
+  align-items: flex-end;
 `

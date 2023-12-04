@@ -9,7 +9,8 @@
     "quantity": 0,
     "parentId": 859,
     "fullPath": "ЮГ-СМ",
-    "photo": ""
+    "photo": "",
+    "ordered": 0
   },
   {
     "id": 865,
@@ -21,7 +22,8 @@
     "quantity": 0,
     "parentId": 859,
     "fullPath": "ЮГ-СМ",
-    "photo": ""
+    "photo": "",
+    "ordered": 0
   },
   {
     "id": 863,
@@ -33,7 +35,8 @@
     "quantity": 0,
     "parentId": 859,
     "fullPath": "ЮГ-СМ",
-    "photo": ""
+    "photo": "",
+    "ordered": 0
   },
   {
     "id": 1533,
@@ -46,7 +49,8 @@
     "parentId": 859,
     "fullPath": "ЮГ-СМ",
     "photo": "002602.png",
-    "param11": "D:\\Document\\BENEFICIARY.docx"
+    "param11": "D:\\Document\\BENEFICIARY.docx",
+    "ordered": 0
   },
   {
     "id": 864,
@@ -58,7 +62,8 @@
     "quantity": 0,
     "parentId": 859,
     "fullPath": "ЮГ-СМ",
-    "photo": ""
+    "photo": "",
+    "ordered": 0
   },
   {
     "id": 1532,
@@ -70,7 +75,8 @@
     "quantity": 1,
     "parentId": 859,
     "fullPath": "ЮГ-СМ",
-    "photo": ""
+    "photo": "",
+    "ordered": 0
   },
   {
     "id": 872,
@@ -82,7 +88,8 @@
     "quantity": 0,
     "parentId": 871,
     "fullPath": "DC-link",
-    "photo": ""
+    "photo": "",
+    "ordered": 0
   },
   {
     "id": 873,
@@ -94,7 +101,8 @@
     "quantity": 0,
     "parentId": 871,
     "fullPath": "DC-link",
-    "photo": ""
+    "photo": "",
+    "ordered": 0
   },
   {
     "id": 1463,
@@ -106,7 +114,8 @@
     "quantity": 2,
     "parentId": 859,
     "fullPath": "ЮГ-СМ",
-    "photo": ""
+    "photo": "",
+    "ordered": 0
   },
   {
     "id": 1464,
@@ -118,7 +127,8 @@
     "quantity": 0,
     "parentId": 859,
     "fullPath": "ЮГ-СМ",
-    "photo": ""
+    "photo": "",
+    "ordered": 0
   },
   {
     "id": 874,
@@ -130,7 +140,8 @@
     "quantity": 1,
     "parentId": 871,
     "fullPath": "DC-link",
-    "photo": ""
+    "photo": "",
+    "ordered": 0
   },
   {
     "id": 875,
@@ -142,7 +153,8 @@
     "quantity": 1,
     "parentId": 871,
     "fullPath": "DC-link",
-    "photo": ""
+    "photo": "",
+    "ordered": 0
   },
   {
     "id": 1035,
@@ -154,7 +166,8 @@
     "quantity": 1,
     "parentId": 859,
     "fullPath": "ЮГ-СМ",
-    "photo": ""
+    "photo": "",
+    "ordered": 0
   },
   {
     "id": 1081,
@@ -166,7 +179,8 @@
     "quantity": 1,
     "parentId": 859,
     "fullPath": "ЮГ-СМ",
-    "photo": ""
+    "photo": "",
+    "ordered": 0
   },
   {
     "id": 1033,
@@ -178,7 +192,8 @@
     "quantity": 2,
     "parentId": 859,
     "fullPath": "ЮГ-СМ",
-    "photo": ""
+    "photo": "",
+    "ordered": 0
   },
   {
     "id": 1462,
@@ -190,7 +205,8 @@
     "quantity": 1,
     "parentId": 859,
     "fullPath": "ЮГ-СМ",
-    "photo": ""
+    "photo": "",
+    "ordered": 0
   },
   {
     "id": 1034,
@@ -202,7 +218,8 @@
     "quantity": 1,
     "parentId": 859,
     "fullPath": "ЮГ-СМ",
-    "photo": ""
+    "photo": "",
+    "ordered": 0
   },
   {
     "id": 1032,
@@ -214,7 +231,8 @@
     "quantity": 1,
     "parentId": 859,
     "fullPath": "ЮГ-СМ",
-    "photo": ""
+    "photo": "",
+    "ordered": 0
   },
   {
     "id": 1465,
@@ -226,7 +244,8 @@
     "quantity": 0,
     "parentId": 859,
     "fullPath": "ЮГ-СМ",
-    "photo": ""
+    "photo": "",
+    "ordered": 0
   },
   {
     "id": 1534,
@@ -238,7 +257,8 @@
     "quantity": 1,
     "parentId": 859,
     "fullPath": "ЮГ-СМ",
-    "photo": ""
+    "photo": "",
+    "ordered": 0
   },
   {
     "id": 1536,
@@ -250,7 +270,8 @@
     "quantity": 1,
     "parentId": 859,
     "fullPath": "ЮГ-СМ",
-    "photo": ""
+    "photo": "",
+    "ordered": 0
   },
   {
     "id": 1535,
@@ -262,7 +283,8 @@
     "quantity": 1,
     "parentId": 859,
     "fullPath": "ЮГ-СМ",
-    "photo": ""
+    "photo": "",
+    "ordered": 0
   },
   {
     "id": 1037,
@@ -274,7 +296,8 @@
     "quantity": 1,
     "parentId": 859,
     "fullPath": "ЮГ-СМ",
-    "photo": ""
+    "photo": "",
+    "ordered": 0
   },
   {
     "id": 1036,
@@ -286,7 +309,8 @@
     "quantity": 1,
     "parentId": 859,
     "fullPath": "ЮГ-СМ",
-    "photo": ""
+    "photo": "",
+    "ordered": 0
   },
   {
     "id": 1030,
@@ -298,7 +322,8 @@
     "quantity": 3,
     "parentId": 859,
     "fullPath": "ЮГ-СМ",
-    "photo": ""
+    "photo": "",
+    "ordered": 0
   },
   {
     "id": 1466,
@@ -310,7 +335,8 @@
     "quantity": 0,
     "parentId": 859,
     "fullPath": "ЮГ-СМ",
-    "photo": ""
+    "photo": "",
+    "ordered": 0
   },
   {
     "id": 1031,
@@ -322,7 +348,8 @@
     "quantity": 1,
     "parentId": 859,
     "fullPath": "ЮГ-СМ",
-    "photo": ""
+    "photo": "",
+    "ordered": 0
   },
   {
     "id": 860,
@@ -334,7 +361,8 @@
     "quantity": 0,
     "parentId": 859,
     "fullPath": "ЮГ-СМ",
-    "photo": ""
+    "photo": "",
+    "ordered": 0
   },
   {
     "id": 861,
@@ -346,7 +374,8 @@
     "quantity": 0,
     "parentId": 859,
     "fullPath": "ЮГ-СМ",
-    "photo": ""
+    "photo": "",
+    "ordered": 0
   },
   {
     "id": 862,
@@ -358,6 +387,7 @@
     "quantity": 0,
     "parentId": 859,
     "fullPath": "ЮГ-СМ",
-    "photo": ""
+    "photo": "",
+    "ordered": 0
   }  
 ]

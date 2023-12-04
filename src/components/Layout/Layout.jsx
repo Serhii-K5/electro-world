@@ -1,6 +1,7 @@
 // import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import { Link } from 'react-router-dom';
+import { BsFillTelephoneFill } from 'react-icons/bs';
 import {
   BgLogo,
   TextLogo,
@@ -25,7 +26,7 @@ import CardModal from "components/ProductModal/ProductModal";
 import {LanguageBar} from "components/LanguageBar/LanguageBar";
 import lang from "assets/json/language.json";
 import { selectLanguages } from "redux/selectors";
-
+import { SlMagnifier } from "react-icons/sl";
 
 export default function Layout() {
   // const ordersAll = useSelector(selectOrdersAll);
@@ -76,15 +77,15 @@ export default function Layout() {
           <NavContainer>
             <NavLinkStyle to="/" >
               {/* Home */}
-              {lang[languages].navLinkHome}
+              {lang[languages].layout_navLinkHome}
             </NavLinkStyle>
             <NavLinkStyle to="/catalog">
               {/* Catalog */}
-              {lang[languages].navLinkCatalog}
+              {lang[languages].layout_navLinkCatalog}
             </NavLinkStyle>
             <NavLinkStyle to="/orders">
               {/* Orders */}
-              {lang[languages].navLinkOrders}
+              {lang[languages].layout_navLinkOrders}
             </NavLinkStyle>
             
             {/* <NavLinkStyle to="/orders">
@@ -101,6 +102,20 @@ export default function Layout() {
             <Quantity>100</Quantity>
           </div> */}
           {/* <ShoppingCart quantity={orderProducts.length} onClick={e => <NavLinkStyle to="/orders"/>}></ShoppingCart> */}
+          <div style={{ position: 'relative' }}>
+            <SlMagnifier style={{position: 'absolute', top: '8px', left: '8px', width: '25px', height: '25px',}}/>
+            <input
+              type="text"
+              // defaultValue="fdg"
+              style={{ padding: '8px 10px 8px 43px', width: '200px', borderRadius: '5px', fontSize: '20px' }}
+              placeholder={lang[languages].layout_find}
+            />
+          </div>
+          <div>
+            <a href="tel:+380689766880" style={{display: 'block'}}> <BsFillTelephoneFill style={{position: "relative", top: "3px", right: "-22px", color: "#FFF"}}/> <BsFillTelephoneFill style={{position: "relative", top: "3px"}}/> +380689766880</a>
+            <a href="tel:+380689766880" style={{display: 'block'}}> <BsFillTelephoneFill style={{position: "relative", top: "3px", right: "-22px", color: "#FFF"}}/> <BsFillTelephoneFill style={{position: "relative", top: "3px"}}/> +380689766880</a>
+          </div>
+          
           <Link to="/orders">
             <ShoppingCart quantity={orderProducts.length}/>
           </Link>

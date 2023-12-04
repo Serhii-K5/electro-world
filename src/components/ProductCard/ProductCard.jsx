@@ -5,7 +5,7 @@ import { selectOrders } from "redux/selectors";
 // import { selectOrdersAll } from "redux/selectors";
 import CardModal from "components/ProductModal/ProductModal";
 // import { changeQuantity } from "redux/slice/numberPurchasesSlice";
-import { increaseOrder, decreaseOrder } from "redux/slice/ordersAllSlice";
+// import { increaseOrder, decreaseOrder } from "redux/slice/ordersAllSlice";
 
 import {
   Container,
@@ -119,7 +119,7 @@ export default function Product({ card }) {
       // e.target.value = e.target.value;
     } catch (error) {
       // console.log("Значення не є числом. ", error);
-      console.log(lang[languages].ordersInputLog, error);
+      console.log(lang[languages].productCard_ordersInputLog, error);
     }
   }
 
@@ -156,6 +156,20 @@ export default function Product({ card }) {
   //   setQqualitity(qualitity + 1);
   //   dispatch(increaseOrder(ordersAll + 1));
   // }
+  
+  const decrease = () => {
+    if (qualitity > 1) {
+      setQqualitity(qualitity - 1);
+      card.ordered = qualitity - 2;
+    } else if (qualitity === 1) {
+      card.ordered = qualitity - 1;
+     }
+  }
+  
+  const increase = () => {
+    setQqualitity(qualitity + 1);
+    card.ordered = qualitity + 1;
+  } 
 
   return (
     <>
@@ -178,14 +192,14 @@ export default function Product({ card }) {
               </div>
             </ImgDiv>
             {/* <p>Альтернативы</p> */}
-            <p>{lang[languages].alternatives}</p>
+            <p>{lang[languages].productCard_alternatives}</p>
             <ImgDiv>
               <div style={{ width: '25px', height: '25px' }}>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54.971 54.971"><path d="M51.173 3.801c-5.068-5.068-13.315-5.066-18.384 0l-9.192 9.192a2 2 0 1 0 2.828 2.828l9.192-9.192a8.938 8.938 0 0 1 6.363-2.622c2.413 0 4.673.932 6.364 2.623s2.623 3.951 2.623 6.364a8.934 8.934 0 0 1-2.623 6.363L36.325 31.379c-3.51 3.508-9.219 3.508-12.729 0a2 2 0 1 0-2.828 2.828c2.534 2.534 5.863 3.801 9.192 3.801s6.658-1.267 9.192-3.801l12.021-12.021c2.447-2.446 3.795-5.711 3.795-9.192 0-3.482-1.348-6.746-3.795-9.193z"></path><path d="M27.132 40.57l-7.778 7.778a8.935 8.935 0 0 1-6.364 2.623 8.937 8.937 0 0 1-6.364-2.623c-3.509-3.509-3.509-9.219 0-12.728L17.94 24.306a8.938 8.938 0 0 1 6.364-2.622c2.412 0 4.672.932 6.363 2.622a2 2 0 1 0 2.828-2.828c-5.067-5.067-13.314-5.068-18.384 0L3.797 32.793C1.351 35.239.003 38.504.003 41.985c0 3.48 1.348 6.745 3.795 9.191a12.905 12.905 0 0 0 9.191 3.795c3.481 0 6.746-1.348 9.192-3.795l7.778-7.778a2 2 0 0 0-2.827-2.828z"></path></svg>
                </div>
             </ImgDiv>
             {/* <p>Связанные</p> */}
-            <p>{lang[languages].related}</p>
+            <p>{lang[languages].productCard_related}</p>
           </Aside>}
           <div>          
           <OptionDiv>
@@ -201,8 +215,10 @@ export default function Product({ card }) {
               <QuantityDiv>
                 <Div
                   style={isVisible ? {display: isOrder ? "none" : "flex",  color: "var(--text-color-primary-black)", borderColor: "var(--text-color-grey)"} : { color: "white", borderColor: "white" }} 
-                  onClick={e => qualitity > 1 && setQqualitity(qualitity - 1)}
-                  // onClick={decrease}
+                  // onClick={e => qualitity > 1 && setQqualitity(qualitity - 1)}
+                  // onClick={e => qualitity > 1 && (setQqualitity(qualitity - 1), card.ordered = qualitity - 2)}
+                  // onClick={e => qualitity > 1 ? (setQqualitity(qualitity - 1), card.ordered = qualitity - 2) : qualitity === 1 && (card.ordered = qualitity - 1)} 
+                  onClick={decrease}
                 >
                   -
                 </Div>
@@ -212,12 +228,15 @@ export default function Product({ card }) {
                   // defaultValue={qualitity}  
                   style={isVisible ? {color: "var(--text-color-primary-black)", borderColor: "var(--text-color-grey)"} : isOrder ? {color: "var(-text-color-white)", borderColor: "var(-text-color-white)"} : {color: "white", borderColor: "white"}}
                   onChange={handleChange}
-                  value= {qualitity}
+                  // value= {qualitity}
+                  // value= {card.ordered === 0 ? card.ordered + 1 : card.ordered}
+                  value= {card.ordered ? card.ordered : 1}
                 />
                 <Div  
                   style={isVisible ? {display: isOrder ? "none" : "flex", color: "var(--text-color-primary-black)", borderColor: "var(--text-color-grey)"} : {display: isOrder ? "none" : "flex", color: "white", borderColor: "white"}}
-                  onClick={e => (setQqualitity(qualitity + 1))}
-                  // onClick={increase}
+                    // onClick={e => (setQqualitity(qualitity + 1))}
+                    // onClick={e => (setQqualitity(qualitity + 1), card.ordered = qualitity + 1)} 
+                  onClick={increase}
                 >
                   +
                 </Div>
@@ -246,8 +265,8 @@ export default function Product({ card }) {
             {isOrder ? 
               // "Видалити замовлення" 
               // : "Додати до замовлення"
-              lang[languages].orderDel
-              : lang[languages].orderAdd
+              lang[languages].productCard_orderDel
+              : lang[languages].productCard_orderAdd
             }
             </ButtonDiv> 
             </OptionContainer>
@@ -302,10 +321,10 @@ export default function Product({ card }) {
               </Li>
             </Ul> */}
           </OptionDiv>
-          <p>Код: {card.code}</p>
+          {/* <p>Код: {card.code}</p> */}
+          <p>{lang[languages].productCard_codeTitle}: {card.code}</p>
           <Name onClick={onOpenModal}>{card.name}</Name>
           <Memo>{card.memo}</Memo>
-
 
           {/* <Button type="button" onClick={onOpenModal}>
             Learn more

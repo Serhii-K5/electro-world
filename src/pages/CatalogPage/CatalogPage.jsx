@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { fetchProducts } from "redux/operations";
 
-import CarCard from "components/ProductCard/ProductCard";
+import ProductCard from "components/ProductCard/ProductCard";
 import { selectProducts } from "redux/selectors";
 
 import {
@@ -58,9 +58,9 @@ const CatalogCarsPage = () => {
           <Ul>
             {filteredData.map((item, index) => (            
               // index > (activePage - 1) * 8 && index < activePage * 8 &&
-              index > (activePage - 1) * 8 -1 && index < activePage * 8 &&
+              index > (activePage - 1) * 8 - 1 && index < activePage * 8 &&
                 <li key={item.id}>
-                  <CarCard card={item} />
+                  <ProductCard card={item} />
                 </li>
             ))}
           </Ul>

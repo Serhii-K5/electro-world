@@ -40,7 +40,7 @@ export const Header = styled.div`
   // width: 1440px;
   margin: 0 auto;
   gap: 20px;
-  padding: 7px 0px;
+  // padding: 7px 0px;
   // box-shadow: 0px 4px 4px rgba(0,0,0,0.5);  
   max-width: 1440px;
   // text-align: center;
