@@ -9,11 +9,13 @@ const PaginationBar = (data, page) => {
   const activePage = page;
   
   const onClickIncrease = () => {
-    filteredData && activePage < filteredData.length / 8 && setActivePage(activePage + 1);
+    // filteredData && activePage < filteredData.length / 8 && setActivePage(activePage + 1);
+    filteredData && activePage < filteredData.length / 8 && (activePage += 1);
   };
   
   const onClickDecrease  = () => {
-    activePage > 0 && setActivePage(activePage - 1);
+    // activePage > 0 && setActivePage(activePage - 1);
+    activePage > 0 && (activePage -= 1);
   };
 
   return (

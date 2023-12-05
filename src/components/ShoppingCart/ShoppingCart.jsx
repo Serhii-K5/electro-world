@@ -1,4 +1,4 @@
-// import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 // import { useDispatch, useSelector } from "react-redux";
 import { useSelector } from "react-redux";
 // import { addOrders, deleteOrders } from "redux/slice/orderSlice";
@@ -20,6 +20,8 @@ const ShoppingCart = ({ quantity }) => {
   // const dispatch = useDispatch();
   const orderProducts = useSelector(selectOrders);
   const languages = useSelector(selectLanguages);
+  const [sum, setSum] = useState(0);
+
   // const [isModalShown, setIsModalShown] = useState(false);
   // const [isOrder, setIsOrder] = useState(false);
   // const [NumberPurchases, setNumberPurchases] = useState(0);
@@ -39,13 +41,21 @@ const ShoppingCart = ({ quantity }) => {
   //   }
   // }, [card, orderProducts]);
 
-  const calculation = () => {
-    return (      
-      orderProducts.reduce((acc, value) =>
+  
+  useEffect(() => {
+    setSum(orderProducts.reduce((acc, value) =>
         acc + Number(value.price) * Number(value.ordered)
-      , 0)
-    )
-  }
+      , 0))
+    
+  }, [orderProducts]);
+
+  // const calculation = () => {
+  //   return (      
+  //     orderProducts.reduce((acc, value) =>
+  //       acc + Number(value.price) * Number(value.ordered)
+  //     , 0)
+  //   )
+  // }
 
   return (
     // <div style={{ position: 'relative' }}>
@@ -59,7 +69,8 @@ const ShoppingCart = ({ quantity }) => {
       <Quantity>{quantity}</Quantity>
       <div>
         <p>{lang[languages].layout_sum}:</p>
-        <p>{calculation()} грн.</p>
+        {/* <p>{calculation()} грн.</p> */}
+        <p>{sum} грн.</p>
       </div>      
     </Div>
   )

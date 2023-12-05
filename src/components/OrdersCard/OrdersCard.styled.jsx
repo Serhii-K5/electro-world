@@ -3,20 +3,11 @@ import styled from "styled-components";
 const transition = `150ms linear`;
 
 export const Container = styled.div`
-  // position: relative;
-  // display: flex;
-  // padding: 1px;
-  // max-width: 420px;
-  // width: 430px;
-  // height: 260px;
-  // flex-direction: column;
-  // gap: 10px; 
-  // border: solid 1px var(--text-color-grey);
-  padding: 16px;
-  cursor: pointer;  
+  padding: 16px 0;
+  cursor: pointer;
 
   // overflow: hidden;
-  border: 1px solid var(--text-color-grey);
+  border-bottom: 1px solid var(--text-color-grey);
 
   // &:hover {
   //   top: 45px;
@@ -28,60 +19,60 @@ export const Container = styled.div`
   // }
 `;
 
-export const Aside = styled.aside`
-  padding-left: 0.5rem;
-  margin-left: 0.5rem;
-  float: left;
-  text-align: center;
-  // box-shadow: inset 5px 0 5px -5px #29627e;
-  // font-style: italic;
-  // color: #29627e;
+// export const Aside = styled.aside`
+//   padding-left: 0.5rem;
+//   margin-left: 0.5rem;
+//   float: left;
+//   text-align: center;
+//   // box-shadow: inset 5px 0 5px -5px #29627e;
+//   // font-style: italic;
+//   // color: #29627e;
 
-  // & > p {
-  //   margin: 0.5rem;
-  // }
-`
+//   // & > p {
+//   //   margin: 0.5rem;
+//   // }
+// `
 
-export const ImgDiv = styled.div`
-  display: flex;
-  margin: 0 auto;  
-  margin-top: 20px;
-  // padding: 10px;
-  align-items: center;
-  justify-content: center;
-  // width: 100%;
-  width: 45px;
-  height: 45px;
-  // object-fit: cover;
-  border-radius: 50%;
-  border: 1px solid grey;
-  transition: border-color ${transition}, fill ${transition};
+// export const ImgDiv = styled.div`
+//   display: flex;
+//   margin: 0 auto;  
+//   // margin-top: 20px;
+//   // padding: 10px;
+//   align-items: center;
+//   justify-content: center;
+//   // width: 100%;
+//   width: 45px;
+//   height: 45px;
+//   // object-fit: cover;
+//   border-radius: 50%;
+//   border: 1px solid grey;
+//   transition: border-color ${transition}, fill ${transition};
 
-  &:hover {
-    border-color: var(--bg-second-green);
-    fill: var(--bg-second-green);
-  }
-`;
+//   &:hover {
+//     border-color: var(--bg-second-green);
+//     fill: var(--bg-second-green);
+//   }
+// `;
 
-export const DivHov = styled.div`
-  position: absolute;
-  padding: 15px;
-  right: 0;
-  background-color: var(--bg-primary);
-  // box-shadow: 0px 5px 5px gray;
-  transition: width ${transition}, height ${transition}, filter ${transition};
+// export const DivHov = styled.div`
+//   position: absolute;
+//   padding: 15px;
+//   right: 0;
+//   background-color: var(--bg-primary);
+//   // box-shadow: 0px 5px 5px gray;
+//   transition: width ${transition}, height ${transition}, filter ${transition};
 
-  overflow: hidden;
-  width: 426px;
-  height: 256px;
+//   overflow: hidden;
+//   width: 426px;
+//   height: 256px;
 
-  &:hover {
-    width: 555px;
-    height: 350px;
-    z-index: 100;
-    filter: drop-shadow(0 0 0.75rem gray);
-   }
-`;
+//   &:hover {
+//     width: 555px;
+//     height: 350px;
+//     z-index: 100;
+//     filter: drop-shadow(0 0 0.75rem gray);
+//    }
+// `;
 
 // export const ImgAside = styled.img`
 //   margin: 0 auto;  
@@ -105,25 +96,45 @@ export const DivHov = styled.div`
 
 export const OptionDiv = styled.div`
   display: flex;
-  margin-bottom: 20px;
-  padding: 0 10px;
-  justify-content: flex-end;  
-  text-align: end;
+  // margin-bottom: 20px;
+  justify-content: space-between;
+  // padding: 10px;
+  // justify-content: flex-end;  
+  // text-align: end;
 `;
 
 export const Img = styled.img`
-  margin-bottom: 14px;
+  // margin-bottom: 14px;
   // width: 100%;
   width: 140px;
   height: 140px;
   // object-fit: cover;
 `;
 
-export const OptionContainer = styled.div`
-  // display: flex;
-  display: block;
-  margin-left: 10px;
-  min-width: 245px;
+// export const OptionContainer = styled.div`
+//   // display: flex;
+//   display: block;
+//   margin-left: 10px;
+//   min-width: 245px;
+// `;
+
+export const QuantityDiv = styled.div` 
+  display: flex;
+  // margin: 20px;
+  // padding: 20px;
+  // justify-content: flex-end;
+  // align-items: center;
+  // overflow: visible;
+  // color: var(--text-color-primary-black); 
+  // width: 30px;
+  // height: 30px;
+  // border: solid 1px black;
+  // text-align: center;
+  // font-size: 20px;
+
+  // &:hover {
+  //   // overflow: visible;
+  // }
 `;
 
 export const PriceOld = styled.p`
@@ -149,23 +160,6 @@ export const Input = styled.input`
   border: solid 1px var(--text-color-grey);
 `;
 
-export const QuantityDiv = styled.div` 
-  display: flex;
-  margin: 20px;
-  justify-content: flex-end;
-  // overflow: visible;
-  // color: var(--text-color-primary-black); 
-  // width: 30px;
-  // height: 30px;
-  // border: solid 1px black;
-  // text-align: center;
-  // font-size: 20px;
-
-  // &:hover {
-  //   // overflow: visible;
-  // }
-`;
-
 export const Div = styled.div` 
   // display: inline;
   // display: flex;
@@ -189,7 +183,8 @@ export const Div = styled.div`
 
 export const ButtonDiv = styled.div` 
   // display: inline;
-  margin-top: 15px;
+  width: 250px;
+  // margin-top: 15px;
   padding: 10px 16px;
   color: var(--text-color-white); 
   // width: 30px;

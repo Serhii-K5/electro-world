@@ -2,12 +2,27 @@ import styled from 'styled-components';
 
 
 
-export const Div = styled.div`
-  // display: block;
-  text-align: center;
-  margin: 0 auto;
-  padding: 200px;
+export const Container = styled.div`
+  padding: 10px;
+`;
 
+export const DivH2 = styled.div`
+  padding: 10px 0;
+  text-align: center;
+  background-color: #80808021;
+`;
+
+export const DivBtn = styled.div`
+  margin: 0;
+  margin-left: auto;
+  width: 250px;
+  border: 1px solid blue;
+  text-align: center;
+  font-size: 20px;
+  padding: 10px 16px;
+  color: white;
+  background-color: blue;
+  border-radius: 5px;
 `;
 
 export const H3 = styled.h3` 

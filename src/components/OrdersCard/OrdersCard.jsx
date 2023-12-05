@@ -9,27 +9,28 @@ import CardModal from "components/ProductModal/ProductModal";
 
 import {
   Container,
-  Aside,
-  ImgDiv,
-  DivHov,
+  // Aside,
+  // ImgDiv,
+  // DivHov,
   OptionDiv,
   Img,
-  OptionContainer,
-  Price,
-  PriceOld,
+  // OptionContainer,
+  // Price,
+  // PriceOld,
   Input,
   QuantityDiv,
   Div,
   ButtonDiv,
   Name,
-  Memo,
+  // Memo,
 } from "./OrdersCard.styled";
 
 import noPhoto from "../../assets/images/no_photo.jpg";
 import lang from "assets/json/language.json";
 import { selectLanguages } from "redux/selectors";
 
-export default function Product({ card }) {
+// export default function Product({ card }) {
+const Product = ({ card }) => {
   const dispatch = useDispatch();
   const orderProducts = useSelector(selectOrders);
   const languages = useSelector(selectLanguages);
@@ -41,6 +42,7 @@ export default function Product({ card }) {
   const [qualitity, setQqualitity] = useState(1);  
   
   const [isVisible, setIsVisible] = useState(false);
+  const [sum, setSum] = useState(card.price * card.ordered);
   
   useEffect(() => {
     const isCurrentOrder = orderProducts.find(
@@ -52,13 +54,17 @@ export default function Product({ card }) {
       setIsOrder(false);
     }
   }, [card, orderProducts]);
-
   
   const onCloseModal = () => {
     setIsModalShown(false);
   };
+  
+  const onOpenModal = () => {
+    setIsModalShown(true);
+  };
 
   const onAdd = () => {
+    card.ordered === 0 && (card.ordered = 1);
     dispatch(addOrders(card));
     setIsOrder(true);
   };
@@ -71,110 +77,94 @@ export default function Product({ card }) {
   // const productName = (name) => {
   //   return name.replace('\"'/i,'"');
   // };
-  
-  const onOpenModal = () => {
-    setIsModalShown(true);
-  };
 
-  const onMouseMove = () => {
-    setIsVisible(true);
-  };
+  // const onMouseMove = () => {
+  //   setIsVisible(true);
+  // };
 
-  const onMouseOut = () => {
-    setIsVisible(false);
-  };
+  // const onMouseOut = () => {
+  //   setIsVisible(false);
+  // };
   
   const handleChange = (e) => {
     try {
       Number(e.target.value);
-      // e.target.value = e.target.value;
     } catch (error) {
-      // console.log("Значення не є числом. ", error);
       console.log(lang[languages].productCard_ordersInputLog, error);
     }
-  }
+  };
 
   const handleClick = () => {
     {
       isOrder ? onDelete() : onAdd();
     }
-  }
+  };
 
   const decrease = () => {
     if (qualitity > 1) {
       setQqualitity(qualitity - 1);
-      card.ordered = qualitity - 2;
-    } else if (qualitity === 1) {
-      card.ordered = qualitity - 1;
-     }
-  }
+      // card.ordered = qualitity - 1;
+      // card.ordered -= 1;
+      setSum(card.price * (qualitity - 1));
+    }
+  };
   
   const increase = () => {
     setQqualitity(qualitity + 1);
-    card.ordered = qualitity + 1;
-  } 
+    // card.ordered = qualitity + 1;
+    // card.ordered += 1;
+    setSum(card.price * (qualitity + 1));
+  };
+  
+  const calculation = () => {
+    return (
+      Number(card.price) * Number(card.ordered)
+    )
+  };
 
   return (
-    <>
       <Container>
         <OptionDiv>
-          {card.photo === "" ?
-            <Img src={noPhoto} alt={card.name} />
-            : <Img src={card.photo} alt={card.name} />          
-          }
-          <OptionContainer>
-            <p>{lang[languages].productCard_codeTitle}: {card.code}</p>
-            <Name onClick={onOpenModal}>{card.name}</Name>
-            
+          <div style={{display: 'flex'}}>
+            {card.photo === "" ?
+              <Img src={noPhoto} alt={card.name} />
+              : <Img src={card.photo} alt={card.name} />          
+            }            
+            <div>
+              <p>{lang[languages].productCard_codeTitle}: {card.code}</p>
+              <Name onClick={onOpenModal}>{card.name}</Name>
+            </div>
+          </div>
+          <div style={{display: 'flex', alignItems: 'center', gap: '20px'}}>
             <QuantityDiv>
-              <Div
-                    // style={isVisible ? {display: isOrder ? "none" : "flex",  color: "var(--text-color-primary-black)", borderColor: "var(--text-color-grey)"} : { color: "white", borderColor: "white" }} 
-                    // onClick={e => qualitity > 1 && setQqualitity(qualitity - 1)}
-                    // onClick={e => qualitity > 1 && (setQqualitity(qualitity - 1), card.ordered = qualitity - 2)}
-                    // onClick={e => qualitity > 1 ? (setQqualitity(qualitity - 1), card.ordered = qualitity - 2) : qualitity === 1 && (card.ordered = qualitity - 1)} 
-                    onClick={decrease}
-                  >
-                    -
-                  </Div>
-                  <Input
-                    // type="number"
-                    // defaultValue={1}
-                    // defaultValue={qualitity}  
-                    // style={isVisible ? {color: "var(--text-color-primary-black)", borderColor: "var(--text-color-grey)"} : isOrder ? {color: "var(-text-color-white)", borderColor: "var(-text-color-white)"} : {color: "white", borderColor: "white"}}
-                    onChange={handleChange}
-                    // value= {qualitity}
-                    // value= {card.ordered === 0 ? card.ordered + 1 : card.ordered}
-                    value= {card.ordered ? card.ordered : 1}
-                  />
-                  <Div  
-                    // style={isVisible ? {display: isOrder ? "none" : "flex", color: "var(--text-color-primary-black)", borderColor: "var(--text-color-grey)"} : {display: isOrder ? "none" : "flex", color: "white", borderColor: "white"}}
-                      // onClick={e => (setQqualitity(qualitity + 1))}
-                      // onClick={e => (setQqualitity(qualitity + 1), card.ordered = qualitity + 1)} 
-                    onClick={increase}
-                  >
-                    +
-                  </Div>
-                </QuantityDiv>
-                
-              <ButtonDiv 
-                className={isOrder && "isOrder"}
-                onClick={handleClick}
-                // style={{ backgroundColor: isOrder ? "var(--bg-second-orange)" : "var(--bg-second-green)" }}
-              >
+              <Div onClick={decrease}> - </Div>
+              <Input
+                onChange={handleChange}
+                value= {card.ordered ? card.ordered : 1}
+              />
+              <Div onClick={increase}> + </Div>
+            </QuantityDiv>
+            
+            <div style={{minWidth: '70px'}}>
+              <p>{lang[languages].layout_sum}:</p>
+              {/* <p>{calculation()} грн.</p> */}
+              <p>{sum} грн.</p>
+            </div>
+            
+            <ButtonDiv 
+              className={isOrder && "isOrder"}
+              onClick={handleClick}
+            >
               {isOrder ? 
-                // "Видалити замовлення" 
-                // : "Додати до замовлення"
                 lang[languages].productCard_orderDel
                 : lang[languages].productCard_orderAdd
               }
-              </ButtonDiv> 
-          </OptionContainer>
+            </ButtonDiv> 
+          </div>
         </OptionDiv>
-        
-
- 
+        {isModalShown && <CardModal card={card} onClose={onCloseModal} />}
       </Container>
-      {isModalShown && <CardModal card={card} onClose={onCloseModal} />}
-    </>
   );
 }
+
+export default Product;

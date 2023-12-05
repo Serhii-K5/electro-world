@@ -7,6 +7,12 @@ import OrdersCard from "components/OrdersCard/OrdersCard";
 //   Ul
 // } from "pages/CatalogPage/CatalogPage.styled";
 
+import {
+  Container,
+  DivH2,
+  DivBtn,
+} from "./OrdersPage.styled";
+
 import lang from "assets/json/language.json";
 import { selectLanguages } from "redux/selectors";
 import NoOrders from "components/NoOrders/NoOrders";
@@ -16,13 +22,14 @@ const OrdersPage = () => {
   const orderProducts = useSelector(selectOrders);
   
   return orderProducts.length > 0 ? (
-    <>
-      <div>
+    <div>      
+      <DivH2>
         <h2>{lang[languages].ordersPage_h2}</h2>
-      </div>
-      <div>
+      </DivH2>
+      <Container>
+      <DivBtn>
         {lang[languages].ordersPage_btn}
-      </div>
+      </DivBtn>
       <p>{lang[languages].ordersPage_p}.</p>
       <ul>
         {orderProducts.map((item) => (
@@ -31,7 +38,9 @@ const OrdersPage = () => {
           </li>
         ))}
       </ul>
-    </>
+    </Container>
+    </div>
+    
   ) : (
     <NoOrders />
   )  

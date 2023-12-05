@@ -35,15 +35,7 @@ import {
   // Button,
 } from "./ProductCard.styled";
 
-// import HeartActive from "assets/images/svg/heart-active.svg";
-// import Heart from "assets/images/svg/heart.svg";
 import noPhoto from "../../assets/images/no_photo.jpg";
-// import alternative from "../../assets/images/svg/alternativeProducts.svg";
-// import alternative from "../../assets/images/svg/shuffle-arrows.svg";
-// import related from "../../assets/images/svg/relatedProducts.svg";
-// import related from "../../assets/images/svg/link1.svg";
-// import related from "../../assets/images/svg/link_.svg";
-// import sprite from "../../assets/images/svg/sprite.svg";
 
 import lang from "assets/json/language.json";
 import { selectLanguages } from "redux/selectors";
@@ -59,7 +51,7 @@ export default function Product({ card }) {
   // const [NumberPurchases, setNumberPurchases] = useState(0);
   const [qualitity, setQqualitity] = useState(1);
   
-  
+
   const [isVisible, setIsVisible] = useState(false);
   
   useEffect(() => {
@@ -68,6 +60,7 @@ export default function Product({ card }) {
     );
     if (isCurrentOrder) {
       setIsOrder(true);
+      setQqualitity(card.ordered)
       // setNumberPurchases(NumberPurchases + 1);
       // ordersAll += 1;
       // dispatch(increaseOrder(ordersAll + 1));
@@ -85,9 +78,11 @@ export default function Product({ card }) {
   const onAdd = () => {
     dispatch(addOrders(card));
     setIsOrder(true);
+    // card.ordered = qualitity;
   };
 
   const onDelete = () => {
+    // card.ordered && (card.ordered = 0);
     dispatch(deleteOrders(card.id));
     setIsOrder(false);
   };
@@ -108,68 +103,47 @@ export default function Product({ card }) {
     setIsVisible(false);
   };
   
-  // const onAdd1 = () => {
-  //   dispatch(changeQuantity(card));
-  //   setIsOrder(true);
-  // };
-
   const handleChange = (e) => {
     try {
       Number(e.target.value);
-      // e.target.value = e.target.value;
     } catch (error) {
       // console.log("Значення не є числом. ", error);
       console.log(lang[languages].productCard_ordersInputLog, error);
     }
-  }
-
-  const handleClick = (e) => {
-    {
-      isOrder ? onDelete() : onAdd();
-    } 
-    // e.target
-    // try {
-    //   Number(e.target.value)
-    // } catch (error) {
-    //   console.log("Значення не є числом. ", error);
-    // }
-  }
-
-  // const nameClick = (e) => {
-  //   {
-  //     isOrder ? onDelete() : onAdd()
-  //   } 
-  //   // e.target
-  //   // try {
-  //   //   Number(e.target.value)
-  //   // } catch (error) {
-  //   //   console.log("Значення не є числом. ", error);
-  //   // }
-  // }
-
-  // const decrease = () => {
-  //   qualitity > 1 && setQqualitity(qualitity - 1);
-  //   qualitity > 1 && dispatch(decreaseOrder(ordersAll - 1));
-  // }
-
-  // const increase = () => {
-  //   setQqualitity(qualitity + 1);
-  //   dispatch(increaseOrder(ordersAll + 1));
-  // }
+  };
   
   const decrease = () => {
     if (qualitity > 1) {
       setQqualitity(qualitity - 1);
-      card.ordered = qualitity - 2;
-    } else if (qualitity === 1) {
-      card.ordered = qualitity - 1;
-     }
+      // card.ordered = setQqualitity(qualitity - 1);
+      // card.ordered = qualitity;
+      // card.ordered -= 1;
+    }
   }
   
   const increase = () => {
+    qualitity < 1 && (card.ordered = 1);
     setQqualitity(qualitity + 1);
-    card.ordered = qualitity + 1;
+    // card.ordered = setQqualitity(qualitity + 1);
+    // card.ordered = qualitity;
+    // card.ordered += 1;
   } 
+  
+  const handleClick = () => {
+    {
+     isOrder ? onDelete() : (card.ordered <1 && increase(), onAdd() );
+        // isOrder ? onDelete() : onAdd();
+    } 
+  }
+  
+  const val = () => {
+    {
+    //  isOrder ? onDelete() : (card.ordered <1 && increase(), onAdd() );
+      // isOrder ? onDelete() : onAdd();
+      // value = { card.ordered > 0 ? card.ordered : 1 }
+      card.length > 0 ?  card.ordered > 0 ? card.ordered : 1 : 1
+    } 
+  }
 
   return (
     <>
@@ -230,7 +204,8 @@ export default function Product({ card }) {
                   onChange={handleChange}
                   // value= {qualitity}
                   // value= {card.ordered === 0 ? card.ordered + 1 : card.ordered}
-                  value= {card.ordered ? card.ordered : 1}
+                  // value= {card.ordered > 0 ? card.ordered : 1}
+                  value= {qualitity}
                 />
                 <Div  
                   style={isVisible ? {display: isOrder ? "none" : "flex", color: "var(--text-color-primary-black)", borderColor: "var(--text-color-grey)"} : {display: isOrder ? "none" : "flex", color: "white", borderColor: "white"}}
@@ -240,23 +215,8 @@ export default function Product({ card }) {
                 >
                   +
                 </Div>
-              </QuantityDiv>
-              
-                
-              {/* {isVisible ? <QuantityDiv style={{ zIndex: "-1" }}>
-                <Div>-</Div>
-                <Input
-                  defaultValue={1}
-                />
-                <Div>+</Div>
-                : <QuantityDiv>
-                <Div>-</Div>
-                <Input
-                  defaultValue={1}
-                />
-                <Div>+</Div>
-              </QuantityDiv>} */}
-              
+              </QuantityDiv>    
+                        
             <ButtonDiv 
               className={isOrder && "isOrder"}
               onClick={handleClick}
@@ -271,17 +231,7 @@ export default function Product({ card }) {
             </ButtonDiv> 
             </OptionContainer>
             
-            {/* {isOrder ? (
-          <OrderBtn onClick={onDelete}>
-            <img src={HeartActive} alt="Order button" />
-          </OrderBtn>
-        ) : (
-          <OrderBtn onClick={onAdd}>
-            <img src={Heart} alt="Order button" />
-          </OrderBtn>
-        )} */}  
-
-
+            
 
 
             
@@ -325,10 +275,6 @@ export default function Product({ card }) {
           <p>{lang[languages].productCard_codeTitle}: {card.code}</p>
           <Name onClick={onOpenModal}>{card.name}</Name>
           <Memo>{card.memo}</Memo>
-
-          {/* <Button type="button" onClick={onOpenModal}>
-            Learn more
-          </Button> */}
             
           </div>
         </DivHov>

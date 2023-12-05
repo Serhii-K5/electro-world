@@ -106,7 +106,6 @@ export default function Layout() {
             <SlMagnifier style={{position: 'absolute', top: '8px', left: '8px', width: '25px', height: '25px',}}/>
             <input
               type="text"
-              // defaultValue="fdg"
               style={{ padding: '8px 10px 8px 43px', width: '200px', borderRadius: '5px', fontSize: '20px' }}
               placeholder={lang[languages].layout_find}
             />
