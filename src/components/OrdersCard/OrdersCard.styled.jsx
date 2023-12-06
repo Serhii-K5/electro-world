@@ -106,8 +106,8 @@ export const OptionDiv = styled.div`
 export const Img = styled.img`
   // margin-bottom: 14px;
   // width: 100%;
-  width: 140px;
-  height: 140px;
+  width: 100px;
+  // height: 140px;
   // object-fit: cover;
 `;
 

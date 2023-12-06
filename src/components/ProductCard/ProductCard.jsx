@@ -49,43 +49,72 @@ export default function Product({ card }) {
   const [isOrder, setIsOrder] = useState(false);
 
   // const [NumberPurchases, setNumberPurchases] = useState(0);
-  const [qualitity, setQqualitity] = useState(1);
-  
+  const [quantityGoods, setQquantity] = useState(1);  
 
   const [isVisible, setIsVisible] = useState(false);
-  
+
+  // console.log(orderProducts);
+
   useEffect(() => {
     const isCurrentOrder = orderProducts.find(
       (order) => order.id === card.id
     );
     if (isCurrentOrder) {
       setIsOrder(true);
-      setQqualitity(card.ordered)
-      // setNumberPurchases(NumberPurchases + 1);
-      // ordersAll += 1;
-      // dispatch(increaseOrder(ordersAll + 1));
-      // isOrder ? dispatch(increaseOrder(ordersAll)) : dispatch(decreaseOrder(ordersAll));
+      setQquantity(isCurrentOrder.ordered);
+
+      //  console.log(card.name, " => ", isCurrentOrder.ordered);
     } else {
       setIsOrder(false);
     }
   }, [card, orderProducts]);
-
   
   const onCloseModal = () => {
     setIsModalShown(false);
   };
 
-  const onAdd = () => {
-    dispatch(addOrders(card));
+  const onAdd = () => {    
+    // dispatch(addOrders(card));
+    dispatch(addOrders({ ...card, ordered: quantityGoods }));
+    // card.ordered = quantityGoods;
     setIsOrder(true);
-    // card.ordered = qualitity;
   };
 
   const onDelete = () => {
-    // card.ordered && (card.ordered = 0);
     dispatch(deleteOrders(card.id));
     setIsOrder(false);
+    setQquantity(1);
   };
+  
+  const handleChange = (e) => {
+    try {
+      Number(e.target.value);
+    } catch (error) {
+      // console.log("Значення не є числом. ", error);
+      console.log(lang[languages].productCard_ordersInputLog, error);
+    }
+  };
+  
+  const decrease = () => {
+    if (quantityGoods > 1) {
+      setQquantity(quantityGoods - 1);
+    }
+  }
+  
+  const increase = () => {
+    // quantityGoods < 1 && (card.ordered = 1);
+    setQquantity(quantityGoods + 1);
+    // card.ordered = setQquantity(quantityGoods + 1);
+    // card.ordered = quantityGoods;
+    // card.ordered += 1;
+  } 
+  
+  const handleClick = () => {
+    {
+      //  isOrder ? onDelete() : (card.ordered <1 && increase(), onAdd() );
+      isOrder ? onDelete() : onAdd();
+    } 
+  }
   
   // const productName = (name) => {
   //   return name.replace('\"'/i,'"');
@@ -102,49 +131,16 @@ export default function Product({ card }) {
   const onMouseOut = () => {
     setIsVisible(false);
   };
-  
-  const handleChange = (e) => {
-    try {
-      Number(e.target.value);
-    } catch (error) {
-      // console.log("Значення не є числом. ", error);
-      console.log(lang[languages].productCard_ordersInputLog, error);
-    }
-  };
-  
-  const decrease = () => {
-    if (qualitity > 1) {
-      setQqualitity(qualitity - 1);
-      // card.ordered = setQqualitity(qualitity - 1);
-      // card.ordered = qualitity;
-      // card.ordered -= 1;
-    }
-  }
-  
-  const increase = () => {
-    qualitity < 1 && (card.ordered = 1);
-    setQqualitity(qualitity + 1);
-    // card.ordered = setQqualitity(qualitity + 1);
-    // card.ordered = qualitity;
-    // card.ordered += 1;
-  } 
-  
-  const handleClick = () => {
-    {
-     isOrder ? onDelete() : (card.ordered <1 && increase(), onAdd() );
-        // isOrder ? onDelete() : onAdd();
-    } 
-  }
-  
-  const val = () => {
-    {
-    //  isOrder ? onDelete() : (card.ordered <1 && increase(), onAdd() );
-      // isOrder ? onDelete() : onAdd();
-      // value = { card.ordered > 0 ? card.ordered : 1 }
-      card.length > 0 ?  card.ordered > 0 ? card.ordered : 1 : 1
-    } 
-  }
 
+
+  const fdg = () => {
+    const isCurrentOrder = orderProducts.find(
+      (order) => order.id === card.id
+    );
+
+    return isCurrentOrder && card.ordered !== quantityGoods ? card.ordered : quantityGoods;
+  }
+  
   return (
     <>
       <Container>
@@ -189,9 +185,9 @@ export default function Product({ card }) {
               <QuantityDiv>
                 <Div
                   style={isVisible ? {display: isOrder ? "none" : "flex",  color: "var(--text-color-primary-black)", borderColor: "var(--text-color-grey)"} : { color: "white", borderColor: "white" }} 
-                  // onClick={e => qualitity > 1 && setQqualitity(qualitity - 1)}
-                  // onClick={e => qualitity > 1 && (setQqualitity(qualitity - 1), card.ordered = qualitity - 2)}
-                  // onClick={e => qualitity > 1 ? (setQqualitity(qualitity - 1), card.ordered = qualitity - 2) : qualitity === 1 && (card.ordered = qualitity - 1)} 
+                  // onClick={e => quantityGoods > 1 && setQquantity(quantityGoods - 1)}
+                  // onClick={e => quantityGoods > 1 && (setQquantity(quantityGoods - 1), card.ordered = quantityGoods - 2)}
+                  // onClick={e => quantityGoods > 1 ? (setQquantity(quantityGoods - 1), card.ordered = quantityGoods - 2) : quantityGoods === 1 && (card.ordered = quantityGoods - 1)} 
                   onClick={decrease}
                 >
                   -
@@ -199,18 +195,20 @@ export default function Product({ card }) {
                 <Input
                   // type="number"
                   // defaultValue={1}
-                  // defaultValue={qualitity}  
-                  style={isVisible ? {color: "var(--text-color-primary-black)", borderColor: "var(--text-color-grey)"} : isOrder ? {color: "var(-text-color-white)", borderColor: "var(-text-color-white)"} : {color: "white", borderColor: "white"}}
+                  // defaultValue={quantityGoods}  
+                  style={isVisible || isOrder ? {color: "var(--text-color-primary-black)", borderColor: "var(--text-color-grey)"} : isOrder ? {color: "var(-text-color-white)", borderColor: "var(-text-color-white)"} : {color: "white", borderColor: "white"}}
                   onChange={handleChange}
-                  // value= {qualitity}
+                  value= {Number(quantityGoods)}
+                  // value= {fdg()}
+                  
                   // value= {card.ordered === 0 ? card.ordered + 1 : card.ordered}
                   // value= {card.ordered > 0 ? card.ordered : 1}
-                  value= {qualitity}
+                  // value= {quantityGoods>0 ? quantityGoods : setQquantity(quantityGoods + 1)}
                 />
                 <Div  
                   style={isVisible ? {display: isOrder ? "none" : "flex", color: "var(--text-color-primary-black)", borderColor: "var(--text-color-grey)"} : {display: isOrder ? "none" : "flex", color: "white", borderColor: "white"}}
-                    // onClick={e => (setQqualitity(qualitity + 1))}
-                    // onClick={e => (setQqualitity(qualitity + 1), card.ordered = qualitity + 1)} 
+                    // onClick={e => (setQquantity(quantityGoods + 1))}
+                    // onClick={e => (setQquantity(quantityGoods + 1), card.ordered = quantityGoods + 1)} 
                   onClick={increase}
                 >
                   +

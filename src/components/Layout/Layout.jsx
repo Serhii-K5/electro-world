@@ -27,6 +27,7 @@ import {LanguageBar} from "components/LanguageBar/LanguageBar";
 import lang from "assets/json/language.json";
 import { selectLanguages } from "redux/selectors";
 import { SlMagnifier } from "react-icons/sl";
+import { FaViber } from "react-icons/fa";
 
 export default function Layout() {
   // const ordersAll = useSelector(selectOrdersAll);
@@ -111,8 +112,13 @@ export default function Layout() {
             />
           </div>
           <div>
-            <a href="tel:+380689766880" style={{display: 'block'}}> <BsFillTelephoneFill style={{position: "relative", top: "3px", right: "-22px", color: "#FFF"}}/> <BsFillTelephoneFill style={{position: "relative", top: "3px"}}/> +380689766880</a>
-            <a href="tel:+380689766880" style={{display: 'block'}}> <BsFillTelephoneFill style={{position: "relative", top: "3px", right: "-22px", color: "#FFF"}}/> <BsFillTelephoneFill style={{position: "relative", top: "3px"}}/> +380689766880</a>
+            <div>
+              <a href="tel:+380689766880"> <BsFillTelephoneFill style={{position: "relative", top: "3px", right: "-22px", color: "#FFF"}}/> <BsFillTelephoneFill style={{position: "relative", top: "3px"}}/> +380689766880</a>
+              <FaViber style={{marginLeft: '3px', fill: "blueviolet"}} />
+            </div>
+            {/* <a href="tel:+380689766880" style={{display: 'block'}}> <BsFillTelephoneFill style={{position: "relative", top: "3px", right: "-22px", color: "#FFF"}}/> <BsFillTelephoneFill style={{position: "relative", top: "3px"}}/> +380689766880</a>
+            <FaViber/> */}
+            <a href="tel:+380689766880" style={{ display: 'block' }}> <BsFillTelephoneFill style={{ position: "relative", top: "3px", right: "-22px", color: "#FFF" }} /> <BsFillTelephoneFill style={{ position: "relative", top: "3px" }} /> +380689766880</a>
           </div>
           
           <Link to="/orders">
