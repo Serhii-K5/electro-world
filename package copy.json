@@ -8,6 +8,15 @@
     "build": "react-scripts build",
     "test": "react-scripts test"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Serhii-K5/electro-world.git"
+  },
+  "author": "Kotkov Serhii Mykolayovych",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Serhii-K5/electro-world/issues"
+  },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
     "axios": "^1.6.2",
