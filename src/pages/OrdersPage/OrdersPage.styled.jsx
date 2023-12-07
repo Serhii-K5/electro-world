@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-
+const transition = `250ms linear`;
 
 export const Container = styled.div`
   padding: 10px;
@@ -16,13 +16,21 @@ export const DivBtn = styled.div`
   margin: 0;
   margin-left: auto;
   width: 250px;
-  border: 1px solid blue;
+  border: 1px solid var(--bg-button-color);
   text-align: center;
   font-size: 20px;
   padding: 10px 16px;
   color: white;
-  background-color: blue;
+  background-color: var(--bg-button-color);
   border-radius: 5px;
+  transition: background-color ${transition}, color ${transition};
+
+  &:active,
+  &:focus,
+  &:hover {
+    background-color: var(--bg-primary);
+    color: var(--text-color-active-blue);
+  }
 `;
 
 export const H3 = styled.h3` 

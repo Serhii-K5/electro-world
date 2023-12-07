@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addOrders, deleteOrders } from "redux/slice/orderSlice";
+import { deleteOrders, updateOrders, deleteAllOrders } from "redux/slice/orderSlice";
 import { selectOrders } from "redux/selectors";
 // import { selectOrdersAll } from "redux/selectors";
 import CardModal from "components/ProductModal/ProductModal";
@@ -39,9 +39,10 @@ const Product = ({ card }) => {
   const [isOrder, setIsOrder] = useState(false);
 
   // const [NumberPurchases, setNumberPurchases] = useState(0);
-  const [qualitity, setQqualitity] = useState(1);  
+  // const [quantityGoods, setQuantityGoods] = useState(1);  
+  const [quantityGoods, setQuantityGoods] = useState(card.ordered);  
   
-  const [isVisible, setIsVisible] = useState(false);
+  // const [isVisible, setIsVisible] = useState(false);
   const [sum, setSum] = useState(card.price * card.ordered);
   
   useEffect(() => {
@@ -63,15 +64,17 @@ const Product = ({ card }) => {
     setIsModalShown(true);
   };
 
-  const onAdd = () => {
-    card.ordered === 0 && (card.ordered = 1);
-    dispatch(addOrders(card));
-    setIsOrder(true);
-  };
+  // const onAdd = () => {
+  //   // card.ordered === 0 && (card.ordered = 1);
+  //   // dispatch(addOrders(card));
+  //   dispatch(addOrders({ ...card, ordered: quantityGoods }));
+  //   setIsOrder(true);
+  // };
 
   const onDelete = () => {
     dispatch(deleteOrders(card.id));
     setIsOrder(false);
+    setQuantityGoods(1);
   };
   
   // const productName = (name) => {
@@ -94,34 +97,24 @@ const Product = ({ card }) => {
     }
   };
 
-  const handleClick = () => {
-    {
-      isOrder ? onDelete() : onAdd();
-    }
-  };
-
   const decrease = () => {
-    if (qualitity > 1) {
-      setQqualitity(qualitity - 1);
-      // card.ordered = qualitity - 1;
-      // card.ordered -= 1;
-      setSum(card.price * (qualitity - 1));
+    if (quantityGoods > 1) {
+      dispatch(updateOrders({ ...card, ordered: quantityGoods - 1 }));
+      setQuantityGoods(quantityGoods - 1);
+      setSum(card.price * (quantityGoods - 1));
     }
   };
   
   const increase = () => {
-    setQqualitity(qualitity + 1);
-    // card.ordered = qualitity + 1;
-    // card.ordered += 1;
-    setSum(card.price * (qualitity + 1));
-  };
-  
-  const calculation = () => {
-    return (
-      Number(card.price) * Number(card.ordered)
-    )
+    dispatch(updateOrders({ ...card, ordered: quantityGoods + 1 }));
+    setQuantityGoods(quantityGoods + 1);
+    setSum(card.price * (quantityGoods + 1));
   };
 
+  const deletedOrders = () => {
+    dispatch(deleteAllOrders([]));
+  }
+ 
   return (
       <Container>
         <OptionDiv>
@@ -140,7 +133,7 @@ const Product = ({ card }) => {
               <Div onClick={decrease}> - </Div>
               <Input
                 onChange={handleChange}
-                value= {card.ordered ? card.ordered : 1}
+                value= {Number(quantityGoods)}
               />
               <Div onClick={increase}> + </Div>
             </QuantityDiv>
@@ -153,7 +146,7 @@ const Product = ({ card }) => {
             
             <ButtonDiv 
               className={isOrder && "isOrder"}
-              onClick={handleClick}
+              onClick={onDelete}
             >
               {isOrder ? 
                 lang[languages].productCard_orderDel

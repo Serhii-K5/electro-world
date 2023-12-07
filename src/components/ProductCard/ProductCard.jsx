@@ -49,7 +49,7 @@ export default function Product({ card }) {
   const [isOrder, setIsOrder] = useState(false);
 
   // const [NumberPurchases, setNumberPurchases] = useState(0);
-  const [quantityGoods, setQquantity] = useState(1);  
+  const [quantityGoods, setQuantityGoods] = useState(1);  
 
   const [isVisible, setIsVisible] = useState(false);
 
@@ -61,7 +61,7 @@ export default function Product({ card }) {
     );
     if (isCurrentOrder) {
       setIsOrder(true);
-      setQquantity(isCurrentOrder.ordered);
+      setQuantityGoods(isCurrentOrder.ordered);
 
       //  console.log(card.name, " => ", isCurrentOrder.ordered);
     } else {
@@ -83,7 +83,7 @@ export default function Product({ card }) {
   const onDelete = () => {
     dispatch(deleteOrders(card.id));
     setIsOrder(false);
-    setQquantity(1);
+    setQuantityGoods(1);
   };
   
   const handleChange = (e) => {
@@ -97,14 +97,14 @@ export default function Product({ card }) {
   
   const decrease = () => {
     if (quantityGoods > 1) {
-      setQquantity(quantityGoods - 1);
+      setQuantityGoods(quantityGoods - 1);
     }
   }
   
   const increase = () => {
     // quantityGoods < 1 && (card.ordered = 1);
-    setQquantity(quantityGoods + 1);
-    // card.ordered = setQquantity(quantityGoods + 1);
+    setQuantityGoods(quantityGoods + 1);
+    // card.ordered = setQuantityGoods(quantityGoods + 1);
     // card.ordered = quantityGoods;
     // card.ordered += 1;
   } 
@@ -132,27 +132,9 @@ export default function Product({ card }) {
     setIsVisible(false);
   };
 
-
-  const fdg = () => {
-    const isCurrentOrder = orderProducts.find(
-      (order) => order.id === card.id
-    );
-
-    return isCurrentOrder && card.ordered !== quantityGoods ? card.ordered : quantityGoods;
-  }
-  
   return (
     <>
       <Container>
-        {/* {isOrder ? (
-          <OrderBtn onClick={onDelete}>
-            <img src={HeartActive} alt="Order button" />
-          </OrderBtn>
-        ) : (
-          <OrderBtn onClick={onAdd}>
-            <img src={Heart} alt="Order button" />
-          </OrderBtn>
-        )} */}      
         <DivHov onMouseMove={onMouseMove} onMouseOut={onMouseOut}>        
           {isVisible && <Aside>
             {card.photoPackage && <Img src={card.photoPackage} alt={card.name} />}
@@ -185,13 +167,11 @@ export default function Product({ card }) {
               <QuantityDiv>
                 <Div
                   style={isVisible ? {display: isOrder ? "none" : "flex",  color: "var(--text-color-primary-black)", borderColor: "var(--text-color-grey)"} : { color: "white", borderColor: "white" }} 
-                  // onClick={e => quantityGoods > 1 && setQquantity(quantityGoods - 1)}
-                  // onClick={e => quantityGoods > 1 && (setQquantity(quantityGoods - 1), card.ordered = quantityGoods - 2)}
-                  // onClick={e => quantityGoods > 1 ? (setQquantity(quantityGoods - 1), card.ordered = quantityGoods - 2) : quantityGoods === 1 && (card.ordered = quantityGoods - 1)} 
+                  // onClick={e => quantityGoods > 1 && setQuantityGoods(quantityGoods - 1)}
+                  // onClick={e => quantityGoods > 1 && (setQuantityGoods(quantityGoods - 1), card.ordered = quantityGoods - 2)}
+                  // onClick={e => quantityGoods > 1 ? (setQuantityGoods(quantityGoods - 1), card.ordered = quantityGoods - 2) : quantityGoods === 1 && (card.ordered = quantityGoods - 1)} 
                   onClick={decrease}
-                >
-                  -
-                </Div>
+                >-</Div>
                 <Input
                   // type="number"
                   // defaultValue={1}
@@ -199,20 +179,16 @@ export default function Product({ card }) {
                   style={isVisible || isOrder ? {color: "var(--text-color-primary-black)", borderColor: "var(--text-color-grey)"} : isOrder ? {color: "var(-text-color-white)", borderColor: "var(-text-color-white)"} : {color: "white", borderColor: "white"}}
                   onChange={handleChange}
                   value= {Number(quantityGoods)}
-                  // value= {fdg()}
-                  
                   // value= {card.ordered === 0 ? card.ordered + 1 : card.ordered}
                   // value= {card.ordered > 0 ? card.ordered : 1}
-                  // value= {quantityGoods>0 ? quantityGoods : setQquantity(quantityGoods + 1)}
+                  // value= {quantityGoods>0 ? quantityGoods : setQuantityGoods(quantityGoods + 1)}
                 />
                 <Div  
                   style={isVisible ? {display: isOrder ? "none" : "flex", color: "var(--text-color-primary-black)", borderColor: "var(--text-color-grey)"} : {display: isOrder ? "none" : "flex", color: "white", borderColor: "white"}}
-                    // onClick={e => (setQquantity(quantityGoods + 1))}
-                    // onClick={e => (setQquantity(quantityGoods + 1), card.ordered = quantityGoods + 1)} 
+                    // onClick={e => (setQuantityGoods(quantityGoods + 1))}
+                    // onClick={e => (setQuantityGoods(quantityGoods + 1), card.ordered = quantityGoods + 1)} 
                   onClick={increase}
-                >
-                  +
-                </Div>
+                >+</Div>
               </QuantityDiv>    
                         
             <ButtonDiv 
@@ -228,46 +204,6 @@ export default function Product({ card }) {
             }
             </ButtonDiv> 
             </OptionContainer>
-            
-            
-
-
-            
-            {/* <TitleContainer>
-              <Title>
-                <p>{card.price}</p>
-                <p>{card.oldPrice} </p>              */}
-                {/* <Span>{card.model}</Span>,
-                <Year>{card.year}</Year> */}
-              {/* </Title>
-              <br /> */}
-              {/* <RentalPrice>{card.rentalPrice}</RentalPrice> */}
-            {/* </TitleContainer> */}
-            {/* <div>-</div>
-            <div>1</div>
-            <div>+</div> */}
-            {/* <div>
-              Додати до замовлення
-            </div>           */}
-            
-            {/* <Ul>
-              <Li>{productName(card.name)}</Li>
-              <Li>{addressCountry(card.address)}</Li>
-              <Li>{card.rentalCompany}</Li>
-            </Ul>
-            <Ul style={{ marginBottom: 0 }}>
-              <Li>{card.type}</Li>
-              <Li>{card.mileage}</Li>
-              <Li
-                // style={{
-                //   overflow: "hidden",
-                //   whiteSpace: "wrap",
-                //   textOverflow: "ellipsis",
-                // }}
-              >
-                {card.accessories[0]}
-              </Li>
-            </Ul> */}
           </OptionDiv>
           {/* <p>Код: {card.code}</p> */}
           <p>{lang[languages].productCard_codeTitle}: {card.code}</p>

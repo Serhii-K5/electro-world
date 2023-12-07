@@ -116,8 +116,6 @@ export default function Layout() {
               <a href="tel:+380689766880"> <BsFillTelephoneFill style={{position: "relative", top: "3px", right: "-22px", color: "#FFF"}}/> <BsFillTelephoneFill style={{position: "relative", top: "3px"}}/> +380689766880</a>
               <FaViber style={{marginLeft: '3px', fill: "blueviolet"}} />
             </div>
-            {/* <a href="tel:+380689766880" style={{display: 'block'}}> <BsFillTelephoneFill style={{position: "relative", top: "3px", right: "-22px", color: "#FFF"}}/> <BsFillTelephoneFill style={{position: "relative", top: "3px"}}/> +380689766880</a>
-            <FaViber/> */}
             <a href="tel:+380689766880" style={{ display: 'block' }}> <BsFillTelephoneFill style={{ position: "relative", top: "3px", right: "-22px", color: "#FFF" }} /> <BsFillTelephoneFill style={{ position: "relative", top: "3px" }} /> +380689766880</a>
           </div>
           

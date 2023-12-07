@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { NavLink } from "react-router-dom";
 import BgImg from "assets/images/auto/cars-rent.jpg";
 
+const transition = `250ms linear`;
 
 export const Ul = styled.ul`
   display: flex;
@@ -108,19 +109,18 @@ export const NavContainer = styled.nav`
 `;
 
 export const NavLinkStyle = styled(NavLink)`
-color: #000;
-position: relative;
-font-size: 36px;
-font-weight: 700;
-text-shadow: 1px 1px 0px rgba(0,0,0,0.3);
+  color: #000;
+  position: relative;
+  font-size: 36px;
+  font-weight: 700;
+  text-shadow: 1px 1px 0px rgba(0,0,0,0.3);
+  transition: background-color ${transition};
 
-&:hover {
-  color: var(--text-color-active-blue);
-}
-
-&.active {
-  color: var(--text-color-active-blue);
-}
+  &:active,
+  &:focus,
+  &:hover {
+    color: var(--text-color-active-blue);
+  }
 `;
 
 export const Button = styled.button`
@@ -131,12 +131,11 @@ export const Button = styled.button`
   font-size: 36px;
   font-weight: 700;
   text-shadow: 1px 1px 0px rgba(0,0,0,0.3);
+  transition: background-color ${transition};
 
+  &:active,
+  &:focus,
   &:hover {
-    color: var(--text-color-active-blue);
-  }
-
-  &.active {
     color: var(--text-color-active-blue);
   }
 `;
