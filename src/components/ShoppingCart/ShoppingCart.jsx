@@ -67,7 +67,7 @@ const ShoppingCart = ({ quantity }) => {
     <Div>
       <GiShoppingCart style={{width: '60px', height: '60px', fill: "var(--bg-active-button-color)" }} />
       <Quantity>{quantity}</Quantity>
-      <div>
+      <div style={{paddingRight: '10px'}}>
         <p>{lang[languages].layout_sum}:</p>
         {/* <p>{calculation()} грн.</p> */}
         <p>{sum} грн.</p>

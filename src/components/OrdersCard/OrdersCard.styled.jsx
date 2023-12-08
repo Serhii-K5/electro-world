@@ -4,7 +4,9 @@ const transition = `150ms linear`;
 
 export const Container = styled.div`
   padding: 16px 0;
-  cursor: pointer;
+  // margin: 0 auto;
+  // width: 1440px;
+  // cursor: pointer;
 
   // overflow: hidden;
   border-bottom: 1px solid var(--text-color-grey);

@@ -4,20 +4,26 @@ import {
   Overlay,
   Modal,
   CloseBtn,
-  Title,
-  Span,
-  Year,
+  // Title,
+  // Span,
+  // Year,
   Img,
-  Ul,
-  Li,
-  Container,
-  Description,
-  SubTitle,
-  ConditionsUl,
-  ConditionLi,
-  A,
+  // Ul,
+  // Li,
+  // Container,
+  // Description,
+  // SubTitle,
+  // ConditionsUl,
+  // ConditionLi,
+  // A,
 } from "./ProductModal.styled";
-import Cross from "assets/images/svg/cross.svg";
+import {
+  Name,
+  Memo,
+} from '../ProductCard/ProductCard.styled';
+
+import cross from "assets/images/svg/cross.svg";
+import noPhoto from 'assets/images/no_photo.jpg';
 
 export default function AdvertModal({ card, onClose }) {
   // const arrayConditions = card.rentalConditions.split("\n");  
@@ -40,6 +46,7 @@ export default function AdvertModal({ card, onClose }) {
       onClose();
     }
   };
+  
 
   // const addressCity = (address) => {
   //   const addressArr = address.split(', ');
@@ -57,7 +64,7 @@ export default function AdvertModal({ card, onClose }) {
         {/* <p>Module page</p> */}
 
         <CloseBtn type="button" onClick={onClose}>
-          <img src={Cross} alt="close button" />
+          <img src={cross} alt="close button" />
         </CloseBtn>
         {card.photo === '' ? (
           <Img src={noPhoto} alt={card.name} />
@@ -67,9 +74,7 @@ export default function AdvertModal({ card, onClose }) {
 
         <div>
           <p>Код: {card.code}</p>
-          <Name onClick={onOpenModal}>{card.name}</Name>
-          
-
+          <Name >{card.name}</Name>
           <Memo>{card.memo}</Memo>
         </div>
 

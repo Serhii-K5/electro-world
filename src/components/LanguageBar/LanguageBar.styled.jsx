@@ -9,7 +9,7 @@ export const Div = styled.div `
 
 export const Ul = styled.ul `
   margin: 0 auto;
-  padding: 5px;
+  padding: 5px 10px;
   max-width: 1440px;
   text-align: right;
   font-size: 16px;

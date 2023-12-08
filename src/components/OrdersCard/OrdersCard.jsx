@@ -4,6 +4,7 @@ import { deleteOrders, updateOrders, deleteAllOrders } from "redux/slice/orderSl
 import { selectOrders } from "redux/selectors";
 // import { selectOrdersAll } from "redux/selectors";
 import CardModal from "components/ProductModal/ProductModal";
+import CheckoutModal from "components/CheckoutModal/CheckoutModal";
 // import { changeQuantity } from "redux/slice/numberPurchasesSlice";
 // import { increaseOrder, decreaseOrder } from "redux/slice/ordersAllSlice";
 
@@ -36,6 +37,7 @@ const Product = ({ card }) => {
   const languages = useSelector(selectLanguages);
   // const ordersAll = useSelector(selectOrdersAll);
   const [isModalShown, setIsModalShown] = useState(false);
+  const [isCheckoutModalShown, setIsCheckoutModalShown] = useState(false);
   const [isOrder, setIsOrder] = useState(false);
 
   // const [NumberPurchases, setNumberPurchases] = useState(0);
@@ -156,6 +158,7 @@ const Product = ({ card }) => {
           </div>
         </OptionDiv>
         {isModalShown && <CardModal card={card} onClose={onCloseModal} />}
+        {isCheckoutModalShown && <CheckoutModal card={card} onClose={onCloseModal} />}
       </Container>
   );
 }
