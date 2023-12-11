@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+export const transition = `250ms linear`;
+
 export const Overlay = styled.div`
   display: flex;
   position: fixed;
@@ -12,7 +14,7 @@ export const Overlay = styled.div`
   background-color: rgba(18, 20, 23, 0.5);
   z-index: 50;
 `;
-
+  
 export const Modal = styled.div`
   position: relative;
   padding: 40px;
@@ -24,7 +26,7 @@ export const Modal = styled.div`
   &::-webkit-scrollbar {
     width: 0;
     height: 0;
-  };
+  }  
 `;
   
 export const CloseBtn = styled.button`
@@ -38,20 +40,12 @@ export const CloseBtn = styled.button`
   justify-content: center;
   border: none;
   background: transparent;
-  transition: transform 250ms linear;
+  // transition: transform 250ms linear;
+  transition: transform ${transition};
 
   &:hover,
   &:active,
   &:focus {
     transform: scale(1.2);
-  };
+  }
 `;
-
-
-
-export const Div = styled.div `
-  display: inline;
-  padding: 5px;
-  border: 1px solid var(--text-color-grey);
-  font-size: 16px;  
-`

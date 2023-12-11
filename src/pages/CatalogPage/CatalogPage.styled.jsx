@@ -14,25 +14,6 @@ export const Ul = styled.ul`
   padding-bottom: 30px;
 `;
 
-// export const Button = styled.button`
-//   // display: none;
-//   margin: 0 auto;
-//   width: 270px;
-//   height: 50px;
-//   align-items: center;
-//   justify-content: center;
-//   background-color: var(--text-color-blue);
-//   color: #FFF;
-//   font-family: inherit;
-//   font-size: 14px;
-//   font-weight: 600;
-//   line-height: 1.43;
-//   border: none;
-//   border-radius: 12px;
-//   // transition: background-color 250ms linear;
-//   transition: background-color ${transition};
-// `;
-
 export const DivPagination = styled.div`
   display: flex;
   justify-content: center;
@@ -62,4 +43,3 @@ export const DivPage = styled.div`
     background-color: var(--bg-active-button-color);
   }
 `;
-

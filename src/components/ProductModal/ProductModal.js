@@ -1,22 +1,14 @@
 import { nanoid } from "@reduxjs/toolkit";
 import { useEffect } from "react";
 import {
+  Img,
+} from "./ProductModal.styled";
+import {
   Overlay,
   Modal,
   CloseBtn,
-  // Title,
-  // Span,
-  // Year,
-  Img,
-  // Ul,
-  // Li,
-  // Container,
-  // Description,
-  // SubTitle,
-  // ConditionsUl,
-  // ConditionLi,
-  // A,
-} from "./ProductModal.styled";
+} from "components/ConstComponentsStyle/ConstComponentsStyle.styled";
+
 import {
   Name,
   Memo,

@@ -30,7 +30,6 @@ const CheckoutModul = ({onClose}) => {
   return (
     <Overlay onClick={handleOverlayClick}>
       <Modal>
-        {/* <p>Module page</p> */}
 
         <CloseBtn type="button" onClick={onClose}>
           <img src={Cross} alt="close button" />

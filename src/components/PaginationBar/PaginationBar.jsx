@@ -21,7 +21,7 @@ const PaginationBar = (data, page) => {
   return (
     <DivPagination>
       {activePage > 1 && <DivShift onClick={onClickDecrease}>{"<<"}</DivShift>}
-      {activePage === 1 && <DivPage style={{ backgroundColor: 'green' }}>{activePage}</DivPage>}
+      {activePage === 1 && <DivPage style={{ backgroundColor: 'var(--bg-second-green)' }}>{activePage}</DivPage>}
       {activePage > 2 && <div style={{ width: '50px', textAlign: "center" }}>{"..."}</div>}
       {activePage > 1 && <DivPage onClick={onClickDecrease}>{activePage - 1}</DivPage>}
       {activePage > 1 && <DivPage style={{ backgroundColor: 'green' }}>{activePage}</DivPage>}

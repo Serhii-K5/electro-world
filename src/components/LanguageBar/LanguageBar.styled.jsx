@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+const transition = `250ms linear`;
+
 export const Div = styled.div `
   display: inline;
   padding: 5px;
@@ -17,21 +19,21 @@ export const Ul = styled.ul `
 
 export const Li = styled.li `
   display: inline-block;
-  // marginLeft: 3px;
   padding: 5px;
-  // background-color: var(--bg-button-color);
   border: 1px solid var(--bg-button-color);
   border-radius: 5px;
   color: var(--text-color-primary-black);
-  // margin-left: 3px; 
+  transition: background-color ${transition}, border-color ${transition}, color ${transition};
 
   &:not(:first-child) {
     margin-left: 3px;
-  }
+  };
 
-  &:hover {
+  &:hover,
+  &:active,
+  &:focus {
     background-color: var(--bg-active-button-color);
     border-color: var(--bg-active-button-color);
     color: var(--text-color-white);
-  }
+  };
 `

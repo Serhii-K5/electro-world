@@ -5,6 +5,10 @@ import {
   BgLogo,
   TextLogo,
   Header,
+  NavContainer,
+  NavLinkStyle,
+  DivNav,
+  Span,
   Div,
 } from "./Layout.styled";
 
@@ -24,8 +28,15 @@ import {LanguageBar} from "components/LanguageBar/LanguageBar";
 import AdressBar from 'components/AdressBar/AdressBar';
 import lang from "assets/json/language.json";
 
+// import { BsFillTelephoneFill } from 'react-icons/bs';
+// import { SiVodafone } from "react-icons/si";
+// import { FaViber } from "react-icons/fa";
 import { SlMagnifier } from "react-icons/sl";
-import NavLinkBar from 'components/NavLinkBar/NavLinkBar';
+// import { FcElectricity } from "react-icons/fc";
+import { GiHamburgerMenu } from "react-icons/gi";
+
+import ks from "assets/images/svg/kyivstar.svg";
+import electricity from "assets/images/svg/electricity.svg";
 
 export default function Layout() {
   const orderProducts = useSelector(selectOrders);  
@@ -48,6 +59,7 @@ export default function Layout() {
   return (
     <>
       <LanguageBar />
+
       <Div>
         <Header>
           <BgLogo>
@@ -77,13 +89,49 @@ export default function Layout() {
               placeholder={lang[languages].layout_find}
             />
           </div>
-          <AdressBar />
+          <AdressBar/>
           <Link to="/orders">
             <ShoppingCart quantity={orderProducts.length} />
           </Link>
         </Header>
       </Div>
-      <NavLinkBar />
+      <DivNav>
+        {/* <div>
+          <GiHamburgerMenu />
+          <sup>Каталог товаров</sup>
+        </div> */}
+        <NavContainer>
+          <NavLinkStyle to="/">
+            {/* Home */}
+            <sup>{lang[languages].layout_navLinkHome.toUpperCase()}</sup>
+          </NavLinkStyle>
+          {/* <img src={electricity} alt="electricity symbol" /> */}
+          <NavLinkStyle to="/catalog">
+            <sup>{lang[languages].layout_navLinkCatalog.toUpperCase()}</sup>
+          </NavLinkStyle>
+          {/* <img src={electricity} alt="electricity symbol" /> */}
+          <NavLinkStyle to="/orders">
+            <sup>{lang[languages].layout_navLinkOrders.toUpperCase()}</sup>
+          </NavLinkStyle>
+          {/* <img src={electricity} alt="electricity symbol" /> */}
+          <NavLinkStyle to="/help">
+            <sup>{lang[languages].layout_navLinkHelp.toUpperCase()}</sup>
+          </NavLinkStyle>
+          {/* <img src={electricity} alt="electricity symbol" /> */}
+          <NavLinkStyle to="/about_us">
+            <sup>{lang[languages].layout_navLinkAboutUs.toUpperCase()}</sup>
+          </NavLinkStyle>
+          {/* <img src={electricity} alt="electricity symbol" /> */}
+          <NavLinkStyle to="/delivery">
+            <sup>{lang[languages].layout_navLinkDelivery.toUpperCase()}</sup>
+          </NavLinkStyle>
+          {/* <img src={electricity} alt="electricity symbol" /> */}
+          {/* Message */}
+          <Span onClick={onOpenModal}>
+            <sup>{lang[languages].layout_navLinkMessage.toUpperCase()}</sup>
+          </Span>
+        </NavContainer>
+      </DivNav>
       {isModalShown && <MessageModule onClose={onCloseModal} />}
       <div>
         <Outlet />

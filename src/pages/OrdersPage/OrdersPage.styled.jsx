@@ -5,7 +5,6 @@ const transition = `250ms linear`;
 export const Container = styled.div`
   padding: 10px;
   margin: 0 auto;
-  // width: 1440px;
   max-width: 1440px;
   cursor: pointer;
 `;
