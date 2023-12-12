@@ -8,15 +8,15 @@
 // import Hero from "components/Hero/Hero";
 // import OurOffice from "components/OurOffice/OurOffice";
 // import {
-//   Ul,
-//   NavLinkStyle,
-//   Container,
-//   Div,
-//   H2,
-//   Section,
-//   Img,
-//   Button,
-// } from './MessageModule.styled';
+  // Ul,
+  // NavLinkStyle,
+  // Container,
+  // Div,
+  // H2,
+  // Section,
+  // Img,
+  // Button,
+// } from './CatalogModule.styled';
 
 // import Footer from '../../components/Footer/Footer';
 // import car1 from '../../assets/images/auto/car-rent-1.jpg';
@@ -34,17 +34,30 @@
 
 // // import brandList from "../../assets/jsons/makes.json";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   Overlay,
   Modal,
   CloseBtn,
 } from "components/ConstComponentsStyle/ConstComponentsStyle.styled";
 
+import {
+  // Ul,
+  NavLinkStyle,
+  // Container,
+  // Div,
+  // H2,
+  // Section,
+  // Img,
+  // Button,
+} from './CatalogModule.styled';
+
 import cross from "assets/images/svg/cross.svg";
 import category from 'assets/json/category.json';
 
 const CatalogModule = ({ onClose }) => {
+  const [isVisibleArrow, setIsVisibleArrow] = useState(false);
+
   useEffect(() => {
     const handleKeyDown = event => {
       if (event.code === 'Escape') {
@@ -63,26 +76,34 @@ const CatalogModule = ({ onClose }) => {
     }
   };
 
-  const arrow = (code) => {
-    const array = category.find(item => {
-      item.cat_parentId === val && 
-        <li key={item.cat_id}>{item.cat_name} {arrow(item.cat_id) && " >"} </li>
-    });
+  const handleClick = event => {
+    if (event.currentTarget === event.target) {
+      onClose();
+    }
+  };
 
-    return array>0
-  }
+  const findParentId = (codeId) => {
+    const index = category.findIndex(item => item.cat_parentId === codeId);
+    return index > 0 ? setIsVisibleArrow(true) : setIsVisibleArrow(false);
+  };
 
-  const CategoryItem = (val) => {
-    const array = category.map(item => {
-      item.cat_parentId === val && 
-        <li key={item.cat_id}>{item.cat_name} {arrow(item.cat_id) && " >"} </li>
+
+
+
+  const CategoryItem = (codeId) => {
+    return category.map(item => {
+      findParentId(item.cat_id);
+      item.cat_parentId === codeId &&
+        (isVisibleArrow ? (
+          <li key={item.cat_id} onClick={() => handleClick()}>
+            {item.cat_name} {' >'}
+          </li>
+        ) : (
+          <li key={item.cat_id} onClick={() => handleClick()}>
+            <NavLinkStyle to="/catalog"> {item.cat_name} </NavLinkStyle>
+          </li>
+        ));
     });
-    
-    const el = array.map((item) => {
-      <li>{item.cat_name} {item" >"} </li>;
-    });
-    
-    return;
   };
 
   return (
@@ -95,8 +116,9 @@ const CatalogModule = ({ onClose }) => {
 
           <p>Catalog module</p>
 
-
-
+          <ul>
+            {CategoryItem()}
+          </ul>
         </Modal>
       </Overlay>
       {/* <CarsSlider />

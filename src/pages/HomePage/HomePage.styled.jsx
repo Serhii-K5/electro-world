@@ -105,6 +105,7 @@ export const NavLinkStyle = styled(NavLink)`
   text-shadow: 1px 1px 0px rgba(0,0,0,0.3);
   transition: background-color ${transition};
 
+  &.active,
   &:active,
   &:focus,
   &:hover {

@@ -2,10 +2,11 @@ import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import {
+  Div,
+  Header,
   BgLogo,
   TextLogo,
-  Header,
-  Div,
+  Input,
 } from "./Layout.styled";
 
 // import AdressBar from "../AdressBar/AdressBar";
@@ -65,7 +66,7 @@ export default function Layout() {
                 height: '25px',
               }}
             />
-            <input
+            <Input
               type="text"
               style={{
                 padding: '8px 10px 8px 43px',

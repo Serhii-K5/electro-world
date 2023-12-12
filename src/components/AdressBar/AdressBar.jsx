@@ -17,10 +17,10 @@ const AdressBar = () => {
       >
         <a href="tel:+380689766880">
           <div style={{ display: 'flex' }}>
-            <BsFillTelephoneFill style={{ position: 'relative', top: '3px', right: '-18px', color: '#FFF'}}/>
+            <BsFillTelephoneFill style={{ position: 'relative', top: '3px', right: '-17px', color: '#FFF'}}/>
             <BsFillTelephoneFill style={{ position: 'relative', top: '3px' }} />
             <img src={ks} alt="kyivstar logo" />
-            <Span className={isFocus === 1 && 'isScaleKs'}> +38(068)976-68-80 </Span>
+            <Span className={isFocus === 1 && 'isScaleKs'}>{' '} +38(068)976-68-80 </Span>
           </div>
         </a>
         <FaViber style={{ marginLeft: '3px', fill: 'blueviolet' }} />

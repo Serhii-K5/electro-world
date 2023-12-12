@@ -12,7 +12,7 @@ export const Span = styled.span`
   // border-radius: 50%;
   // background-color: var(--bg-primary);
   font-size: 16px;
-  width: 148px;
+  width: 162px;
   transition: font-size ${transition}, color ${transition};
 
   &.isScaleKs,

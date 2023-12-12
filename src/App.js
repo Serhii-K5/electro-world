@@ -7,7 +7,7 @@ import OrdersPage from "pages/OrdersPage/OrdersPage";
 import HelpPage from 'pages/HelpPage/HelpPage';
 import AboutUsPage from 'pages/AboutUsPage/AboutUsPage';
 import DeliveryPage from 'pages/DeliveryPage/DeliveryPage';
-import MessagePage from 'components/MessageModule/MessageModule';
+// import MessagePage from 'components/MessageModule/MessageModule';
 
 // export default function App() {
 //   return (

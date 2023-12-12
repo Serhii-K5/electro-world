@@ -109,20 +109,21 @@ export const Container = styled.div`
 //   flex-direction: column;
 // `;
 
-// export const NavLinkStyle = styled(NavLink)`
-//   color: #000;
-//   position: relative;
-//   font-size: 36px;
-//   font-weight: 700;
-//   text-shadow: 1px 1px 0px rgba(0,0,0,0.3);
-//   transition: background-color ${transition};
+export const NavLinkStyle = styled(NavLink)`
+  color: #000;
+  position: relative;
+  font-size: 36px;
+  font-weight: 700;
+  text-shadow: 1px 1px 0px rgba(0,0,0,0.3);
+  transition: background-color ${transition};
 
-//   &:active,
-//   &:focus,
-//   &:hover {
-//     color: var(--text-color-active-blue);
-//   }
-// `;
+  &.active,
+  &:active,
+  &:focus,
+  &:hover {
+    color: var(--text-color-active-blue);
+  }
+`;
 
 // export const Button = styled.button`
 //   border: none;
