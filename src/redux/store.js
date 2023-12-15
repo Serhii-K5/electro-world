@@ -36,8 +36,8 @@ export const store = configureStore({
     products: productsReducer,
     orders: persistReducer(ordersPersistConfig, orderReducer),
     languages: persistReducer(languagesPersistConfig, languagesReducer),
+    directoryPath: persistReducer(directoryPathPersistConfig, languagesReducer),
     // ordersAll: persistReducer(numberPurchasesPersistConfig, ordersAllReducer),
-    // form: formReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
@@ -48,14 +48,3 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
-
-// import { configureStore } from '@reduxjs/toolkit';
-// import formReducer from './formSlice';
-
-// const store = configureStore({
-//   reducer: {
-//     form: formReducer,
-//   },
-// });
-
-// export default store;

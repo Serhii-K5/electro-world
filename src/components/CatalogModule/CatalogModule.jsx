@@ -60,7 +60,7 @@ import CategorySelection from 'components/CategorySelection/CategorySelection';
 const CatalogModule = ({ modal, onClose }) => {
   // const [isVisibleArrow, setIsVisibleArrow] = useState(false);
   const [visibleSelect, setVisibleSelect] = useState(modal);
-  const [pathSelect, setPathSelect] = useState(modal);
+  // const [pathSelect, setPathSelect] = useState(modal);
 
   useEffect(() => {
     const handleKeyDown = event => {
@@ -129,8 +129,13 @@ const CatalogModule = ({ modal, onClose }) => {
   // <Link to="/orders">
   //   <ShoppingCart quantity={orderProducts.length} />
   // </Link>;
+  const initial = {
+    catId: 0,
+    catName: ''
+  }
 
   const [isModalShown, setIsModalShown] = useState(false);
+  const [pathArray, setPathArray] = useState([initial]);
 
   const handleMouseMove = () => {
     setIsModalShown(true);
@@ -144,16 +149,55 @@ const CatalogModule = ({ modal, onClose }) => {
     setVisibleSelect(visibleSelect + 1);
   };
 
+  const selectedAdd = () => {
+    setVisibleSelect(visibleSelect + 1);
+
+    setPathArray(...pathArray, {})
+  };
+
+
   const fr = () => {
     for (let index = 0; index < visibleSelect + 1; index++) {
       const element = array[index];
-      <li key={index} ></li>
+      <li key={index}>
+        <ModalSelect
+          // onMouseMove={handleMouseMove}
+          onMouseMove={selectedAdd}
+          // onMouseLeave={handleMouseOut}
+        >
+          {/* <CloseBtn type="button" onClick={onClose}>
+          <img src={cross} alt="close button" />
+        </CloseBtn>
+
+        <p>Catalog module</p> */}
+
+          {category.length > 0 && (
+            <CategorySelection
+              parentId={visibleSelect}
+              onMouseMove={() => handleMove()}
+            />
+          )}
+        </ModalSelect>
+      </li>;
     }
   };
 
+  // перебор каталога по cat_parentId
+  const catalogFilter = (id) => {
+    category
+  }
+
   return (
-    <ul>
-      
+    <>
+      <div>
+        <ul>
+          {pathArray.map{item => (<span>{item}</span>) }}
+        
+        </ul>
+      </div>
+      <ul>
+
+      </ul>
       {array.forEach(element => {
         <ModalSelect
           onMouseMove={handleMouseMove}
@@ -209,7 +253,7 @@ const CatalogModule = ({ modal, onClose }) => {
         </ModalSelect>
       )} */}
       {/* {isModalShown && <MessageModule />} */}
-    </ul>
+    </>
   );
 };
 
