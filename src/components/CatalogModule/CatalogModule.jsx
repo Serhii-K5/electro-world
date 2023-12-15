@@ -55,11 +55,12 @@ import {
 import cross from "assets/images/svg/cross.svg";
 import category from 'assets/json/category.json';
 import CategorySelection from 'components/CategorySelection/CategorySelection';
-import MessageModule from 'components/MessageModule/MessageModule';
+// import MessageModule from 'components/MessageModule/MessageModule';
 
-const CatalogModule = ({ onClose }) => {
+const CatalogModule = ({ modal, onClose }) => {
   // const [isVisibleArrow, setIsVisibleArrow] = useState(false);
-  const [VisibleSelect, setVisibleSelect] = useState(0);
+  const [visibleSelect, setVisibleSelect] = useState(modal);
+  const [pathSelect, setPathSelect] = useState(modal);
 
   useEffect(() => {
     const handleKeyDown = event => {
@@ -140,30 +141,58 @@ const CatalogModule = ({ onClose }) => {
   };
 
   const handleMove = () => {
-    setVisibleSelect(VisibleSelect + 1)
-  }
+    setVisibleSelect(visibleSelect + 1);
+  };
+
+  const fr = () => {
+    for (let index = 0; index < visibleSelect + 1; index++) {
+      const element = array[index];
+      <li key={index} ></li>
+    }
+  };
 
   return (
-    <>
+    <ul>
+      
+      {array.forEach(element => {
+        <ModalSelect
+          onMouseMove={handleMouseMove}
+          // onMouseLeave={handleMouseOut}
+        >
+          {/* <CloseBtn type="button" onClick={onClose}>
+          <img src={cross} alt="close button" />
+        </CloseBtn>
+
+        <p>Catalog module</p> */}
+
+          {category.length > 0 && (
+            <CategorySelection
+              parentId={visibleSelect}
+              onMouseMove={() => handleMove()}
+            />
+          )}
+        </ModalSelect>;
+        
+      })}
       {/* <Overlay onClick={handleOverlayClick}> */}
       <ModalSelect
         onMouseMove={handleMouseMove}
         // onMouseLeave={handleMouseOut}
       >
-        <CloseBtn type="button" onClick={onClose}>
+        {/* <CloseBtn type="button" onClick={onClose}>
           <img src={cross} alt="close button" />
         </CloseBtn>
 
-        <p>Catalog module</p>
+        <p>Catalog module</p> */}
 
         {category.length > 0 && (
           <CategorySelection
-            parentId={VisibleSelect}
-            onMouseMove={handleMove}
+            parentId={visibleSelect}
+            onMouseMove={() => handleMove()}
           />
         )}
       </ModalSelect>
-      {VisibleSelect > 0 && (
+      {/* {visibleSelect > 0 && (
         <ModalSelect>
           <CloseBtn type="button" onClick={onClose}>
             <img src={cross} alt="close button" />
@@ -171,16 +200,16 @@ const CatalogModule = ({ onClose }) => {
 
           <p>Catalog module</p>
 
-          {category.length > 0 && VisibleSelect > 0 && (
+          {category.length > 0 && visibleSelect > 0 && (
             <CategorySelection
-              parentId={VisibleSelect}
+              parentId={visibleSelect}
               onMouseMove={handleMove}
             />
           )}
         </ModalSelect>
-      )}
-      {isModalShown && <MessageModule />}
-    </>
+      )} */}
+      {/* {isModalShown && <MessageModule />} */}
+    </ul>
   );
 };
 

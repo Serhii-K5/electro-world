@@ -88,8 +88,12 @@ const NavLinkBar = () => {
           </Span>
         </NavContainer>
       </DivNav>
+      {/* <ul>
+
+      </ul> */}
+      <div style={{width: '20%'}}>{isModalCatalogShown && <CatalogModule modal={0} onClose={onCloseCatalogModal} />}</div>
       {isModalShown && <MessageModule onClose={onCloseModal} />}
-      {isModalCatalogShown && <CatalogModule onClose={onCloseCatalogModal} />}
+      {/* {isModalCatalogShown && <CatalogModule onClose={onCloseCatalogModal} />} */}
     </>
   );
 }
