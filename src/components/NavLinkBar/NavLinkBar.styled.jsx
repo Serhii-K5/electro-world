@@ -6,7 +6,9 @@ import { transition } from 'components/ConstComponentsStyle/ConstComponentsStyle
 
 export const DivNav = styled.div`
   display: flex;
+  margin: auto;
   padding: 10px 10px 0;
+  max-width: 1440px;
   column-gap: 10px;
   align-items: center;
 `;
@@ -35,6 +37,8 @@ export const Img = styled.img`
 export const NavContainer = styled.nav`
   display: flex;
   flex-wrap: wrap;
+  position: relative;
+  top: 6px;
   align-items: center;
   column-gap: 10px;
   justify-content: center;
@@ -57,12 +61,7 @@ const ConstNavLinkStyle = `
   };
 `
 export const NavLinkStyle = styled(NavLink)`
-  color: var(--text-color-primary-black);
-  position: relative;
-  font-size: 20px;
-  font-weight: 700;
-  text-shadow: 1px 1px 0px rgba(255, 255, 255, 20);
-  transition: color ${transition};
+  ${ConstNavLinkStyle};
 `;
 
 export const Span = styled.span`

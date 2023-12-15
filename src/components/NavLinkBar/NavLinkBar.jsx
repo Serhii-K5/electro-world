@@ -43,19 +43,19 @@ const NavLinkBar = () => {
   const onOpenCatalogModal = () => {
     setIsModalCatalogShown(true);
   };
+
+
   
   return (
     <>
       <DivNav>
-        <DivCatalog onClick={onOpenCatalogModal}>
-          {/* <div> */}
-          <GiHamburgerMenu style={{ marginRight: '10px', fontSize: '26px' }} />
+        {/* <DivCatalog onClick={onOpenCatalogModal}> */}
+        <DivCatalog onMouseMove={onOpenCatalogModal}>
+          <GiHamburgerMenu style={{ marginRight: '10px', fontSize: '24px' }} />
           <div>
             <Sup>{lang[languages].NavLinkBar_catalog1.toUpperCase()}</Sup>
           </div>
-          {/* </div> */}
         </DivCatalog>
-        {/* <DivCatalog> */}
         <NavContainer>
           <NavLinkStyle to="/">
             {/* Home */}
@@ -87,13 +87,9 @@ const NavLinkBar = () => {
             <sup>{lang[languages].NavLinkBar_message.toUpperCase()}</sup>
           </Span>
         </NavContainer>
-        {/* </DivCatalog> */}
       </DivNav>
       {isModalShown && <MessageModule onClose={onCloseModal} />}
-      {isModalCatalogShown && <MessageModule onClose={CatalogModule} />}
-      <div>
-        <Outlet />
-      </div>
+      {isModalCatalogShown && <CatalogModule onClose={onCloseCatalogModal} />}
     </>
   );
 }

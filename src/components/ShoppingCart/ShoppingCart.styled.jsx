@@ -25,5 +25,14 @@ export const Div = styled.div`
   position: relative;
   left: 0px;
   bottom: 0px;
+  width: 160px;
   align-items: flex-end;
-`
+  // transition:: scale 1250ms linear;
+  transition: font-size 250ms linear;
+
+  &:hover {
+    // scale: 1.05;
+    font-size: 18px;
+    fill: red;
+  }
+`;

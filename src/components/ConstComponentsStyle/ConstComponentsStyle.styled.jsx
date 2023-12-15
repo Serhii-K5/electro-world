@@ -49,3 +49,18 @@ export const CloseBtn = styled.button`
     transform: scale(1.2);
   }
 `;
+
+  
+export const ModalSelect = styled.div`
+  position: relative;
+  padding: 10px;
+  // max-height: 90vh;
+  // border-radius: 24px;
+  overflow-y: auto;
+  background-color: #fff;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+`;

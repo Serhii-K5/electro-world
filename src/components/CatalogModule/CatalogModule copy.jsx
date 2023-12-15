@@ -37,9 +37,9 @@
 import { useEffect, useState } from "react";
 import {
   Overlay,
-  ModalSelect,
+  Modal,
   CloseBtn,
-} from 'components/ConstComponentsStyle/ConstComponentsStyle.styled';
+} from "components/ConstComponentsStyle/ConstComponentsStyle.styled";
 
 // import {
 //   // Ul,
@@ -54,12 +54,9 @@ import {
 
 import cross from "assets/images/svg/cross.svg";
 import category from 'assets/json/category.json';
-import CategorySelection from 'components/CategorySelection/CategorySelection';
-import MessageModule from 'components/MessageModule/MessageModule';
 
 const CatalogModule = ({ onClose }) => {
-  // const [isVisibleArrow, setIsVisibleArrow] = useState(false);
-  const [VisibleSelect, setVisibleSelect] = useState(0);
+  const [isVisibleArrow, setIsVisibleArrow] = useState(false);
 
   useEffect(() => {
     const handleKeyDown = event => {
@@ -73,28 +70,22 @@ const CatalogModule = ({ onClose }) => {
     };
   }, [onClose]);
 
-  // const handleOverlayClick = event => {
-  //   if (event.currentTarget === event.target) {
-  //     onClose();
-  //   }
-  // };
+  const handleOverlayClick = event => {
+    if (event.currentTarget === event.target) {
+      onClose();
+    }
+  };
 
-  // const handleClick = event => {
-  //   if (event.currentTarget === event.target) {
-  //     onClose();
-  //   }
-  // };
+  const handleClick = event => {
+    if (event.currentTarget === event.target) {
+      onClose();
+    }
+  };
 
-  // const findParentId = (codeId) => {
-  //   const index = category.findIndex(item => item.cat_parentId === codeId);
-  //   // return index > 0 ? setIsVisibleArrow(true) : setIsVisibleArrow(false);
-  //   index > 0 ? setIsVisibleArrow(true) : setIsVisibleArrow(false);
-  //   // return index > 0 && <span>{' >'}</span>;
-  // };
-
-  // const findParentId1 = (codeId) => {
-  //   setIsVisibleArrow(category.findIndex(e => e.cat_parentId === codeId) > 0);
-  // };
+  const findParentId = (codeId) => {
+    const index = category.findIndex(item => item.cat_parentId === codeId);
+    return index > 0 ? setIsVisibleArrow(true) : setIsVisibleArrow(false);
+  };
 
 
 
@@ -129,57 +120,88 @@ const CatalogModule = ({ onClose }) => {
   //   <ShoppingCart quantity={orderProducts.length} />
   // </Link>;
 
-  const [isModalShown, setIsModalShown] = useState(false);
-
-  const handleMouseMove = () => {
-    setIsModalShown(true);
-  };
-
-  const handleMouseOut = () => {
-    setIsModalShown(false);
-  };
-
-  const handleMove = () => {
-    setVisibleSelect(VisibleSelect + 1)
-  }
-
   return (
     <>
-      {/* <Overlay onClick={handleOverlayClick}> */}
-      <ModalSelect
-        onMouseMove={handleMouseMove}
-        // onMouseLeave={handleMouseOut}
-      >
-        <CloseBtn type="button" onClick={onClose}>
-          <img src={cross} alt="close button" />
-        </CloseBtn>
-
-        <p>Catalog module</p>
-
-        {category.length > 0 && (
-          <CategorySelection
-            parentId={VisibleSelect}
-            onMouseMove={handleMove}
-          />
-        )}
-      </ModalSelect>
-      {VisibleSelect > 0 && (
-        <ModalSelect>
+      <Overlay onClick={handleOverlayClick}>
+        <Modal>
           <CloseBtn type="button" onClick={onClose}>
             <img src={cross} alt="close button" />
           </CloseBtn>
 
           <p>Catalog module</p>
 
-          {category.length > 0 && VisibleSelect > 0 && (
-            <CategorySelection
-              parentId={VisibleSelect}
-              onMouseMove={handleMove}
-            />
+          {category.length > 0 && (
+            <ul>
+              {category.map(
+                (item, index) =>
+                  item.cat_parentId === 0 && (
+                    <li
+                      // key={item.id + '_' + index}
+                      key={index}
+                      onClick={() => findParentId(item.id)}
+                    >
+                      {/* <CarCard card={item} /> */}
+                      {item.cat_name} {' >'}
+                    </li>
+                  )
+              )}
+            </ul>
           )}
-        </ModalSelect>
-      )}
-      {isModalShown && <MessageModule />}
+          {/* <ul> */}
+          {/* {categoryItem()} */}
+          {/* {() => cat(0)} */}
+          {/* {category.map(item => {
+              item.cat_parentId === 0 && (
+                // <li key={item.cat_id} onClick={() => handleClick()}>
+                <li key={item.cat_id}>
+                  {item.cat_name} {' >'}
+                </li>
+              );
+            })} */}
+          {/* </ul> */}
+        </Modal>
+      </Overlay>
+      {/* <CarsSlider />
+      <Container>
+        <div style={{ display: 'flex' }}>
+          <Div>
+            <Section>
+              <Hero />
+            </Section>
+
+            <Section>
+              <H2 id="section1">About Us</H2>
+                {isAboutUsShown ? <AboutUs /> : <AboutUsLight />}
+                <Button onClick={onOpenAboutUs}> {isAboutUsShown ? "... Collapse section" : "To learn more ..." }</Button>
+            </Section>
+          </Div>
+          <AsideBar />
+        </div>
+
+        <Section>
+          <H2 id="section2">Our fleet</H2>
+          {adverts.length > 0 ? (
+            <Ul>{handleCardsRandom()}</Ul>
+          ) : (
+            <div style={{ display: 'flex' }}>
+              <Img src={car1} alt="Car rent 1"></Img>
+              <Img src={car2} alt="Car rent 2"></Img>
+              <Img src={car3} alt="Car rent 3"></Img>
+              <Img src={car4} alt="Car rent 4"></Img>
+              <Img src={car5} alt="Car rent 5"></Img>
+            </div>
+          )}
+
+          <p>
+            <NavLinkStyle to="/catalog"> See more... </NavLinkStyle>
+          </p>
+        </Section>
+
+        <Section>
+          <OurOffice />
+        </Section>
+      </Container>
+      <Footer /> */}
     </>
   );
 };

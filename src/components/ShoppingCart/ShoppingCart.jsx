@@ -65,7 +65,8 @@ const ShoppingCart = ({ quantity }) => {
     // <div style={{ position: 'absolute', left: (window.screen.availWidth - 16) +'px', bottom: '-38px'}}>
     // <div style={{ position: 'absolute', left: '800px', bottom: '-38px'}}>
     <Div>
-      <GiShoppingCart style={{width: '60px', height: '60px', fill: "var(--bg-active-button-color)" }} />
+      {/* <GiShoppingCart style={{width: '60px', height: '60px', fill: "var(--bg-active-button-color)" }} /> */}
+      <GiShoppingCart style={{fontSize: '60px', fill: "var(--bg-active-button-color)" }} />
       <Quantity>{quantity}</Quantity>
       <div style={{paddingRight: '10px'}}>
         <p>{lang[languages].layout_sum}:</p>
