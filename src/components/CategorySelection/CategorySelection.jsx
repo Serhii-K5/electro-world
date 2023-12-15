@@ -17,6 +17,9 @@ const CategorySelection = ({ parentId, handleMove }) => {
     setIsModalShown(false);
   };
 
+  const handleClick = value => {
+    dispatch(changeLanguage(value));
+  };
 
 
 
@@ -26,7 +29,9 @@ const CategorySelection = ({ parentId, handleMove }) => {
           (el, index) =>
             el.cat_parentId === parentId && (
               // <li key={index} onMouseMove={() => categoryAdd(el.cat_id)}>
-              <li key={index}>
+              <li key={index}
+              
+              >
                 {el.cat_name} {' >'}
                 {/* {el.cat_name} {el.cat_parentId > parentId && ' >'} */}
                 {/* {el.cat_name} {el.cat_parentId > parentId && ' >'} */}

@@ -43,8 +43,6 @@ const NavLinkBar = () => {
   const onOpenCatalogModal = () => {
     setIsModalCatalogShown(true);
   };
-
-
   
   return (
     <>
