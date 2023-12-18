@@ -21,9 +21,12 @@ import CatalogModule from 'components/CatalogModule/CatalogModule';
 import CategorySelection from 'components/CategorySelection/CategorySelection';
 import lang from "assets/json/language.json";
 import category from "assets/json/category.json";
+import DropdownButton from '../DropdownButton/DropdownButton';
+
 
 import { GiHamburgerMenu } from "react-icons/gi";
 import electricity from "assets/images/svg/electricity.svg";
+
 
 const NavLinkBar = () => {
   // const orderProducts = useSelector(selectOrders); 
@@ -52,7 +55,8 @@ const NavLinkBar = () => {
   };
 
   const clearingDirectoryPath = () => {
-    dispatch(addDirectoryPath([]));
+    // dispatch(addDirectoryPath([]));
+    dispatch(deleteAllDirectoryPath(null));
     setIsModalCatalogShown(false);
   };
 
@@ -71,13 +75,16 @@ const NavLinkBar = () => {
     <>
       <DivNav>
         {/* <DivCatalog onClick={onOpenCatalogModal}> */}
-        <DivCatalog onMouseMove={onOpenCatalogModal}>
+        <DivCatalog onMouseEnter={onOpenCatalogModal}>
           {/* <DivCatalog onMouseMove={onOpenCatalogModal} onMouseLeave={onCloseCatalogModal}> */}
           <GiHamburgerMenu style={{ marginRight: '10px', fontSize: '24px' }} />
           <div>
             <Sup>{lang[languages].NavLinkBar_catalog1.toUpperCase()}</Sup>
           </div>
         </DivCatalog>
+
+        <DropdownButton />
+
         <NavContainer>
           <NavLinkStyle to="/">
             {/* Home */}
@@ -116,32 +123,31 @@ const NavLinkBar = () => {
       <div style={{ width: '20%' }} onMouseLeave={clearingDirectoryPath}>
         {isModalCatalogShown && (
           // category.length > 0 && (
-            <ul style={{ display: 'flex' }}>
-              {directoryPath.length > 0 ? (
+          <ul style={{ display: 'flex' }}>
+            {directoryPath.length > 0 ? (
               // {directoryPath ? (
-                <ul style={{ display: 'flex' }}>
-                  {directoryPath.map((el, index) => (
-                    <li key={index}>
-                      <CategorySelection
-                        parentId={el.cat_parentId}
-                        // onMouseMove={() => addDirectory(el)}
-                        // // onMouseOver={() => handleMove()}
-                        // onMouseLeave={() => deleteDirectory(el)}
-                      />
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <CategorySelection
-                  parentId={0}
-                  // onMouseMove={() => addDirectory(el)}
-                  // onMouseLeave={() => deleteDirectory(el)}
-                />
-              )}
-            </ul>
+              <ul style={{ display: 'flex' }}>
+                {directoryPath.map((el, index) => (
+                  <li key={index}>
+                    <CategorySelection
+                      parentId={el.cat_parentId}
+                      // onMouseMove={() => addDirectory(el)}
+                      // // onMouseOver={() => handleMove()}
+                      // onMouseLeave={() => deleteDirectory(el)}
+                    />
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <CategorySelection
+                parentId={0}
+                // onMouseMove={() => addDirectory(el)}
+                // onMouseLeave={() => deleteDirectory(el)}
+              />
+            )}
+          </ul>
           // )
-          
-          
+
           // <CategorySelection />
           // <CatalogModule modal={0} />}
           // <CatalogModule onClose={!isModalCatalogShown} />

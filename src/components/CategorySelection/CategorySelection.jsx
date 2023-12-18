@@ -28,19 +28,20 @@ const CategorySelection = ({ parentId, handleMove }) => {
 
   return (
     <ul>
-      {!isModalShown && category.map(
-        (el, index) =>
-          el.cat_parentId === parentId && (
-            <li key={index} onMouseMove={() => categoryAdd(el)}>
-              {/* <li key={index} > */}
-              {el.cat_name} {' >'}
-              {/* {el.cat_name} {el.cat_parentId > parentId && ' >'} */}
-              {/* {el.cat_name} {el.cat_parentId > parentId && ' >'} */}
-              {/* {el.cat_parentId === parentId && el.cat_name && ' >'} */}
-              {/* {console.log(el.cat_parentId === parentId)} */}
-            </li>
-          )
-      )}
+      {!isModalShown &&
+        category.map(
+          (el, index) =>
+            el.cat_parentId === parentId && (
+              <li key={index} onMouseEnter={() => categoryAdd(el)}>
+                {/* <li key={index} > */}
+                {el.cat_name} {' >'}
+                {/* {el.cat_name} {el.cat_parentId > parentId && ' >'} */}
+                {/* {el.cat_name} {el.cat_parentId > parentId && ' >'} */}
+                {/* {el.cat_parentId === parentId && el.cat_name && ' >'} */}
+                {/* {console.log(el.cat_parentId === parentId)} */}
+              </li>
+            )
+        )}
     </ul>
   );
 };
