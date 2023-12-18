@@ -4,6 +4,13 @@ const sliceDirectoryPath = createSlice({
   name: 'directoryPath',
   initialState: {
     items: [],
+    // items:
+    //   {
+    //     cat_id: 0,
+    //     cat_name: '',
+    //     cat_parentId: 0,
+    //   },
+    // ],
   },
   reducers: {
     addDirectoryPath(state, action) {
@@ -13,8 +20,11 @@ const sliceDirectoryPath = createSlice({
       const index = state.items.findIndex(item => item.id === action.payload);
       state.items.splice(index, 1);
     },
+    deleteAllDirectoryPath(state, action) {
+      state.items = action.payload;
+    },
   },
 });
 
-export const { addDirectoryPath, deleteDirectoryPath } = sliceDirectoryPath.actions;
+export const { addDirectoryPath, deleteDirectoryPath, deleteAllDirectoryPath } = sliceDirectoryPath.actions;
 export const directoryPathReducer = sliceDirectoryPath.reducer;

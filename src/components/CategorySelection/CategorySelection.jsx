@@ -1,8 +1,12 @@
 // import { nanoid } from 'nanoid';
 import category from 'assets/json/category.json';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addDirectoryPath, deleteDirectoryPath } from 'redux/slice/directoryPathSlice';
+
 
 const CategorySelection = ({ parentId, handleMove }) => {
+  const dispatch = useDispatch();
   const [isModalShown, setIsModalShown] = useState(false);
 
   // const categoryAdd = id => {
@@ -17,31 +21,27 @@ const CategorySelection = ({ parentId, handleMove }) => {
     setIsModalShown(false);
   };
 
-  const handleClick = value => {
-    dispatch(changeLanguage(value));
+  const categoryAdd = value => {
+    dispatch(addDirectoryPath(value));
   };
 
 
-
   return (
-      <ul>
-        {category.map(
-          (el, index) =>
-            el.cat_parentId === parentId && (
-              // <li key={index} onMouseMove={() => categoryAdd(el.cat_id)}>
-              <li key={index}
-              
-              >
-                {el.cat_name} {' >'}
-                {/* {el.cat_name} {el.cat_parentId > parentId && ' >'} */}
-                {/* {el.cat_name} {el.cat_parentId > parentId && ' >'} */}
-                {/* {el.cat_parentId === parentId && el.cat_name && ' >'} */}
-                {/* {console.log(el.cat_parentId === parentId)} */}
-              </li>
-            )
-        )}
-      </ul>
-      
+    <ul>
+      {!isModalShown && category.map(
+        (el, index) =>
+          el.cat_parentId === parentId && (
+            <li key={index} onMouseMove={() => categoryAdd(el)}>
+              {/* <li key={index} > */}
+              {el.cat_name} {' >'}
+              {/* {el.cat_name} {el.cat_parentId > parentId && ' >'} */}
+              {/* {el.cat_name} {el.cat_parentId > parentId && ' >'} */}
+              {/* {el.cat_parentId === parentId && el.cat_name && ' >'} */}
+              {/* {console.log(el.cat_parentId === parentId)} */}
+            </li>
+          )
+      )}
+    </ul>
   );
 };
 
