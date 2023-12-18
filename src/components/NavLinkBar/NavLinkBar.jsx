@@ -52,8 +52,8 @@ const NavLinkBar = () => {
   };
 
   const clearingDirectoryPath = () => {
-    setIsModalCatalogShown(false);
     dispatch(addDirectoryPath([]));
+    setIsModalCatalogShown(false);
   };
 
   const addDirectory = value => {
