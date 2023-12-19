@@ -28,7 +28,8 @@ const CategorySelection = ({ parentId, handleMove }) => {
 
   return (
     <ul>
-      {!isModalShown &&
+      {!isModalShown && (
+        {},
         category.map(
           (el, index) =>
             el.cat_parentId === parentId && (
@@ -41,7 +42,7 @@ const CategorySelection = ({ parentId, handleMove }) => {
                 {/* {console.log(el.cat_parentId === parentId)} */}
               </li>
             )
-        )}
+        ))}
     </ul>
   );
 };

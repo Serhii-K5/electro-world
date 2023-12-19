@@ -55,8 +55,8 @@ const NavLinkBar = () => {
   };
 
   const clearingDirectoryPath = () => {
-    // dispatch(addDirectoryPath([]));
-    dispatch(deleteAllDirectoryPath(null));
+    dispatch(addDirectoryPath([]));
+    // dispatch(deleteAllDirectoryPath(null));
     setIsModalCatalogShown(false);
   };
 
@@ -75,7 +75,7 @@ const NavLinkBar = () => {
     <>
       <DivNav>
         {/* <DivCatalog onClick={onOpenCatalogModal}> */}
-        <DivCatalog onMouseEnter={onOpenCatalogModal}>
+        <DivCatalog onMouseEnter={(onOpenCatalogModal)}>
           {/* <DivCatalog onMouseMove={onOpenCatalogModal} onMouseLeave={onCloseCatalogModal}> */}
           <GiHamburgerMenu style={{ marginRight: '10px', fontSize: '24px' }} />
           <div>
@@ -83,7 +83,7 @@ const NavLinkBar = () => {
           </div>
         </DivCatalog>
 
-        <DropdownButton />
+        {/* <DropdownButton /> */}
 
         <NavContainer>
           <NavLinkStyle to="/">
@@ -124,7 +124,7 @@ const NavLinkBar = () => {
         {isModalCatalogShown && (
           // category.length > 0 && (
           <ul style={{ display: 'flex' }}>
-            {directoryPath.length > 0 ? (
+            {/* {directoryPath.length > 0 ? (
               // {directoryPath ? (
               <ul style={{ display: 'flex' }}>
                 {directoryPath.map((el, index) => (
@@ -138,13 +138,13 @@ const NavLinkBar = () => {
                   </li>
                 ))}
               </ul>
-            ) : (
+            ) : ( */}
               <CategorySelection
                 parentId={0}
                 // onMouseMove={() => addDirectory(el)}
                 // onMouseLeave={() => deleteDirectory(el)}
               />
-            )}
+            {/* )} */}
           </ul>
           // )
 
