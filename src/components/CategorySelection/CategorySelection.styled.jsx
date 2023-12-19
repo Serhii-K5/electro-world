@@ -7,4 +7,10 @@ export const Ul = styled.ul`
 export const Li = styled.li`
   padding: 10px 5px;
   border-bottom: 1px solid var(--bg-overlay);
+
+  &.parent {
+    border-bottom: 0px;
+    // font-size: 16px;
+    padding: 0px 5px;
+  }
 `;

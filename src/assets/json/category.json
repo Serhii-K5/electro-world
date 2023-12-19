@@ -28,5 +28,20 @@
     "cat_id": 838,
     "cat_name": "ЮГ1",
     "cat_parentId": 839
+  },
+  {
+    "cat_id": 869,
+    "cat_name": "DC-link2",
+    "cat_parentId": 870
+  },
+  {
+    "cat_id": 857,
+    "cat_name": "ЮГ-СМ2",
+    "cat_parentId": 858
+  },
+  {
+    "cat_id": 837,
+    "cat_name": "ЮГ2",
+    "cat_parentId": 838
   }
 ]

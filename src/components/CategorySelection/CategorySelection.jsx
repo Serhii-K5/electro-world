@@ -30,8 +30,8 @@ const CategorySelection = ({ parentId, handleMove }) => {
   
   const categoryChange = value => {
     dispatch(changeDirectoryPath(value));
-
   };
+  
 
 
   return (
@@ -42,21 +42,28 @@ const CategorySelection = ({ parentId, handleMove }) => {
           el =>
             el.cat_parentId === parentId && (
               <Li key={el.cat_id} onMouseEnter={() => categoryChange(el)}> */}
-                {/* <li key={index} > */}
-                {/* {el.cat_name} {' >'} */}
-                {/* {el.cat_name} {el.cat_parentId > parentId && ' >'} */}
-                {/* {el.cat_name} {el.cat_parentId > parentId && ' >'} */}
-                {/* {el.cat_parentId === parentId && el.cat_name && ' >'} */}
-                {/* {console.log(el.cat_parentId === parentId)} */}
-              {/* </Li>
+      {/* <li key={index} > */}
+      {/* {el.cat_name} {' >'} */}
+      {/* {el.cat_name} {el.cat_parentId > parentId && ' >'} */}
+      {/* {el.cat_name} {el.cat_parentId > parentId && ' >'} */}
+      {/* {el.cat_parentId === parentId && el.cat_name && ' >'} */}
+      {/* {console.log(el.cat_parentId === parentId)} */}
+      {/* </Li>
             )
         )} */}
-      {category.map(el =>
-        el.cat_parentId === parentId && (
-          <Li key={el.cat_id} onMouseEnter={() => categoryChange(el)}>
-            {el.cat_name} {' >'}
-          </Li>
-        )
+      {category.map(
+        (el, index) =>
+          el.cat_parentId === parentId && (
+            <Li
+              // key={el.cat_id ? el.cat_id : index}
+              // key={nanoid()}
+              key={index}
+              className={parentId > 0 && 'parent'}
+              onMouseEnter={() => categoryChange(el)}
+            >
+              {el.cat_name} {' >'}
+            </Li>
+          )
       )}
     </ul>
   );

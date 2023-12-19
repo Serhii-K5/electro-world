@@ -17,14 +17,19 @@ const sliceDirectoryPath = createSlice({
       // state.items.push(action.payload);
     },
     changeDirectoryPath(state, action) {
-      state.items.splice(state.items.length - 1, 1, action.payload);
+      // state.items.splice(state.items.length - 1, 1, action.payload);
+      const index = state.items.findIndex(item =>
+          item.cat_id === action.payload.cat_id);
+      
+      // state.items.splice(index, 1, action.payload);
+
       // // state.items > 0 && state.items.splice(items.length, 1);
       // // state.items.push(action.payload);
       // // const index = state.items ? state.items.length : 0;
       // const index = state.items.length - 1;
-      // // index > 0
-      // //   ? state.items.splice(index, 1, action.payload)
-      // //   : state.items.push(action.payload);
+      index < 0
+        ? state.items.push(action.payload)
+        : state.items.splice(index, 1, action.payload);
       // state.items.splice(index, 1, action.payload);
 
       // console.log(state.items);
@@ -34,7 +39,8 @@ const sliceDirectoryPath = createSlice({
       state.items.splice(index, 1);
     },
     deleteAllDirectoryPath(state, action) {
-      state.items = action.payload;
+      // state.items = action.payload;
+      state.items = [];
     },
   },
 });

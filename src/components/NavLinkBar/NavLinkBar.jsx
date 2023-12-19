@@ -64,11 +64,12 @@ const NavLinkBar = () => {
 
   const onOpenCatalogModal = () => {
     setIsModalCatalogShown(true);
-    dispatch(deleteAllDirectoryPath([]));
+    // dispatch(deleteAllDirectoryPath([]));
   };
 
   const clearingDirectoryPath = () => {
-    dispatch(deleteAllDirectoryPath([]));
+    // dispatch(deleteAllDirectoryPath([]));
+    dispatch(deleteAllDirectoryPath());
     setIsModalCatalogShown(false);
   };
 
@@ -103,24 +104,22 @@ const NavLinkBar = () => {
                 <Sup>{lang[languages].NavLinkBar_catalog1.toUpperCase()}</Sup>
               </div>
             </DivCatalog>
-            {isModalCatalogShown &&
-              (directoryPath > 0 ? (
-                <UlCatalog>
-                  <CategorySelection parentId={0} />
-                  {/* {directoryPath > 0 && */}
-                  {/* {isChangeModalCatalog &&
-                directoryPath.map(item => (
-                  <CategorySelection parentId={item.cat_id} />
-                ))} */}
-                  {directoryPath.map(item => (
-                    <CategorySelection parentId={item.cat_id} />
-                  ))}
-                </UlCatalog>
-              ) : (
-                <UlCatalog>
-                  <CategorySelection parentId={0} />
-                </UlCatalog>
-              ))}
+            {isModalCatalogShown && (
+              <UlCatalog style={{ width: '100vw' }}>
+                <CategorySelection parentId={0} style={{ width: '100px' }} />
+                {directoryPath.map((item, index) => (
+                  <CategorySelection parentId={item.cat_id} style={{ width: '100px' }}/>
+                ))}
+              </UlCatalog>
+              // <UlCatalog style={{ width: '100vw' }}>
+              //   <CategorySelection parentId={0} />
+              //   {directoryPath.map((item, index) => (
+              //     <ul>
+              //       <CategorySelection parentId={item.cat_id} />
+              //     </ul>
+              //   ))}
+              // </UlCatalog>
+            )}
           </div>
         </div>
 
