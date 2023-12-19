@@ -31,7 +31,7 @@ font-weight: 700;
 
 export const UlCatalog = styled.ul`
   display: flex;
-  max-width: 20%;
+  // max-width: 20%;
   position: absolute;
   z-index: 100;
   background-color: var(--bg-primary);
