@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // import { Outlet } from "react-router-dom";
 // import { Link } from 'react-router-dom';
 import {
   DivNav,
   DivCatalog,
   Sup,
+  UlCatalog,
   Img,
   NavContainer,
   NavLinkStyle,
@@ -14,14 +15,14 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { selectDirectoryPath, selectLanguages } from 'redux/selectors';
 // import { selectOrders } from "redux/selectors";
-import { addDirectoryPath, deleteDirectoryPath, deleteAllDirectoryPath } from 'redux/slice/directoryPathSlice';
+import { addDirectoryPath, changeDirectoryPath, deleteDirectoryPath, deleteAllDirectoryPath } from 'redux/slice/directoryPathSlice';
 
 import MessageModule from "components/MessageModule/MessageModule";
-import CatalogModule from 'components/CatalogModule/CatalogModule';
+// import CatalogModule from 'components/CatalogModule/CatalogModule';
 import CategorySelection from 'components/CategorySelection/CategorySelection';
 import lang from "assets/json/language.json";
-import category from "assets/json/category.json";
-import DropdownButton from '../DropdownButton/DropdownButton';
+// import category from "assets/json/category.json";
+// import DropdownButton from '../DropdownButton/DropdownButton';
 
 
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -35,7 +36,18 @@ const NavLinkBar = () => {
   const languages = useSelector(selectLanguages);
   const [isModalShown, setIsModalShown] = useState(false);
   const [isModalCatalogShown, setIsModalCatalogShown] = useState(false);
+  const [isChangeModalCatalog, setIsChangeModalCatalog] = useState(false);
 
+  
+  useEffect(() => {
+    directoryPath > 0
+      ? setIsChangeModalCatalog(true)
+      : setIsChangeModalCatalog(false);
+    
+    // console.log(directoryPath);
+  }, [directoryPath]);
+  
+  
   const onCloseModal = () => {
     setIsModalShown(false);
   };
@@ -52,38 +64,65 @@ const NavLinkBar = () => {
 
   const onOpenCatalogModal = () => {
     setIsModalCatalogShown(true);
+    dispatch(deleteAllDirectoryPath([]));
   };
 
   const clearingDirectoryPath = () => {
-    dispatch(addDirectoryPath([]));
-    // dispatch(deleteAllDirectoryPath(null));
+    dispatch(deleteAllDirectoryPath([]));
     setIsModalCatalogShown(false);
   };
 
-  const addDirectory = value => {
-    dispatch(addDirectoryPath(value));
-  };
+  // const addDirectory = value => {
+  //   dispatch(addDirectoryPath(value));
+  // };
 
-  const deleteDirectory = value => {
-    value.cat_id === directoryPath[directoryPath.length - 1].cat_id &&
-      dispatch(deleteDirectoryPath(value));
+  // const changeDirectory = value => {
+  //   dispatch(changeDirectoryPath(value));
+  // };
 
-    // console.log(directoryPath);
-  };
+  // const deleteDirectory = value => {
+  //   value.cat_id === directoryPath[directoryPath.length - 1].cat_id &&
+  //     dispatch(deleteDirectoryPath(value));
+
+  //   // console.log(directoryPath);
+  // };
 
   return (
     <>
       <DivNav>
-        {/* <DivCatalog onClick={onOpenCatalogModal}> */}
-        <DivCatalog onMouseEnter={(onOpenCatalogModal)}>
-          {/* <DivCatalog onMouseMove={onOpenCatalogModal} onMouseLeave={onCloseCatalogModal}> */}
-          <GiHamburgerMenu style={{ marginRight: '10px', fontSize: '24px' }} />
+        <div
+          onMouseEnter={onOpenCatalogModal}
+          onMouseLeave={clearingDirectoryPath}
+        >
           <div>
-            <Sup>{lang[languages].NavLinkBar_catalog1.toUpperCase()}</Sup>
+            <DivCatalog>
+              <GiHamburgerMenu
+                style={{ marginRight: '10px', fontSize: '24px' }}
+              />
+              <div>
+                <Sup>{lang[languages].NavLinkBar_catalog1.toUpperCase()}</Sup>
+              </div>
+            </DivCatalog>
+            {isModalCatalogShown &&
+              (directoryPath > 0 ? (
+                <UlCatalog>
+                  <CategorySelection parentId={0} />
+                  {/* {directoryPath > 0 && */}
+                  {/* {isChangeModalCatalog &&
+                directoryPath.map(item => (
+                  <CategorySelection parentId={item.cat_id} />
+                ))} */}
+                  {directoryPath.map(item => (
+                    <CategorySelection parentId={item.cat_id} />
+                  ))}
+                </UlCatalog>
+              ) : (
+                <UlCatalog>
+                  <CategorySelection parentId={0} />
+                </UlCatalog>
+              ))}
           </div>
-        </DivCatalog>
-
-        {/* <DropdownButton /> */}
+        </div>
 
         <NavContainer>
           <NavLinkStyle to="/">
@@ -117,44 +156,7 @@ const NavLinkBar = () => {
           </Span>
         </NavContainer>
       </DivNav>
-      {/* <ul>
-
-      </ul> */}
-      <div style={{ width: '20%' }} onMouseLeave={clearingDirectoryPath}>
-        {isModalCatalogShown && (
-          // category.length > 0 && (
-          <ul style={{ display: 'flex' }}>
-            {/* {directoryPath.length > 0 ? (
-              // {directoryPath ? (
-              <ul style={{ display: 'flex' }}>
-                {directoryPath.map((el, index) => (
-                  <li key={index}>
-                    <CategorySelection
-                      parentId={el.cat_parentId}
-                      // onMouseMove={() => addDirectory(el)}
-                      // // onMouseOver={() => handleMove()}
-                      // onMouseLeave={() => deleteDirectory(el)}
-                    />
-                  </li>
-                ))}
-              </ul>
-            ) : ( */}
-              <CategorySelection
-                parentId={0}
-                // onMouseMove={() => addDirectory(el)}
-                // onMouseLeave={() => deleteDirectory(el)}
-              />
-            {/* )} */}
-          </ul>
-          // )
-
-          // <CategorySelection />
-          // <CatalogModule modal={0} />}
-          // <CatalogModule onClose={!isModalCatalogShown} />
-        )}
-      </div>
       {isModalShown && <MessageModule onClose={onCloseModal} />}
-      {/* {isModalCatalogShown && <CatalogModule onClose={onCloseCatalogModal} />} */}
     </>
   );
 }

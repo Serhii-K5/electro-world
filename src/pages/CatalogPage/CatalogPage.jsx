@@ -6,11 +6,14 @@ import ProductCard from "components/ProductCard/ProductCard";
 import { selectProducts } from "redux/selectors";
 
 import {
+  Container,
   Ul,
   DivShift,
   DivPagination,
   DivPage,
 } from './CatalogPage.styled';
+
+import NavBar from 'components/NavBar/NavBar';
 
 // import PaginationBar from "components/PaginationBar/PaginationBar"
 
@@ -46,38 +49,67 @@ const CatalogCarsPage = () => {
   };
 
   return (
-    <div style={{display: 'flex', padding: '16px', maxWidth: '1440px', margin: '0 auto'}}>
-      <aside>
-        <p>fjslkj</p>
-        <p>gfjdfg</p>
-      </aside>
-      <section>        
-        {/* <FilterPanel data={products} onFilter={handleFilter} /> */}
-        {filteredData.length === 0 && products.length > 0 && !activeFilter && setFilteredData(products)}
-        {filteredData.length > 0 && (
-          <Ul>
-            {filteredData.map((item, index) => (            
-              // index > (activePage - 1) * 8 && index < activePage * 8 &&
-              index > (activePage - 1) * 8 - 1 && index < activePage * 8 &&
-                <li key={item.id}>
-                  <ProductCard card={item} />
-                </li>
-            ))}
-          </Ul>
-        )}
-        <DivPagination>
-          {activePage > 1 && <DivShift onClick={onClickDecrease}>{"<<"}</DivShift>}
-          {activePage === 1 && <DivPage style={{ backgroundColor: 'var(--bg-second-green)' }}>{activePage}</DivPage>}
-          {activePage > 2 && <div style={{width: '50px', textAlign: "center"}}>{"..."}</div>}
-          {activePage > 1 && <DivPage onClick={onClickDecrease}>{activePage - 1}</DivPage>}
-          {activePage > 1 && <DivPage style={{ backgroundColor: 'green' }}>{activePage}</DivPage>}
-          {filteredData.length / 8 > activePage && <DivPage onClick={onClickIncrease}>{activePage + 1}</DivPage>}
-          {filteredData.length / 8 > activePage + 1 && <div style={{width: '50px', textAlign: "center"}}>{"..."}</div>}
-          {filteredData.length / 8 > activePage  && <DivShift onClick={onClickIncrease}>{">>"}</DivShift>}
-        </DivPagination>
-        {/* <PaginationBar data={filteredData} page={activePage} /> */}
-      </section>
-    </div>
+    <>
+      <NavBar />
+      <Container>
+        <aside>
+          <p>fjslkj</p>
+          <p>gfjdfg</p>
+        </aside>
+        <section>
+          {/* <FilterPanel data={products} onFilter={handleFilter} /> */}
+          {filteredData.length === 0 &&
+            products.length > 0 &&
+            !activeFilter &&
+            setFilteredData(products)}
+          {filteredData.length > 0 && (
+            <Ul>
+              {filteredData.map(
+                (item, index) =>
+                  // index > (activePage - 1) * 8 && index < activePage * 8 &&
+                  index > (activePage - 1) * 8 - 1 &&
+                  index < activePage * 8 && (
+                    <li key={item.id}>
+                      <ProductCard card={item} />
+                    </li>
+                  )
+              )}
+            </Ul>
+          )}
+          <DivPagination>
+            {activePage > 1 && (
+              <DivShift onClick={onClickDecrease}>{'<<'}</DivShift>
+            )}
+            {activePage === 1 && (
+              <DivPage style={{ backgroundColor: 'var(--bg-second-green)' }}>
+                {activePage}
+              </DivPage>
+            )}
+            {activePage > 2 && (
+              <div style={{ width: '50px', textAlign: 'center' }}>{'...'}</div>
+            )}
+            {activePage > 1 && (
+              <DivPage onClick={onClickDecrease}>{activePage - 1}</DivPage>
+            )}
+            {activePage > 1 && (
+              <DivPage style={{ backgroundColor: 'green' }}>
+                {activePage}
+              </DivPage>
+            )}
+            {filteredData.length / 8 > activePage && (
+              <DivPage onClick={onClickIncrease}>{activePage + 1}</DivPage>
+            )}
+            {filteredData.length / 8 > activePage + 1 && (
+              <div style={{ width: '50px', textAlign: 'center' }}>{'...'}</div>
+            )}
+            {filteredData.length / 8 > activePage && (
+              <DivShift onClick={onClickIncrease}>{'>>'}</DivShift>
+            )}
+          </DivPagination>
+          {/* <PaginationBar data={filteredData} page={activePage} /> */}
+        </section>
+      </Container>
+    </>
   );
 };
 

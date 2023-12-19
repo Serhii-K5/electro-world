@@ -11,21 +11,34 @@ export const DivNav = styled.div`
   max-width: 1440px;
   column-gap: 10px;
   align-items: center;
+  box-shadow: 0 0 0.75rem;
 `;
 
 export const DivCatalog = styled.div`
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  // padding-top: 10px;
-  // justify-content: center;
-  // gap: 5px;
-  // margin-right: auto;
+display: flex;
+align-items: center;
+cursor: pointer;
+// padding-top: 10px;
+// justify-content: center;
+// gap: 5px;
+// margin-right: auto;
 `;
 
 export const Sup = styled.sup`
-  font-size: 22px;
-  font-weight: 700;
+font-size: 22px;
+font-weight: 700;
+`;
+
+export const UlCatalog = styled.ul`
+  display: flex;
+  max-width: 20%;
+  position: absolute;
+  z-index: 100;
+  background-color: var(--bg-primary);
+  // border: 1px solid var(--text-color-grey);
+  // box-shadow: 3px 3px 3px var(--text-color-grey);
+  box-shadow: 0px 100vw 0px 100vw var(--bg-overlay);
+  // filter: drop-shadow(0 0 0.75rem gray);
 `;
 
 export const Img = styled.img`

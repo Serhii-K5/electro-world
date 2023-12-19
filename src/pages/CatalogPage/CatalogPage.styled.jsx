@@ -2,6 +2,15 @@ import styled from 'styled-components';
 
 const transition = `250ms linear`;
 
+export const Container = styled.div`
+  display: flex;
+  padding: 16px;
+  max-width: 1440px;
+  margin: 0 auto;
+  background-color: #f6f8fd;
+  box-shadow: 0 0 0.75rem;
+`;
+
 export const Ul = styled.ul`
   display: flex;
   margin: 0 auto;

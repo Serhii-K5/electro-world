@@ -6,8 +6,8 @@ export const selectLanguages = state => state.languages.language;
 
 export const selectDirectoryPath = state => state.directoryPath.items;
 
-export const selectCatalog = state => state.catalog.items;
-export const selectSelectedElement = state => state.selectedElement.items;
+// export const selectCatalog = state => state.catalog.items;
+// export const selectSelectedElement = state => state.selectedElement.items;
 
 // export const selectOrdersAll = (state) => state.ordersAll.qualitity;
 

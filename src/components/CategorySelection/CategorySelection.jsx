@@ -1,48 +1,63 @@
 // import { nanoid } from 'nanoid';
 import category from 'assets/json/category.json';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addDirectoryPath, deleteDirectoryPath } from 'redux/slice/directoryPathSlice';
+import { addDirectoryPath, changeDirectoryPath, deleteDirectoryPath, deleteAllDirectoryPath } from 'redux/slice/directoryPathSlice';
+import { selectDirectoryPath} from 'redux/selectors';
 
+import { Li } from "./CategorySelection.styled";
 
 const CategorySelection = ({ parentId, handleMove }) => {
   const dispatch = useDispatch();
   const [isModalShown, setIsModalShown] = useState(false);
+  const directoryPath = useSelector(selectDirectoryPath);
 
-  // const categoryAdd = id => {
+   // const categoryAdd = id => {
   //   <CategorySelection parentId={id} />;
   // };
 
-  const handleMouseMove = () => {
-    setIsModalShown(true);
-  };
+  // const handleMouseMove = () => {
+  //   setIsModalShown(true);
+  // };
 
-  const handleMouseOut = () => {
-    setIsModalShown(false);
-  };
+  // const handleMouseOut = () => {
+  //   setIsModalShown(false);
+  // };
 
-  const categoryAdd = value => {
-    dispatch(addDirectoryPath(value));
+  // const categoryAdd = value => {
+  //   dispatch(addDirectoryPath(value));
+  // };
+  
+  const categoryChange = value => {
+    dispatch(changeDirectoryPath(value));
+
   };
 
 
   return (
     <ul>
-      {!isModalShown && (
-        {},
+      {/* {!isModalShown &&
         category.map(
-          (el, index) =>
+          // (el, index) =>
+          el =>
             el.cat_parentId === parentId && (
-              <li key={index} onMouseEnter={() => categoryAdd(el)}>
+              <Li key={el.cat_id} onMouseEnter={() => categoryChange(el)}> */}
                 {/* <li key={index} > */}
-                {el.cat_name} {' >'}
+                {/* {el.cat_name} {' >'} */}
                 {/* {el.cat_name} {el.cat_parentId > parentId && ' >'} */}
                 {/* {el.cat_name} {el.cat_parentId > parentId && ' >'} */}
                 {/* {el.cat_parentId === parentId && el.cat_name && ' >'} */}
                 {/* {console.log(el.cat_parentId === parentId)} */}
-              </li>
+              {/* </Li>
             )
-        ))}
+        )} */}
+      {category.map(el =>
+        el.cat_parentId === parentId && (
+          <Li key={el.cat_id} onMouseEnter={() => categoryChange(el)}>
+            {el.cat_name} {' >'}
+          </Li>
+        )
+      )}
     </ul>
   );
 };

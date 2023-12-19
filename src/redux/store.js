@@ -14,12 +14,10 @@ import { productsReducer } from './slice/productSlice';
 import { orderReducer } from './slice/orderSlice';
 import { languagesReducer } from './slice/languageSlice';
 import { directoryPathReducer } from './slice/directoryPathSlice';
-import { catalogReducer } from './slice/catalogSlice';
-import { selectedElementReducer } from './slice/selectedElementSlice';
+// import { catalogReducer } from './slice/catalogSlice';
+// import { selectedElementReducer } from './slice/selectedElementSlice';
 // import { ordersAllReducer } from './slice/ordersAllSlice';
 // import formReducer from './sliceForm';
-
-import rootReducer from './rootReducer';
 
 const ordersPersistConfig = {
   key: 'orders',
@@ -36,15 +34,15 @@ const directoryPathPersistConfig = {
   storage,
 };
 
-const catalogReducerConfig = {
-  key: 'catalog',
-  storage,
-};
+// const catalogReducerConfig = {
+//   key: 'catalog',
+//   storage,
+// };
 
-const selectedElementConfig = {
-  key: 'selectedElement',
-  storage,
-};
+// const selectedElementConfig = {
+//   key: 'selectedElement',
+//   storage,
+// };
 
 export const store = configureStore({
   reducer: {
@@ -57,8 +55,8 @@ export const store = configureStore({
     ),
 
     // path: persistReducer(ordersPersistConfig, orderReducer),
-    catalog: persistReducer(catalogReducerConfig, catalogReducer),
-    selectedElement: persistReducer(selectedElementConfig, selectedElementReducer),
+    // catalog: persistReducer(catalogReducerConfig, catalogReducer),
+    // selectedElement: persistReducer(selectedElementConfig, selectedElementReducer),
     // rootReducer,
     // ordersAll: persistReducer(numberPurchasesPersistConfig, ordersAllReducer),
   },
