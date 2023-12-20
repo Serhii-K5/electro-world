@@ -17,22 +17,12 @@ const sliceDirectoryPath = createSlice({
       // state.items.push(action.payload);
     },
     changeDirectoryPath(state, action) {
-      // state.items.splice(state.items.length - 1, 1, action.payload);
       const index = state.items.findIndex(item =>
-          item.cat_id === action.payload.cat_id);
+        item.cat_id === action.payload.cat_parentId);
       
-      // state.items.splice(index, 1, action.payload);
-
-      // // state.items > 0 && state.items.splice(items.length, 1);
-      // // state.items.push(action.payload);
-      // // const index = state.items ? state.items.length : 0;
-      // const index = state.items.length - 1;
-      index < 0
-        ? state.items.push(action.payload)
-        : state.items.splice(index, 1, action.payload);
-      // state.items.splice(index, 1, action.payload);
-
-      // console.log(state.items);
+      index < 0 ? (state.items = []) : state.items.splice(index + 1);
+      
+      state.items.push(action.payload);
     },
     deleteDirectoryPath(state, action) {
       const index = state.items.findIndex(item => item.id === action.payload);

@@ -54,10 +54,6 @@ export const store = configureStore({
       directoryPathReducer
     ),
 
-    // path: persistReducer(ordersPersistConfig, orderReducer),
-    // catalog: persistReducer(catalogReducerConfig, catalogReducer),
-    // selectedElement: persistReducer(selectedElementConfig, selectedElementReducer),
-    // rootReducer,
     // ordersAll: persistReducer(numberPurchasesPersistConfig, ordersAllReducer),
   },
   middleware: getDefaultMiddleware =>

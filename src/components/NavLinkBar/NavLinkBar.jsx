@@ -106,19 +106,15 @@ const NavLinkBar = () => {
             </DivCatalog>
             {isModalCatalogShown && (
               <UlCatalog>
-                <CategorySelection parentId={0} />
+                <li key={0} style={{ border: '1px solid grey' }}>
+                  <CategorySelection parentId={0} />
+                </li>
                 {directoryPath.map((item, index) => (
-                  <CategorySelection parentId={item.cat_id}/>
+                  <li key={index + 1} style={{ border: '1px solid grey' }}>
+                    <CategorySelection parentId={item.cat_id} />
+                  </li>
                 ))}
               </UlCatalog>
-              // <UlCatalog style={{ width: '100vw' }}>
-              //   <CategorySelection parentId={0} />
-              //   {directoryPath.map((item, index) => (
-              //     <ul>
-              //       <CategorySelection parentId={item.cat_id} />
-              //     </ul>
-              //   ))}
-              // </UlCatalog>
             )}
           </div>
         </div>
