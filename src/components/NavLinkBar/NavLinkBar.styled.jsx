@@ -11,7 +11,7 @@ export const DivNav = styled.div`
   max-width: 1440px;
   column-gap: 10px;
   align-items: center;
-  box-shadow: 0 0 0.75rem;
+  // box-shadow: 0 0 0.75rem;
 `;
 
 export const DivCatalog = styled.div`

@@ -12,7 +12,7 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <BrowserRouter basename="/electro-world-old">
+        <BrowserRouter basename="/electro-world">
           <App />
         </BrowserRouter>
       </PersistGate>

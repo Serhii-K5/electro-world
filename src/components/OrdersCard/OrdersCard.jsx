@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteOrders, updateOrders, deleteAllOrders } from "redux/slice/orderSlice";
+// import { deleteOrders, updateOrders, deleteAllOrders } from "redux/slice/orderSlice";
+import { deleteOrders, updateOrders } from "redux/slice/orderSlice";
 import { selectOrders } from "redux/selectors";
 // import { selectOrdersAll } from "redux/selectors";
 import CardModal from "components/ProductModal/ProductModal";
@@ -60,6 +61,7 @@ const Product = ({ card }) => {
   
   const onCloseModal = () => {
     setIsModalShown(false);
+    setIsCheckoutModalShown(false);
   };
   
   const onOpenModal = () => {
@@ -113,9 +115,9 @@ const Product = ({ card }) => {
     setSum(card.price * (quantityGoods + 1));
   };
 
-  const deletedOrders = () => {
-    dispatch(deleteAllOrders([]));
-  }
+  // const deletedOrders = () => {
+  //   dispatch(deleteAllOrders([]));
+  // }
  
   return (
       <Container>

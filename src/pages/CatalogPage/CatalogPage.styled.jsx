@@ -1,14 +1,16 @@
 import styled from 'styled-components';
-
-const transition = `250ms linear`;
+import { transition } from 'components/ConstComponentsStyle/ConstComponentsStyle.styled';
+// const transition = `250ms linear`;
 
 export const Container = styled.div`
   display: flex;
+  margin: 0 auto;
   padding: 16px;
   max-width: 1440px;
-  margin: 0 auto;
-  background-color: #f6f8fd;
-  box-shadow: 0 0 0.75rem;
+  min-height: 87vh;
+
+  // background-color: #f6f8fd;
+  // box-shadow: 0 0 0.75rem;
 `;
 
 export const Ul = styled.ul`

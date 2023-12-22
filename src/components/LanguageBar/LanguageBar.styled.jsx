@@ -1,13 +1,5 @@
 import styled from "styled-components";
-
-const transition = `250ms linear`;
-
-export const Div = styled.div `
-  display: inline;
-  padding: 5px;
-  border: 1px solid var(--text-color-grey);
-  font-size: 16px;  
-`
+import { transition } from 'components/ConstComponentsStyle/ConstComponentsStyle.styled';
 
 export const Ul = styled.ul `
   margin: 0 auto;

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import { transition } from 'components/ConstComponentsStyle/ConstComponentsStyle.styled';
 
 // import BgLogoImg from "assets/images/logo.png";
 
@@ -13,10 +14,9 @@ import { NavLink } from "react-router-dom";
 //   background-size: 100%;
 // `;
 
-const transition = `250ms linear`;
+// const transition = `250ms linear`;
 
 export const Div = styled.div`
-  padding: 7px 16px;
   background-color: transparent;
   box-shadow: 0px 4px 4px rgba(0,0,0,0.5);
   background: linear-gradient(to top, var(--bg-primary-green), var(--bg-second-green), var(--bg-second-green), var(--bg-primary-green)); 
@@ -25,6 +25,7 @@ export const Div = styled.div`
 export const Header = styled.div`
   display: flex;
   margin: 0 auto;
+  padding: 7px 16px;
   gap: 20px;
   max-width: 1440px;
   align-items: center;

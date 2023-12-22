@@ -1,27 +1,35 @@
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+// import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+// import { selectDirectoryPath, selectCategories } from 'redux/selectors';
 import { selectDirectoryPath } from 'redux/selectors';
+import { Link } from 'react-router-dom';
 
-import { VodafoneBg, Span } from './NavBar.styled';
-import { useEffect } from 'react';
+import { Ul } from "./NavBar.styled";
 
 const NavBar = () => {
-  const [isPathVisible, setPathVisible] = useState(false);
+  // const [isPathVisible, setPathVisible] = useState(false);
   const directoryPath = useSelector(selectDirectoryPath);  
-  useEffect(() => {
-    directoryPath > 0 ? setPathVisible(true) : setPathVisible(false);
-  }, [directoryPath]);
+  // const changeCategory = useSelector(selectCategories);
+  
+  // useEffect(() => {
+  //   directoryPath > 0 ? setPathVisible(true) : setPathVisible(false);
+  // }, [directoryPath]);
 
   return (
-    <ul style={{ display: 'flex' }}>
-      <li>Iнтернет-магазин Electro world</li>
-      {isPathVisible &&
-        directoryPath.map(item => (
-          <li>
-            {item.cat_name} {' >'}{' '}
+    <>
+      <Ul>
+        <li key={0}>
+          <Link to="/">{'Iнтернет-магазин Electro world > '}</Link>
+        </li>
+        {directoryPath.map((item, index) => (
+          <li key={index + 1}>
+            <Link to="/catalog">
+              {item.cat_name} {' >'}
+            </Link>
           </li>
         ))}
-    </ul>
+      </Ul>
+    </>
   );
 };
 

@@ -12,14 +12,16 @@ import {
   Span,
 } from "./NavLinkBar.styled";
 
-import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { selectDirectoryPath, selectLanguages } from 'redux/selectors';
 // import { selectOrders } from "redux/selectors";
-import { addDirectoryPath, changeDirectoryPath, deleteDirectoryPath, deleteAllDirectoryPath } from 'redux/slice/directoryPathSlice';
+// import { addDirectoryPath, changeDirectoryPath, deleteDirectoryPath, deleteAllDirectoryPath } from 'redux/slice/directoryPathSlice';
+// import { deleteAllDirectoryPath } from 'redux/slice/directoryPathSlice';
 
 import MessageModule from "components/MessageModule/MessageModule";
 // import CatalogModule from 'components/CatalogModule/CatalogModule';
-import CategorySelection from 'components/CategorySelection/CategorySelection';
+import CategoryDropdownList from 'components/CategoryDropdownList/CategoryDropdownList';
 import lang from "assets/json/language.json";
 // import category from "assets/json/category.json";
 // import DropdownButton from '../DropdownButton/DropdownButton';
@@ -28,65 +30,52 @@ import lang from "assets/json/language.json";
 import { GiHamburgerMenu } from "react-icons/gi";
 import electricity from "assets/images/svg/electricity.svg";
 
+// import { selectCategories } from 'redux/selectors';
+// import { changeCategory } from 'redux/slice/categorySlice';
+
 
 const NavLinkBar = () => {
-  // const orderProducts = useSelector(selectOrders); 
-  const dispatch = useDispatch();
-  const directoryPath = useSelector(selectDirectoryPath); 
+  // const dispatch = useDispatch();
+  const directoryPath = useSelector(selectDirectoryPath);
   const languages = useSelector(selectLanguages);
   const [isModalShown, setIsModalShown] = useState(false);
   const [isModalCatalogShown, setIsModalCatalogShown] = useState(false);
+  const [isModalCatalogClick, setIsModalCatalogClick] = useState(false);
   const [isChangeModalCatalog, setIsChangeModalCatalog] = useState(false);
 
-  
+  // const category = useSelector(selectCategories);
+
   useEffect(() => {
     directoryPath > 0
       ? setIsChangeModalCatalog(true)
       : setIsChangeModalCatalog(false);
-    
-    // console.log(directoryPath);
   }, [directoryPath]);
-  
-  
+
   const onCloseModal = () => {
     setIsModalShown(false);
+    setIsModalCatalogClick(false);
   };
 
   const onOpenModal = () => {
     setIsModalShown(true);
+    console.log(isChangeModalCatalog);
   };
-
-  // const onCloseCatalogModal = () => {
-  //   setIsModalCatalogShown(false);
-  //   console.log(directoryPath);
-  //   dispatch(deleteDirectoryPath(0));    
-  // };
 
   const onOpenCatalogModal = () => {
     setIsModalCatalogShown(true);
-    // dispatch(deleteAllDirectoryPath([]));
   };
 
   const clearingDirectoryPath = () => {
-    // dispatch(deleteAllDirectoryPath([]));
-    dispatch(deleteAllDirectoryPath());
+    // dispatch(deleteAllDirectoryPath());
     setIsModalCatalogShown(false);
+    setIsModalCatalogClick(false);
   };
 
-  // const addDirectory = value => {
-  //   dispatch(addDirectoryPath(value));
-  // };
+  const handleClick = () => {
+    setIsModalCatalogClick(true);
+  };
 
-  // const changeDirectory = value => {
-  //   dispatch(changeDirectoryPath(value));
-  // };
-
-  // const deleteDirectory = value => {
-  //   value.cat_id === directoryPath[directoryPath.length - 1].cat_id &&
-  //     dispatch(deleteDirectoryPath(value));
-
-  //   // console.log(directoryPath);
-  // };
+  const st = { marginRight: '10px', fontSize: '24px' };
 
   return (
     <>
@@ -98,20 +87,21 @@ const NavLinkBar = () => {
           <div>
             <DivCatalog>
               <GiHamburgerMenu
-                style={{ marginRight: '10px', fontSize: '24px' }}
+                // style={{ marginRight: '10px', fontSize: '24px' }}
+                style={st}
               />
               <div>
                 <Sup>{lang[languages].NavLinkBar_catalog1.toUpperCase()}</Sup>
               </div>
             </DivCatalog>
-            {isModalCatalogShown && (
-              <UlCatalog>
+            {isModalCatalogShown && !isModalCatalogClick &&(
+              <UlCatalog onClick={handleClick}>
                 <li key={0} style={{ border: '1px solid grey' }}>
-                  <CategorySelection parentId={0} />
+                  <CategoryDropdownList parentId={0} />
                 </li>
                 {directoryPath.map((item, index) => (
                   <li key={index + 1} style={{ border: '1px solid grey' }}>
-                    <CategorySelection parentId={item.cat_id} />
+                    <CategoryDropdownList parentId={item.cat_id} />
                   </li>
                 ))}
               </UlCatalog>

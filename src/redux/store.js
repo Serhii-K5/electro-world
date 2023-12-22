@@ -14,6 +14,7 @@ import { productsReducer } from './slice/productSlice';
 import { orderReducer } from './slice/orderSlice';
 import { languagesReducer } from './slice/languageSlice';
 import { directoryPathReducer } from './slice/directoryPathSlice';
+import { categoriesReducer } from './slice/categorySlice';
 // import { catalogReducer } from './slice/catalogSlice';
 // import { selectedElementReducer } from './slice/selectedElementSlice';
 // import { ordersAllReducer } from './slice/ordersAllSlice';
@@ -34,6 +35,11 @@ const directoryPathPersistConfig = {
   storage,
 };
 
+const categoriesPersistConfig = {
+  key: 'categories',
+  storage,
+};
+
 // const catalogReducerConfig = {
 //   key: 'catalog',
 //   storage,
@@ -49,11 +55,8 @@ export const store = configureStore({
     products: productsReducer,
     orders: persistReducer(ordersPersistConfig, orderReducer),
     languages: persistReducer(languagesPersistConfig, languagesReducer),
-    directoryPath: persistReducer(
-      directoryPathPersistConfig,
-      directoryPathReducer
-    ),
-
+    directoryPath: persistReducer(directoryPathPersistConfig, directoryPathReducer),
+    categories: persistReducer(categoriesPersistConfig, categoriesReducer),
     // ordersAll: persistReducer(numberPurchasesPersistConfig, ordersAllReducer),
   },
   middleware: getDefaultMiddleware =>

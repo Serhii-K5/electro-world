@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { NavLink } from "react-router-dom";
+import { transition } from 'components/ConstComponentsStyle/ConstComponentsStyle.styled';
 
 export const Aside = styled.aside`
   padding-left: 0.5rem;

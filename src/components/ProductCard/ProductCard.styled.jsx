@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { transition } from 'components/ConstComponentsStyle/ConstComponentsStyle.styled';
 
-const transition = `150ms linear`;
+// const transition = `150ms linear`;
 
 export const Container = styled.div`
   position: relative;
@@ -64,7 +65,7 @@ export const DivHov = styled.div`
   &:focus {
     width: 555px;
     height: 350px;
-    z-index: 100;
+    z-index: 70;
     filter: drop-shadow(0 0 0.75rem gray);
    }
 `;
@@ -185,8 +186,8 @@ export const Memo = styled.p`
   font-weight: 400;
   line-height: 1.5;
   overflow: hidden;
-  whiteSpace: wrap;
-  textOverflow: ellipsis;
+  white-space: wrap;
+  text-overflow: ellipsis;
 `;
 
 export const Ul = styled.ul`

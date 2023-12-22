@@ -6,6 +6,8 @@ export const selectLanguages = state => state.languages.language;
 
 export const selectDirectoryPath = state => state.directoryPath.items;
 
+export const selectCategories = state => state.categories.category;
+
 // export const selectOrdersAll = (state) => state.ordersAll.qualitity;
 
 // export const selectIsLoading = (state) => state.adverts.isLoading;

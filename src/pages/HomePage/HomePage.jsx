@@ -34,6 +34,8 @@
 
 // // import brandList from "../../assets/jsons/makes.json";
 
+// import { Footer } from '../../components/Footer/Footer';
+
 const HomePage = () => {
   // const dispatch = useDispatch();
   // const adverts = useSelector(selectAdverts);
@@ -66,47 +68,7 @@ const HomePage = () => {
   return (
     <>
       <p>Home page</p>
-      {/* <CarsSlider />
-      <Container>
-        <div style={{ display: 'flex' }}>
-          <Div>
-            <Section>
-              <Hero />
-            </Section>
-
-            <Section>
-              <H2 id="section1">About Us</H2>
-                {isAboutUsShown ? <AboutUs /> : <AboutUsLight />}
-                <Button onClick={onOpenAboutUs}> {isAboutUsShown ? "... Collapse section" : "To learn more ..." }</Button>
-            </Section>
-          </Div>
-          <AsideBar />
-        </div>
-
-        <Section>
-          <H2 id="section2">Our fleet</H2>
-          {adverts.length > 0 ? (
-            <Ul>{handleCardsRandom()}</Ul>
-          ) : (
-            <div style={{ display: 'flex' }}>
-              <Img src={car1} alt="Car rent 1"></Img>
-              <Img src={car2} alt="Car rent 2"></Img>
-              <Img src={car3} alt="Car rent 3"></Img>
-              <Img src={car4} alt="Car rent 4"></Img>
-              <Img src={car5} alt="Car rent 5"></Img>
-            </div>
-          )}
-
-          <p>
-            <NavLinkStyle to="/catalog"> See more... </NavLinkStyle>
-          </p>
-        </Section>
-
-        <Section>
-          <OurOffice />
-        </Section>
-      </Container>
-      <Footer /> */}
+      {/* <Footer /> */}
     </>
   );
 };

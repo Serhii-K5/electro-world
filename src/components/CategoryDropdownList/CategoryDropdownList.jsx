@@ -3,21 +3,22 @@ import { useDispatch} from 'react-redux';
 import { changeDirectoryPath } from 'redux/slice/directoryPathSlice';
 import { Link } from 'react-router-dom';
 
-import { Li } from "./CategorySelection.styled";
+import { Li } from "./CategoryDropdownList.styled";
 // import CategoryPage from 'pages/CategoryPage/CategoryPage';
 import { changeCategory } from 'redux/slice/categorySlice';
 
-const CategorySelection = ({ parentId }) => {
+const CategoryDropdownList = ({ parentId, onCloseModal}) => {
   const dispatch = useDispatch();
   
   const categoryChange = value => {
     dispatch(changeDirectoryPath(value));
-    dispatch(changeCategory(value.cat_parentId));
+    dispatch(changeCategory(value.cat_id));
   };
 
-  // const onClick = value => {
-  //   dispatch(changeDirectoryPath(value));
-  //   dispatch(changeCategory(value.cat_parentId));
+  // const handleClick = event => {
+  //   if (event.currentTarget === event.target) {
+  //     onCloseModal();
+  //   }
   // };
 
   
@@ -30,7 +31,7 @@ const CategorySelection = ({ parentId }) => {
               key={index}
               className={parentId > 0 && 'parent'}
               onMouseEnter={() => categoryChange(el)}
-              // onClick={() => onClick(el)}
+              // onClick={handleClick}
             >
               <Link to="/categories">
                 {el.cat_name} {' >'}
@@ -42,4 +43,4 @@ const CategorySelection = ({ parentId }) => {
   );
 };
 
-export default CategorySelection;
+export default CategoryDropdownList;
