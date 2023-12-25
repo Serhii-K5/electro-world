@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { fetchProducts } from "redux/operations";
 
 import ProductCard from "components/ProductCard/ProductCard";
+// import { selectProducts, selectSearchParams } from "redux/selectors";
 import { selectProducts } from "redux/selectors";
 
 import {
@@ -19,12 +20,16 @@ import NavBar from 'components/NavBar/NavBar';
 
 // import FilterPanel from 'components/FilterPanel/FilterPanel';
 
+// import PriceRange from 'components/PriceRange/PriceRange';
+import PriceRange1 from 'components/PriceRange1/PriceRange1';
+
 
 import products1 from "../../assets/json/products.json";
 
 const CatalogCarsPage = () => {
   const dispatch = useDispatch();
   const products = useSelector(selectProducts);
+  // const searchParams = useSelector(selectSearchParams);
   const [filteredData, setFilteredData] = useState(products.length > 0 ? products : products1);
 
   const [activePage, setActivePage] = useState(1);
@@ -50,12 +55,14 @@ const CatalogCarsPage = () => {
   };
 
   return (
-    <div style={{backgroundColor: '#f6f8fd'}}>
+    <div style={{ backgroundColor: '#f6f8fd' }}>
       <NavBar />
       <Container>
         <aside>
           <p>Фильтры</p>
           <p>Панель фильтров</p>
+          {/* <PriceRange /> */}
+          <PriceRange1 />
         </aside>
         <section>
           {/* <FilterPanel data={products} onFilter={handleFilter} /> */}

@@ -5,8 +5,32 @@
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Elektro-world online store</title>
+    <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
   </head>
   <body>
     <div id="root"></div>
+    <!-- <script>
+        {$(function() {
+          var minPriceInput = $("#min-price");
+          var maxPriceInput = $("#max-price");
+
+          $("#price-range").slider({
+            range: true,
+            min: 0,
+            max: 1000, // Задайте максимальное значение цены
+            values: [0, 1000], // Установите начальные значения
+            slide: function(event, ui) {
+              minPriceInput.val(ui.values[0]);
+              maxPriceInput.val(ui.values[1]);
+            }
+          });
+
+          // Инициализация значений по умолчанию
+          minPriceInput.val($("#price-range").slider("values", 0));
+          maxPriceInput.val($("#price-range").slider("values", 1));
+        })}
+      </script> -->
   </body>
 </html>

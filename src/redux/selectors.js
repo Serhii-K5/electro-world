@@ -8,6 +8,8 @@ export const selectDirectoryPath = state => state.directoryPath.items;
 
 export const selectCategories = state => state.categories.category;
 
+export const selectSearchParams = state => state.searchParams.parameter;
+
 // export const selectOrdersAll = (state) => state.ordersAll.qualitity;
 
 // export const selectIsLoading = (state) => state.adverts.isLoading;
