@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 // import { NavLink } from "react-router-dom";
 // import BgImg from "assets/images/auto/cars-rent.jpg";
-import { transition } from 'components/ConstComponentsStyle/ConstComponentsStyle.styled';
+// import { transition } from 'components/ConstComponentsStyle/ConstComponentsStyle.styled';
 
 // const transition = `250ms linear`;
 

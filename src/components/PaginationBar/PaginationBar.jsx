@@ -6,7 +6,7 @@ import {
 
 const PaginationBar = (data, page) => {
   const filteredData = data;
-  const activePage = page;
+  let activePage = page;
   
   const onClickIncrease = () => {
     // filteredData && activePage < filteredData.length / 8 && setActivePage(activePage + 1);

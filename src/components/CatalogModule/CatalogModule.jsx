@@ -1,13 +1,14 @@
-import { useEffect, useState } from "react";
-import {
-  Overlay,
-  ModalSelect,
-  CloseBtn,
-} from 'components/ConstComponentsStyle/ConstComponentsStyle.styled';
+// import { useEffect, useState } from "react";
+import { useEffect } from "react";
+// import {
+//   Overlay,
+//   ModalSelect,
+//   CloseBtn,
+// } from 'components/ConstComponentsStyle/ConstComponentsStyle.styled';
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectDirectoryPath } from "redux/selectors";
-import cross from "assets/images/svg/cross.svg";
+// import cross from "assets/images/svg/cross.svg";
 import category from 'assets/json/category.json';
 import CategorySelection from 'components/CategorySelection/CategorySelection';
 import { addDirectoryPath, deleteDirectoryPath } from 'redux/slice/directoryPathSlice';
@@ -99,7 +100,8 @@ const CatalogModule = ({ onClose }) => {
       {category.length > 0 && (
         <ul style={{ display: 'flex' }}>
           {/* {directoryPath.length > 0 ? ( */}
-          {directoryPath ? (
+          {/* {directoryPath ? ( */}
+          {directoryPath && (
             <ul style={{ display: 'flex' }}>
               {directoryPath.map((el, index) => (
                 <li key={index}>
@@ -112,13 +114,14 @@ const CatalogModule = ({ onClose }) => {
                 </li>
               ))}
             </ul>
-          ) : (
+          )}
+          {/* ) : (
             <CategorySelection
               parentId={0}
               onMouseMove={() => addDirectory(el)}
               onMouseLeave={() => deleteDirectory(el)}
             />
-          )}
+          )} */}
         </ul>
       )}
     </>

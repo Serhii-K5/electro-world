@@ -9,7 +9,7 @@ import category from 'assets/json/category.json';
 
 const DropdownButton = () => {
   const dispatch = useDispatch();
-  const catalog = useSelector((state) => state.catalog);
+  // const catalog = useSelector((state) => state.catalog);
   const selectedElement = useSelector((state) => state.selectedElement);
 
   const [isDropdownVisible, setDropdownVisible] = useState(false);
