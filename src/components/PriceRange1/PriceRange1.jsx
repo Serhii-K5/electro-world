@@ -92,6 +92,8 @@ const PriceRange1 = () => {
       setInputValue2(Math.round(min + (max - min) / 100 * curentPosition2)); 
       setCurentPositionLeft(rangeWidth * curentPosition1 / 100);
       setCurentPositionWidth(rangeWidth * curentPosition2 / 100);
+      setMaxPrice(max);
+      setMinPrice(min);
     };
 
     findMinMaxPrice();
@@ -121,13 +123,21 @@ const PriceRange1 = () => {
   };
 
   const handleChange1 = e => {
-    var x = e.clientX;
-    // var y = e.clientY;
+    const result = Math.round(rangePriceWidth * e.target.value / maxPrice);
+    setCurentPositionLeft(result);
+    setCurentPositionWidth((rangePriceWidth * (1-(result + curentPosition2 / 100))));
+    
+    
+    // setInputValue1(Math.round(min + ((max - min) / 100) * curentPosition1));
+    // setInputValue2(Math.round(min + ((max - min) / 100) * curentPosition2));
 
-    e.target.style.left = x - e.target.clientWidth / 2 + 'px';
-    // movableElement.style.top = y - movableElement.clientHeight / 2 + 'px';
+    // var x = e.clientX;
+    // // var y = e.clientY;
 
-    // coordinatesDisplay.textContent = '(' + x + ', ' + y + ')';
+    // e.target.style.left = x - e.target.clientWidth / 2 + 'px';
+    // // movableElement.style.top = y - movableElement.clientHeight / 2 + 'px';
+
+    // // coordinatesDisplay.textContent = '(' + x + ', ' + y + ')';
   };
 
   const handleChange2 = e => {
@@ -174,6 +184,7 @@ const PriceRange1 = () => {
           }}
           value={inputValue1}
           onChange={handleChange1}
+
         />
         <span>{' до '}</span>
         <input
@@ -255,7 +266,7 @@ const PriceRange1 = () => {
               border: '2px solid blue',
               boxShadow: '0 0 5px blue',
             }}
-            onMouseDown={handleMoveMin}
+            // onMouseDown={handleMoveMin}
           ></div>
           <div
             id="max-price"
@@ -272,7 +283,7 @@ const PriceRange1 = () => {
               border: '2px solid blue',
               boxShadow: '0 0 5px blue',
             }}
-            onMouseDown={handleMoveMax}
+            // onMouseDown={handleMoveMax}
           ></div>
         </div>
       </div>
