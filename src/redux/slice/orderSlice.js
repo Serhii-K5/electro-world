@@ -14,7 +14,7 @@ const sliceOrder = createSlice({
       state.items.splice(index, 1);
     },
     updateOrders(state, action) {
-      console.log(action.payload);
+      // console.log(action.payload);
 
       const index = state.items.findIndex(item => item.id === action.payload.id);
       state.items.splice(index, 1, action.payload);

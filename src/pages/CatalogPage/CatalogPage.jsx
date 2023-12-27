@@ -4,7 +4,8 @@ import { fetchProducts } from "redux/operations";
 
 import ProductCard from "components/ProductCard/ProductCard";
 // import { selectProducts, selectSearchParams } from "redux/selectors";
-import { selectProducts } from "redux/selectors";
+import { selectProducts, selectFilteredProducts } from 'redux/selectors';
+// import { changefilteredProducts } from 'redux/slice/filteredProductsSlice';
 
 import {
   Container,
@@ -29,15 +30,22 @@ import products1 from "../../assets/json/products.json";
 const CatalogCarsPage = () => {
   const dispatch = useDispatch();
   const products = useSelector(selectProducts);
+  const filteredProducts = useSelector(selectFilteredProducts);
   // const searchParams = useSelector(selectSearchParams);
-  const [filteredData, setFilteredData] = useState(products.length > 0 ? products : products1);
+  const [filteredData, setFilteredData] = useState(
+    filteredProducts > 0 ? filteredProducts : products.length > 0 ? products : products1
+  );
 
   const [activePage, setActivePage] = useState(1);
   // const [activeFilter, setActiveFilter] = useState(false);
-
   
   useEffect(() => {
     dispatch(fetchProducts());
+    // setFilteredData(filteredProducts);
+    // setFilteredData(dispatch(changefilteredProducts(filteredProducts))); //???
+    // setFilteredData(filteredData);
+  // }, [dispatch, filteredProducts]);
+  // }, [dispatch, filteredData]);
   }, [dispatch]);
 
   // const handleFilter = filteredData => {
@@ -58,9 +66,8 @@ const CatalogCarsPage = () => {
     <div style={{ backgroundColor: '#f6f8fd' }}>
       <NavBar />
       <Container>
-        <aside>
-          <p>Фильтры</p>
-          <p>Панель фильтров</p>
+        <aside style={{width: '300px'}}>
+          {/* <p>Панель фильтров</p> */}
           {/* <PriceRange /> */}
           <PriceRange1 />
         </aside>

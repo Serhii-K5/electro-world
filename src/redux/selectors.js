@@ -10,6 +10,8 @@ export const selectCategories = state => state.categories.category;
 
 export const selectSearchParams = state => state.searchParams.parameter;
 
+export const selectFilteredProducts = state => state.filteredProducts.filteredProduct;
+
 // export const selectOrdersAll = (state) => state.ordersAll.qualitity;
 
 // export const selectIsLoading = (state) => state.adverts.isLoading;

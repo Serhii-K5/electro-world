@@ -7,7 +7,7 @@ const sliceSearchParams = createSlice({
   },
   reducers: {
     changeSearchParams(state, action) {
-      state.category = action.payload;
+      state.parameter = action.payload;
     },
   },
 });
