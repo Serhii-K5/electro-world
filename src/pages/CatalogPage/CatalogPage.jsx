@@ -5,7 +5,7 @@ import { fetchProducts } from "redux/operations";
 import ProductCard from "components/ProductCard/ProductCard";
 // import { selectProducts, selectSearchParams } from "redux/selectors";
 import { selectProducts, selectFilteredProducts } from 'redux/selectors';
-// import { changefilteredProducts } from 'redux/slice/filteredProductsSlice';
+import { changefilteredProducts } from 'redux/slice/filteredProductsSlice';
 
 import {
   Container,
@@ -33,20 +33,24 @@ const CatalogCarsPage = () => {
   const filteredProducts = useSelector(selectFilteredProducts);
   // const searchParams = useSelector(selectSearchParams);
   const [filteredData, setFilteredData] = useState(
-    filteredProducts > 0 ? filteredProducts : products.length > 0 ? products : products1
+    filteredProducts.length > 0 ? filteredProducts : products.length > 0 ? products : products1
   );
+
+  if (filteredProducts.length === 0) {
+    dispatch(changefilteredProducts(filteredData));
+  }
 
   const [activePage, setActivePage] = useState(1);
   // const [activeFilter, setActiveFilter] = useState(false);
   
   useEffect(() => {
     dispatch(fetchProducts());
-    // setFilteredData(filteredProducts);
-    // setFilteredData(dispatch(changefilteredProducts(filteredProducts))); //???
-    // setFilteredData(filteredData);
-  // }, [dispatch, filteredProducts]);
-  // }, [dispatch, filteredData]);
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(changefilteredProducts(filteredData));
+  }, [dispatch, filteredData]);
+  
 
   // const handleFilter = filteredData => {
   //   setActiveFilter(true);
@@ -66,7 +70,7 @@ const CatalogCarsPage = () => {
     <div style={{ backgroundColor: '#f6f8fd' }}>
       <NavBar />
       <Container>
-        <aside style={{width: '300px'}}>
+        <aside style={{minWidth: '250px'}}>
           {/* <p>Панель фильтров</p> */}
           {/* <PriceRange /> */}
           <PriceRange1 />

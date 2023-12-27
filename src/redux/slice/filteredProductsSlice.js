@@ -7,7 +7,7 @@ const sliceFilteredProducts = createSlice({
   },
   reducers: {
     changefilteredProducts(state, action) {
-      state.category = action.payload;
+      state.filteredProduct = action.payload;
     },
   },
 });

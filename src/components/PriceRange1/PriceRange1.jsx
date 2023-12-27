@@ -6,8 +6,11 @@ import { useState, useEffect } from 'react';
 // import ks from 'assets/images/svg/kyivstar.svg';
 // import { VodafoneBg, Span } from './PriceRange.styled';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectFilteredProducts } from 'redux/selectors';
+
+import products1 from '../../assets/json/products.json';
+import { changefilteredProducts } from 'redux/slice/filteredProductsSlice';
 
 
 const PriceRange1 = () => {
@@ -15,12 +18,15 @@ const PriceRange1 = () => {
   // const { JSDOM } = require('jsdom');
   // const { window } = new JSDOM('');
   // const $ = require('jquery')(window);
+  const dispatch = useDispatch();
   const filteredProducts = useSelector(selectFilteredProducts);
 
-  const [rangePricePosition, setRangePosition] = useState(0);
+  // const [rangePricePosition, setRangePosition] = useState(0);
   const [rangePriceWidth, setRangeWidth] = useState(0);
-  const [CurentPosition1, setCurentPosition1] = useState(0);
-  const [CurentPosition2, setCurentPosition2] = useState(100);
+  const [curentPosition1, setCurentPosition1] = useState(0);
+  const [curentPosition2, setCurentPosition2] = useState(100);
+  const [curentPositionLeft, setCurentPositionLeft] = useState(0);
+  const [curentPositionWidth, setCurentPositionWidth] = useState(100);
   const [inputValue1, setInputValue1] = useState('');
   const [inputValue2, setInputValue2] = useState('');
   // const minPriceElement = document.getElementById('min-price');
@@ -28,71 +34,80 @@ const PriceRange1 = () => {
   const [maxPrice, setMaxPrice] = useState(0);
   const [minPrice, setMinPrice] = useState(0);  
 
+  if (filteredProducts.length === 0) {
+    dispatch(changefilteredProducts(products1));
+  }
 
-  useEffect(() => {
-    // var coordinatesDisplay = document.getElementById('coords');
-    const rangePriceElement = document.getElementById('range-price');
-    const minPriceElement = document.getElementById('min-price');
-    const maxPriceElement = document.getElementById('max-price');
+
+  // useEffect(() => {
+  //   // var coordinatesDisplay = document.getElementById('coords');
+  //   const rangePriceElement = document.getElementById('range-price');
+  //   const minPriceElement = document.getElementById('min-price');
+  //   const maxPriceElement = document.getElementById('max-price');
     
-    const rangePositionX = rangePriceElement.clientX;
-    setRangePosition(rangePositionX);
-    const minPriceX = minPriceElement.clientX;
-    const maxPriceX = maxPriceElement.clientX;
+  //   const rangePositionX = rangePriceElement.clientX;
+  //   setRangePosition(rangePositionX);
+  //   const minPriceX = minPriceElement.clientX;
+  //   const maxPriceX = maxPriceElement.clientX;
 
-    setMaxPrice(findMaxPrice());
-    setMinPrice(findMinPrice());
+  //   setMaxPrice(findMaxPrice());
+  //   setMinPrice(findMinPrice());
 
-    const findMaxPrice = () => {
-      const max = filteredProducts.reduce(
-        (accumulator, currentValue) =>
-          (accumulator =
-            currentValue.price > accumulator
-              ? currentValue.price
-              : accumulator),
-        0
+  //   const findMaxPrice = () => {
+  //     const max = filteredProducts.reduce(
+  //       (accumulator, currentValue) =>
+  //         (accumulator =
+  //           currentValue.price > accumulator
+  //             ? currentValue.price
+  //             : accumulator),
+  //       0
+  //     );
+      
+  //     // setInputValue2(max);
+
+  //     setInputValue2(Math.round((1-(rangePositionX + rangePriceElement.style.width - maxPriceX) / rangePriceElement.style.width)*100 - shift));
+
+  //     return max;
+  //   };
+
+  
+  useEffect(() => {
+    const rangePriceElement = document.getElementById('range-price');
+    const rangeWidth = rangePriceElement.clientWidth;
+    
+    setRangeWidth(rangeWidth);
+
+    const findMinMaxPrice = () => {
+      const max = filteredProducts.reduce((accumulator, currentValue) => (
+          accumulator = currentValue.price > accumulator ? currentValue.price : accumulator
+        ), 0
       );
       
-      // setInputValue2(max);
-
-      setInputValue2(Math.round((1-(rangePositionX + rangePriceElement.style.width - maxPriceX) / rangePriceElement.style.width)*100 - shift));
-
-      return max;
-    };
-
-    const findMinPrice = () => {
-      const min = filteredProducts.reduce(
-        (accumulator, currentValue) =>
-          (accumulator =
-            currentValue.price > accumulator
-              ? currentValue.price
-              : accumulator),
-        maxPrice
+      const min = filteredProducts.reduce((accumulator, currentValue) => (
+          accumulator = currentValue.price < accumulator ? currentValue.price : accumulator
+        ), max
       );
       
-      // setInputValue1(min);
-
-      return min;
+      setInputValue1(Math.round(min + (max - min) / 100 * curentPosition1));
+      setInputValue2(Math.round(min + (max - min) / 100 * curentPosition2)); 
+      setCurentPositionLeft(rangeWidth * curentPosition1 / 100);
+      setCurentPositionWidth(rangeWidth * curentPosition2 / 100);
     };
 
-
-
-
-    setCurentPosition1(minPriceElement);
-    setCurentPosition2();
+    findMinMaxPrice();
   }, []);
   
   const handleMouseEnter = e => {
-    setRangePosition(e.target.clientX);
+    // setRangePosition(e.target.clientX);
     setRangeWidth(e.target.style.width);
   };  
 
   const handleMoveMin = e => {
     // var x = e.curentTarget.clientX;
     // var y = e.clientY;
-    if (!(rangePricePosition < e.curentTarget.clientX)) {
-      setCurentPosition1(Math.round((e.curentTarget.clientX - rangePricePosition) / rangePriceWidth * 100)-shift);
-    }
+    // if (!(rangePricePosition < e.curentTarget.clientX)) {
+    //   setCurentPosition1(Math.round((e.curentTarget.clientX - rangePricePosition) / rangePriceWidth * 100)-shift);
+    // }
 
     // e.target.style.left = x - e.target.clientWidth / 2 + 'px';
     // movableElement.style.top = y - movableElement.clientHeight / 2 + 'px';
@@ -101,8 +116,8 @@ const PriceRange1 = () => {
   };
 
   const handleMoveMax = e => {
-    !(rangePricePosition + rangePriceWidth < e.curentTarget.clientX) && 
-      setCurentPosition2(Math.round((1-(e.curentTarget.clientX - rangePricePosition) / rangePriceWidth) * 100)-shift);    
+    // !(rangePricePosition + rangePriceWidth < e.curentTarget.clientX) && 
+    //   setCurentPosition2(Math.round((1-(e.curentTarget.clientX - rangePricePosition) / rangePriceWidth) * 100)-shift);    
   };
 
   const handleChange1 = e => {
@@ -125,6 +140,13 @@ const PriceRange1 = () => {
     // coordinatesDisplay.textContent = '(' + x + ', ' + y + ')';
   };
 
+  // const calcPosition1 = () => {
+  //   return Math.round(rangePriceWidth * curentPosition1 / 100) + 'px';
+  // };
+
+  // const calcPosition2 = () => {
+  //   return Math.round(rangePriceWidth * curentPosition2 / 100) + 'px';
+  // };
 
 
 
@@ -185,11 +207,18 @@ const PriceRange1 = () => {
       >
         OK
       </div>
-      <div style={{ display: 'flex', position: 'relative' }}>
+
+      <div
+        style={{
+          display: 'flex',
+          position: 'relative',
+          justifyContent: 'center',
+        }}
+      >
         <div
           id="range-price"
           style={{
-            width: '100%',
+            width: `calc(100% - ${shift * 2}px)`,
             height: '5px',
             border: 'none',
             backgroundColor: 'lightgrey',
@@ -199,11 +228,13 @@ const PriceRange1 = () => {
         ></div>
         <div
           style={{
-            width: '50%',
+            // width: '50%',
+            // width: { curentPositionWidth } + 'px',
+            width: `${curentPositionWidth}px`,
             height: '5px',
             position: 'absolute',
             top: '20px',
-            left: '10%',
+            left: `${curentPositionLeft + shift}px`,
             border: 'none',
             backgroundColor: 'blue',
           }}
@@ -217,10 +248,9 @@ const PriceRange1 = () => {
               // height: '21px',
               position: 'absolute',
               top: '-8px',
-              // left: '-20px',
-              left: { CurentPosition1 } + 'px',
-              // border: 'none',
+              left: `-${shift}px`,
               // backgroundColor: 'blue',
+              backgroundColor: 'white',
               borderRadius: '50%',
               border: '2px solid blue',
               boxShadow: '0 0 5px blue',
@@ -234,10 +264,10 @@ const PriceRange1 = () => {
               height: '21px',
               position: 'absolute',
               top: '-8px',
-              // right: '-20px',
-              right: { CurentPosition2 } + 'px',
+              right: `-${shift}px`,
               // border: 'none',
               // backgroundColor: 'blue',
+              backgroundColor: 'white',
               borderRadius: '50%',
               border: '2px solid blue',
               boxShadow: '0 0 5px blue',
