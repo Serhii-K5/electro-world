@@ -1,0 +1,1 @@
+export const SHIFT_RANGE = 20;

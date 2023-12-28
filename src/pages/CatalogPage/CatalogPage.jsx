@@ -22,7 +22,7 @@ import NavBar from 'components/NavBar/NavBar';
 // import FilterPanel from 'components/FilterPanel/FilterPanel';
 
 // import PriceRange from 'components/PriceRange/PriceRange';
-import PriceRange1 from 'components/PriceRange1/PriceRange1';
+import PriceRange1 from 'components/PriceRange/PriceRange';
 
 
 import products1 from "../../assets/json/products.json";

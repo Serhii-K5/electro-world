@@ -1,22 +1,23 @@
 :root {
   /* COLOR */
   --bg-primary: #FFFFFF;
-  --bg-primary-green: #9ee2ac;
-  --bg-second-green: #02bd2a;
-  --bg-second-orange: #f07555;
+  --bg-second: #F6F8FD;
+  --bg-primary-green: #9EE2AC;
+  --bg-second-green: #02BD2A;
+  --bg-second-orange: #F07555;
   --bg-button-color: #3470FF;
   --bg-active-button-color: #0B44CD;
-  --bg-overlay: rgba(18, 20, 23, 0.50);
-  --bg-color-grey: #8a8a8957;
+  --bg-overlay: #12141780;
+  --bg-color-grey: #8A8A8957;
 
   --text-color-primary-black:#121417;
-  --text-color-secondary-black: rgba(18, 20, 23, 0.50);
+  --text-color-secondary-black: #12141780;
   --text-color-white:#FFFFFF;
   --text-color-grey: #8a8a8957;
   --text-color-blue: #3470FF;
   --text-color-active-blue: #0B44CD;
-  --text-second-green: #02bd2a;
-  --text-second-orange: #f07555;
+  --text-second-green: #02BD2A;
+  --text-second-orange: #F07555;
 
   --input-background-color: #F7F7FB;
 }

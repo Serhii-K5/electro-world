@@ -26,7 +26,10 @@
     "ordersPage_btn": "Очистити замовлення",
     "ordersPage_p": "Будь ласка, перед оформленням уважно перевірте склад замовлення",
     "ordersPage_sum": "Разом:",
-    "ordersPage_sumBtn": "Оформити замовлення"    
+    "ordersPage_sumBtn": "Оформити замовлення",    
+    "priceRange_label": "Ціна",    
+    "priceRange_labelStart": "Від ",    
+    "priceRange_labelEnd": " до "    
   },
   {
     "lang_id": 1,
@@ -55,6 +58,9 @@
     "ordersPage_btn": "Очистить заказ",
     "ordersPage_p": "Пожалуста, перед оформлением внимательно проверьте состав заказа",
     "ordersPage_sum": "Всего:",
-    "ordersPage_sumBtn": "Оформить заказ"    
+    "ordersPage_sumBtn": "Оформить заказ",    
+    "priceRange_label": "Цена",    
+    "priceRange_labelStart": "От ",    
+    "priceRange_labelEnd": " до "
   }
 ]
