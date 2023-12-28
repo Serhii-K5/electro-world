@@ -1,19 +1,6 @@
 import { useState, useEffect } from 'react';
-// import { BsFillTelephoneFill } from 'react-icons/bs';
-// import { SiVodafone } from 'react-icons/si';
-// import { FaViber } from 'react-icons/fa';
-
-// import ks from 'assets/images/svg/kyivstar.svg';
-// import { VodafoneBg, Span } from './PriceRange.styled';
-
 import { useDispatch, useSelector } from 'react-redux';
-import { selectFilteredProducts } from 'redux/selectors';
-
-import products1 from '../../assets/json/products.json';
-import { changefilteredProducts } from 'redux/slice/filteredProductsSlice';
-import { SHIFT_RANGE } from 'constants/constants';
-import lang from 'assets/json/language.json';
-import { selectLanguages } from 'redux/selectors';
+import { selectFilteredProducts, selectLanguages } from 'redux/selectors';
 import {
   Form,
   Input,
@@ -21,13 +8,16 @@ import {
   RangeContainer,
   RangeBgDiv,
   RangeActiveDiv,
-  RangeLineEdgesDiv,
-
+  RangeLineEdgesDiv  
 } from './PriceRange.styled';
 
+import { changefilteredProducts } from 'redux/slice/filteredProductsSlice';
+import { SHIFT_RANGE } from 'constants/constants';
+import lang from 'assets/json/language.json';
+
+import products1 from '../../assets/json/products.json';
 
 const PriceRange = () => {
-  // const SHIFT_RANGE = 20;
   const dispatch = useDispatch();
   const filteredProducts = useSelector(selectFilteredProducts);
   const languages = useSelector(selectLanguages);
@@ -86,23 +76,23 @@ const PriceRange = () => {
     
   }, []);
   
-  const handleMoveMin = e => {
-    // var x = e.curentTarget.clientX;
-    // var y = e.clientY;
-    // if (!(rangePricePosition < e.curentTarget.clientX)) {
-    //   setCurentPosition1(Math.round((e.curentTarget.clientX - rangePricePosition) / rangePriceWidth * 100)-SHIFT_RANGE);
-    // }
+  // const handleMoveMin = e => {
+  //   // var x = e.curentTarget.clientX;
+  //   // var y = e.clientY;
+  //   // if (!(rangePricePosition < e.curentTarget.clientX)) {
+  //   //   setCurentPosition1(Math.round((e.curentTarget.clientX - rangePricePosition) / rangePriceWidth * 100)-SHIFT_RANGE);
+  //   // }
     
-    // e.target.style.left = x - e.target.clientWidth / 2 + 'px';
-    // movableElement.style.top = y - movableElement.clientHeight / 2 + 'px';
+  //   // e.target.style.left = x - e.target.clientWidth / 2 + 'px';
+  //   // movableElement.style.top = y - movableElement.clientHeight / 2 + 'px';
     
-    // coordinatesDisplay.textContent = '(' + x + ', ' + y + ')';
-  };
+  //   // coordinatesDisplay.textContent = '(' + x + ', ' + y + ')';
+  // };
   
-  const handleMoveMax = e => {
-    // !(rangePricePosition + rangePriceWidth < e.curentTarget.clientX) && 
-    //   setCurentPosition2(Math.round((1-(e.curentTarget.clientX - rangePricePosition) / rangePriceWidth) * 100)-SHIFT_RANGE);    
-  };
+  // const handleMoveMax = e => {
+  //   // !(rangePricePosition + rangePriceWidth < e.curentTarget.clientX) && 
+  //   //   setCurentPosition2(Math.round((1-(e.curentTarget.clientX - rangePricePosition) / rangePriceWidth) * 100)-SHIFT_RANGE);    
+  // };
   
   const handleChangeMin = e => { 
     const value = Number(e.target.value);
@@ -167,10 +157,10 @@ const PriceRange = () => {
     console.log('(' + coordStart + '; ' + (inputValueMin + val) + ')');
   };
   
-  const handleMouseEnter = e => {
-    // setRangePosition(e.target.clientX);
-    setRangeWidth(e.target.style.width);
-  };
+  // const handleMouseEnter = e => {
+  //   // setRangePosition(e.target.clientX);
+  //   setRangeWidth(e.target.style.width);
+  // };
   
   const onMouseLeave = e => {
     // setCoordText('x=' + window.pageXOffset + '; y=' + window.pageYOffset);
