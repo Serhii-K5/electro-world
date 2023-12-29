@@ -34,9 +34,12 @@ const PriceRange = () => {
   
   const [isVisable, setIsVisable] = useState(false);  
   const [coordText, setCoordText] = useState('');
-  const [coordStart, setCoordStart] = useState(0);
   // const [coordEnd, setCoordEnd] = useState(0);
   
+  const [isMouseDownMin, setIsMouseDownMin] = useState(false);  
+  const [isMouseDownMax, setIsMouseDownMax] = useState(false);  
+  const [coordStart, setCoordStart] = useState(0);
+  const [amendment, setAmendment] = useState(0);
 
 
   
@@ -130,10 +133,6 @@ const PriceRange = () => {
     }
   };
   
-  // const onFocus = () => {
-    //   console.log('asrfh');
-    // }
-    
   const onChangeMin = e => {
     const val = Math.abs(Number(e.target.value));
     val > 0 && setInputValueMin(val);
@@ -144,31 +143,59 @@ const PriceRange = () => {
     val > 0 && setInputValueMax(val);
   };
   
-  const onDragStart = e => {
-    setCoordStart(e.target.clientX)
-    // setRangePosition(e.target.clientX);
-    setIsVisable(true);
-    // setRangeWidth(e.target.style.width);
-  };
+  // const onMouseLeave = e => {
+  //   // setCoordText('x=' + window.pageXOffset + '; y=' + window.pageYOffset);
+  //   // setCoordText('x=' + window.scrollX + '; y=' + window.scrollY);
+  //   setCoordText('x=' + e.clientX + '; y=' + e.clientY);
 
-  const onDragEnd = e => {
-    var val = (e.target.clientX - coordStart) * (maxPrice - minPrice) / 100;
-    setInputValueMin(inputValueMin + val); 
-    console.log('(' + coordStart + '; ' + (inputValueMin + val) + ')');
-  };
-  
-  // const handleMouseEnter = e => {
   //   // setRangePosition(e.target.clientX);
-  //   setRangeWidth(e.target.style.width);
-  // };
+  //   // setRangeWidth(e.target.style.width);
+  // };  
   
-  const onMouseLeave = e => {
-    // setCoordText('x=' + window.pageXOffset + '; y=' + window.pageYOffset);
-    // setCoordText('x=' + window.scrollX + '; y=' + window.scrollY);
+  const onMouseMove = e => {
     setCoordText('x=' + e.clientX + '; y=' + e.clientY);
+    isMouseDownMin && setCurentPositionLeftMin(curentPositionLeftMin + (e.clientX - coordStart));
+    isMouseDownMax && setCurentPositionLeftMax(curentPositionLeftMax + (e.clientX - coordStart));
+  };  
 
-    // setRangePosition(e.target.clientX);
-    // setRangeWidth(e.target.style.width);
+  // const onMouseMove = e => {
+  //   if (isMouseDown) {
+  //     // setCurentPositionLeftMin(curentPositionLeftMin + e.clientX - coordStart);
+  //     setCurentPositionLeftMin(e.clientX);
+  //     // setCurentPositionLeftMax(curentPositionLeftMax - (e.clientX - coordStart));
+  //   }
+  //   // (e.target.style.left += e.clientX - coordStart);
+  //   console.log('MouseMove: ', curentPositionLeftMin, '; ', curentPositionLeftMax);
+  // };  
+
+  const handleMouseDownMin = e => {
+    setIsMouseDownMin(true);
+    // setAmendment=;
+    setCoordStart(e.clientX);
+    // console.log('MouseDownMin: ', coordStart, '; ', e.clientX);
+  };  
+
+  const handleMouseDownMax = e => {
+    setIsMouseDownMax(true);
+    setCoordStart(e.clientX);
+    // console.log('MouseDownMax: ', coordStart, '; ', e.clientX);
+  };  
+
+  const handleMouseUp = () => {
+    setIsMouseDownMin(false);
+    setIsMouseDownMax(false);
+    // console.log('MouseUp');
+  };  
+
+  const onDrag = (e) => {
+    if (e.target.id === 'min') {
+      // setCurentPositionLeftMin(curentPositionLeftMin + (e.clientX - coordStart));
+      setCurentPositionLeftMin(e.clientX);
+    } else if (e.target.id === 'min') {
+      setCurentPositionLeftMax(curentPositionLeftMax + (e.clientX - coordStart))
+    }
+
+    console.log('onDrag');
   };  
 
   return (
@@ -200,42 +227,65 @@ const PriceRange = () => {
       </BtnDiv>
       {/* ------------------------------------ */}
       <RangeContainer
-        onMouseEnter={() => setIsVisable(true)}
-        onMouseOut={() => setIsVisable(false)}
-        // onMouseLeave={onMouseLeave}
-        onMouseMove={onMouseLeave}
+      // onMouseEnter={() => setIsVisable(true)}
+      // onMouseOut={() => setIsVisable(false)}
+      // onMouseLeave={onMouseLeave}
+      // onMouseMove={onMouseMove}
+      // onMouseUp={handleMouseUp}
       >
-        <RangeBgDiv
-          id="range-price"
-          // onMouseEnter={handleMouseEnter}
-          // onDrag={handleMouseEnter}
-        />
+        <RangeBgDiv id="range-price" onMouseEnter={() => setIsVisable(true)} />
         <RangeActiveDiv
           style={{
             width: `${curentPositionLeftMax - curentPositionLeftMin}px`,
             left: `${curentPositionLeftMin + SHIFT_RANGE}px`,
           }}
-          onMouseEnter={() => setIsVisable(true)}
+          // onMouseEnter={() => setIsVisable(true)}
+          // onMouseDown={handleMouseDown}
+          // onMouseUp={handleMouseUp}
         >
           <RangeLineEdgesDiv
-            style={{left: `-${SHIFT_RANGE}px`}}
-            // onMouseDown={handleMoveMin}
+            id="min"
+            style={{ left: `${-SHIFT_RANGE}px` }}
+            // onMouseEnter={() => setIsVisable(true)}
+            // onMouseDown={handleMouseDownMin}
+            // onMouseDown={() => setIsMouseDownMin(true)}
+            // onMouseUp={handleMouseUp}
+            // onMouseOut={handleMouseUp}
+
+            // onMouseUp={() => setIsMouseDownMin(true)}
             // onMouseEnter={handleMouseEnter}
             // onMouseEnter={setIsVisable(true)}
             // onMouseOut={setIsVisable(false)}
-            // onDrag={handleDrag}
-            // onDragStart={() => setIsVisable(true)}
-            onDragStart={onDragStart}
-            onDragEnd={onDragEnd}
-            onMouseEnter={() => setIsVisable(true)}
+            // onMouseMove={onMouseMove}
+            onDrag={onDrag}
+            readOnly={false}
           />
           <RangeLineEdgesDiv
-            style={{right: `-${SHIFT_RANGE}px`}}
-            // onMouseDown={handleMoveMax}
+            id="max"
+            style={{ right: `${-SHIFT_RANGE}px` }}
+            // onMouseEnter={() => setIsVisable(true)}
+            // onMouseDown={handleMouseDownMax}
+            // onMouseUp={handleMouseUp}
+
+            // onMouseDown={() => setIsMouseDownMax(true)}
+            // onMouseUp={() => setIsMouseDownMax(false)}
           />
         </RangeActiveDiv>
       </RangeContainer>
-      {isVisable && <div>{coordText}</div>}
+      {/* {isVisable && <div>{coordText}</div>} */}
+      <div>{coordText}</div>
+      <div>
+        {document.clientX} '; ' {document.clientY}
+      </div>
+      <div>
+        {window.clientX} '; ' {window.clientY}
+      </div>
+      <div>
+        {window.screenX} '; ' {window.screenY}
+      </div>
+      <div>
+        {(window.screenLeft = window.screenX)} '; ' {window.pageYOffset}
+      </div>
     </>
   );
 };
