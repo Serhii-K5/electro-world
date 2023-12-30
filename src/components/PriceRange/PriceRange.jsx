@@ -274,7 +274,7 @@ const PriceRange = () => {
       </RangeContainer>
       {/* {isVisable && <div>{coordText}</div>} */}
       <div>{coordText}</div>
-      <div>
+      {/* <div>
         {document.clientX} '; ' {document.clientY}
       </div>
       <div>
@@ -285,7 +285,7 @@ const PriceRange = () => {
       </div>
       <div>
         {(window.screenLeft = window.screenX)} '; ' {window.pageYOffset}
-      </div>
+      </div> */}
     </>
   );
 };
