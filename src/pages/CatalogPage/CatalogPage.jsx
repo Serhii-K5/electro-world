@@ -23,7 +23,8 @@ import NavBar from 'components/NavBar/NavBar';
 
 // import PriceRange from 'components/PriceRange/PriceRange';
 import PriceRange1 from 'components/PriceRange/PriceRange';
-import DraggableElement from 'components/Range/PriceRange';
+// import DraggableElement from 'components/Range/PriceRange';
+import DraggableElement from 'components/PriceRange0/PriceRange';
 
 
 import products1 from "../../assets/json/products.json";
