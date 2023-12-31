@@ -28,6 +28,7 @@ const DraggableElement = () => {
   // const [positionMax, setPositionMax] = useState({ x: 0, y: 0 });
   // const [positionMin, setPositionMin] = useState([0, 0] );
   const [positionMin, setPositionMin] = useState(0);
+  const [positionMax, setPositionMax] = useState(0);
   // const [positionMax, setPositionMax] = useState({ x: 0, y: 0 });
   // const [positionStart, setPositionStart] = useState([0, 0] );
   const [positionStart, setPositionStart] = useState(0);
@@ -39,86 +40,123 @@ const DraggableElement = () => {
   const [minPrice, setMinPrice] = useState(0);
 
   useEffect(() => {
-    const handleMouseMove = e => {
-      // if (isDragging1) {
-      //   isDragging1 && setPositionStart(positionStart.splice(0, 2, e.clientX, e.clientY));
-      //   setDragging1(false);
-      // }
-      // if (positionStart[0] === 0 && positionStart[1] === 0) {
-      //   setPositionStart(positionStart.splice(0, 2, e.clientX, e.clientY));
-      //   // setDragging1(false);
-      // }
-
-      
-      if (isDragging) {
-      //   if (positionStart[0] === 0 && positionStart[1] === 0) {
-      //   setPositionStart(positionStart.splice(0, 2, e.clientX, e.clientY));
-      //   // setDragging1(false);
-      // }
-        // if (positionStart[0] !== positionStart[1] !== 0) {
-        //   setPositionStart(positionStart.splice(0, 2, e.clientX, e.clientY));
-        //   // setDragging1(false);
-        // }
-        // if (isDragging1) {
-        //   isDragging1 && setPositionStart(positionStart.splice(0, 2, e.clientX, e.clientY));
-        // }
-        
-        // console.log(0, '=', e.pageX, '; ', e.screenX, '; ', e.clientX);
-        const x = e.clientX;
-        // const y = e.clientY;
-        // if (e.target.id === 'min') {
-
-          // setPositionMin( positionMin.splice(0, 2, x, y) );
-          setPositionMin(x);
-        // }
-        // if (e.target.id === 'max') {
-        //   // const x = e.clientX;
-        //   // const y = e.clientY;
-
-        //   setPositionMax({ x, y });
-        // }
-        // e.target.id === 'min' && setPositionMin(e.clientX);
-        // e.target.id === 'max' && setPositionMax(e.clientX);
-
-        // console.log(1, '=', e.pageX, '; ', e.screenX);
-      }
-      // setDragging1(false);
-    };
-
-    const handleMouseUp = (e) => {
-      setDragging(false);
-      // setPositionStart(positionStart.splice(0, 2, e.clientX, e.clientY));
+    const rangePriceElement = document.getElementById('range-price');
+    // const rangeWidth = rangePriceElement.clientWidth;
     
-      // setPositionStart(positionStart.splice(0, 2, 0, 0))
-      // setPositionStart(0)
-      handleMouseUp(e.clientX);
-    };
+    setPositionStart(rangePriceElement.clientX)
+    // setRangeWidth(rangeWidth);
+    
+    // setCurentPositionLeftMin(0);
+    // setCurentPositionLeftMax(rangeWidth);
 
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseup', handleMouseUp);
+    // const findMinMaxPrice = () => {
+    //   const max = filteredProducts.reduce((accumulator, currentValue) => (
+    //       accumulator = currentValue.price > accumulator ? currentValue.price : accumulator
+    //     ), 0
+    //   );
+      
+    //   const min = filteredProducts.reduce((accumulator, currentValue) => (
+    //       accumulator = currentValue.price < accumulator ? currentValue.price : accumulator
+    //     ), max
+    //   );
+      
+    //   setInputValueMin(min);
+    //   setInputValueMax(max);
+      
+    //   setMaxPrice(max);
+    //   setMinPrice(min);
+    // };
 
-    return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseup', handleMouseUp);
-    };
-  }, [isDragging]);
+    // findMinMaxPrice();
+    
+  }, []);
+
+  // useEffect(() => {
+  //   const handleMouseMove = e => {
+  //     if (isDragging) {
+  //     //   if (positionStart[0] === 0 && positionStart[1] === 0) {
+  //     //   setPositionStart(positionStart.splice(0, 2, e.clientX, e.clientY));
+  //     //   // setDragging1(false);
+  //     // }
+  //       // if (positionStart[0] !== positionStart[1] !== 0) {
+  //       //   setPositionStart(positionStart.splice(0, 2, e.clientX, e.clientY));
+  //       //   // setDragging1(false);
+  //       // }
+  //       // if (isDragging1) {
+  //       //   isDragging1 && setPositionStart(positionStart.splice(0, 2, e.clientX, e.clientY));
+  //       // }
+        
+  //       // console.log(0, '=', e.pageX, '; ', e.screenX, '; ', e.clientX);
+  //       // const x = e.clientX;
+  //       // const y = e.clientY;
+  //       // if (e.target.id === 'min') {
+
+  //         // setPositionMin( positionMin.splice(0, 2, x, y) );
+  //         // setPositionMin(x-positionStart);
+  //       // }
+  //       // if (e.target.id === 'max') {
+  //       //   // const x = e.clientX;
+  //       //   // const y = e.clientY;
+
+  //       //   setPositionMax({ x, y });
+  //       // }
+  //       // e.target.id === 'min' && setPositionMin(e.clientX);
+  //       // e.target.id === 'max' && setPositionMax(e.clientX);
+  //       setPositionMin(e.clientX)
+  //       // console.log(1, '=', e.pageX, '; ', e.screenX);
+  //       setPositionStart(positionStart)
+  //     }
+  //     // setDragging1(false);
+  //   };
+
+  //   const handleMouseUp = (e) => {
+  //     setDragging(false);
+  // //     // setPositionStart(positionStart.splice(0, 2, e.clientX, e.clientY));
+    
+  // //     // setPositionStart(positionStart.splice(0, 2, 0, 0))
+  // //     // setPositionStart(0)
+  // //     // setPositionStart(e.clientX)
+  // //     // handleMouseUp(e.clientX);
+  //   };
+
+  // //   document.addEventListener('mousemove', handleMouseMove);
+  //   document.addEventListener('mouseup', handleMouseUp);
+
+  // //   return () => {
+  // //     document.removeEventListener('mousemove', handleMouseMove);
+  //     document.removeEventListener('mouseup', handleMouseUp);
+  // //   };
+  // }, [isDragging]);
 
   const handleMouseDown = (e) => {
     // setPositionStart(positionStart.splice(0, 2, 20, 200 ))
     // setPositionStart(positionStart.splice(0, 2, e.clientX, e.clientY));
     // handleMouseUp(e.clientX, e.clientY);    
-    handleMouseUp(e.clientX);    
+    // handleMouseUp(e.clientX);    
     setDragging(true);
     // setDragging1(true);
   };
 
-  const handleMouseUp = (x) => {
-      // setDragging(false);
-    // setPositionStart(positionStart.splice(0, 2, 0, 0))
-    // setPositionStart(positionStart.splice(0, 2, x, y));
-    setPositionStart(x);
+  const handleMouseUp = () => {
+    setDragging(false);
+  }
+  
+  // const handleMouseUp = (x) => {
+  //     // setDragging(false);
+  //   // setPositionStart(positionStart.splice(0, 2, 0, 0))
+  //   // setPositionStart(positionStart.splice(0, 2, x, y));
+  //   setPositionStart(x);
     
-    };
+  //   };
+
+  const handleMouseMove = e => {
+    if (isDragging) {
+      e.target.id === 'min' && setPositionMin(e.clientX-20);
+      e.target.id === 'max' && setPositionMax(e.clientX-20);
+            // setPositionMin(e.clientX - 20)
+    }
+  }
+
 
   if (filteredProducts.length === 0) {
     dispatch(changefilteredProducts(products1));
@@ -222,25 +260,32 @@ const DraggableElement = () => {
             // style={{ left: `${-SHIFT_RANGE}px` }}
             // style={{ left: `${positionMin - SHIFT_RANGE}px` }}
             style={{
-              cursor: 'move',
+              // cursor: 'move',
               // left: `${positionMin.x - 25}px`,
               // top: `${positionMin.y - 9}px`,
               // left: `${positionMin[0] - positionStart[0] - 20}px`,
-              left: `${positionMin - positionStart - 20}px`,
+              // left: `${positionMin - positionStart - 20}px`,
+              left: `${positionMin - 20}px`,
               // top: `${positionMin[1] - positionStart[1] - 9}px`,
             }}
             
             // onDrag={onDrag}
             // readOnly={false}
             onMouseDown={handleMouseDown}
+            onMouseUp={handleMouseUp}
+            // onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseMove}
+            // onMouseOut={handleMouseUp}
           // />
           >
-            <p>
-              min: ({positionMin[0]}; {positionMin[1]})
+            {/* <p> */}
+              {/* min: ({positionMin[0]}; {positionMin[1]}) */}
+              {/* min: {positionMin}
             </p>
-            <p>
-              start={positionStart[0]}; {positionStart[1]}
-            </p>
+            <p> */}
+              {/* start={positionStart[0]}; {positionStart[1]} */}
+              {/* start={positionStart}
+            </p> */}
           </RangeLineEdgesDiv>
           
           <RangeLineEdgesDiv
@@ -253,9 +298,11 @@ const DraggableElement = () => {
       {/* {isVisable && <div>{coordText}</div>} */}
       <div>
         {/* min={positionMin} '; max=' {positionMax} */}
-        min={positionMin[0]} ; {positionMin[1]}
+        {/* min={positionMin[0]} ; {positionMin[1]} */}
+        min={positionMin[0]}
         <p></p>
-        start={positionStart[0]} ; {positionStart[1]}
+        {/* start={positionStart[0]} ; {positionStart[1]} */}
+        start={positionStart}
       </div>
 
       {/* <div>{coordText}</div>
