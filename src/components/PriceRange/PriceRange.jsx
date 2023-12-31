@@ -33,7 +33,7 @@ const PriceRange = () => {
   const [minPrice, setMinPrice] = useState(0);  
   
   // const [isVisable, setIsVisable] = useState(false);  
-  // const [coordText, setCoordText] = useState('');
+  const [coordText, setCoordText] = useState('');
   // // const [coordEnd, setCoordEnd] = useState(0);
   
   // const [isMouseDownMin, setIsMouseDownMin] = useState(false);  
@@ -78,113 +78,201 @@ const PriceRange = () => {
     
   }, []);
   
-  const handleChangeMin = e => { 
-    const value = Number(e.target.value);
-    if (value < minPrice) {
+  // const min = (value) => {
+  const changePositionMin = (value) => {
+    if (value > inputValueMax) {
+      setPositionMin(positionMax);
+    } else if (value < minPrice) {
       setPositionMin(0);
-      setInputValueMin(minPrice);
     } else {
-      const result = Math.round(rangeWidth * (value - minPrice) / maxPrice);
-      
-      if (result > positionMax) {
-        setPositionMin(positionMax);
-        setInputValueMin(inputValueMax);
-      } else {
-        setPositionMin(result);
-        setInputValueMin(value);
-      }
+      const result = Math.round(rangeWidth * (value - minPrice) / (maxPrice - minPrice));
+      setPositionMin(result);
     }
+    
+    // const result = Math.round(rangeWidth * (value - minPrice) / maxPrice);
+      
+    // if (result > positionMax) {
+    //   setPositionMin(positionMax);
+    //   setInputValueMin(inputValueMax);
+    // } else {
+    //   setPositionMin(result);
+    //   setInputValueMin(value);
+    // }
+  }
+  
+  const handleChangeMin = e => {
+    const value = Math.abs(Number(e.target.value));
+    if (value >= minPrice && value <= inputValueMax){
+      setInputValueMin(value);
+    } else {
+      setInputValueMin(minPrice);
+    }     
+      
+    // if (value < minPrice || ) {
+    //   setPositionMin(0);
+    //   setInputValueMin(minPrice);
+    //   // setInputValueMin(value);
+    // } else if (value >= minPrice){
+    //   min(value)
+    //   // const result = Math.round(rangeWidth * (value - minPrice) / maxPrice);
+      
+    //   // if (result > positionMax) {
+    //   //   setPositionMin(positionMax);
+    //   //   setInputValueMin(inputValueMax);
+    //   // } else {
+    //   //   setPositionMin(result);
+    //   //   setInputValueMin(value);
+    //   // }
+    // }
   };
 
-  const handleChangeMax = e => {
-    const value = Number(e.target.value);
-    if (value > maxPrice) {
-      setPositionMax(maxPrice);
-      setInputValueMax(maxPrice);
+  // const max = (value) => {
+  const changePositionMax = (value) => {
+    if (value < inputValueMin) {
+      setPositionMax(positionMin);
+    } else if (value > maxPrice) {
+      setPositionMax(rangeWidth);
     } else {
-      const result = Math.round((rangeWidth * value) / maxPrice);
+      const result = Math.round(rangeWidth * (value - minPrice) / (maxPrice - minPrice));
+      setPositionMax(result);
+    }    
+    
+    // const result = Math.round((rangeWidth * value) / maxPrice);
       
-      if (result < positionMin) {
-        setPositionMax(positionMin);
-        setInputValueMax(inputValueMin);
-      } else {
-        setPositionMax(result);
-        setInputValueMax(value);
-      }
-    }
+    // if (result < positionMin) {
+    //   setPositionMax(positionMin);
+    //   setInputValueMax(inputValueMin);
+    // } else {
+    //   setPositionMax(result);
+    //   setInputValueMax(value);
+    // }
+  }
+
+  const handleChangeMax = e => {
+    const value = Math.abs(Number(e.target.value));
+    if (value <= maxPrice && value >= inputValueMin){
+      setInputValueMax(value);
+    } else if (value < inputValueMin){
+      setInputValueMax(inputValueMin);
+    } else {
+      setInputValueMin(maxPrice);
+    } 
+
+    // const value = Number(e.target.value);
+    // if (value >= 0 && value < maxPrice){
+    //   max(value)
+    // } else if (value >= 0 && value < minPrice){
+    //   setPositionMax(positionMin);
+    //   setInputValueMax(minPrice);
+    // } else {
+    //   setPositionMax(rangeWidth);
+    //   setInputValueMax(maxPrice);
+    // }
+
+    // if (value > maxPrice) {
+    //   setPositionMax(maxPrice);
+    //   setInputValueMax(maxPrice);
+    // } else if (value >= 0){
+    //   max(value)
+    //   // const result = Math.round((rangeWidth * value) / maxPrice);
+      
+    //   // if (result < positionMin) {
+    //   //   setPositionMax(positionMin);
+    //   //   setInputValueMax(inputValueMin);
+    //   // } else {
+    //   //   setPositionMax(result);
+    //   //   setInputValueMax(value);
+    //   // }
+    // }
   };
   
   const onChangeMinMax = e => {
-    const val = Math.abs(Number(e.target.value));
-    if (val > 0){
-      e.target.id === 'inputMin' && setInputValueMin(val);
-      e.target.id === 'inputMax' && setInputValueMax(val);
-  }};
-  
-  const onChangeMin = e => {
-    const val = Math.abs(Number(e.target.value));
-    val > 0 && setInputValueMin(val);
+    const value = Math.abs(Number(e.target.value));
+    if (value >= 0){
+      if (e.target.id === 'inputMin') {
+        setInputValueMin(value);        
+        changePositionMin(value);
+      }
+      if (e.target.id === 'inputMax') {
+        setInputValueMax(value);
+        changePositionMax(value);
+        
+        // if (value <= maxPrice){ 
+        //   max(value);
+        // } else {
+        //   setPositionMax(rangeWidth);
+        // }
+      }
+    } else {
+      e.target.id === 'inputMin' && setInputValueMin(e.target.value);
+      e.target.id === 'inputMax' && setInputValueMax(e.target.value);
+    } 
   };
   
-  const onChangeMax = e => {
-    const val = Math.abs(Number(e.target.value));
-    val > 0 && setInputValueMax(val);
-  };
+  // // const onChangeMin = e => {
+  // //   const val = Math.abs(Number(e.target.value));
+  // //   val > 0 && setInputValueMin(val);
+  // // };
   
-  // const onMouseLeave = e => {
-  //   // setCoordText('x=' + window.pageXOffset + '; y=' + window.pageYOffset);
-  //   // setCoordText('x=' + window.scrollX + '; y=' + window.scrollY);
-  //   setCoordText('x=' + e.clientX + '; y=' + e.clientY);
-
-  //   // setRangePosition(e.target.clientX);
-  //   // setRangeWidth(e.target.style.width);
-  // };  
+  // // const onChangeMax = e => {
+  // //   const val = Math.abs(Number(e.target.value));
+  // //   val > 0 && setInputValueMax(val);
+  // // };
   
-  const onMouseMove = e => {
-    setCoordText('x=' + e.clientX + '; y=' + e.clientY);
-    isMouseDownMin && setPositionMin(positionMin + (e.clientX - coordStart));
-    isMouseDownMax && setPositionMax(positionMax + (e.clientX - coordStart));
-  };  
+  // // const onMouseLeave = e => {
+  // //   // setCoordText('x=' + window.pageXOffset + '; y=' + window.pageYOffset);
+  // //   // setCoordText('x=' + window.scrollX + '; y=' + window.scrollY);
+  // //   setCoordText('x=' + e.clientX + '; y=' + e.clientY);
 
+  // //   // setRangePosition(e.target.clientX);
+  // //   // setRangeWidth(e.target.style.width);
+  // // };  
+  
   // const onMouseMove = e => {
-  //   if (isMouseDown) {
-  //     // setPositionMin(positionMin + e.clientX - coordStart);
-  //     setPositionMin(e.clientX);
-  //     // setPositionMax(positionMax - (e.clientX - coordStart));
-  //   }
-  //   // (e.target.style.left += e.clientX - coordStart);
-  //   console.log('MouseMove: ', positionMin, '; ', positionMax);
+  //   setCoordText('x=' + e.clientX + '; y=' + e.clientY);
+  //   isMouseDownMin && setPositionMin(positionMin + (e.clientX - coordStart));
+  //   isMouseDownMax && setPositionMax(positionMax + (e.clientX - coordStart));
   // };  
 
-  const handleMouseDownMin = e => {
-    setIsMouseDownMin(true);
-    // setAmendment=;
-    setCoordStart(e.clientX);
-    // console.log('MouseDownMin: ', coordStart, '; ', e.clientX);
-  };  
+  // // const onMouseMove = e => {
+  // //   if (isMouseDown) {
+  // //     // setPositionMin(positionMin + e.clientX - coordStart);
+  // //     setPositionMin(e.clientX);
+  // //     // setPositionMax(positionMax - (e.clientX - coordStart));
+  // //   }
+  // //   // (e.target.style.left += e.clientX - coordStart);
+  // //   console.log('MouseMove: ', positionMin, '; ', positionMax);
+  // // };  
 
-  const handleMouseDownMax = e => {
-    setIsMouseDownMax(true);
-    setCoordStart(e.clientX);
-    // console.log('MouseDownMax: ', coordStart, '; ', e.clientX);
-  };  
+  // const handleMouseDownMin = e => {
+  //   setIsMouseDownMin(true);
+  //   // setAmendment=;
+  //   setCoordStart(e.clientX);
+  //   // console.log('MouseDownMin: ', coordStart, '; ', e.clientX);
+  // };  
 
-  const handleMouseUp = () => {
-    setIsMouseDownMin(false);
-    setIsMouseDownMax(false);
-    // console.log('MouseUp');
-  };  
+  // const handleMouseDownMax = e => {
+  //   setIsMouseDownMax(true);
+  //   setCoordStart(e.clientX);
+  //   // console.log('MouseDownMax: ', coordStart, '; ', e.clientX);
+  // };  
 
-  const onDrag = (e) => {
-    if (e.target.id === 'min') {
-      // setPositionMin(positionMin + (e.clientX - coordStart));
-      setPositionMin(e.clientX);
-    } else if (e.target.id === 'min') {
-      setPositionMax(positionMax + (e.clientX - coordStart))
-    }
+  // const handleMouseUp = () => {
+  //   setIsMouseDownMin(false);
+  //   setIsMouseDownMax(false);
+  //   // console.log('MouseUp');
+  // };  
 
-    console.log('onDrag');
-  };  
+  // const onDrag = (e) => {
+  //   if (e.target.id === 'min') {
+  //     // setPositionMin(positionMin + (e.clientX - coordStart));
+  //     setPositionMin(e.clientX);
+  //   } else if (e.target.id === 'min') {
+  //     setPositionMax(positionMax + (e.clientX - coordStart))
+  //   }
+
+  //   console.log('onDrag');
+  // };  
 
   return (
     <>
@@ -201,8 +289,8 @@ const PriceRange = () => {
           onBlur={handleChangeMin}
         />
         <span>{lang[languages].priceRange_labelEnd}</span>
-        <InputinputMax
-          id=''
+        <Input
+          id='inputMax'
           type="text"
           style={{ width: '70px' }}
           value={inputValueMax}
@@ -225,7 +313,8 @@ const PriceRange = () => {
       // onMouseMove={onMouseMove}
       // onMouseUp={handleMouseUp}
       >
-        <RangeBgDiv id="range-price" onMouseEnter={() => setIsVisable(true)} />
+        {/* <RangeBgDiv id="range-price" onMouseEnter={() => setIsVisable(true)} /> */}
+        <RangeBgDiv id="range-price" />
         <RangeActiveDiv
           style={{
             width: `${positionMax - positionMin}px`,
@@ -249,7 +338,7 @@ const PriceRange = () => {
             // onMouseEnter={setIsVisable(true)}
             // onMouseOut={setIsVisable(false)}
             // onMouseMove={onMouseMove}
-            onDrag={onDrag}
+            // onDrag={onDrag}
             readOnly={false}
           />
           <RangeLineEdgesDiv
