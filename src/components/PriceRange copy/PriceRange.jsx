@@ -22,9 +22,9 @@ const PriceRange = () => {
   const filteredProducts = useSelector(selectFilteredProducts);
   const languages = useSelector(selectLanguages);
 
-  const [rangeWidth, setRangeWidth] = useState(0);
-  const [positionMin, setPositionMin] = useState(0);
-  const [positionMax, setPositionMax] = useState(0);
+  const [rangePriceWidth, setRangeWidth] = useState(0);
+  const [curentPositionLeftMin, setCurentPositionLeftMin] = useState(0);
+  const [curentPositionLeftMax, setCurentPositionLeftMax] = useState(0);
   
   const [inputValueMin, setInputValueMin] = useState('');
   const [inputValueMax, setInputValueMax] = useState('');
@@ -32,14 +32,14 @@ const PriceRange = () => {
   const [maxPrice, setMaxPrice] = useState(0);
   const [minPrice, setMinPrice] = useState(0);  
   
-  // const [isVisable, setIsVisable] = useState(false);  
-  // const [coordText, setCoordText] = useState('');
-  // // const [coordEnd, setCoordEnd] = useState(0);
+  const [isVisable, setIsVisable] = useState(false);  
+  const [coordText, setCoordText] = useState('');
+  // const [coordEnd, setCoordEnd] = useState(0);
   
-  // const [isMouseDownMin, setIsMouseDownMin] = useState(false);  
-  // const [isMouseDownMax, setIsMouseDownMax] = useState(false);  
-  // const [coordStart, setCoordStart] = useState(0);
-  // const [amendment, setAmendment] = useState(0);
+  const [isMouseDownMin, setIsMouseDownMin] = useState(false);  
+  const [isMouseDownMax, setIsMouseDownMax] = useState(false);  
+  const [coordStart, setCoordStart] = useState(0);
+  const [amendment, setAmendment] = useState(0);
 
 
   
@@ -52,9 +52,10 @@ const PriceRange = () => {
     const rangePriceElement = document.getElementById('range-price');
     const rangeWidth = rangePriceElement.clientWidth;
     
-    setRangeWidth(rangeWidth);    
-    // setPositionMin(0);
-    setPositionMax(rangeWidth);
+    setRangeWidth(rangeWidth);
+    
+    setCurentPositionLeftMin(0);
+    setCurentPositionLeftMax(rangeWidth);
 
     const findMinMaxPrice = () => {
       const max = filteredProducts.reduce((accumulator, currentValue) => (
@@ -78,19 +79,37 @@ const PriceRange = () => {
     
   }, []);
   
+  // const handleMoveMin = e => {
+  //   // var x = e.curentTarget.clientX;
+  //   // var y = e.clientY;
+  //   // if (!(rangePricePosition < e.curentTarget.clientX)) {
+  //   //   setCurentPosition1(Math.round((e.curentTarget.clientX - rangePricePosition) / rangePriceWidth * 100)-SHIFT_RANGE);
+  //   // }
+    
+  //   // e.target.style.left = x - e.target.clientWidth / 2 + 'px';
+  //   // movableElement.style.top = y - movableElement.clientHeight / 2 + 'px';
+    
+  //   // coordinatesDisplay.textContent = '(' + x + ', ' + y + ')';
+  // };
+  
+  // const handleMoveMax = e => {
+  //   // !(rangePricePosition + rangePriceWidth < e.curentTarget.clientX) && 
+  //   //   setCurentPosition2(Math.round((1-(e.curentTarget.clientX - rangePricePosition) / rangePriceWidth) * 100)-SHIFT_RANGE);    
+  // };
+  
   const handleChangeMin = e => { 
     const value = Number(e.target.value);
     if (value < minPrice) {
-      setPositionMin(0);
+      setCurentPositionLeftMin(0);
       setInputValueMin(minPrice);
     } else {
-      const result = Math.round(rangeWidth * (value - minPrice) / maxPrice);
+      const result = Math.round(rangePriceWidth * (value - minPrice) / maxPrice);
       
-      if (result > positionMax) {
-        setPositionMin(positionMax);
+      if (result > curentPositionLeftMax) {
+        setCurentPositionLeftMin(curentPositionLeftMax);
         setInputValueMin(inputValueMax);
       } else {
-        setPositionMin(result);
+        setCurentPositionLeftMin(result);
         setInputValueMin(value);
       }
     }
@@ -99,27 +118,20 @@ const PriceRange = () => {
   const handleChangeMax = e => {
     const value = Number(e.target.value);
     if (value > maxPrice) {
-      setPositionMax(maxPrice);
+      setCurentPositionLeftMax(maxPrice);
       setInputValueMax(maxPrice);
     } else {
-      const result = Math.round((rangeWidth * value) / maxPrice);
+      const result = Math.round((rangePriceWidth * value) / maxPrice);
       
-      if (result < positionMin) {
-        setPositionMax(positionMin);
+      if (result < curentPositionLeftMin) {
+        setCurentPositionLeftMax(curentPositionLeftMin);
         setInputValueMax(inputValueMin);
       } else {
-        setPositionMax(result);
+        setCurentPositionLeftMax(result);
         setInputValueMax(value);
       }
     }
   };
-  
-  const onChangeMinMax = e => {
-    const val = Math.abs(Number(e.target.value));
-    if (val > 0){
-      e.target.id === 'inputMin' && setInputValueMin(val);
-      e.target.id === 'inputMax' && setInputValueMax(val);
-  }};
   
   const onChangeMin = e => {
     const val = Math.abs(Number(e.target.value));
@@ -142,18 +154,18 @@ const PriceRange = () => {
   
   const onMouseMove = e => {
     setCoordText('x=' + e.clientX + '; y=' + e.clientY);
-    isMouseDownMin && setPositionMin(positionMin + (e.clientX - coordStart));
-    isMouseDownMax && setPositionMax(positionMax + (e.clientX - coordStart));
+    isMouseDownMin && setCurentPositionLeftMin(curentPositionLeftMin + (e.clientX - coordStart));
+    isMouseDownMax && setCurentPositionLeftMax(curentPositionLeftMax + (e.clientX - coordStart));
   };  
 
   // const onMouseMove = e => {
   //   if (isMouseDown) {
-  //     // setPositionMin(positionMin + e.clientX - coordStart);
-  //     setPositionMin(e.clientX);
-  //     // setPositionMax(positionMax - (e.clientX - coordStart));
+  //     // setCurentPositionLeftMin(curentPositionLeftMin + e.clientX - coordStart);
+  //     setCurentPositionLeftMin(e.clientX);
+  //     // setCurentPositionLeftMax(curentPositionLeftMax - (e.clientX - coordStart));
   //   }
   //   // (e.target.style.left += e.clientX - coordStart);
-  //   console.log('MouseMove: ', positionMin, '; ', positionMax);
+  //   console.log('MouseMove: ', curentPositionLeftMin, '; ', curentPositionLeftMax);
   // };  
 
   const handleMouseDownMin = e => {
@@ -177,10 +189,10 @@ const PriceRange = () => {
 
   const onDrag = (e) => {
     if (e.target.id === 'min') {
-      // setPositionMin(positionMin + (e.clientX - coordStart));
-      setPositionMin(e.clientX);
+      // setCurentPositionLeftMin(curentPositionLeftMin + (e.clientX - coordStart));
+      setCurentPositionLeftMin(e.clientX);
     } else if (e.target.id === 'min') {
-      setPositionMax(positionMax + (e.clientX - coordStart))
+      setCurentPositionLeftMax(curentPositionLeftMax + (e.clientX - coordStart))
     }
 
     console.log('onDrag');
@@ -192,22 +204,18 @@ const PriceRange = () => {
       <Form>
         <span>{lang[languages].priceRange_labelStart} </span>
         <Input
-          id='inputMin'
           type="text"
           style={{ width: '50px' }}
           value={inputValueMin}
-          // onChange={onChangeMin}
-          onChange={onChangeMinMax}
+          onChange={onChangeMin}
           onBlur={handleChangeMin}
         />
         <span>{lang[languages].priceRange_labelEnd}</span>
-        <InputinputMax
-          id=''
+        <Input
           type="text"
           style={{ width: '70px' }}
           value={inputValueMax}
-          // onChange={onChangeMax}
-          onChange={onChangeMinMax}
+          onChange={onChangeMax}
           onBlur={handleChangeMax}
         />
         <span>{' грн'}</span>
@@ -228,8 +236,8 @@ const PriceRange = () => {
         <RangeBgDiv id="range-price" onMouseEnter={() => setIsVisable(true)} />
         <RangeActiveDiv
           style={{
-            width: `${positionMax - positionMin}px`,
-            left: `${positionMin + SHIFT_RANGE}px`,
+            width: `${curentPositionLeftMax - curentPositionLeftMin}px`,
+            left: `${curentPositionLeftMin + SHIFT_RANGE}px`,
           }}
           // onMouseEnter={() => setIsVisable(true)}
           // onMouseDown={handleMouseDown}
@@ -283,32 +291,3 @@ const PriceRange = () => {
 };
 
 export default PriceRange;
-
-// Эти стрелки добавляют сам бреузер, но их можно убрать обычными стилями css.
-
-// Это для браузера Chrome:
-
-// input[type="number"]::-webkit-outer-spin-button,
-// input[type="number"]::-webkit-inner-spin-button {
-//   -webkit-appearance: none;
-//   margin: 0;
-// }
-// Это для браузера Firefox:
-
-// input[type="number"] {
-//   -moz-appearance: textfield;
-// }
-// input[type="number"]:hover,
-// input[type="number"]:focus {
-//   -moz-appearance: number-input;
-// }
-// Для других
-
-// input[type=number]::-webkit-inner-spin-button,
-// input[type=number]::-webkit-outer-spin-button {
-//   -webkit-appearance: none;
-//   margin: 0;
-// }
-// Поделиться
-// Улучшить ответ
-// Отслеживать
