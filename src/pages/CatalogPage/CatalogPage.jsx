@@ -4,7 +4,7 @@ import { fetchProducts } from "redux/operations";
 
 import ProductCard from "components/ProductCard/ProductCard";
 // import { selectProducts, selectSearchParams } from "redux/selectors";
-import { selectProducts, selectFilteredProducts } from 'redux/selectors';
+import { selectProducts, selectFilteredProducts, selectFilters } from 'redux/selectors';
 import { changefilteredProducts } from 'redux/slice/filteredProductsSlice';
 
 import {
@@ -22,9 +22,8 @@ import NavBar from 'components/NavBar/NavBar';
 // import FilterPanel from 'components/FilterPanel/FilterPanel';
 
 import PriceRange from 'components/PriceRange/PriceRange';
-
-
 import products1 from "../../assets/json/products.json";
+
 
 const CatalogCarsPage = () => {
   const dispatch = useDispatch();
@@ -42,6 +41,9 @@ const CatalogCarsPage = () => {
   const [activePage, setActivePage] = useState(1);
   // const [activeFilter, setActiveFilter] = useState(false);
   
+  const filters = useSelector(selectFilters);
+
+
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
@@ -64,6 +66,12 @@ const CatalogCarsPage = () => {
   const onClickDecrease  = () => {
     activePage > 0 && setActivePage(activePage - 1);
   };
+
+  const onFilter = () => {
+    const rez = 
+
+    return rez
+  }
 
   return (
     <div style={{ backgroundColor: '#f6f8fd' }}>

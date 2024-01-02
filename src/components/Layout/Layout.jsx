@@ -62,7 +62,12 @@ export default function Layout() {
   const handleSubmit = e => {    
     e.preventDefault();
     // setSearchParams({ query: e.target[1].value });    
-    dispatch(changefilters({key: 'mame', value: e.target[1].value})); 
+    dispatch(changefilters({key: 'name', value: e.target[1].value})); 
+    return;
+  };
+  
+  const onBlurInp = e => {    
+    dispatch(changefilters({key: 'name', value: e.target.value})); 
     return;
   };
   
@@ -110,6 +115,8 @@ export default function Layout() {
               type="text"
               placeholder={lang[languages].layout_find}
               // onChange={handleChange}
+              // onBlur={onBlurInp}
+              onFocusOut={onBlurInp}
             />
           </form>
           <AdressBar />

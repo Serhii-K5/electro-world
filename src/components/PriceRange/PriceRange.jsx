@@ -12,6 +12,7 @@ import {
 } from './PriceRange.styled';
 
 import { changefilteredProducts } from 'redux/slice/filteredProductsSlice';
+import { changefilters } from "redux/slice/filtersSlice";
 import { SHIFT_RANGE } from 'constants/constants';
 import lang from 'assets/json/language.json';
 
@@ -72,6 +73,7 @@ const PriceRange = () => {
       
       setMaxPrice(max);
       setMinPrice(min);
+      dispatch(changefilters({key: 'price', value: [min, max]})); 
     };
 
     findMinMaxPrice();
@@ -189,7 +191,9 @@ const PriceRange = () => {
     setIsMouseDownMax(true);
   };  
 
-  const handleClickBtn = () => {
+  const handleClickBtn = () => {    
+    dispatch(changefilters({ key: 'price', value: [inputValueMin, inputValueMax] })); 
+    
     console.log("Button click");
     alert("Button click");
   }
