@@ -23,6 +23,7 @@ const PriceRange = () => {
   const languages = useSelector(selectLanguages);
 
   const [rangeWidth, setRangeWidth] = useState(0);
+  const [positionStart, setPositionStart] = useState(0);
   const [positionMin, setPositionMin] = useState(0);
   const [positionMax, setPositionMax] = useState(0);
   
@@ -36,8 +37,8 @@ const PriceRange = () => {
   const [coordText, setCoordText] = useState('');
   // // const [coordEnd, setCoordEnd] = useState(0);
   
-  // const [isMouseDownMin, setIsMouseDownMin] = useState(false);  
-  // const [isMouseDownMax, setIsMouseDownMax] = useState(false);  
+  const [isMouseDownMin, setIsMouseDownMin] = useState(false);  
+  const [isMouseDownMax, setIsMouseDownMax] = useState(false);  
   // const [coordStart, setCoordStart] = useState(0);
   // const [amendment, setAmendment] = useState(0);
 
@@ -45,15 +46,14 @@ const PriceRange = () => {
   
   if (filteredProducts.length === 0) {
     dispatch(changefilteredProducts(products1));
-  }
-  
+  }  
   
   useEffect(() => {
     const rangePriceElement = document.getElementById('range-price');
     const rangeWidth = rangePriceElement.clientWidth;
+    setPositionStart(rangePriceElement.offsetParent.offsetLeft);
     
     setRangeWidth(rangeWidth);    
-    // setPositionMin(0);
     setPositionMax(rangeWidth);
 
     const findMinMaxPrice = () => {
@@ -77,6 +77,50 @@ const PriceRange = () => {
     findMinMaxPrice();
     
   }, []);
+
+  useEffect(() => {
+    const handleMouseMove = e => {
+      if (isMouseDownMin) {
+        const offsetMin = e.clientX - positionStart - SHIFT_RANGE * 0.5;
+        if (offsetMin + SHIFT_RANGE * 0.5 >= positionStart && offsetMin <= positionMax) {
+          setInputValueMin(Math.round(offsetMin * (maxPrice - minPrice) / rangeWidth))
+          setPositionMin(Math.round(offsetMin))
+        } else if (offsetMin > positionMax ) {
+          setInputValueMin(inputValueMax)
+          setPositionMax(positionMax)
+        } else {
+          setInputValueMin(minPrice)
+          setPositionMin(0)
+        }
+      }
+      if (isMouseDownMax) {
+        const offsetMax = e.clientX - positionStart - SHIFT_RANGE * 1.5;
+        if (offsetMax >= positionMin && offsetMax <= rangeWidth) {
+          setInputValueMax(Math.round(offsetMax * (maxPrice - minPrice) / rangeWidth))
+          setPositionMax(Math.round(offsetMax))
+        } else if (offsetMax < positionMin ) {
+          setInputValueMax(inputValueMin)
+          setPositionMax(positionMin)
+        } else {
+          setInputValueMax(maxPrice)
+          setPositionMax(rangeWidth)
+        }
+      }
+    };
+
+    const handleMouseUp = () => {
+      setIsMouseDownMin(false);
+      setIsMouseDownMax(false);
+    };
+    
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseup', handleMouseUp);
+
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseup', handleMouseUp);
+    };
+  }, [isMouseDownMin, isMouseDownMax]);
   
   const changePositionMin = (value) => {
     if (value > inputValueMax) {
@@ -87,7 +131,7 @@ const PriceRange = () => {
       const result = Math.round(rangeWidth * (value - minPrice) / (maxPrice - minPrice));
       setPositionMin(result);
     }
-  }
+  };
   
   const handleChangeMin = e => {
     const value = Math.abs(Number(e.target.value));
@@ -96,7 +140,7 @@ const PriceRange = () => {
     } else {
       setInputValueMin(minPrice);
     }
-  }
+  };
 
   const changePositionMax = (value) => {
     if (value < inputValueMin) {
@@ -106,8 +150,8 @@ const PriceRange = () => {
     } else {
       const result = Math.round(rangeWidth * (value - minPrice) / (maxPrice - minPrice));
       setPositionMax(result);
-    }    
-  }
+    }
+  };
 
   const handleChangeMax = e => {
     const value = Math.abs(Number(e.target.value));
@@ -137,71 +181,15 @@ const PriceRange = () => {
     } 
   };
   
-  // // const onChangeMin = e => {
-  // //   const val = Math.abs(Number(e.target.value));
-  // //   val > 0 && setInputValueMin(val);
-  // // };
+  const handleMouseDownMin = e => {
+    setIsMouseDownMin(true);
+  };  
+
+  const handleMouseDownMax = e => {
+    setIsMouseDownMax(true);
+  };  
+
   
-  // // const onChangeMax = e => {
-  // //   const val = Math.abs(Number(e.target.value));
-  // //   val > 0 && setInputValueMax(val);
-  // // };
-  
-  // // const onMouseLeave = e => {
-  // //   // setCoordText('x=' + window.pageXOffset + '; y=' + window.pageYOffset);
-  // //   // setCoordText('x=' + window.scrollX + '; y=' + window.scrollY);
-  // //   setCoordText('x=' + e.clientX + '; y=' + e.clientY);
-
-  // //   // setRangePosition(e.target.clientX);
-  // //   // setRangeWidth(e.target.style.width);
-  // // };  
-  
-  // const onMouseMove = e => {
-  //   setCoordText('x=' + e.clientX + '; y=' + e.clientY);
-  //   isMouseDownMin && setPositionMin(positionMin + (e.clientX - coordStart));
-  //   isMouseDownMax && setPositionMax(positionMax + (e.clientX - coordStart));
-  // };  
-
-  // // const onMouseMove = e => {
-  // //   if (isMouseDown) {
-  // //     // setPositionMin(positionMin + e.clientX - coordStart);
-  // //     setPositionMin(e.clientX);
-  // //     // setPositionMax(positionMax - (e.clientX - coordStart));
-  // //   }
-  // //   // (e.target.style.left += e.clientX - coordStart);
-  // //   console.log('MouseMove: ', positionMin, '; ', positionMax);
-  // // };  
-
-  // const handleMouseDownMin = e => {
-  //   setIsMouseDownMin(true);
-  //   // setAmendment=;
-  //   setCoordStart(e.clientX);
-  //   // console.log('MouseDownMin: ', coordStart, '; ', e.clientX);
-  // };  
-
-  // const handleMouseDownMax = e => {
-  //   setIsMouseDownMax(true);
-  //   setCoordStart(e.clientX);
-  //   // console.log('MouseDownMax: ', coordStart, '; ', e.clientX);
-  // };  
-
-  // const handleMouseUp = () => {
-  //   setIsMouseDownMin(false);
-  //   setIsMouseDownMax(false);
-  //   // console.log('MouseUp');
-  // };  
-
-  // const onDrag = (e) => {
-  //   if (e.target.id === 'min') {
-  //     // setPositionMin(positionMin + (e.clientX - coordStart));
-  //     setPositionMin(e.clientX);
-  //   } else if (e.target.id === 'min') {
-  //     setPositionMax(positionMax + (e.clientX - coordStart))
-  //   }
-
-  //   console.log('onDrag');
-  // };  
-
   return (
     <>
       <p>{lang[languages].priceRange_label}</p>
@@ -212,7 +200,6 @@ const PriceRange = () => {
           type="text"
           style={{ width: '50px' }}
           value={inputValueMin}
-          // onChange={onChangeMin}
           onChange={onChangeMinMax}
           onBlur={handleChangeMin}
         />
@@ -222,7 +209,6 @@ const PriceRange = () => {
           type="text"
           style={{ width: '70px' }}
           value={inputValueMax}
-          // onChange={onChangeMax}
           onChange={onChangeMinMax}
           onBlur={handleChangeMax}
         />
@@ -234,98 +220,28 @@ const PriceRange = () => {
         <b>OK</b>
       </BtnDiv>
       {/* ------------------------------------ */}
-      <RangeContainer
-      // onMouseEnter={() => setIsVisable(true)}
-      // onMouseOut={() => setIsVisable(false)}
-      // onMouseLeave={onMouseLeave}
-      // onMouseMove={onMouseMove}
-      // onMouseUp={handleMouseUp}
-      >
-        {/* <RangeBgDiv id="range-price" onMouseEnter={() => setIsVisable(true)} /> */}
+      <RangeContainer>
         <RangeBgDiv id="range-price" />
         <RangeActiveDiv
           style={{
             width: `${positionMax - positionMin}px`,
             left: `${positionMin + SHIFT_RANGE}px`,
           }}
-          // onMouseEnter={() => setIsVisable(true)}
-          // onMouseDown={handleMouseDown}
-          // onMouseUp={handleMouseUp}
         >
           <RangeLineEdgesDiv
             id="min"
             style={{ left: `${-SHIFT_RANGE}px` }}
-            // onMouseEnter={() => setIsVisable(true)}
-            // onMouseDown={handleMouseDownMin}
-            // onMouseDown={() => setIsMouseDownMin(true)}
-            // onMouseUp={handleMouseUp}
-            // onMouseOut={handleMouseUp}
-
-            // onMouseUp={() => setIsMouseDownMin(true)}
-            // onMouseEnter={handleMouseEnter}
-            // onMouseEnter={setIsVisable(true)}
-            // onMouseOut={setIsVisable(false)}
-            // onMouseMove={onMouseMove}
-            // onDrag={onDrag}
-            readOnly={false}
+            onMouseDown={handleMouseDownMin}
           />
           <RangeLineEdgesDiv
             id="max"
             style={{ right: `${-SHIFT_RANGE}px` }}
-            // onMouseEnter={() => setIsVisable(true)}
-            // onMouseDown={handleMouseDownMax}
-            // onMouseUp={handleMouseUp}
-
-            // onMouseDown={() => setIsMouseDownMax(true)}
-            // onMouseUp={() => setIsMouseDownMax(false)}
+            onMouseDown={handleMouseDownMax}
           />
         </RangeActiveDiv>
       </RangeContainer>
-      {/* {isVisable && <div>{coordText}</div>} */}
-      <div>{coordText}</div>
-      {/* <div>
-        {document.clientX} '; ' {document.clientY}
-      </div>
-      <div>
-        {window.clientX} '; ' {window.clientY}
-      </div>
-      <div>
-        {window.screenX} '; ' {window.screenY}
-      </div>
-      <div>
-        {(window.screenLeft = window.screenX)} '; ' {window.pageYOffset}
-      </div> */}
     </>
   );
 };
 
 export default PriceRange;
-
-// Эти стрелки добавляют сам бреузер, но их можно убрать обычными стилями css.
-
-// Это для браузера Chrome:
-
-// input[type="number"]::-webkit-outer-spin-button,
-// input[type="number"]::-webkit-inner-spin-button {
-//   -webkit-appearance: none;
-//   margin: 0;
-// }
-// Это для браузера Firefox:
-
-// input[type="number"] {
-//   -moz-appearance: textfield;
-// }
-// input[type="number"]:hover,
-// input[type="number"]:focus {
-//   -moz-appearance: number-input;
-// }
-// Для других
-
-// input[type=number]::-webkit-inner-spin-button,
-// input[type=number]::-webkit-outer-spin-button {
-//   -webkit-appearance: none;
-//   margin: 0;
-// }
-// Поделиться
-// Улучшить ответ
-// Отслеживать
