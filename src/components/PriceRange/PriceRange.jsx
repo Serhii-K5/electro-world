@@ -78,7 +78,6 @@ const PriceRange = () => {
     
   }, []);
   
-  // const min = (value) => {
   const changePositionMin = (value) => {
     if (value > inputValueMax) {
       setPositionMin(positionMax);
@@ -88,45 +87,17 @@ const PriceRange = () => {
       const result = Math.round(rangeWidth * (value - minPrice) / (maxPrice - minPrice));
       setPositionMin(result);
     }
-    
-    // const result = Math.round(rangeWidth * (value - minPrice) / maxPrice);
-      
-    // if (result > positionMax) {
-    //   setPositionMin(positionMax);
-    //   setInputValueMin(inputValueMax);
-    // } else {
-    //   setPositionMin(result);
-    //   setInputValueMin(value);
-    // }
   }
   
   const handleChangeMin = e => {
     const value = Math.abs(Number(e.target.value));
-    if (value >= minPrice && value <= inputValueMax){
+    if (value >= minPrice && value <= inputValueMax) {
       setInputValueMin(value);
     } else {
       setInputValueMin(minPrice);
-    }     
-      
-    // if (value < minPrice || ) {
-    //   setPositionMin(0);
-    //   setInputValueMin(minPrice);
-    //   // setInputValueMin(value);
-    // } else if (value >= minPrice){
-    //   min(value)
-    //   // const result = Math.round(rangeWidth * (value - minPrice) / maxPrice);
-      
-    //   // if (result > positionMax) {
-    //   //   setPositionMin(positionMax);
-    //   //   setInputValueMin(inputValueMax);
-    //   // } else {
-    //   //   setPositionMin(result);
-    //   //   setInputValueMin(value);
-    //   // }
-    // }
-  };
+    }
+  }
 
-  // const max = (value) => {
   const changePositionMax = (value) => {
     if (value < inputValueMin) {
       setPositionMax(positionMin);
@@ -136,54 +107,17 @@ const PriceRange = () => {
       const result = Math.round(rangeWidth * (value - minPrice) / (maxPrice - minPrice));
       setPositionMax(result);
     }    
-    
-    // const result = Math.round((rangeWidth * value) / maxPrice);
-      
-    // if (result < positionMin) {
-    //   setPositionMax(positionMin);
-    //   setInputValueMax(inputValueMin);
-    // } else {
-    //   setPositionMax(result);
-    //   setInputValueMax(value);
-    // }
   }
 
   const handleChangeMax = e => {
     const value = Math.abs(Number(e.target.value));
-    if (value <= maxPrice && value >= inputValueMin){
+    if (value >= inputValueMin && value <= maxPrice){
       setInputValueMax(value);
     } else if (value < inputValueMin){
       setInputValueMax(inputValueMin);
     } else {
-      setInputValueMin(maxPrice);
+      setInputValueMax(maxPrice);
     } 
-
-    // const value = Number(e.target.value);
-    // if (value >= 0 && value < maxPrice){
-    //   max(value)
-    // } else if (value >= 0 && value < minPrice){
-    //   setPositionMax(positionMin);
-    //   setInputValueMax(minPrice);
-    // } else {
-    //   setPositionMax(rangeWidth);
-    //   setInputValueMax(maxPrice);
-    // }
-
-    // if (value > maxPrice) {
-    //   setPositionMax(maxPrice);
-    //   setInputValueMax(maxPrice);
-    // } else if (value >= 0){
-    //   max(value)
-    //   // const result = Math.round((rangeWidth * value) / maxPrice);
-      
-    //   // if (result < positionMin) {
-    //   //   setPositionMax(positionMin);
-    //   //   setInputValueMax(inputValueMin);
-    //   // } else {
-    //   //   setPositionMax(result);
-    //   //   setInputValueMax(value);
-    //   // }
-    // }
   };
   
   const onChangeMinMax = e => {
@@ -196,12 +130,6 @@ const PriceRange = () => {
       if (e.target.id === 'inputMax') {
         setInputValueMax(value);
         changePositionMax(value);
-        
-        // if (value <= maxPrice){ 
-        //   max(value);
-        // } else {
-        //   setPositionMax(rangeWidth);
-        // }
       }
     } else {
       e.target.id === 'inputMin' && setInputValueMin(e.target.value);

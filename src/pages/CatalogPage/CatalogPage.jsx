@@ -21,8 +21,8 @@ import NavBar from 'components/NavBar/NavBar';
 
 // import FilterPanel from 'components/FilterPanel/FilterPanel';
 
-// import PriceRange from 'components/PriceRange/PriceRange';
-import PriceRange1 from 'components/PriceRange/PriceRange';
+import PriceRange from 'components/PriceRange/PriceRange';
+// import PriceRange1 from 'components/PriceRange1/PriceRange1';
 // import DraggableElement from 'components/Range/PriceRange';
 import DraggableElement from 'components/PriceRange0/PriceRange';
 
@@ -74,8 +74,8 @@ const CatalogCarsPage = () => {
       <Container>
         <aside style={{minWidth: '250px'}}>
           {/* <p>Панель фильтров</p> */}
-          {/* <PriceRange /> */}
-          <PriceRange1 />
+          <PriceRange />
+          {/* <PriceRange1 /> */}
           <DraggableElement/>
         </aside>
         <section>
