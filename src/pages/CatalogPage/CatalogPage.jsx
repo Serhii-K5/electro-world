@@ -7,6 +7,8 @@ import ProductCard from "components/ProductCard/ProductCard";
 import { selectProducts, selectFilteredProducts, selectFilters } from 'redux/selectors';
 import { changefilteredProducts } from 'redux/slice/filteredProductsSlice';
 
+import { changefilters } from "redux/slice/filtersSlice";
+
 import {
   Container,
   Ul,
@@ -19,7 +21,7 @@ import NavBar from 'components/NavBar/NavBar';
 
 // import PaginationBar from "components/PaginationBar/PaginationBar"
 
-// import FilterPanel from 'components/FilterPanel/FilterPanel';
+import FilterPanel from 'components/FilterPanel/FilterPanel';
 
 import PriceRange from 'components/PriceRange/PriceRange';
 import products1 from "../../assets/json/products.json";
@@ -28,21 +30,26 @@ import products1 from "../../assets/json/products.json";
 const CatalogCarsPage = () => {
   const dispatch = useDispatch();
   const products = useSelector(selectProducts);
-  const filteredProducts = useSelector(selectFilteredProducts);
+  const [filteredData, setFilteredData] = useState(products.length > 0 ? products : products1);
+  // const filteredProducts = useSelector(selectFilteredProducts);
   // const searchParams = useSelector(selectSearchParams);
-  const [filteredData, setFilteredData] = useState(
-    filteredProducts.length > 0 ? filteredProducts : products.length > 0 ? products : products1
-  );
+  // const [filteredData, setFilteredData] = useState(
+  //   filteredProducts.length > 0 ? filteredProducts : products.length > 0 ? products : products1
+  // );
 
-  if (filteredProducts.length === 0) {
-    dispatch(changefilteredProducts(filteredData));
-  }
+  // if (filteredProducts.length === 0) {
+  //   dispatch(changefilteredProducts(filteredData));
+  // }
 
   const [activePage, setActivePage] = useState(1);
-  // const [activeFilter, setActiveFilter] = useState(false);
+  const [activeFilter, setActiveFilter] = useState(false);
   
   const filters = useSelector(selectFilters);
 
+
+  useEffect(() => {
+    dispatch(changefilters({key: 'name', value: ''})); 
+  }, []);
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -50,14 +57,15 @@ const CatalogCarsPage = () => {
 
   useEffect(() => {
     dispatch(changefilteredProducts(filteredData));
-  }, [dispatch, filteredData]);
+  // }, [dispatch, filteredData]);
+  }, [filteredData]);
   
 
-  // const handleFilter = filteredData => {
-  //   setActiveFilter(true);
-  //   setActivePage(0);
-  //   setFilteredData(filteredData);
-  // };
+  const handleFilter = filteredData => {
+    setActiveFilter(true);
+    setActivePage(0);
+    setFilteredData(filteredData);
+  };
 
   const onClickIncrease  = () => {
     activePage < filteredData.length / 8 && setActivePage(activePage + 1);
@@ -68,36 +76,36 @@ const CatalogCarsPage = () => {
   };
 
   const onFilter = () => {
-    const rez = 
+    const rez = 0
 
     return rez
   }
+  
+  // const handleFilter = filteredData => {
+  //   setFilteredData(filteredData);
+  // };
+
 
   return (
-    <div style={{ backgroundColor: '#f6f8fd' }}>
+    <div style={{ backgroundColor: 'var(--bg-second)' }}>
       <NavBar />
       <Container>
         <aside style={{minWidth: '250px'}}>
           {/* <p>Панель фильтров</p> */}
           <PriceRange />
+          {/* <FilterPanel data={adverts} onFilter={handleFilter} /> */}
+          <FilterPanel data={filteredData} onFilter={handleFilter} />
         </aside>
         <section>
-          {/* <FilterPanel data={products} onFilter={handleFilter} /> */}
-          {filteredData.length === 0 &&
-            products.length > 0 &&
-            // !activeFilter &&
-            setFilteredData(products)}
+          {filteredData.length === 0 && products.length > 0 && setFilteredData(products)}
           {filteredData.length > 0 && (
             <Ul>
-              {filteredData.map(
-                (item, index) =>
-                  // index > (activePage - 1) * 8 && index < activePage * 8 &&
-                  index > (activePage - 1) * 8 - 1 &&
-                  index < activePage * 8 && (
-                    <li key={item.id}>
-                      <ProductCard card={item} />
-                    </li>
-                  )
+              {filteredData.map((item, index) =>
+                index > (activePage - 1) * 8 - 1 && index < activePage * 8 && (
+                  <li key={item.id}>
+                    <ProductCard card={item} />
+                  </li>
+                )
               )}
             </Ul>
           )}

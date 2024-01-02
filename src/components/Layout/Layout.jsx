@@ -115,8 +115,8 @@ export default function Layout() {
               type="text"
               placeholder={lang[languages].layout_find}
               // onChange={handleChange}
-              // onBlur={onBlurInp}
-              onFocusOut={onBlurInp}
+              onBlur={onBlurInp}
+              // onFocusOut={onBlurInp}
             />
           </form>
           <AdressBar />

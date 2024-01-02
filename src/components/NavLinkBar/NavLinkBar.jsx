@@ -23,7 +23,7 @@ import MessageModule from "components/MessageModule/MessageModule";
 // import CatalogModule from 'components/CatalogModule/CatalogModule';
 import CategoryDropdownList from 'components/CategoryDropdownList/CategoryDropdownList';
 import lang from "assets/json/language.json";
-// import category from "assets/json/category.json";
+// import categories from "assets/json/categories.json";
 // import DropdownButton from '../DropdownButton/DropdownButton';
 
 
@@ -75,7 +75,7 @@ const NavLinkBar = () => {
     setIsModalCatalogClick(true);
   };
 
-  const st = { marginRight: '10px', fontSize: '24px' };
+  // const st = { marginRight: '10px', fontSize: '24px' };
 
   return (
     <>
@@ -87,8 +87,8 @@ const NavLinkBar = () => {
           <div>
             <DivCatalog>
               <GiHamburgerMenu
-                // style={{ marginRight: '10px', fontSize: '24px' }}
-                style={st}
+                style={{ marginRight: '10px', fontSize: '24px' }}
+                // style={st}
               />
               <div>
                 <Sup>{lang[languages].NavLinkBar_catalog1.toUpperCase()}</Sup>

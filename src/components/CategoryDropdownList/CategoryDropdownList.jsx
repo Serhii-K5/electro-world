@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { Li } from "./CategoryDropdownList.styled";
 // import CategoryPage from 'pages/CategoryPage/CategoryPage';
 import { changeCategory } from 'redux/slice/categorySlice';
+import { changefilters } from "redux/slice/filtersSlice";
 
 const CategoryDropdownList = ({ parentId, onCloseModal}) => {
   const dispatch = useDispatch();
@@ -20,6 +21,10 @@ const CategoryDropdownList = ({ parentId, onCloseModal}) => {
   //     onCloseModal();
   //   }
   // };
+  
+  const handleClick = e => {
+    dispatch(changefilters({key: 'parentId', value: e.cat_id})); 
+  };
 
   
   return (
@@ -31,7 +36,7 @@ const CategoryDropdownList = ({ parentId, onCloseModal}) => {
               key={index}
               className={parentId > 0 && 'parent'}
               onMouseEnter={() => categoryChange(el)}
-              // onClick={handleClick}
+              onClick={() => handleClick(el)}
             >
               <Link to="/categories">
                 {el.cat_name} {' >'}

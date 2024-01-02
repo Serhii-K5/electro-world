@@ -9,8 +9,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectDirectoryPath } from "redux/selectors";
 // import cross from "assets/images/svg/cross.svg";
-import category from 'assets/json/category.json';
-import CategorySelection from 'components/CategorySelection/CategorySelection';
+import categories from 'assets/json/categories.json';
+import categoriesSelection from 'components/categoriesSelection/categoriesSelection';
 import { addDirectoryPath, deleteDirectoryPath } from 'redux/slice/directoryPathSlice';
 // import MessageModule from 'components/MessageModule/MessageModule';
 
@@ -93,11 +93,11 @@ const CatalogModule = ({ onClose }) => {
         <ul style={{ display: 'flex' }}>
           {directoryPath.map(
             (el, index) =>
-              el.cat_id === category.id && <li key={index}>{el.cat_name}</li>
+              el.cat_id === categories.id && <li key={index}>{el.cat_name}</li>
           )}
         </ul>
       )}
-      {category.length > 0 && (
+      {categories.length > 0 && (
         <ul style={{ display: 'flex' }}>
           {/* {directoryPath.length > 0 ? ( */}
           {/* {directoryPath ? ( */}
@@ -105,7 +105,7 @@ const CatalogModule = ({ onClose }) => {
             <ul style={{ display: 'flex' }}>
               {directoryPath.map((el, index) => (
                 <li key={index}>
-                  <CategorySelection
+                  <categoriesSelection
                     parentId={el.cat_parentId}
                     onMouseMove={() => addDirectory(el)}
                     // onMouseOver={() => handleMove()}
@@ -116,7 +116,7 @@ const CatalogModule = ({ onClose }) => {
             </ul>
           )}
           {/* ) : (
-            <CategorySelection
+            <categoriesSelection
               parentId={0}
               onMouseMove={() => addDirectory(el)}
               onMouseLeave={() => deleteDirectory(el)}

@@ -5,7 +5,7 @@ import { setCatalog } from 'redux/slice/catalogSlice';
 import { setSelectedElement, clearSelectedElement } from 'redux/slice//selectedElementSlice';
 import DropdownList from '../DropdownList/DropdownList';
 
-import category from 'assets/json/category.json';
+import categories from 'assets/json/categories.json';
 
 const DropdownButton = () => {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const DropdownButton = () => {
 
   useEffect(() => {
     // Загрузка начального каталога
-    dispatch(setCatalog(category));
+    dispatch(setCatalog(categories));
   }, [dispatch]);
 
   const handleMouseEnter = (element) => {
@@ -30,8 +30,8 @@ const DropdownButton = () => {
   };
 
   const setFilter = () => {
-    const asedf = category.map(item => item.cat_parentId === 0 && item);
-    // return category.map(item => item.cat_parentId === 0 && item);
+    const asedf = categories.map(item => item.cat_parentId === 0 && item);
+    // return categories.map(item => item.cat_parentId === 0 && item);
     return asedf;
   }
 
