@@ -7,6 +7,7 @@ import {
   Header,
   BgLogo,
   TextLogo,
+  Button,
   Input,
 } from "./Layout.styled";
 
@@ -16,9 +17,9 @@ import ShoppingCart from "../ShoppingCart/ShoppingCart";
 // import { GiShoppingCart } from "react-icons/gi";
 // import logo from "../../assets/images/logo.png";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectOrders } from "redux/selectors";
-import { selectLanguages } from "redux/selectors";
+import { selectLanguages, selectFilters } from "redux/selectors";
 
 import MessageModule from "components/MessageModule/MessageModule";
 import {LanguageBar} from "components/LanguageBar/LanguageBar";
@@ -31,8 +32,14 @@ import { SlMagnifier } from "react-icons/sl";
 import NavLinkBar from 'components/NavLinkBar/NavLinkBar';
 
 import { useSearchParams } from 'react-router-dom';
+import { changefilters } from "redux/slice/filtersSlice";
 
 export default function Layout() {
+  const dispatch = useDispatch();
+  const filters = useSelector(selectFilters);
+  // const [searchText, setSearchText] = useState('');
+  
+
   const orderProducts = useSelector(selectOrders);  
   const languages = useSelector(selectLanguages);
   const [isModalShown, setIsModalShown] = useState(false);
@@ -52,9 +59,10 @@ export default function Layout() {
   // };
   // const st = {textAlign: "right",  padding: '5px',}
   
-  const handleSubmit = evt => {    
-    setSearchParams({ query: evt.target[1].value });
-    evt.preventDefault();
+  const handleSubmit = e => {    
+    e.preventDefault();
+    // setSearchParams({ query: e.target[1].value });    
+    dispatch(changefilters({key: 'mame', value: e.target[1].value})); 
     return;
   };
   
@@ -64,8 +72,10 @@ export default function Layout() {
     //   API.getSearch(movieTitle).then(value => setMovies(value));
     // }
     
+
+
   }, [searchParams]);
-  
+
   return (
     <>
       <LanguageBar />
@@ -88,63 +98,20 @@ export default function Layout() {
                 }}
               />
             </div> */}
-            <button
+            <Button
               type="submit"
-              style={{
-                position: 'absolute',
-                top: '7px',
-                left: '8px',
-                padding: 0,
-                width: '27px',
-                height: '27px',
-                border: 'none',
-                backgroundColor: 'transparent',
-              }}
             >
               <SlMagnifier
-                style={{
-                //   position: 'absolute',
-                //   top: '8px',
-                //   left: '8px',
-                  width: '25px',
-                  height: '25px',
-                }}
+                style={{width: '25px', height: '25px',}}
               />
-            </button>
+              <Link to="/catalog" />
+            </Button>
             <Input
               type="text"
-              style={{
-                padding: '8px 10px 8px 43px',
-                width: '100%',
-                borderRadius: '5px',
-                fontSize: '20px',
-                border: 'none',
-              }}
               placeholder={lang[languages].layout_find}
+              // onChange={handleChange}
             />
           </form>
-          {/* <div style={{ position: 'relative' }}>
-            <SlMagnifier
-              style={{
-                position: 'absolute',
-                top: '8px',
-                left: '8px',
-                width: '25px',
-                height: '25px',
-              }}
-            />
-            <Input
-              type="text"
-              style={{
-                padding: '8px 10px 8px 43px',
-                width: '100%',
-                borderRadius: '5px',
-                fontSize: '20px',
-                border: 'none',
-              }}
-              placeholder={lang[languages].layout_find}
-            />
-          </div> */}
           <AdressBar />
           <Link to="/orders">
             <ShoppingCart quantity={orderProducts.length} />
@@ -153,12 +120,17 @@ export default function Layout() {
       </Div>
       <NavLinkBar />
       {isModalShown && <MessageModule onClose={onCloseModal} />}
-      <div>
+      <Outlet> 
+        <footer>
+          <Footer />
+        </footer>
+      </Outlet>       
+      {/* <div>
         <Outlet />
       </div>
       <footer>
         <Footer />
-      </footer>
+      </footer> */}
     </>
   );
 }

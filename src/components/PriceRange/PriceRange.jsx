@@ -189,6 +189,10 @@ const PriceRange = () => {
     setIsMouseDownMax(true);
   };  
 
+  const handleClickBtn = () => {
+    console.log("Button click");
+    alert("Button click");
+  }
   
   return (
     <>
@@ -216,7 +220,8 @@ const PriceRange = () => {
       </Form>
       <p></p>
       {/* <button style={{ margin: '10px auto' }}>OK</button> */}
-      <BtnDiv>
+      <BtnDiv
+      onClick={handleClickBtn}>
         <b>OK</b>
       </BtnDiv>
       {/* ------------------------------------ */}
