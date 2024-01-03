@@ -20,38 +20,39 @@ const FilterPanel = ({ data, onFilter }) => {
     let result = true;
     const filteredData = data.filter(item => {
       // const memoArray = (item.memo + ';').replace(/\s/g, '').replace(';;', '').split(';');
-      const memoArray = (item.memo + ';')
-        .replace(';;', '')
-        .split(';')
-        .map(param => param.split(':').map(param2 => param2.trim()));
-
-      filtersArray.map((elem, index) => {        
+      const memoArray = [];
+        
+      filtersArray.map((elem, index) => {
+        if (!result) {
+          return result;
+        }
+        
         if (elem === 'parentId') {
-          result = result && item.elem === filters[index].value
+          result = result && item.elem === filters[index].value;
+          memoArray.push((item.memo + ';').replace(';;', '')
+            .split(';')
+            .map(param => param.split(':')
+              .map((param2, index) => { return { key: (index === 0 && param2.trim()), value: index === 1 && param2.trim() } }))
+          );
         } else if (elem === 'name' && result && (filters[index].value !== "")) {
           if (Number.isFinite(filters[index].value)) {
             result = result && item.code.toString().indexOf(filters[index].value.toString() !== -1)
           } else {
             result = result && item.name.toString().indexOf(filters[index].value.toUpperCase() !== -1)
-          }       
+          }
         } else {
-          if (filters[index].value.isArray()) {
-            result = result && item.elem 
-          } else {
-            result = result && item.elem === memoArray
+          const KeysArray = memoArray.map(item => item.key);
+          const pos = KeysArray.findIndex(el => el === elem);
+          
+          if (pos !== -1 && filters[index].value.isArray()) {
+            result = result && memoArray[pos].value >= filters[index].value[0] && memoArray[pos].value <= filters[index].value[1]
+          } else if (pos !== -1) {
+            result = result && memoArray[pos].value === filters[index].value
           }
         }
-        
-        return (result)
-      }
-      )
-      // const matchDropdown1 = filterByDropdown1 === '' || item.make === filterByDropdown1;
-      // const matchDropdown2 = filterByDropdown2 === '' || String(item.rentalPrice.slice(1)) === String(filterByDropdown2)
-      //   || (String(Number(item.rentalPrice.slice(1))) > String(Number(filterByDropdown2)) && String(Number(item.rentalPrice.slice(1))) < String(Number(filterByDropdown2) + 10));
-      // const matchInput1 = filterByInput1 === '' || item.mileage === 0 + filterByInput1 || item.mileage > 0 + filterByInput1;
-      // const matchInput2 = filterByInput2 === '' || item.mileage === 0 + filterByInput2 || item.mileage < 0 + filterByInput2;
-
-      // return matchDropdown1 && matchDropdown2 && matchInput1 && matchInput2;
+        return result;
+      });
+      
       return result;
     });
 
