@@ -5,6 +5,10 @@ const sliceFilters = createSlice({
   initialState: {
     items: [
       {
+        key: 'parentId',
+        value: '',
+      },
+      {
         key: 'name',
         value: '',
       },
