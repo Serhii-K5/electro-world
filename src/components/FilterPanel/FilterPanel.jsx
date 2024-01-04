@@ -6,10 +6,13 @@ import {
   
 } from './FilterPanel.styled';
 
+import shevron from "assets/images/svg/shuffle-arrows.svg";
 
 const FilterPanel = ({ data, onFilter }) => {
   const filters = useSelector(selectFilters); //Выбранные фильтры
   const [memoFilters, setMemoFilters] = useState([]);
+  const [isCheckBoxes, setIsCheckBoxes] = useState(true);
+  
 
   useEffect(() => {
     // handleFilter();
@@ -109,9 +112,55 @@ const FilterPanel = ({ data, onFilter }) => {
   //   return
   // };
 
+
+  const handleClick = e => {
+    // const index = categories.findIndex(category => category.cat_parentId === e.cat_id);
+    
+    // if (index === -1) {
+      // dispatch(changefilters({ key: 'parentId', value: e.cat_id }));
+      // // const filteredDate = products.filter(item => item.id === e.cat_id);
+      // dispatch(changefilters({ key: 'parentId', value: e.cat_id }));
+      // const result = filteredData.filter(item => item.id === e.cat_id)
+      // setFilteredData(result);
+      // dispatch(changefilteredProducts(result));
+      setIsCheckBoxes(false);
+    // }
+  };
+
+
   return (
-    <>
-    </>
+    <ul>
+      {memoFilters.length > 0 && memoFilters.keys.map((el, index) =>
+        <li
+          key={index}
+          // className={parentId > 0 && 'parent'}
+          // onMouseEnter={() => categoryChange(el)}
+          onClick={() => handleClick(el)}
+        >
+          {el}
+          {isCheckBoxes && 
+            <ul>
+              {memoFilters[index].value.toUpperCase().sort().map((item, keyId) =>
+                <li key={keyId}>
+                  <span
+                    role="checkbox"
+                    id={"chkPref" + keyId}
+                    aria-checked="false"
+                    onclick="changeCheckbox()"
+                    // onKeyPress="changeCheckbox()"
+                    tabindex={keyId}
+                    aria-labelledby={"chk"+ keyId + "-label"} />
+                  {/* <label id={"chk"+ keyId + "-label"} onclick="changeCheckbox()" onKeyPress="changeCheckbox()" */}
+                  <label id={"chk"+ keyId + "-label"} onclick="changeCheckbox()" >
+                    {item}
+                  </label>
+                </li>
+              )}
+            </ul>
+          }
+        </li>
+      )}
+    </ul>
   );
 };
 

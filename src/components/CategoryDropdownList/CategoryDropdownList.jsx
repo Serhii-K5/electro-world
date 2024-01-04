@@ -43,6 +43,7 @@ const CategoryDropdownList = ({ parentId, onCloseModal}) => {
       const result = filteredData.filter(item => item.id === e.cat_id)
       setFilteredData(result);
       dispatch(changefilteredProducts(result));
+      setIsCategory(false);
     }
   };
 
