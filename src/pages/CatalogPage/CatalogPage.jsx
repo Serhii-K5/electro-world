@@ -49,11 +49,14 @@ const CatalogCarsPage = () => {
 
   useEffect(() => {
     dispatch(changefilters({ key: 'name', value: '' }));
-    const index = filters.keys.findIndex(elem => elem === 'id');
-    if (index !== - 1) {
-      const result = filteredData.filter(item => item === filters[index].value)
-      // dispatch(changefilteredProducts(result));
-      setFilteredData(result);
+    if (filters.length > 0) {
+      // const index = filters.keys().findIndex(elem => elem === 'id');
+      const index = filters.findIndex(elem =>  elem.key === 'parentId');
+      if (index !== - 1) {
+        const result = filteredData.filter(item => item.parentId === filters[index].value)
+        // dispatch(changefilteredProducts(result));
+        setFilteredData(result);
+      }
     }
   }, []);
 
@@ -64,7 +67,7 @@ const CatalogCarsPage = () => {
   useEffect(() => {
     dispatch(changefilteredProducts(filteredData));
   // }, [dispatch, filteredData]);
-  }, [filteredData]);
+  }, [filteredData, filters]);
   
 
   const handleFilter = filteredData => {

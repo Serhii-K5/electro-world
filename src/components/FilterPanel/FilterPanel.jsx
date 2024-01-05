@@ -27,7 +27,7 @@ const FilterPanel = ({ data, onFilter }) => {
   
   const filtersUpdate = (result, el) => {
     if (result === -1) {
-      setMemoFilters(...memoFilters, { key: el.name, value: [el.value] });
+      setMemoFilters(...memoFilters, { key: el.key, value: [el.value] });
       // Number.isFinite(el.value)
       //   ? setMemoFilters(...memoFilters, { key: el.name, value: [el.value, el.value] })
       //   : setMemoFilters(...memoFilters, { key: el.name, value: el.value });
@@ -42,13 +42,33 @@ const FilterPanel = ({ data, onFilter }) => {
   }
   
   const createMemoArr = (memo) => {
+    // const ar = (memo + ';').replace(';;', '')
+    // const ar1 = ar.split(';')
+    
+    // const f = (val) => {
+    //   const ar3 = val.map((param2, index) => {
+    //       return { key: (index === 0 && param2.trim()), value: index === 1 && param2.trim() }
+    //     })
+    // }
+
+    // const ar2 = ar1.map(param => param.split(':').f(param.split(':'))
+    //   )
+    // return ar;
+
     return (memo + ';').replace(';;', '')
       .split(';')
-      .map(param => param.split(':')
-        .map((param2, index) => {
-          return { key: (index === 0 && param2.trim()), value: index === 1 && param2.trim() }
-        })
-      )
+      .map(item => {
+        const arr = item.split(':');
+        return {key: arr[0], value: arr.length > 0 ? arr[1] : ''}
+      })
+      
+    // return (memo + ';').replace(';;', '')
+    //   .split(';')
+    //   .map(param => param.split(':')
+    //     .map((param2, index) => {
+    //       return { key: (index === 0 && param2.trim()), value: index === 1 && param2.trim() }
+    //     })
+    //   )
   }
   
   const memoArray = () => {
@@ -56,7 +76,10 @@ const FilterPanel = ({ data, onFilter }) => {
     data.map(item => {  //перебор товара
       // const tempArr = createMemoArr(item.memo).flatMap(el => {  //создаёт массив мемо и перебирает его по ключам
       createMemoArr(item.memo).flatMap(el => {  //создаёт массив мемо и перебирает его по ключам
-        const result = memoFilters.keys.findIndex(elem => elem === el.name); //проверка наличия ключа товара в общем фильтре
+        const result = memoFilters.length > 0
+          ? memoFilters.keys.findIndex(elem => elem === el.name) //проверка наличия ключа товара в общем фильтре
+          : -1;
+        // const result = memoFilters.keys.findIndex(elem => elem === el.name); //проверка наличия ключа товара в общем фильтре
         filtersUpdate(result, el) // обновляет значение ключа
         return el
       })

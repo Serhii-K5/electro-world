@@ -40,7 +40,7 @@ const CategoryDropdownList = ({ parentId, onCloseModal}) => {
       dispatch(changefilters({ key: 'parentId', value: e.cat_id }));
       // const filteredDate = products.filter(item => item.id === e.cat_id);
       dispatch(changefilters({ key: 'parentId', value: e.cat_id }));
-      const result = filteredData.filter(item => item.id === e.cat_id)
+      const result = filteredData.filter(item => item.parentId === e.cat_id)
       setFilteredData(result);
       dispatch(changefilteredProducts(result));
       setIsCategory(false);
@@ -58,11 +58,14 @@ const CategoryDropdownList = ({ parentId, onCloseModal}) => {
             onMouseEnter={() => categoryChange(el)}
             onClick={() => handleClick(el)}
           >
-            {isCategory ? (<Link to="/categories">
+            <Link to={!isCategory ? "/categories" : "/catalog"}>
+              {isCategory && el.cat_name + ' >'}
+              </Link>
+            {/* {isCategory ? (<Link to="/categories">
                 {el.cat_name} {' >'}
               </Link>)
               : <Link to="/catalog" />
-            }
+            } */}
           </Li>
         )
       )}

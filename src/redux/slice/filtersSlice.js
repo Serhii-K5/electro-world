@@ -22,7 +22,7 @@ const sliceFilters = createSlice({
     changefilters(state, action) {
       const arr = state.items.map(item => item.key);
       const index = arr.findIndex(item => item === action.payload.key)
-      console.log(arr, "; ", action.payload.key)
+      // console.log(arr, "; ", action.payload.key)
       // const index = state.items.findIndex(item =>
       //   item.key.findIndex(key => console.log(key, '; ', action.payload.key) && key === action.payload.key))
         // console.log(item.key) && item.key === action.payload.key);
