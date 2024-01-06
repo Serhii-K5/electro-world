@@ -172,7 +172,8 @@ const FilterPanel = ({ data, onFilter }) => {
                     onclick="changeCheckbox()"
                     // onKeyPress="changeCheckbox()"
                     tabindex={keyId}
-                    aria-labelledby={"chk"+ keyId + "-label"} />
+                    aria-labelledby={"chk" + keyId + "-label"}
+                  />
                   {/* <label id={"chk"+ keyId + "-label"} onclick="changeCheckbox()" onKeyPress="changeCheckbox()" */}
                   <label id={"chk"+ keyId + "-label"} onclick="changeCheckbox()" >
                     {item}

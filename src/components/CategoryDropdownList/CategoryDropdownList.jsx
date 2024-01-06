@@ -37,10 +37,11 @@ const CategoryDropdownList = ({ parentId, onCloseModal}) => {
     const index = categories.findIndex(category => category.cat_parentId === e.cat_id);
     
     if (index === -1) {
-      dispatch(changefilters({ key: 'parentId', value: e.cat_id }));
+      // dispatch(changefilters({ key: 'parentId', value: e.cat_id }));
       // const filteredDate = products.filter(item => item.id === e.cat_id);
       dispatch(changefilters({ key: 'parentId', value: e.cat_id }));
       const result = filteredData.filter(item => item.parentId === e.cat_id)
+      console.log(result);
       setFilteredData(result);
       dispatch(changefilteredProducts(result));
       setIsCategory(false);
