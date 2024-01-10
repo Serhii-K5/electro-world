@@ -98,6 +98,7 @@ const FilterPanel = ({ data, onFilter }) => {
       // console.log(item);
       return item
     })
+    dispatch(changefilters({ key: 'name', value: '' }));
   }
 
 
