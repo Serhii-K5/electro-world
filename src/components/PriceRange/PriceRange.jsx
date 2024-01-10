@@ -44,6 +44,7 @@ const PriceRange = () => {
   // const [amendment, setAmendment] = useState(0);
 
 
+
   
   if (filteredProducts.length === 0) {
     dispatch(changefilteredProducts(products1));
@@ -189,6 +190,7 @@ const PriceRange = () => {
 
   const handleMouseDownMax = e => {
     setIsMouseDownMax(true);
+    console.log('dfg');
   };  
 
   const handleClickBtn = () => {    
