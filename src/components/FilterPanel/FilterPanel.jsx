@@ -14,9 +14,11 @@ const FilterPanel = ({ data, onFilter }) => {
   const [isCheckBoxes, setIsCheckBoxes] = useState(true);
   
 
+  // console.log(filters);
+
   useEffect(() => {
     // handleFilter();
-    memoArray()
+    // memoArray();
     // dispatch(changefilters({key: 'name', value: ''})); 
   }, []);
   
@@ -24,22 +26,6 @@ const FilterPanel = ({ data, onFilter }) => {
   //   // return filters.map(item => item.key)
   //   return filters.keys
   // }
-  
-  const filtersUpdate = (result, el) => {
-    if (result === -1) {
-      setMemoFilters(...memoFilters, { key: el.key, value: [el.value] });
-      // Number.isFinite(el.value)
-      //   ? setMemoFilters(...memoFilters, { key: el.name, value: [el.value, el.value] })
-      //   : setMemoFilters(...memoFilters, { key: el.name, value: el.value });
-    } else {
-      setMemoFilters(memoFilters[result].value.push(el.value));
-      // Number.isFinite(el.value)
-      //   ? (el.value < memoFilters[result].value[0] &&
-      //       setMemoFilters(memoFilters[result].value[0] = Number(el.value)))
-      //   : (el.value > memoFilters[result].value[1] &&
-      //       setMemoFilters(memoFilters[result].value[1] = Number(el.value)));
-    }
-  }
   
   const createMemoArr = (memo) => {
     // const ar = (memo + ';').replace(';;', '')
@@ -71,19 +57,46 @@ const FilterPanel = ({ data, onFilter }) => {
     //   )
   }
   
+  
+  const availabilityCheck = (date, value) => {
+    const index = date.findIndex(item => item === value.trim());
+    return index < 0 && date.push(value.trim());
+  };
+
+  const filtersUpdate = (index, el) => {
+    if (!(el.key === '')) {
+      if (index === -1) {
+        !el.value === '' &&
+          setMemoFilters(memoFilters.push({
+              key: el.key.trim(),
+              value: [el.value.trim()],
+            })
+          );
+        // Number.isFinite(el.value)
+      } else {
+        setMemoFilters(availabilityCheck(memoFilters[index].value, el.value));
+      }
+    }
+  };
+  
   const memoArray = () => {
     // const filteredData = data.filter(item => {  //перебор товара
     data.map(item => {  //перебор товара
       // const tempArr = createMemoArr(item.memo).flatMap(el => {  //создаёт массив мемо и перебирает его по ключам
       createMemoArr(item.memo).flatMap(el => {  //создаёт массив мемо и перебирает его по ключам
         const result = memoFilters.length > 0
-          ? memoFilters.keys.findIndex(elem => elem === el.name) //проверка наличия ключа товара в общем фильтре
+          // ? memoFilters.keys.findIndex(elem => elem === el.name) //проверка наличия ключа товара в общем фильтре
+          ? memoFilters.findIndex(elem =>
+            // console.log(elem.key, '===', el.name) &&
+            // console.log(elem.key.toUpperCase(), '===', el.key.toUpperCase()) &&
+            elem.key.toUpperCase() === el.key.trim().toUpperCase()) //проверка наличия ключа товара в общем фильтре
           : -1;
         // const result = memoFilters.keys.findIndex(elem => elem === el.name); //проверка наличия ключа товара в общем фильтре
         filtersUpdate(result, el) // обновляет значение ключа
         return el
       })
-    return item
+      // console.log(item);
+      return item
     })
   }
 
@@ -152,39 +165,59 @@ const FilterPanel = ({ data, onFilter }) => {
 
 
   return (
-    <ul>
-      {memoFilters.length > 0 && memoFilters.keys.map((el, index) =>
-        <li
-          key={index}
-          // className={parentId > 0 && 'parent'}
-          // onMouseEnter={() => categoryChange(el)}
-          onClick={() => handleClick(el)}
-        >
-          {el}
-          {isCheckBoxes && 
-            <ul>
-              {memoFilters[index].value.toUpperCase().sort().map((item, keyId) =>
-                <li key={keyId}>
-                  <span
-                    role="checkbox"
-                    id={"chkPref" + keyId}
-                    aria-checked="false"
-                    onclick="changeCheckbox()"
-                    // onKeyPress="changeCheckbox()"
-                    tabindex={keyId}
-                    aria-labelledby={"chk" + keyId + "-label"}
-                  />
-                  {/* <label id={"chk"+ keyId + "-label"} onclick="changeCheckbox()" onKeyPress="changeCheckbox()" */}
-                  <label id={"chk"+ keyId + "-label"} onclick="changeCheckbox()" >
-                    {item}
-                  </label>
-                </li>
+    <>
+      <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+      </ul>
+      {!(memoFilters.length > 0) && memoArray()}
+      <p>FilterPanel: , {memoFilters}</p>
+      {/* {console.log('FilterPanel: ', memoFilters.length)} */}
+      <ul>
+        {/* {console.log("FilterPanel: ", memoFilters.length)} */}
+        {console.log("FilterPanel: fgdkdnf ", memoFilters.length)}
+        {memoFilters.length > 0 &&
+          memoFilters.map((el, index) => (
+            <li
+              key={index}
+              // className={parentId > 0 && 'parent'}
+              // onMouseEnter={() => categoryChange(el)}
+              onClick={() => handleClick(el)}
+            >
+              {el.key}
+              {isCheckBoxes && (
+                <ul>
+                  {/* {console.log(memoFilters[index].value)} */}
+                  {memoFilters[index].value
+                    // .toUpperCase()
+                    .sort()
+                    .map((item, keyId) => (
+                      <li key={keyId}>
+                        <span
+                          role="checkbox"
+                          id={'chkPref' + keyId}
+                          aria-checked="false"
+                          onclick="changeCheckbox()"
+                          // onKeyPress="changeCheckbox()"
+                          tabindex={keyId}
+                          aria-labelledby={'chk' + keyId + '-label'}
+                        />
+                        {/* <label id={"chk"+ keyId + "-label"} onclick="changeCheckbox()" onKeyPress="changeCheckbox()" */}
+                        <label
+                          id={'chk' + keyId + '-label'}
+                          onclick="changeCheckbox()"
+                        >
+                          {item}
+                        </label>
+                      </li>
+                    ))}
+                </ul>
               )}
-            </ul>
-          }
-        </li>
-      )}
-    </ul>
+            </li>
+          ))}
+      </ul>
+    </>
   );
 };
 

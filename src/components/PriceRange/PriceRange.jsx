@@ -140,6 +140,8 @@ const PriceRange = () => {
     const value = Math.abs(Number(e.target.value));
     if (value >= minPrice && value <= inputValueMax) {
       setInputValueMin(value);
+    } else if (value >= inputValueMax) {
+      setInputValueMin(maxPrice);
     } else {
       setInputValueMin(minPrice);
     }
@@ -190,18 +192,19 @@ const PriceRange = () => {
 
   const handleMouseDownMax = e => {
     setIsMouseDownMax(true);
-    console.log('dfg');
+    // console.log('dfg');
   };  
 
   const handleClickBtn = () => {    
     dispatch(changefilters({ key: 'price', value: [inputValueMin, inputValueMax] })); 
     
-    console.log("Button click");
+    // console.log("Button click");
     alert("Button click");
   }
   
   return (
     <>
+      
       <p>{lang[languages].priceRange_label}</p>
       <Form>
         <span>{lang[languages].priceRange_labelStart} </span>
