@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { selectFilters } from 'redux/selectors';
 
 import {
@@ -9,30 +9,55 @@ import {
 import shevron from "assets/images/svg/shuffle-arrows.svg";
 
 const FilterPanel = ({ data, onFilter }) => {
-  const dispatch = useDispatch();
   const filters = useSelector(selectFilters); //Выбранные фильтры
-  
   const [memoFilters, setMemoFilters] = useState([]);
   const [isCheckBoxes, setIsCheckBoxes] = useState(true);
   
 
   // console.log(filters);
 
-  // useEffect(() => {
-  //   // handleFilter();
-  //   // memoArray();
-  //   // dispatch(changefilters({key: 'name', value: ''})); 
-  // }, []);
+  useEffect(() => {
+    // handleFilter();
+    // memoArray();
+    // dispatch(changefilters({key: 'name', value: ''})); 
+  }, []);
+  
+  // const filtersSet = () => {
+  //   // return filters.map(item => item.key)
+  //   return filters.keys
+  // }
   
   const createMemoArr = (memo) => {
+    // const ar = (memo + ';').replace(';;', '')
+    // const ar1 = ar.split(';')
+    
+    // const f = (val) => {
+    //   const ar3 = val.map((param2, index) => {
+    //       return { key: (index === 0 && param2.trim()), value: index === 1 && param2.trim() }
+    //     })
+    // }
+
+    // const ar2 = ar1.map(param => param.split(':').f(param.split(':'))
+    //   )
+    // return ar;
+
     return (memo + ';').replace(';;', '')
       .split(';')
       .map(item => {
         const arr = item.split(':');
         return {key: arr[0], value: arr.length > 0 ? arr[1] : ''}
       })
+      
+    // return (memo + ';').replace(';;', '')
+    //   .split(';')
+    //   .map(param => param.split(':')
+    //     .map((param2, index) => {
+    //       return { key: (index === 0 && param2.trim()), value: index === 1 && param2.trim() }
+    //     })
+    //   )
   }
-    
+  
+  
   const availabilityCheck = (date, value) => {
     const index = date.findIndex(item => item === value.trim());
     return index < 0 && date.push(value.trim());
@@ -54,30 +79,10 @@ const FilterPanel = ({ data, onFilter }) => {
     }
   };
   
-  // const memoArray = () => {
-  //   // const filteredData = data.filter(item => {  //перебор товара
-  //   data.map(item => {  //перебор товара
-  //     // const tempArr = createMemoArr(item.memo).flatMap(el => {  //создаёт массив мемо и перебирает его по ключам
-  //     createMemoArr(item.memo).flatMap(el => {  //создаёт массив мемо и перебирает его по ключам
-  //       const result =
-  //         memoFilters.length > 0
-  //           ? memoFilters.findIndex(elem =>   //проверка наличия ключа товара в общем фильтре
-  //               elem.key.toUpperCase() === el.key.trim().toUpperCase()
-  //             )
-  //           : -1;
-  //       // const result = memoFilters.keys.findIndex(elem => elem === el.name); //проверка наличия ключа товара в общем фильтре
-  //       filtersUpdate(result, el) // обновляет значение ключа
-  //       return el
-  //     })
-  //     // console.log(item);
-  //     return item
-  //   })
-  // }
-  
   const memoArray = () => {
+    // const filteredData = data.filter(item => {  //перебор товара
     data.map(item => {  //перебор товара
       // const tempArr = createMemoArr(item.memo).flatMap(el => {  //создаёт массив мемо и перебирает его по ключам
-      filters;
       createMemoArr(item.memo).flatMap(el => {  //создаёт массив мемо и перебирает его по ключам
         const result =
           memoFilters.length > 0
@@ -92,9 +97,6 @@ const FilterPanel = ({ data, onFilter }) => {
       // console.log(item);
       return item
     })
-
-    console.log(memoFilters);
-    dispatch(changefilters({ key: 'name', value: '' }));
   }
 
 
