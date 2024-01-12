@@ -170,7 +170,7 @@ const FilterPanel = ({ data, onFilter }) => {
         <li>3</li>
       </ul>
       {!(memoFilters.length > 0) && memoArray()}
-      <p>FilterPanel: , {memoFilters}</p>
+      {/* <p>FilterPanel: , {memoFilters}</p> */}
       {/* {console.log('FilterPanel: ', memoFilters.length)} */}
       <ul>
         {/* {console.log("FilterPanel: ", memoFilters.length)} */}

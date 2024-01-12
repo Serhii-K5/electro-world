@@ -58,7 +58,7 @@ const CatalogCarsPage = () => {
         setFilteredData(result);
       }
     }
-    console.log(activeFilter);
+    // console.log(activeFilter);
   }, []);
 
   useEffect(() => {
@@ -103,7 +103,6 @@ const CatalogCarsPage = () => {
         <aside style={{minWidth: '250px'}}>
           {/* <p>Панель фильтров</p> */}
           <PriceRange />
-          {/* <FilterPanel data={adverts} onFilter={handleFilter} /> */}
           <FilterPanel data={filteredData} onFilter={handleFilter} />
         </aside>
         <section>

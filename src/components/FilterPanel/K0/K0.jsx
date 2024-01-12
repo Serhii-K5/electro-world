@@ -1,18 +1,15 @@
-import { useEffect, useState } from 'react';
-// import { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFilters } from 'redux/selectors';
-import { changefilters } from "redux/slice/filtersSlice";
+import { changefilters } from 'redux/slice/filtersSlice';
 
-import {
-  
-} from './FilterPanel.styled';
+// import {
 
-import K0 from "./K0/K0";
+// } from './FilterPanel.styled';
 
 // import shevron from "assets/images/svg/shuffle-arrows.svg";
 
-const FilterPanel = ({ data, onFilter }) => {
+const K0 = ({ data}) => {
   const dispatch = useDispatch();
   const filters = useSelector(selectFilters); //Выбранные фильтры
 
@@ -27,13 +24,6 @@ const FilterPanel = ({ data, onFilter }) => {
   //   // dispatch(changefilters({key: 'name', value: ''}));
   // }, []);
 
-  useEffect(() => {
-    // handleFilter();
-    // memoArray();
-    // dispatch(changefilters({key: 'name', value: ''}));
-
-  }, [filters]);
-
   const createMemoArr = memo => {
     return (memo + ';')
       .replace(';;', '')
@@ -44,26 +34,26 @@ const FilterPanel = ({ data, onFilter }) => {
       });
   };
 
-  // Проверка наличия элемента в value
   const availabilityCheck = (date, value) => {
     const index = date.findIndex(item => item === value.trim());
     return index < 0 && date.push(value.trim());
   };
 
   const filtersUpdate = (index, el) => {
-    if (el.key !== '') {
+    if (!(el.key === '')) {
       if (index === -1) {
-        el.value !== '' &&
-          dispatch(changefilters(filters.push({
-            key: el.key.trim(),
-            value: [el.value.trim()],
-          })))
-          && console.log('dispatch');
+        !el.value === '' &&
+          dispatch(
+            changefilters(
+              filters.push({
+                key: el.key.trim(),
+                value: [el.value.trim()],
+              })
+            )
+          );
         // Number.isFinite(el.value)
       } else {
-        dispatch(
-          changefilters(availabilityCheck(filters[index].value, el.value))
-        );
+        dispatch(availabilityCheck(filters[index].value, el.value));
       }
     }
   };
@@ -85,6 +75,7 @@ const FilterPanel = ({ data, onFilter }) => {
         filtersUpdate(result, el); // обновляет значение ключа
         return el;
       });
+      // console.log(item);
       return item;
     });
 
@@ -194,10 +185,6 @@ const FilterPanel = ({ data, onFilter }) => {
     // console.log('createList');
   };
 
-  // Преобразует поле Мемо в массив объектов
-  memoArray();
-  // console.log('memoArray');
-
   return (
     <>
       <ul>
@@ -205,11 +192,11 @@ const FilterPanel = ({ data, onFilter }) => {
         <li key={1}>2</li>
         <li key={2}>3</li>
       </ul>
-      {/* <K0 data={data}></K0> */}
-      {/* {console.log(filters)} */}
-      {!(filters.length > 0) && memoArray()}
-      {console.log(filters)}
-      <ul>
+
+      {/* {!(filters.length > 0) && memoArray()} */}
+      <p>filters: , {filters}</p>
+      {/* <ul>
+        <li key={0}>11</li>
         {filters.length > 0 &&
           filters.map((el, index) => (
             <li
@@ -219,19 +206,20 @@ const FilterPanel = ({ data, onFilter }) => {
               onClick={() => handleClick(el)}
             >
               {el.key}
-              {/* {isCheckBoxes && (
-                <ul>
+              {isCheckBoxes && (
+                <ul> 
                   <li>1</li>
+                  
                 </ul>
-              )} */}
+              )}
             </li>
-          ))}
-      </ul>
+          ))} 
+      </ul>*/}
     </>
   );
 };
 
-export default FilterPanel;
+export default K0;
 
 // {/* {console.log(filters[index].value)} */}
 //                   {filters[index].value !== '' && createList(el, index)
