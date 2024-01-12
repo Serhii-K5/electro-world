@@ -58,6 +58,7 @@ const CatalogCarsPage = () => {
         setFilteredData(result);
       }
     }
+    console.log(activeFilter);
   }, []);
 
   useEffect(() => {
@@ -84,11 +85,11 @@ const CatalogCarsPage = () => {
     activePage > 0 && setActivePage(activePage - 1);
   };
 
-  const onFilter = () => {
-    const rez = 0
+  // const onFilter = () => {
+  //   const rez = 0
 
-    return rez
-  }
+  //   return rez
+  // }
   
   // const handleFilter = filteredData => {
   //   setFilteredData(filteredData);

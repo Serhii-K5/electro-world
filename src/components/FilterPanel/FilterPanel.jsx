@@ -1,38 +1,40 @@
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFilters } from 'redux/selectors';
+import { changefilters } from "redux/slice/filtersSlice";
 
 import {
   
 } from './FilterPanel.styled';
 
-import shevron from "assets/images/svg/shuffle-arrows.svg";
+// import shevron from "assets/images/svg/shuffle-arrows.svg";
 
 const FilterPanel = ({ data, onFilter }) => {
   const dispatch = useDispatch();
   const filters = useSelector(selectFilters); //Выбранные фильтры
-  
-  const [memoFilters, setMemoFilters] = useState([]);
+
+  // const [memoFilters, setMemoFilters] = useState([]);
   const [isCheckBoxes, setIsCheckBoxes] = useState(true);
-  
 
   // console.log(filters);
 
   // useEffect(() => {
   //   // handleFilter();
   //   // memoArray();
-  //   // dispatch(changefilters({key: 'name', value: ''})); 
+  //   // dispatch(changefilters({key: 'name', value: ''}));
   // }, []);
-  
-  const createMemoArr = (memo) => {
-    return (memo + ';').replace(';;', '')
+
+  const createMemoArr = memo => {
+    return (memo + ';')
+      .replace(';;', '')
       .split(';')
       .map(item => {
         const arr = item.split(':');
-        return {key: arr[0], value: arr.length > 0 ? arr[1] : ''}
-      })
-  }
-    
+        return { key: arr[0], value: arr.length > 0 ? arr[1] : '' };
+      });
+  };
+
   const availabilityCheck = (date, value) => {
     const index = date.findIndex(item => item === value.trim());
     return index < 0 && date.push(value.trim());
@@ -42,75 +44,57 @@ const FilterPanel = ({ data, onFilter }) => {
     if (!(el.key === '')) {
       if (index === -1) {
         !el.value === '' &&
-          setMemoFilters(memoFilters.push({
-              key: el.key.trim(),
-              value: [el.value.trim()],
-            })
+          dispatch(
+            changefilters(
+              filters.push({
+                key: el.key.trim(),
+                value: [el.value.trim()],
+              })
+            )
           );
         // Number.isFinite(el.value)
       } else {
-        setMemoFilters(availabilityCheck(memoFilters[index].value, el.value));
+        dispatch(availabilityCheck(filters[index].value, el.value));
       }
     }
   };
-  
-  // const memoArray = () => {
-  //   // const filteredData = data.filter(item => {  //перебор товара
-  //   data.map(item => {  //перебор товара
-  //     // const tempArr = createMemoArr(item.memo).flatMap(el => {  //создаёт массив мемо и перебирает его по ключам
-  //     createMemoArr(item.memo).flatMap(el => {  //создаёт массив мемо и перебирает его по ключам
-  //       const result =
-  //         memoFilters.length > 0
-  //           ? memoFilters.findIndex(elem =>   //проверка наличия ключа товара в общем фильтре
-  //               elem.key.toUpperCase() === el.key.trim().toUpperCase()
-  //             )
-  //           : -1;
-  //       // const result = memoFilters.keys.findIndex(elem => elem === el.name); //проверка наличия ключа товара в общем фильтре
-  //       filtersUpdate(result, el) // обновляет значение ключа
-  //       return el
-  //     })
-  //     // console.log(item);
-  //     return item
-  //   })
-  // }
-  
+
   const memoArray = () => {
-    data.map(item => {  //перебор товара
-      // const tempArr = createMemoArr(item.memo).flatMap(el => {  //создаёт массив мемо и перебирает его по ключам
-      filters;
-      createMemoArr(item.memo).flatMap(el => {  //создаёт массив мемо и перебирает его по ключам
+    data.map(item => {
+      //перебор товара
+      createMemoArr(item.memo).flatMap(el => {
+        //создаёт массив мемо и перебирает его по ключам
         const result =
-          memoFilters.length > 0
-            ? memoFilters.findIndex(elem =>   //проверка наличия ключа товара в общем фильтре
-                elem.key.toUpperCase() === el.key.trim().toUpperCase()
+          filters.length > 0
+            ? filters.findIndex(
+                (
+                  elem //проверка наличия ключа товара в общем фильтре
+                ) => elem.key.toUpperCase() === el.key.trim().toUpperCase()
               )
             : -1;
         // const result = memoFilters.keys.findIndex(elem => elem === el.name); //проверка наличия ключа товара в общем фильтре
-        filtersUpdate(result, el) // обновляет значение ключа
-        return el
-      })
+        filtersUpdate(result, el); // обновляет значение ключа
+        return el;
+      });
       // console.log(item);
-      return item
-    })
+      return item;
+    });
 
-    console.log(memoFilters);
-    dispatch(changefilters({ key: 'name', value: '' }));
-  }
+    // console.log('filters =', filters);
+  };
 
-
-  
   // const handleFilter = () => {
   //   const filtersNameArray = filtersSet();
   //   let result = true;
   //   const filteredData = data.filter(item => {
   //     // const memoArray = (item.memo + ';').replace(/\s/g, '').replace(';;', '').split(';');
   //     const memoArray = [];
-        
+
   //     filtersArray.map((elem, index) => {
   //       if (!result) {
   //         return result;
   //       }
-        
+
   //       if (elem === 'parentId') {
   //         result = result && item.elem === filters[index].value;
   //         memoArray.push((item.memo + ';').replace(';;', '')
@@ -127,7 +111,7 @@ const FilterPanel = ({ data, onFilter }) => {
   //       } else {
   //         const KeysArray = memoArray.map(item => item.key);
   //         const pos = KeysArray.findIndex(el => el === elem);
-          
+
   //         if (pos !== -1 && filters[index].value.isArray()) {
   //           result = result && memoArray[pos].value >= filters[index].value[0] && memoArray[pos].value <= filters[index].value[1]
   //         } else if (pos !== -1) {
@@ -136,7 +120,7 @@ const FilterPanel = ({ data, onFilter }) => {
   //       }
   //       return result;
   //     });
-      
+
   //     return result;
   //   });
 
@@ -145,21 +129,62 @@ const FilterPanel = ({ data, onFilter }) => {
   //   return
   // };
 
-
   const handleClick = e => {
     // const index = categories.findIndex(category => category.cat_parentId === e.cat_id);
-    
+
     // if (index === -1) {
-      // dispatch(changefilters({ key: 'parentId', value: e.cat_id }));
-      // // const filteredDate = products.filter(item => item.id === e.cat_id);
-      // dispatch(changefilters({ key: 'parentId', value: e.cat_id }));
-      // const result = filteredData.filter(item => item.id === e.cat_id)
-      // setFilteredData(result);
-      // dispatch(changefilteredProducts(result));
-      setIsCheckBoxes(false);
+    // dispatch(changefilters({ key: 'parentId', value: e.cat_id }));
+    // // const filteredDate = products.filter(item => item.id === e.cat_id);
+    // dispatch(changefilters({ key: 'parentId', value: e.cat_id }));
+    // const result = filteredData.filter(item => item.id === e.cat_id)
+    // setFilteredData(result);
+    // dispatch(changefilteredProducts(result));
+    setIsCheckBoxes(false);
     // }
   };
 
+  const changeCheckbox = () => {
+    console.log('changeCheckbox');
+  }
+
+  const createList = (el, index) => {
+    return (
+      // {/* {console.log(filters[index].value)} */}
+    // filters[index].value.length > 0 &&
+    //   Number.isFinite(filters[index].value[0])
+    //     ? filters[index].value.sort((a, b) => a - b)
+    //     : filters[index].value.sort()
+    // &&    
+    // filters[index].value.length > 0 &&  
+    //   filters[index].value.map((item, keyId) => {
+    //     return (
+          // <li key={keyId}>
+          <li key={0}>
+            {el}
+            {/* {item} */}
+            {/* //   <span
+        //     role="checkbox"
+        //     id={'chkPref' + keyId}
+        //     aria-checked={false}
+        //     onClick={changeCheckbox}
+        //     // onKeyPress="changeCheckbox()"
+        //     // tabindex={keyId}
+        //     aria-labelledby={'chk' + keyId + '-label'}
+        //   />
+        //  {/* <labe}l id={"chk"+ keyId + "-label"} onclick="changeCheckbox()" onKeyPress="changeCheckbox()" */}
+            {/* <label
+            id={'chk' + keyId + '-label'}
+            onClick={changeCheckbox}
+          >
+            {item}
+          </label> */}
+          </li>
+      //   );
+      //   // ))
+      // })
+    )
+    // console.log('createList');
+  };
 
   return (
     <>
@@ -168,14 +193,11 @@ const FilterPanel = ({ data, onFilter }) => {
         <li>2</li>
         <li>3</li>
       </ul>
-      {!(memoFilters.length > 0) && memoArray()}
-      <p>FilterPanel: , {memoFilters}</p>
-      {/* {console.log('FilterPanel: ', memoFilters.length)} */}
+      {!(filters.length > 0) && memoArray()}
+      <p>filters: , {filters}</p>
       <ul>
-        {/* {console.log("FilterPanel: ", memoFilters.length)} */}
-        {console.log("FilterPanel: fgdkdnf ", memoFilters.length)}
-        {memoFilters.length > 0 &&
-          memoFilters.map((el, index) => (
+        {filters.length > 0 &&
+          filters.map((el, index) => (
             <li
               key={index}
               // className={parentId > 0 && 'parent'}
@@ -184,31 +206,33 @@ const FilterPanel = ({ data, onFilter }) => {
             >
               {el.key}
               {isCheckBoxes && (
-                <ul>
-                  {/* {console.log(memoFilters[index].value)} */}
-                  {memoFilters[index].value
-                    // .toUpperCase()
-                    .sort()
-                    .map((item, keyId) => (
-                      <li key={keyId}>
-                        <span
-                          role="checkbox"
-                          id={'chkPref' + keyId}
-                          aria-checked="false"
-                          onclick="changeCheckbox()"
-                          // onKeyPress="changeCheckbox()"
-                          tabindex={keyId}
-                          aria-labelledby={'chk' + keyId + '-label'}
-                        />
-                        {/* <label id={"chk"+ keyId + "-label"} onclick="changeCheckbox()" onKeyPress="changeCheckbox()" */}
-                        <label
-                          id={'chk' + keyId + '-label'}
-                          onclick="changeCheckbox()"
-                        >
-                          {item}
-                        </label>
-                      </li>
-                    ))}
+                <ul> 
+                  {/* {console.log(filters[index].value)} */}
+                  {filters[index].value !== '' && createList(el, index)
+                    // Number.isFinite(filters[index].value) ? filters[index].value
+                    //   // .toUpperCase()
+                    //   .sort()
+                    //   .map((item, keyId) => (
+                    //     <li key={keyId}>
+                    //       <span
+                    //         role="checkbox"
+                    //         id={'chkPref' + keyId}
+                    //         aria-checked={false}
+                    //         onClick={changeCheckbox}
+                    //         // onKeyPress="changeCheckbox()"
+                    //         // tabindex={keyId}
+                    //         aria-labelledby={'chk' + keyId + '-label'}
+                    //       />
+                    //       {/* <label id={"chk"+ keyId + "-label"} onclick="changeCheckbox()" onKeyPress="changeCheckbox()" */}
+                    //       <label
+                    //         id={'chk' + keyId + '-label'}
+                    //         onClick={changeCheckbox}
+                    //       >
+                    //         {item}
+                    //       </label>
+                    //     </li>
+                    //   ))
+                  }
                 </ul>
               )}
             </li>

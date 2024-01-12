@@ -35,7 +35,7 @@ const PriceRange = () => {
   const [minPrice, setMinPrice] = useState(0);  
   
   // const [isVisable, setIsVisable] = useState(false);  
-  const [coordText, setCoordText] = useState('');
+  // const [coordText, setCoordText] = useState('');
   // // const [coordEnd, setCoordEnd] = useState(0);
   
   const [isMouseDownMin, setIsMouseDownMin] = useState(false);  

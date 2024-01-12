@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { selectFilters } from 'redux/selectors';
+// import { useSelector } from 'react-redux';
+// import { selectFilters } from 'redux/selectors';
 
 import {
   
 } from './FilterPanel.styled';
 
-import shevron from "assets/images/svg/shuffle-arrows.svg";
+// import shevron from "assets/images/svg/shuffle-arrows.svg";
 
 const FilterPanel = ({ data, onFilter }) => {
-  const filters = useSelector(selectFilters); //Выбранные фильтры
+  // const filters = useSelector(selectFilters); //Выбранные фильтры
   const [memoFilters, setMemoFilters] = useState([]);
   const [isCheckBoxes, setIsCheckBoxes] = useState(true);
   
@@ -94,7 +94,6 @@ const FilterPanel = ({ data, onFilter }) => {
         filtersUpdate(result, el) // обновляет значение ключа
         return el
       })
-      // console.log(item);
       return item
     })
   }
