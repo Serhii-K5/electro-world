@@ -19,7 +19,8 @@ import ShoppingCart from "../ShoppingCart/ShoppingCart";
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectOrders } from "redux/selectors";
-import { selectLanguages, selectFilters } from "redux/selectors";
+// import { selectLanguages, selectFilters } from "redux/selectors";
+import { selectLanguages } from "redux/selectors";
 
 import MessageModule from "components/MessageModule/MessageModule";
 import {LanguageBar} from "components/LanguageBar/LanguageBar";
@@ -31,12 +32,12 @@ import lang from "assets/json/language.json";
 import { SlMagnifier } from "react-icons/sl";
 import NavLinkBar from 'components/NavLinkBar/NavLinkBar';
 
-import { useSearchParams } from 'react-router-dom';
+// import { useSearchParams } from 'react-router-dom';
 import { changefilters } from "redux/slice/filtersSlice";
 
 export default function Layout() {
   const dispatch = useDispatch();
-  const filters = useSelector(selectFilters);
+  // const filters = useSelector(selectFilters);
   // const [searchText, setSearchText] = useState('');
   
 
@@ -44,7 +45,7 @@ export default function Layout() {
   const languages = useSelector(selectLanguages);
   const [isModalShown, setIsModalShown] = useState(false);
 
-  const [searchParams, setSearchParams] = useSearchParams();
+  // const [searchParams, setSearchParams] = useSearchParams();
 
   const onCloseModal = () => {
     setIsModalShown(false);
@@ -71,15 +72,13 @@ export default function Layout() {
     return;
   };
   
-  useEffect(() => {
-    // const movieTitle = searchParams.get('query');
-    // if (movieTitle) {
-    //   API.getSearch(movieTitle).then(value => setMovies(value));
-    // }
-    
-
-
-  }, [searchParams]);
+  // useEffect(() => {
+  //   // const movieTitle = searchParams.get('query');
+  //   // if (movieTitle) {
+  //   //   API.getSearch(movieTitle).then(value => setMovies(value));
+  //   // }
+  
+  // }, [searchParams]);
 
   return (
     <>

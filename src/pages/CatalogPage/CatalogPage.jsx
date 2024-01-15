@@ -48,7 +48,7 @@ const CatalogCarsPage = () => {
 
 
   useEffect(() => {
-    dispatch(changefilters({ key: 'name', value: '' }));
+    // dispatch(changefilters({ key: 'name', value: '' }));
     if (filters.length > 0) {
       // const index = filters.keys().findIndex(elem => elem === 'id');
       const index = filters.findIndex(elem =>  elem.key === 'parentId');

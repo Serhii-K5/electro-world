@@ -8,7 +8,7 @@ import {
   
 } from './FilterPanel.styled';
 
-import K0 from "./K0/K0";
+// import K0 from "./K0/K0";
 
 // import shevron from "assets/images/svg/shuffle-arrows.svg";
 
@@ -16,7 +16,7 @@ const FilterPanel = ({ data, onFilter }) => {
   const dispatch = useDispatch();
   const filters = useSelector(selectFilters); //Выбранные фильтры
 
-  // const [memoFilters, setMemoFilters] = useState([]);
+  const [memoFilters, setMemoFilters] = useState([]);
   const [isCheckBoxes, setIsCheckBoxes] = useState(true);
 
   // console.log(filters);
@@ -32,6 +32,8 @@ const FilterPanel = ({ data, onFilter }) => {
     // memoArray();
     // dispatch(changefilters({key: 'name', value: ''}));
 
+    setMemoFilters(filters);
+
   }, [filters]);
 
   const createMemoArr = memo => {
@@ -40,7 +42,7 @@ const FilterPanel = ({ data, onFilter }) => {
       .split(';')
       .map(item => {
         const arr = item.split(':');
-        return { key: arr[0], value: arr.length > 0 ? arr[1] : '' };
+        return arr > 0 ? { key: arr[0].trim(), value: arr.length > 0 ? arr[1].trim() : '' } : "";
       });
   };
 
@@ -54,11 +56,15 @@ const FilterPanel = ({ data, onFilter }) => {
     if (el.key !== '') {
       if (index === -1) {
         el.value !== '' &&
-          dispatch(changefilters(filters.push({
+          // dispatch(changefilters(filters.push({
+          //   key: el.key.trim(),
+          //   value: [el.value.trim()],
+          // })))
+          dispatch(changefilters({
             key: el.key.trim(),
             value: [el.value.trim()],
-          })))
-          && console.log('dispatch');
+          }))
+          // && console.log('dispatch');
         // Number.isFinite(el.value)
       } else {
         dispatch(
@@ -71,19 +77,21 @@ const FilterPanel = ({ data, onFilter }) => {
   const memoArray = () => {
     data.map(item => {
       //перебор товара
-      createMemoArr(item.memo).flatMap(el => {
+      createMemoArr(item.memo).flatMap(memoEl => {
         //создаёт массив мемо и перебирает его по ключам
-        const result =
-          filters.length > 0
-            ? filters.findIndex(
+        if (memoEl !== "") {        
+          const result =
+            filters.length > 0
+              ? filters.findIndex(
                 (
-                  elem //проверка наличия ключа товара в общем фильтре
-                ) => elem.key.toUpperCase() === el.key.trim().toUpperCase()
-              )
-            : -1;
-        // const result = memoFilters.keys.findIndex(elem => elem === el.name); //проверка наличия ключа товара в общем фильтре
-        filtersUpdate(result, el); // обновляет значение ключа
-        return el;
+                  filtersEl //проверка наличия ключа товара в общем фильтре
+                ) => filtersEl.length > 0 ? filtersEl.key.toUpperCase() === memoEl.key.trim().toUpperCase() : -1
+                )
+              : -1;
+          // const result = memoFilters.keys.findIndex(elem => elem === el.name); //проверка наличия ключа товара в общем фильтре
+          memoEl !== 0 && filtersUpdate(result, memoEl); // обновляет значение ключа
+        }; 
+        return memoEl;
       });
       return item;
     });
@@ -207,8 +215,9 @@ const FilterPanel = ({ data, onFilter }) => {
       </ul>
       {/* <K0 data={data}></K0> */}
       {/* {console.log(filters)} */}
-      {!(filters.length > 0) && memoArray()}
-      {console.log(filters)}
+      {/* {!(filters.length > 0) && memoArray()} */}
+      {/* {console.log(filters)}
+      {console.log(memoFilters)} */}
       <ul>
         {filters.length > 0 &&
           filters.map((el, index) => (

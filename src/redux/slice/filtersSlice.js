@@ -4,10 +4,6 @@ const sliceFilters = createSlice({
   name: 'filters',
   initialState: {
     items: [
-      // {
-      //   key: 'parentId',
-      //   value: '',
-      // },
       {
         key: 'name',
         value: '',
