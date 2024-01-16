@@ -42,7 +42,8 @@ const CatalogCarsPage = () => {
   // }
 
   const [activePage, setActivePage] = useState(1);
-  const [activeFilter, setActiveFilter] = useState(false);
+  // const [activeFilter, setActiveFilter] = useState(false);
+  const [activeFilter, setActiveFilter] = useState(0);
   
   const filters = useSelector(selectFilters);
 
@@ -65,11 +66,60 @@ const CatalogCarsPage = () => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(changefilteredProducts(filteredData));
+  // useEffect(() => {
+  //   dispatch(changefilteredProducts(filteredData));
+  //   // }, [dispatch, filteredData]);
+  // // }, [dispatch, filteredData, filters, products]);
   // }, [dispatch, filteredData]);
-  }, [filteredData, filters]);
-  
+
+  const checking = (filtersEl, product) => {
+    // filtersEl = [{key, value:[]}, ...], product = {key, value}
+    
+    const keys = filtersEl.keys();
+    const pos = keys.findIndex(ind => ind.toUpperCase() === product.key.toUpperCase())
+    let result = pos < 0 || filtersEl.value === "" || filtersEl.value === 0 ? true : false;
+    if (!result) {
+      if (Number.isFinite(product[pos].value)) {
+        for (let index = 0; index < filtersEl.value.length; index++) {
+          if(filtersEl[pos].value[index][0] >= product.value
+            && filtersEl[pos].value[index][1] <= product.value) {
+            
+            result = true;
+            break;
+          };
+        }
+      } else if (!result) {
+        result = (filtersEl[pos].value.findIndex(ind => ind === product.value) >= 0);
+      };
+    };
+    
+    return result
+  }
+
+  useEffect(() => {
+    const filteredProducts = products.filter(product => {
+      let result = true;
+      for (let index = 0; index < product.length; index++) {
+        if (product[index].value !== "") {
+          result = result && (() => checking(filters[index]), product[index])
+        };    
+        
+        if(!result) break;
+      };
+    
+      return result;
+    });
+
+    dispatch(changefilteredProducts(filteredProducts));
+    // }, [dispatch, filteredData]);
+    // }, [dispatch, filteredData, filters, products]);
+  }, [filters]);
+
+  // useEffect(() => {
+  //   // setActiveFilter(!activeFilter);
+  //   setActiveFilter(activeFilter + 1);
+  // }, [filters]); 
+
 
   const handleFilter = filteredData => {
     setActiveFilter(true);
@@ -97,61 +147,70 @@ const CatalogCarsPage = () => {
 
 
   return (
-    <div style={{ backgroundColor: 'var(--bg-second)' }}>
-      <NavBar />
-      <Container>
-        <aside style={{minWidth: '250px'}}>
-          {/* <p>Панель фильтров</p> */}
-          <PriceRange />
-          <FilterPanel data={filteredData} onFilter={handleFilter} />
-        </aside>
-        <section>
-          {filteredData.length === 0 && products.length > 0 && setFilteredData(products)}
-          {filteredData.length > 0 && (
-            <Ul>
-              {filteredData.map((item, index) =>
-                index > (activePage - 1) * 8 - 1 && index < activePage * 8 && (
-                  <li key={item.id}>
-                    <ProductCard card={item} />
-                  </li>
-                )
+    // ({ activeFilter } || !{ activeFilter }) && (
+      <div key={+activeFilter} style={{ backgroundColor: 'var(--bg-second)' }}>
+        <NavBar />
+        <Container>
+          <aside style={{ minWidth: '250px' }}>
+            {/* <p>Панель фильтров</p> */}
+            <PriceRange />
+            <FilterPanel data={filteredData} onFilter={handleFilter} />
+          </aside>
+          <section>
+            {filteredData.length === 0 &&
+              products.length > 0 &&
+              setFilteredData(products)}
+            {filteredData.length > 0 && (
+              <Ul>
+                {filteredData.map(
+                  (item, index) =>
+                    index > (activePage - 1) * 8 - 1 &&
+                    index < activePage * 8 && (
+                      <li key={item.id}>
+                        <ProductCard card={item} />
+                      </li>
+                    )
+                )}
+              </Ul>
+            )}
+            <DivPagination>
+              {activePage > 1 && (
+                <DivShift onClick={onClickDecrease}>{'<<'}</DivShift>
               )}
-            </Ul>
-          )}
-          <DivPagination>
-            {activePage > 1 && (
-              <DivShift onClick={onClickDecrease}>{'<<'}</DivShift>
-            )}
-            {activePage === 1 && (
-              <DivPage style={{ backgroundColor: 'var(--bg-second-green)' }}>
-                {activePage}
-              </DivPage>
-            )}
-            {activePage > 2 && (
-              <div style={{ width: '50px', textAlign: 'center' }}>{'...'}</div>
-            )}
-            {activePage > 1 && (
-              <DivPage onClick={onClickDecrease}>{activePage - 1}</DivPage>
-            )}
-            {activePage > 1 && (
-              <DivPage style={{ backgroundColor: 'green' }}>
-                {activePage}
-              </DivPage>
-            )}
-            {filteredData.length / 8 > activePage && (
-              <DivPage onClick={onClickIncrease}>{activePage + 1}</DivPage>
-            )}
-            {filteredData.length / 8 > activePage + 1 && (
-              <div style={{ width: '50px', textAlign: 'center' }}>{'...'}</div>
-            )}
-            {filteredData.length / 8 > activePage && (
-              <DivShift onClick={onClickIncrease}>{'>>'}</DivShift>
-            )}
-          </DivPagination>
-          {/* <PaginationBar data={filteredData} page={activePage} /> */}
-        </section>
-      </Container>
-    </div>
+              {activePage === 1 && (
+                <DivPage style={{ backgroundColor: 'var(--bg-second-green)' }}>
+                  {activePage}
+                </DivPage>
+              )}
+              {activePage > 2 && (
+                <div style={{ width: '50px', textAlign: 'center' }}>
+                  {'...'}
+                </div>
+              )}
+              {activePage > 1 && (
+                <DivPage onClick={onClickDecrease}>{activePage - 1}</DivPage>
+              )}
+              {activePage > 1 && (
+                <DivPage style={{ backgroundColor: 'green' }}>
+                  {activePage}
+                </DivPage>
+              )}
+              {filteredData.length / 8 > activePage && (
+                <DivPage onClick={onClickIncrease}>{activePage + 1}</DivPage>
+              )}
+              {filteredData.length / 8 > activePage + 1 && (
+                <div style={{ width: '50px', textAlign: 'center' }}>
+                  {'...'}
+                </div>
+              )}
+              {filteredData.length / 8 > activePage && (
+                <DivShift onClick={onClickIncrease}>{'>>'}</DivShift>
+              )}
+            </DivPagination>
+            {/* <PaginationBar data={filteredData} page={activePage} /> */}
+          </section>
+        </Container>
+      </div>
   );
 };
 

@@ -58,7 +58,7 @@ const NavLinkBar = () => {
 
   const onOpenModal = () => {
     setIsModalShown(true);
-    console.log(isChangeModalCatalog);
+    setIsChangeModalCatalog(isChangeModalCatalog);
   };
 
   const onOpenCatalogModal = () => {
@@ -83,6 +83,7 @@ const NavLinkBar = () => {
         <div
           onMouseEnter={onOpenCatalogModal}
           onMouseLeave={clearingDirectoryPath}
+          onClick={onOpenCatalogModal}
         >
           <div>
             <DivCatalog>
@@ -94,7 +95,7 @@ const NavLinkBar = () => {
                 <Sup>{lang[languages].NavLinkBar_catalog1.toUpperCase()}</Sup>
               </div>
             </DivCatalog>
-            {isModalCatalogShown && !isModalCatalogClick &&(
+            {isModalCatalogShown && !isModalCatalogClick && (
               <UlCatalog onClick={handleClick}>
                 <li key={0} style={{ border: '1px solid grey' }}>
                   <CategoryDropdownList parentId={0} />
