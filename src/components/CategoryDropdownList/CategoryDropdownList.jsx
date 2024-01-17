@@ -6,25 +6,28 @@ import { Link } from 'react-router-dom';
 import { Li } from "./CategoryDropdownList.styled";
 // import CategoryPage from 'pages/CategoryPage/CategoryPage';
 import { changeCategory } from 'redux/slice/categorySlice';
-import { changefilters } from "redux/slice/filtersSlice";
+import { changeFilters } from "redux/slice/filtersSlice";
 
 // import Product from 'components/ProductCard/ProductCard';
-import { selectProducts, selectFilteredProducts } from 'redux/selectors';
+// import { selectProducts, selectFilteredProducts } from 'redux/selectors';
 import categories from 'assets/json/categories.json';
-import products1 from "../../assets/json/products.json";
-import { changefilteredProducts } from 'redux/slice/filteredProductsSlice';
+// import products1 from "../../assets/json/products.json";
+// import { changeFilteredProducts } from 'redux/slice/filteredProductsSlice';
 
 
 const CategoryDropdownList = ({ parentId, onCloseModal}) => {
   const dispatch = useDispatch();
-  const products = useSelector(selectProducts);
+  // при реальном products.json исключить filteredData
+  // const products = useSelector(selectProducts);
   // const filteredProduct = useSelector(selectFilteredProducts);
-  const [filteredData, setFilteredData] = useState(products.length > 0 ? products : products1);
+  // const [filteredData, setFilteredData] = useState(
+  //   products.length > 0 ? products : products1
+  // );
   const [isCategory, setIsCategory] = useState(true);
-  
-  const categoryChange = value => {
-    dispatch(changeDirectoryPath(value));
-    dispatch(changeCategory(value.cat_id));
+
+  const categoryChange = el => {
+    // dispatch(changeDirectoryPath(el));
+    dispatch(changeCategory(el.cat_id));
   };
 
   // const handleClick = event => {
@@ -32,44 +35,52 @@ const CategoryDropdownList = ({ parentId, onCloseModal}) => {
   //     onCloseModal();
   //   }
   // };
-  
-  const handleClick = e => {
-    const index = categories.findIndex(category => category.cat_parentId === e.cat_id);
+
+  const handleClick = el => {
+    const index = categories.findIndex(
+      category => category.cat_parentId === el.cat_id
+    );
     
     if (index === -1) {
       // dispatch(changefilters({ key: 'parentId', value: e.cat_id }));
       // const filteredDate = products.filter(item => item.id === e.cat_id);
-      dispatch(changefilters({ key: 'parentId', value: e.cat_id }));
-      const result = filteredData.filter(item => item.parentId === e.cat_id)
+      dispatch(changeFilters({ key: 'parentId', value: el.cat_id }));
+      // const result = filteredData.filter(item => item.parentId === e.cat_id);
+
       // console.log(result);
-      setFilteredData(result);
-      dispatch(changefilteredProducts(result));
+
+      // setFilteredData(result);
+      // dispatch(changeFilteredProducts(result));
+
       setIsCategory(false);
-      window.location.reload();
+      // window.location.reload();
     }
+    // } else {
+    //   dispatch(changeDirectoryPath(el));
+    //   dispatch(changeCategory(el.cat_id));
+    // }
+
+    dispatch(changeDirectoryPath(el));
+    dispatch(changeCategory(el.cat_id));
+
   };
 
-  
   return (
     <ul>
-      {categories.map((el, index) =>
-        el.cat_parentId === parentId && (
-          <Li
-            key={index}
-            className={parentId > 0 && 'parent'}
-            onMouseEnter={() => categoryChange(el)}
-            onClick={() => handleClick(el)}
-          >
-            <Link to={!isCategory ? "/categories" : "/catalog"}>
-              {isCategory && el.cat_name + ' >'}
+      {categories.map(
+        (category, index) =>
+          category.cat_parentId === parentId && (
+            <Li
+              key={index}
+              className={parentId > 0 && 'parent'}
+              onMouseEnter={() => categoryChange(category)}
+              onClick={() => handleClick(category)}
+            >
+              <Link to={!isCategory ? '/categories' : '/catalog'}>
+                {isCategory && category.cat_name + ' >'}
               </Link>
-            {/* {isCategory ? (<Link to="/categories">
-                {el.cat_name} {' >'}
-              </Link>)
-              : <Link to="/catalog" />
-            } */}
-          </Li>
-        )
+            </Li>
+          )
       )}
     </ul>
   );

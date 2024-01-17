@@ -30,20 +30,19 @@ import products1 from "../../assets/json/products.json";
 
 const CatalogCarsPage = () => {
   const dispatch = useDispatch();
-  // const products = useSelector(selectProducts); // запрос на сервер
-  const products = products1;
-  // const filteredProducts = useSelector(selectFilteredProducts);
-  const [filteredData, setFilteredData] = useState(products.length > 0 ? products : products1);
+  const products = useSelector(selectProducts);
+  const filteredProducts = useSelector(selectFilteredProducts);
+  // const [filteredData, setFilteredData] = useState(products.length > 0 ? products : products1);
   // const searchParams = useSelector(selectSearchParams);
-  // const [filteredData, setFilteredData] = useState(
-  //   filteredProducts.length > 0 ? filteredProducts : products.length > 0 ? products : products1
-  // );
+  const [filteredData, setFilteredData] = useState(
+    filteredProducts.length > 0 ? filteredProducts : products.length > 0 ? products : products1
+  );
 
   // if (filteredProducts.length === 0) {
   //   dispatch(changefilteredProducts(filteredData));
   // }
 
-  // const [isAdd, setIsAdd] = useState(false);
+  const [isAdd, setIsAdd] = useState(false);
 
   const [activePage, setActivePage] = useState(1);
   const [activeFilter, setActiveFilter] = useState(false);
@@ -56,9 +55,6 @@ const CatalogCarsPage = () => {
     // productsFilling(); // удалить при реальном products.json
     // dispatch(changeFilteredProducts(filtration()));
     // productsFiltration();
-    setFilteredData(filtration());
-    
-    // console.log(filteredData);
 
     // dispatch(changefilters({ key: 'name', value: '' }));
     // if (filters.length > 0) CreateFilteredDate(isAdd);
@@ -125,53 +121,18 @@ const CatalogCarsPage = () => {
 
   // Фильтрация товаров
   const filtration = () => {
-    if (filters.length > 0) {
-      return products.filter(product => { 
-        let result = false;
-        const productKeys = [];
-        for (var key in product) {
-          productKeys.push(key);
+    // const date = products.filter(product => {
+    return products.filter(product => {
+      let result = true;
+      for (let index = 0; index < product.length; index++) {
+        if (product[index].value !== '') {
+          result = result && (() => checking(filters[index]), product[index]);
         }
-        
-        // const productKeys = product.map(item =>
-        //   console.log(item) && item);
-        filters.map(item => {
-          const index = productKeys.findIndex(el => el === item.key)
-          index >= 0 && checking(item, product[index]);
-          
-          return item;
-        });
-      
-        return result;
-      })
-    } else {
-      return products
-    }
 
-    // const data = products.filter(product => {
-    // // return products.filter(product => {
-    //   // let result = true;
-    //   let result = false;
-    //   if (filters.length > 0) {
-    //     filters.map(item => {});
-    //   } else
-
-    //   // for (let index = 0; index < product.length; index++) {
-      
-    //   console.log(product.id, product.id);
-    //   for (var key in product) {
-    //     if (product[key] !== '') {
-
-    //       // result = result && (() => checking(filters[index]), product[index]);
-    //       result = result && (() => checking(filters[0]), product);
-    //     }
-
-    //     if (result === false) break;
-    //   }
-    //   return result;
-    // });
-
-    // return data;
+        if (!result) break;
+      }
+      return result;
+    });
     // setFilteredData(date);
   };
 
@@ -192,8 +153,6 @@ const CatalogCarsPage = () => {
   // }, [filters]);
 
   useEffect(() => {
-    setFilteredData(filtration());
-
     // setActiveFilter(!activeFilter);
     // setActiveFilter(activeFilter + 1);
     // console.log('filters');
@@ -243,15 +202,11 @@ const CatalogCarsPage = () => {
   return (
     // ({ activeFilter } || !{ activeFilter }) && (
     <div style={{ backgroundColor: 'var(--bg-second)' }}>
-      {/* {productsFiltration()} */}
       <NavBar />
       <Container>
         <aside style={{ minWidth: '250px' }}>
           {/* <p>Панель фильтров</p> */}
           <PriceRange />
-
-          {/* {console.log(filteredData)} && */}
-
           <FilterPanel data={filteredData} onFilter={handleFilter} />
         </aside>
         <section key={+activeFilter}>

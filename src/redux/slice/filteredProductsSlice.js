@@ -6,11 +6,11 @@ const sliceFilteredProducts = createSlice({
     filteredProduct: [],
   },
   reducers: {
-    changefilteredProducts(state, action) {
+    changeFilteredProducts(state, action) {
       state.filteredProduct = action.payload;
     },
   },
 });
 
-export const { changefilteredProducts } = sliceFilteredProducts.actions;
+export const { changeFilteredProducts } = sliceFilteredProducts.actions;
 export const filteredProductsReducer = sliceFilteredProducts.reducer;

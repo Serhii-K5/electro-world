@@ -33,7 +33,7 @@ import { SlMagnifier } from "react-icons/sl";
 import NavLinkBar from 'components/NavLinkBar/NavLinkBar';
 
 // import { useSearchParams } from 'react-router-dom';
-import { changefilters } from "redux/slice/filtersSlice";
+import { changeFilters } from "redux/slice/filtersSlice";
 
 export default function Layout() {
   const dispatch = useDispatch();
@@ -63,12 +63,12 @@ export default function Layout() {
   const handleSubmit = e => {    
     e.preventDefault();
     // setSearchParams({ query: e.target[1].value });    
-    dispatch(changefilters({key: 'name', value: e.target[1].value})); 
+    dispatch(changeFilters({key: 'name', value: e.target[1].value})); 
     return;
   };
   
   const onBlurInp = e => {    
-    dispatch(changefilters({key: 'name', value: e.target.value})); 
+    dispatch(changeFilters({key: 'name', value: e.target.value})); 
     return;
   };
   
@@ -102,12 +102,8 @@ export default function Layout() {
                 }}
               />
             </div> */}
-            <Button
-              type="submit"
-            >
-              <SlMagnifier
-                style={{width: '25px', height: '25px',}}
-              />
+            <Button type="submit">
+              <SlMagnifier style={{ width: '25px', height: '25px' }} />
               <Link to="/catalog" />
             </Button>
             <Input
@@ -126,17 +122,8 @@ export default function Layout() {
       </Div>
       <NavLinkBar />
       {isModalShown && <MessageModule onClose={onCloseModal} />}
-      <Outlet> 
-        <footer>
-          <Footer />
-        </footer>
-      </Outlet>       
-      {/* <div>
-        <Outlet />
-      </div>
-      <footer>
-        <Footer />
-      </footer> */}
+      <Outlet />      
+      <Footer />
     </>
   );
 }

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 // import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFilters } from 'redux/selectors';
-import { changefilters } from "redux/slice/filtersSlice";
+import { changeFilters } from "redux/slice/filtersSlice";
 
 import {
   
@@ -24,13 +24,13 @@ const FilterPanel = ({ data, onFilter }) => {
   // useEffect(() => {
   //   // handleFilter();
   //   // memoArray();
-  //   // dispatch(changefilters({key: 'name', value: ''}));
+  //   // dispatch(changeFilters({key: 'name', value: ''}));
   // }, []);
 
   useEffect(() => {
     // handleFilter();
     // memoArray();
-    // dispatch(changefilters({key: 'name', value: ''}));
+    // dispatch(changeFilters({key: 'name', value: ''}));
 
     setMemoFilters(filters);
 
@@ -56,11 +56,11 @@ const FilterPanel = ({ data, onFilter }) => {
     if (el.key !== '') {
       if (index === -1) {
         el.value !== '' &&
-          // dispatch(changefilters(filters.push({
+          // dispatch(changeFilters(filters.push({
           //   key: el.key.trim(),
           //   value: [el.value.trim()],
           // })))
-          dispatch(changefilters({
+          dispatch(changeFilters({
             key: el.key.trim(),
             value: [el.value.trim()],
           }))
@@ -68,7 +68,7 @@ const FilterPanel = ({ data, onFilter }) => {
         // Number.isFinite(el.value)
       } else {
         dispatch(
-          changefilters(availabilityCheck(filters[index].value, el.value))
+          changeFilters(availabilityCheck(filters[index].value, el.value))
         );
       }
     }
@@ -149,9 +149,9 @@ const FilterPanel = ({ data, onFilter }) => {
     // const index = categories.findIndex(category => category.cat_parentId === e.cat_id);
 
     // if (index === -1) {
-    // dispatch(changefilters({ key: 'parentId', value: e.cat_id }));
+    // dispatch(changeFilters({ key: 'parentId', value: e.cat_id }));
     // // const filteredDate = products.filter(item => item.id === e.cat_id);
-    // dispatch(changefilters({ key: 'parentId', value: e.cat_id }));
+    // dispatch(changeFilters({ key: 'parentId', value: e.cat_id }));
     // const result = filteredData.filter(item => item.id === e.cat_id)
     // setFilteredData(result);
     // dispatch(changefilteredProducts(result));

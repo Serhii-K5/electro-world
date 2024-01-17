@@ -11,8 +11,8 @@ import {
   RangeLineEdgesDiv  
 } from './PriceRange.styled';
 
-import { changefilteredProducts } from 'redux/slice/filteredProductsSlice';
-import { changefilters } from "redux/slice/filtersSlice";
+import { changeFilteredProducts } from 'redux/slice/filteredProductsSlice';
+import { changeFilters } from "redux/slice/filtersSlice";
 import { SHIFT_RANGE } from 'constants/constants';
 import lang from 'assets/json/language.json';
 
@@ -47,10 +47,10 @@ const PriceRange = () => {
 
   
   if (filteredProducts.length === 0) {
-    dispatch(changefilteredProducts(products1));
+    dispatch(changeFilteredProducts(products1));
   }  
   
-  useEffect(() => {
+  useEffect(() => { 
     const rangePriceElement = document.getElementById('range-price');
     const rangeWidth = rangePriceElement.clientWidth;
     setPositionStart(rangePriceElement.offsetParent.offsetLeft);
@@ -74,7 +74,7 @@ const PriceRange = () => {
       
       setMaxPrice(max);
       setMinPrice(min);
-      dispatch(changefilters({key: 'price', value: [min, max]})); 
+      dispatch(changeFilters({key: 'price', value: [min, max]})); 
     };
 
     findMinMaxPrice();
@@ -196,7 +196,7 @@ const PriceRange = () => {
   };  
 
   const handleClickBtn = () => {    
-    dispatch(changefilters({ key: 'price', value: [inputValueMin, inputValueMax] })); 
+    dispatch(changeFilters({ key: 'price', value: [inputValueMin, inputValueMax] })); 
     
     // console.log("Button click");
     alert("Button click");
