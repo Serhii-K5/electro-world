@@ -56,7 +56,9 @@ const CatalogCarsPage = () => {
     // productsFilling(); // удалить при реальном products.json
     // dispatch(changeFilteredProducts(filtration()));
     // productsFiltration();
-    setFilteredData(filtration());
+    const fd = filtration();
+    setFilteredData(fd);
+    // setFilteredData(filtration());
     
     // console.log(filteredData);
 
@@ -100,47 +102,63 @@ const CatalogCarsPage = () => {
   // // }, [dispatch, filteredData, filters, products]);
   // }, [dispatch, filteredData]);
 
-  const checking = (filtersEl, product) => {
-    // filtersEl = [{key, value:[]}, ...], product = {key, value}
-    
-    const keys = filtersEl.keys();
-    const pos = keys.findIndex(ind => ind.toUpperCase() === product.key.toUpperCase())
-    let result = pos < 0 || filtersEl.value === "" || filtersEl.value === 0 ? true : false;
+  const checking = (filtersEl, productVolue) => {
+    // filtersEl = {key, value:[]}, productVolue = value
+
+    // console.log(product.id, product.productKeys[index]);
+    // console.log(product[productKeys[index]]);
+    // console.log(product.id);
+    // const pos = productKeys.findIndex(
+    //   ind => ind.toUpperCase() === product.key.toUpperCase()
+    // );
+    let result = filtersEl.value === '' || filtersEl.value === 0 ? true : false;
     if (!result) {
-      if (Number.isFinite(product[pos].value)) {
+      if (Number.isFinite(productVolue)) {
         for (let index = 0; index < filtersEl.value.length; index++) {
-          if(filtersEl[pos].value[index][0] >= product.value
-            && filtersEl[pos].value[index][1] <= product.value) {            
+          if(Array.isArray(filtersEl.value)){
+            if (filtersEl[index].value[0] >= productVolue && filtersEl[index].value[1] <= productVolue) {
               result = true;
-              break;
-            };
+            }
+          } else {
+            result = filtersEl[index].value.findIndex(index => index === productVolue) >= 0;
+          }
+          
+          if(result) break;
         }
-      } else if (!result) {
-        result = (filtersEl[pos].value.findIndex(ind => ind === product.value) >= 0);
-      };
-    };
-    
-    return result
-  }
+      } else {
+        result = filtersEl.value.findIndex(index => index === productVolue) >= 0;
+      }
+    }
+
+    return result;
+  };
 
   // Фильтрация товаров
   const filtration = () => {
     if (filters.length > 0) {
-      return products.filter(product => { 
-        let result = false;
+      return products.filter(product => {
+        // const productKeys = product.map(item => item.key);
         const productKeys = [];
-        for (var key in product) {
+        for (const key in product) {
           productKeys.push(key);
         }
         
-        // const productKeys = product.map(item =>
-        //   console.log(item) && item);
-        filters.map(item => {
-          const index = productKeys.findIndex(el => el === item.key)
-          index >= 0 && checking(item, product[index]);
+        // перебор фильтра
+        let result = true;
+        for (const filter of filters) {
+          const index = productKeys.findIndex(el => el.toUpperCase() === filter.key.toUpperCase())
+          result = result && index >= 0 && checking(filter, product[productKeys[index]]);
           
-          return item;
-        });
+          if(!result)  break;
+        }
+
+        // filters.map(item => {
+        //   const index = productKeys.findIndex(el => el.toUpperCase() === item.key.toUpperCase())
+        //   // index >= 0 && checking(item, product[index], productKeys);
+        //   index >= 0 && checking(item, product[productKeys[index]]);
+          
+        //   return 0;
+        // });
       
         return result;
       })

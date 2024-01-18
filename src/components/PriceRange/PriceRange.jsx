@@ -74,7 +74,7 @@ const PriceRange = () => {
       
       setMaxPrice(max);
       setMinPrice(min);
-      dispatch(changeFilters({key: 'price', value: [min, max]})); 
+      dispatch(changeFilters({key: 'price', value: [[min, max]]})); 
     };
 
     findMinMaxPrice();
