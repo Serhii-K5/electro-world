@@ -58,9 +58,9 @@ const CatalogCarsPage = () => {
     // productsFilling(); // удалить при реальном products.json
     // dispatch(changeFilteredProducts(filtration()));
     // productsFiltration();
-    const fd = filtration();
-    setFilteredData(fd);
-    // setFilteredData(filtration());
+    // const fd = filtration();
+    // setFilteredData(fd);
+    setFilteredData(filtration());
     
     // console.log(filteredData);
 
@@ -144,7 +144,7 @@ const CatalogCarsPage = () => {
       } else {
         result = true;
         filter.value.map(item => {
-          result = result && productVolue.includes(item);
+          result = result && productVolue.toUpperCase().includes(item.toUpperCase());
           return 0;
         });
         
@@ -165,7 +165,6 @@ const CatalogCarsPage = () => {
   const filtration = () => {
     if (filters.length > 0) {
       return products.filter(product => {
-        // const productKeys = product.map(item => item.key);
         const productKeys = [];
         for (const key in product) {
           productKeys.push(key);
@@ -188,56 +187,11 @@ const CatalogCarsPage = () => {
     } else {
       return products
     }
-
-    // const data = products.filter(product => {
-    // // return products.filter(product => {
-    //   // let result = true;
-    //   let result = false;
-    //   if (filters.length > 0) {
-    //     filters.map(item => {});
-    //   } else
-
-    //   // for (let index = 0; index < product.length; index++) {
-      
-    //   console.log(product.id, product.id);
-    //   for (var key in product) {
-    //     if (product[key] !== '') {
-
-    //       // result = result && (() => checking(filters[index]), product[index]);
-    //       result = result && (() => checking(filters[0]), product);
-    //     }
-
-    //     if (result === false) break;
-    //   }
-    //   return result;
-    // });
-
-    // return data;
-    // setFilteredData(date);
   };
 
   
-  // useEffect(() => {
-  //   // setFilteredData(filtration());
-    
-  //   // // CreateFilteredDate(isAdd);
-
-  //   // setIsAdd(false);
-  //   // setActiveFilter(activeFilter + 1);
-  //   // window.location.reload();
-
-  //   // dispatch(changefilteredProducts(filteredProducts));
-
-  // // }, [dispatch, filteredData]);
-  // // }, [dispatch, filteredData, filters, products]);
-  // }, [filters]);
-
   useEffect(() => {
     setFilteredData(filtration());
-
-    // setActiveFilter(!activeFilter);
-    // setActiveFilter(activeFilter + 1);
-    // console.log('filters');
   }, [filters]); 
 
   // useEffect(() => {
@@ -248,8 +202,6 @@ const CatalogCarsPage = () => {
 
 
   const handleFilter = filteredData => {
-    // setActiveFilter(true);
-    // setActiveFilter(activeFilter + 1);
     setActivePage(0);
     setFilteredData(filteredData);
   };
@@ -262,24 +214,7 @@ const CatalogCarsPage = () => {
     activePage > 0 && setActivePage(activePage - 1);
   };
 
-  // const onFilter = () => {
-  //   const rez = 0
-
-  //   return rez
-  // }
   
-  // const handleFilter = filteredData => {
-  //   setFilteredData(filteredData);
-  // };
-
-  const handleClick = () => {
-    // dispatch(changeFilters(filters));
-    // setActiveFilter(activeFilter+1);
-    setActiveFilter(!activeFilter);
-    // console.log(filters.length);
-  };
-
-  // productsFiltration();
 
   return (
     <div style={{ backgroundColor: 'var(--bg-second)' }}>
@@ -294,12 +229,10 @@ const CatalogCarsPage = () => {
         <section key={+activeFilter}>
           {/* {console.log('render1')} */}
           {/* <div onClick={handleClick} onMouseEnter={handleClick}> */}
-          <div>
-            Найдено: {filteredData.length} товаров
-          </div>
-          {filteredData.length === 0 &&
+          <div>Найдено: {filteredData.length} товаров</div>
+          {/* {filteredData.length === 0 &&
             products.length > 0 &&
-            setFilteredData(products)}
+            setFilteredData(products)} */}
           {filteredData.length > 0 && (
             <Ul>
               {filteredData.map(
@@ -313,36 +246,38 @@ const CatalogCarsPage = () => {
               )}
             </Ul>
           )}
-          <DivPagination>
-            {activePage > 1 && (
-              <DivShift onClick={onClickDecrease}>{'<<'}</DivShift>
-            )}
-            {activePage === 1 && (
-              <DivPage style={{ backgroundColor: 'var(--bg-second-green)' }}>
-                {activePage}
-              </DivPage>
-            )}
-            {activePage > 2 && (
-              <div style={{ width: '50px', textAlign: 'center' }}>{'...'}</div>
-            )}
-            {activePage > 1 && (
-              <DivPage onClick={onClickDecrease}>{activePage - 1}</DivPage>
-            )}
-            {activePage > 1 && (
-              <DivPage style={{ backgroundColor: 'green' }}>
-                {activePage}
-              </DivPage>
-            )}
-            {filteredData.length / 8 > activePage && (
-              <DivPage onClick={onClickIncrease}>{activePage + 1}</DivPage>
-            )}
-            {filteredData.length / 8 > activePage + 1 && (
-              <div style={{ width: '50px', textAlign: 'center' }}>{'...'}</div>
-            )}
-            {filteredData.length / 8 > activePage && (
-              <DivShift onClick={onClickIncrease}>{'>>'}</DivShift>
-            )}
-          </DivPagination>
+          {filteredData.length > 0 &&
+            <DivPagination>
+              {activePage > 1 && (
+                <DivShift onClick={onClickDecrease}>{'<<'}</DivShift>
+              )}
+              {activePage === 1 && (
+                <DivPage style={{ backgroundColor: 'var(--bg-second-green)' }}>
+                  {activePage}
+                </DivPage>
+              )}
+              {activePage > 2 && (
+                <div style={{ width: '50px', textAlign: 'center' }}>{'...'}</div>
+              )}
+              {activePage > 1 && (
+                <DivPage onClick={onClickDecrease}>{activePage - 1}</DivPage>
+              )}
+              {activePage > 1 && (
+                <DivPage style={{ backgroundColor: 'green' }}>
+                  {activePage}
+                </DivPage>
+              )}
+              {filteredData.length / 8 > activePage && (
+                <DivPage onClick={onClickIncrease}>{activePage + 1}</DivPage>
+              )}
+              {filteredData.length / 8 > activePage + 1 && (
+                <div style={{ width: '50px', textAlign: 'center' }}>{'...'}</div>
+              )}
+              {filteredData.length / 8 > activePage && (
+                <DivShift onClick={onClickIncrease}>{'>>'}</DivShift>
+              )}
+            </DivPagination>
+          }
           {/* <PaginationBar data={filteredData} page={activePage} /> */}
         </section>
       </Container>

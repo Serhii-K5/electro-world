@@ -1,19 +1,11 @@
-// import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-// import { selectDirectoryPath, selectCategories } from 'redux/selectors';
 import { selectDirectoryPath } from 'redux/selectors';
 import { Link } from 'react-router-dom';
 
 import { Ul } from "./NavBar.styled";
 
 const NavBar = () => {
-  // const [isPathVisible, setPathVisible] = useState(false);
-  const directoryPath = useSelector(selectDirectoryPath);  
-  // const changeCategory = useSelector(selectCategories);
-  
-  // useEffect(() => {
-  //   directoryPath > 0 ? setPathVisible(true) : setPathVisible(false);
-  // }, [directoryPath]);
+  const directoryPath = useSelector(selectDirectoryPath); 
 
   return (
     <>
