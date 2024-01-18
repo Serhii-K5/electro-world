@@ -25,37 +25,56 @@ const SearchField = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    // const arr = e.target[1].value.split(' ');
-    // dispatch(changeFilters({ key: 'name', value: arr }));
+    const arr = e.target[1].value.split(' ');
+    dispatch(changeFilters({ key: 'name', value: arr }));
   };
 
   const handleChange = e => {
     setInputValue(e.target.value);
 
-    const arr = e.target.value.split(' ');
-    dispatch(changeFilters({ key: 'name', value: arr }));
-  };
-
-  const onBlurInp = e => {
     // const arr = e.target.value.split(' ');
     // dispatch(changeFilters({ key: 'name', value: arr }));
-    // setInputValue(e.target.value);
   };
 
+  // const onBlurInp = e => {
+  //   const arr = e.target.value.split(' ');
+  //   dispatch(changeFilters({ key: 'name', value: arr }));
+  //   setInputValue(e.target.value);
+  // };
+
+  const handleClick = e => {
+    // const arr = e.currentTarget[1].value !== '' ? e.currentTarget[1].value.split(' ') : '';
+    const arr = e.currentTarget[1].value.split(' ');
+    dispatch(changeFilters({ key: 'name', value: arr }));
+    setInputValue(e.currentTarget[1].value);
+  };
+
+  const onKeyUp = e => {
+    // console.log(e.code, e.keyCode);
+    if(e.key === 'Enter'){
+      const arr = e.target.value.split(' ');
+      dispatch(changeFilters({ key: 'name', value: arr }));
+      setInputValue(e.target.value);
+    }
+  };
+
+
+
   return (
-    <form onSubmit={handleSubmit} style={{ position: 'relative' }}>
+    <form onSubmit={handleSubmit} onClick={handleClick} style={{ position: 'relative' }}>
       <Link to="/catalog">
-        <Button type="submit">
+        <Button type="submit" >
           <SlMagnifier style={{ width: '25px', height: '25px' }} />
         </Button>
         <Input
           type="text"
           placeholder={lang[languages].layout_find}
           onChange={handleChange}
-          onBlur={onBlurInp}
+          // onBlur={onBlurInp}
           value={inputValue}
+          onKeyUp={onKeyUp}
         />
-      </Link>     
+      </Link>
     </form>
   );
 };

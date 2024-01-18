@@ -16,6 +16,7 @@ export const Container = styled.div`
 export const Ul = styled.ul`
   display: flex;
   margin: 0 auto;
+  padding-left: 25px;
   max-width: 1440px;
   flex-wrap: wrap;
   align-items: center;

@@ -48,7 +48,7 @@ const CatalogCarsPage = () => {
   // const [isAdd, setIsAdd] = useState(false);
 
   const [activePage, setActivePage] = useState(1);
-  const [activeFilter, setActiveFilter] = useState(false);
+  // const [activeFilter, setActiveFilter] = useState(false);
   // const [activeFilter, setActiveFilter] = useState(0);
   
   const filters = useSelector(selectFilters);
@@ -226,7 +226,7 @@ const CatalogCarsPage = () => {
           <PriceRange />
           <FilterPanel data={filteredData} onFilter={handleFilter} />
         </aside>
-        <section key={+activeFilter}>
+        <section>
           {/* {console.log('render1')} */}
           {/* <div onClick={handleClick} onMouseEnter={handleClick}> */}
           <div>Найдено: {filteredData.length} товаров</div>
@@ -234,19 +234,21 @@ const CatalogCarsPage = () => {
             products.length > 0 &&
             setFilteredData(products)} */}
           {filteredData.length > 0 && (
-            <Ul>
-              {filteredData.map(
-                (item, index) =>
-                  index > (activePage - 1) * 8 - 1 &&
-                  index < activePage * 8 && (
-                    <li key={item.id}>
-                      <ProductCard card={item} />
-                    </li>
-                  )
-              )}
-            </Ul>
+            // <div style={{display: 'flex'}}>
+              <Ul>
+                {filteredData.map(
+                  (item, index) =>
+                    index > (activePage - 1) * 8 - 1 &&
+                    index < activePage * 8 && (
+                      <li key={item.id}>
+                        <ProductCard card={item} />
+                      </li>
+                    )
+                )}
+              </Ul>
+            // </div>
           )}
-          {filteredData.length > 0 &&
+          {filteredData.length > 0 && (
             <DivPagination>
               {activePage > 1 && (
                 <DivShift onClick={onClickDecrease}>{'<<'}</DivShift>
@@ -257,7 +259,9 @@ const CatalogCarsPage = () => {
                 </DivPage>
               )}
               {activePage > 2 && (
-                <div style={{ width: '50px', textAlign: 'center' }}>{'...'}</div>
+                <div style={{ width: '50px', textAlign: 'center' }}>
+                  {'...'}
+                </div>
               )}
               {activePage > 1 && (
                 <DivPage onClick={onClickDecrease}>{activePage - 1}</DivPage>
@@ -271,13 +275,15 @@ const CatalogCarsPage = () => {
                 <DivPage onClick={onClickIncrease}>{activePage + 1}</DivPage>
               )}
               {filteredData.length / 8 > activePage + 1 && (
-                <div style={{ width: '50px', textAlign: 'center' }}>{'...'}</div>
+                <div style={{ width: '50px', textAlign: 'center' }}>
+                  {'...'}
+                </div>
               )}
               {filteredData.length / 8 > activePage && (
                 <DivShift onClick={onClickIncrease}>{'>>'}</DivShift>
               )}
             </DivPagination>
-          }
+          )}
           {/* <PaginationBar data={filteredData} page={activePage} /> */}
         </section>
       </Container>
