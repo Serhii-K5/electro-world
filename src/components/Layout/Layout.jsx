@@ -62,13 +62,18 @@ export default function Layout() {
   
   const handleSubmit = e => {    
     e.preventDefault();
-    // setSearchParams({ query: e.target[1].value });    
-    dispatch(changeFilters({key: 'name', value: e.target[1].value})); 
+    // setSearchParams({ query: e.target[1].value });   
+    const arr = e.target[1].value.split(' ');
+    dispatch(changeFilters({ key: 'name', value: arr }));
+    // dispatch(changeFilters({key: 'name', value: e.target[1].value})); 
     return;
   };
   
   const onBlurInp = e => {    
-    dispatch(changeFilters({key: 'name', value: e.target.value})); 
+    const arr = e.target.value.split(' ');
+    
+    // dispatch(changeFilters({ key: 'name', value: e.target.value })); 
+    dispatch(changeFilters({ key: 'name', value: arr })); 
     return;
   };
   

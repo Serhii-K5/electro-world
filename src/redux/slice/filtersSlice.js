@@ -33,16 +33,6 @@ const sliceFilters = createSlice({
     deleteFilters(state, action) {
       state.items.splice(0, state.items.length - 1);
       state.items.splice(0, 1, []);
-      // state.items.splice(0, 1, [
-      //   {
-      //     key: 'name',
-      //     value: '',
-      //   },
-      //   {
-      //     key: 'price',
-      //     value: [0, 0],
-      //   },
-      // ]);
     },
   },
 });

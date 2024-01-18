@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useSearchParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "redux/operations";
 
@@ -29,6 +30,7 @@ import products1 from "../../assets/json/products.json";
 
 
 const CatalogCarsPage = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
   // const products = useSelector(selectProducts); // запрос на сервер
   const products = products1;
@@ -102,7 +104,17 @@ const CatalogCarsPage = () => {
   // // }, [dispatch, filteredData, filters, products]);
   // }, [dispatch, filteredData]);
 
-  const checking = (filtersEl, productVolue) => {
+  // const fn2 = (key, volue) => {
+  //   const dynamicObject = {
+  //     [key]: volue,
+  //   };
+
+  //   setSearchParams(dynamicObject);
+  // }
+  
+  
+  
+  const checking = (filter, productVolue) => {
     // filtersEl = {key, value:[]}, productVolue = value
 
     // console.log(product.id, product.productKeys[index]);
@@ -111,25 +123,41 @@ const CatalogCarsPage = () => {
     // const pos = productKeys.findIndex(
     //   ind => ind.toUpperCase() === product.key.toUpperCase()
     // );
-    let result = filtersEl.value === '' || filtersEl.value === 0 ? true : false;
+    let result = filter.value === '' || filter.value === 0 ? true : false;
     if (!result) {
-      if (Number.isFinite(productVolue)) {
-        for (let index = 0; index < filtersEl.value.length; index++) {
-          if(Array.isArray(filtersEl.value)){
-            if (filtersEl[index].value[0] >= productVolue && filtersEl[index].value[1] <= productVolue) {
-              result = true;
+      if (Number.isFinite(productVolue)) {    
+        if (Array.isArray(filter.value)) {
+          for (let index = 0; index < filter.value.length; index++) {
+            if (Array.isArray(filter.value)) {
+              if (filter.value[index][0] <= productVolue && filter.value[index][1] >= productVolue) {
+                result = true;
+              }
+            } else {
+              result = filter.value.findIndex(index => index === productVolue) >= 0;
             }
-          } else {
-            result = filtersEl[index].value.findIndex(index => index === productVolue) >= 0;
-          }
           
-          if(result) break;
+            if (result) break;
+          }
+        } else {
+          result = filter.value === productVolue;
         }
       } else {
-        result = filtersEl.value.findIndex(index => index === productVolue) >= 0;
+        result = true;
+        filter.value.map(item => {
+          result = result && productVolue.includes(item);
+          return 0;
+        });
+        
+        
+        // const ss = filter.value.filter(el =>
+        // result = filter.value.findIndex(index => index === productVolue) >= 0;
+        // result = filter.value.filter(el => productVolue.find(index => index === el) >= 0) ;
+        // result = filter.value.filter(el => fn(el) >= 0);
+
+        
       }
     }
-
+    
     return result;
   };
 
@@ -151,15 +179,10 @@ const CatalogCarsPage = () => {
           
           if(!result)  break;
         }
-
-        // filters.map(item => {
-        //   const index = productKeys.findIndex(el => el.toUpperCase() === item.key.toUpperCase())
-        //   // index >= 0 && checking(item, product[index], productKeys);
-        //   index >= 0 && checking(item, product[productKeys[index]]);
-          
-        //   return 0;
-        // });
       
+        // if (result) {
+        //   result = true;
+        // }
         return result;
       })
     } else {
@@ -259,7 +282,6 @@ const CatalogCarsPage = () => {
   // productsFiltration();
 
   return (
-    // ({ activeFilter } || !{ activeFilter }) && (
     <div style={{ backgroundColor: 'var(--bg-second)' }}>
       {/* {productsFiltration()} */}
       <NavBar />
@@ -267,15 +289,12 @@ const CatalogCarsPage = () => {
         <aside style={{ minWidth: '250px' }}>
           {/* <p>Панель фильтров</p> */}
           <PriceRange />
-
-          {/* {console.log(filteredData)} && */}
-
           <FilterPanel data={filteredData} onFilter={handleFilter} />
         </aside>
         <section key={+activeFilter}>
           {/* {console.log('render1')} */}
-          <div onClick={handleClick} onMouseEnter={handleClick}>
-            {/* <div> */}
+          {/* <div onClick={handleClick} onMouseEnter={handleClick}> */}
+          <div>
             Найдено: {filteredData.length} товаров
           </div>
           {filteredData.length === 0 &&

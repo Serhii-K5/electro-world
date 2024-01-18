@@ -196,10 +196,10 @@ const PriceRange = () => {
   };  
 
   const handleClickBtn = () => {    
-    dispatch(changeFilters({ key: 'price', value: [inputValueMin, inputValueMax] })); 
+    dispatch(changeFilters({ key: 'price', value: [[inputValueMin, inputValueMax]] })); 
     
     // console.log("Button click");
-    alert("Button click");
+    // alert("Button click");
   }
   
   return (
