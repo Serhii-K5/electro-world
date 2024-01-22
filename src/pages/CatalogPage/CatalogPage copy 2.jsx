@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
-// import { useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "redux/operations";
 
 import ProductCard from "components/ProductCard/ProductCard";
 // import { selectProducts, selectSearchParams } from "redux/selectors";
-// import { selectProducts, selectFilteredProducts, selectFilters } from 'redux/selectors';
-// import { changeFilteredProducts } from 'redux/slice/filteredProductsSlice';
-import { selectFilters, selectLanguages } from 'redux/selectors';
+import { selectProducts, selectFilteredProducts, selectFilters } from 'redux/selectors';
+import { changeFilteredProducts } from 'redux/slice/filteredProductsSlice';
 
-// import { changeFilters } from "redux/slice/filtersSlice";
+import { changeFilters } from "redux/slice/filtersSlice";
 // import CreateFilteredDate from 'utilites/createFilteredDate';
 
 import {
@@ -18,7 +17,6 @@ import {
   DivShift,
   DivPagination,
   DivPage,
-  BtnDiv,
 } from './CatalogPage.styled';
 
 import NavBar from 'components/NavBar/NavBar';
@@ -29,12 +27,10 @@ import FilterPanel from 'components/FilterPanel/FilterPanel';
 
 import PriceRange from 'components/PriceRange/PriceRange';
 import products1 from "../../assets/json/products.json";
-import lang from 'assets/json/language.json';
 
 
 const CatalogCarsPage = () => {
   // const [searchParams, setSearchParams] = useSearchParams();
-  const languages = useSelector(selectLanguages);
   const dispatch = useDispatch();
   // const products = useSelector(selectProducts); // запрос на сервер
   const products = products1;
@@ -59,14 +55,74 @@ const CatalogCarsPage = () => {
 
 
   useEffect(() => {
+    // productsFilling(); // удалить при реальном products.json
+    // dispatch(changeFilteredProducts(filtration()));
+    // productsFiltration();
+    // const fd = filtration();
+    // setFilteredData(fd);
     setFilteredData(filtration());
+    
+    // console.log(filteredData);
+
+    // dispatch(changefilters({ key: 'name', value: '' }));
+    // if (filters.length > 0) CreateFilteredDate(isAdd);
+    // if (filters.length > 0) setFilteredData(filtration());
+
+    // if (filters.length > 0) {
+    //   // const index = filters.keys().findIndex(elem => elem === 'id');
+    //   const index = filters.findIndex(elem =>  elem.key === 'parentId');
+    //   if (index !== - 1) {
+    //     const result = filteredData.filter(item => item.parentId === filters[index].value)
+    //     // dispatch(changefilteredProducts(result));
+    //     setFilteredData(result);
+    //   }
+    // }
+    // console.log(activeFilter);
   }, []);
+
+  // const productsFilling = () => {    
+  //   products.length === 0 && dispatch(changeFilteredProducts(products1));
+  // }
+
+  // const productsFiltration = () => {
+  //   dispatch(changeFilteredProducts(filtration()));
+  // };
+
+
 
   useEffect(() => {
     dispatch(fetchProducts());
-  }, [dispatch]);  
+  }, [dispatch]);
+
+  // useEffect(() => {
+  //   dispatch(changeFilters(''));
+  // }, [dispatch]);
+
+  // useEffect(() => {
+  //   dispatch(changefilteredProducts(filteredData));
+  //   // }, [dispatch, filteredData]);
+  // // }, [dispatch, filteredData, filters, products]);
+  // }, [dispatch, filteredData]);
+
+  // const fn2 = (key, volue) => {
+  //   const dynamicObject = {
+  //     [key]: volue,
+  //   };
+
+  //   setSearchParams(dynamicObject);
+  // }
+  
+  
   
   const checking = (filter, productVolue) => {
+    // filtersEl = {key, value:[]}, productVolue = value
+
+    // console.log(product.id, product.productKeys[index]);
+    // console.log(product[productKeys[index]]);
+    // console.log(product.id);
+    // const pos = productKeys.findIndex(
+    //   ind => ind.toUpperCase() === product.key.toUpperCase()
+    // );
     let result = filter.value === '' || filter.value === 0 ? true : false;
     if (!result) {
       if (Number.isFinite(productVolue)) {    
@@ -91,6 +147,14 @@ const CatalogCarsPage = () => {
           result = result && productVolue.toUpperCase().includes(item.toUpperCase());
           return 0;
         });
+        
+        
+        // const ss = filter.value.filter(el =>
+        // result = filter.value.findIndex(index => index === productVolue) >= 0;
+        // result = filter.value.filter(el => productVolue.find(index => index === el) >= 0) ;
+        // result = filter.value.filter(el => fn(el) >= 0);
+
+        
       }
     }
     
@@ -157,36 +221,18 @@ const CatalogCarsPage = () => {
     activePage > 0 && setActivePage(activePage - 1);
   };
 
-  const handleClickBtn = () => {
-    
-
-    // dispatch(
-    //   changeFilters({ key: 'price', value: [[inputValueMin, inputValueMax]] })
-    // );
-
-    // console.log("Button click");
-    // alert("Button click");
-  };
+  
 
   return (
     <div style={{ backgroundColor: 'var(--bg-second)' }}>
       {/* {productsFiltration()} */}
       <NavBar />
       <Container>
-        <aside style={{ minWidth: '250px', backgroundColor: 'white' }}>
-          <h4 style={{ padding: '16px 0', textAlign: 'center' }}>
-            {lang[languages].catalogPage_asideTitel.toUpperCase()}
-          </h4>
-          <BtnDiv onClick={handleClickBtn}>
-            <b>Сбросить фильтры</b>
-          </BtnDiv>
-
-          <div style={{ padding: '0 16px' }}>
-            <PriceRange />
-          </div>
-
+        <aside style={{ minWidth: '250px' }}>
+          {/* <p>Панель фильтров</p> */}
+          <PriceRange />
           {/* <FilterPanel data={filteredData} onFilter={handleFilter} /> */}
-          <FilterPanel data={filteredData} />
+          <FilterPanel data={filteredData}/>
         </aside>
         <section>
           {/* {console.log('render1')} */}
@@ -197,17 +243,17 @@ const CatalogCarsPage = () => {
             setFilteredData(products)} */}
           {filteredData.length > 0 && (
             // <div style={{display: 'flex'}}>
-            <Ul>
-              {filteredData.map(
-                (item, index) =>
-                  index > (activePage - 1) * 8 - 1 &&
-                  index < activePage * 8 && (
-                    <li key={item.id}>
-                      <ProductCard card={item} />
-                    </li>
-                  )
-              )}
-            </Ul>
+              <Ul>
+                {filteredData.map(
+                  (item, index) =>
+                    index > (activePage - 1) * 8 - 1 &&
+                    index < activePage * 8 && (
+                      <li key={item.id}>
+                        <ProductCard card={item} />
+                      </li>
+                    )
+                )}
+              </Ul>
             // </div>
           )}
           {filteredData.length > 0 && (

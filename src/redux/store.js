@@ -58,6 +58,11 @@ const filtersPersistConfig = {
   storage,
 };
 
+const memoFiltersPersistConfig = {
+  key: 'filters',
+  storage,
+};
+
 // const catalogReducerConfig = {
 //   key: 'catalog',
 //   storage,

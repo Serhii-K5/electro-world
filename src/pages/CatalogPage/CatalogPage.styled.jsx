@@ -55,3 +55,22 @@ export const DivPage = styled.div`
     background-color: var(--bg-active-button-color);
   }
 `;
+
+export const BtnDiv = styled.div`
+  display: flex;
+  margin: 0 auto 16px;
+  width: 180px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-button-color);
+  border-radius: 5px;
+  color: var(--bg-primary);
+  transition: background-color ${transition};
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: var(--bg-active-button-color);
+  }
+`;

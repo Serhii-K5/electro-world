@@ -31,8 +31,15 @@ const sliceFilters = createSlice({
       }
     },
     deleteFilters(state, action) {
-      state.items.splice(0, state.items.length - 1);
-      state.items.splice(0, 1, []);
+      const arr = state.items.map(item => item.key);
+      const index = arr.findIndex(item => item === action.payload.key);
+      if (index >= 0) {
+        
+        state.items.splice(0, state.items.length - 1);
+        state.items.splice(0, 1, []);
+      }
+      // state.items.splice(0, state.items.length - 1);
+      // state.items.splice(0, 1, []);
     },
   },
 });
