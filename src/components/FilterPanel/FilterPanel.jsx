@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 // import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+// import { selectFilters, selectFilteredProducts } from 'redux/selectors';
 import { selectFilters } from 'redux/selectors';
 import { changeFilters } from "redux/slice/filtersSlice";
+
 
 import {
   
@@ -13,9 +15,11 @@ import {
 
 // import shevron from "assets/images/svg/shuffle-arrows.svg";
 
-const FilterPanel = ({ data, onFilter }) => {
+// const FilterPanel = ({ data, onFilter }) => {
+const FilterPanel = ({ data }) => {
   const dispatch = useDispatch();
   const filters = useSelector(selectFilters); //Выбранные фильтры
+  // const filteredProducts = useSelector(selectFilteredProducts);
 
   const [memoFilters, setMemoFilters] = useState([]);
   const [isCheckBoxes, setIsCheckBoxes] = useState(true);
@@ -123,9 +127,9 @@ const FilterPanel = ({ data, onFilter }) => {
   //   // console.log('filters =', filters);
   // };
   
-  const memoArray = () => {
-    
+  const memoArray = () => {    
     data.map(item => {
+    // filteredProducts.map(item => {
       //перебор товара
       const tempArray = createMemoArr(item.memo);
       // console.log(tempArray, memoFilters);
@@ -133,29 +137,40 @@ const FilterPanel = ({ data, onFilter }) => {
         // createMemoArr(item.memo).flatMap(memoEl => {
         //создаёт массив мемо и перебирает его по ключам
         if (memoEl && memoEl.key !== '') {
-          
+          // let i = 0;
           const keyArr = memoFilters.map(item => item.key);
           const index = keyArr.length > 0
             ? keyArr.findIndex(memoKey =>
-              memoEl.length > 0 && memoEl.key.toUpperCase() === memoKey.trim().toUpperCase()
+              memoEl.key.trim().toUpperCase() === memoKey.trim().toUpperCase()
+              // console.log(i++, ": ", memoEl.key.toUpperCase(), '===', memoKey.trim().toUpperCase(), memoEl.key.toUpperCase() === memoKey.trim().toUpperCase()) && memoEl.key.toUpperCase() === memoKey.trim().toUpperCase()
             )
             : -1;
+          // let index;
+          // if (keyArr.length > 0) {
+          //   index = keyArr.findIndex(memoKey =>
+          //     memoEl.key.trim().toUpperCase() === memoKey.trim().toUpperCase()
+          //   )
+          // } else
+          //   index = -1;
+          
           
           if (index < 0) {
-            setMemoFilters(memoFilters.push({ key: memoEl.key.trim(), value: [memoEl.value] }));
+            setMemoFilters(memoFilters.push({ key: memoEl.key.trim(), value: [memoEl.value.trim()] }));
           } else {
-            const pos = memoFilters[index].value.findIndex(el => el === memoEl.value);
-            if (pos < 0) { 
-              setMemoFilters(memoFilters[index].value.push(memoEl.value));
+            if (Number.isFinite(memoEl.value)) {
+              if (memoFilters[index].value[0] > memoEl.value) {
+                setMemoFilters((memoFilters[index].value[0] = memoEl.value));
+              } else if (memoFilters[index].value[1] < memoEl.value) {
+                setMemoFilters((memoFilters[index].value[1] = memoEl.value));
+              }
             } else {
-              if (Number.isFinite(memoEl.value)) {
-                // memoEl.value = 1
+              const pos = memoFilters[index].value.findIndex(el => el === memoEl.value);
+              if (pos < 0) {
+                setMemoFilters(memoFilters[index].value.push(memoEl.value));
+                // setMemoFilters(memoFilters[index].value = memoEl.value);
               }
             }
-
           }
-          
-
           // const result = filters.length > 0
           //   ? filters.findIndex(filtersEl => ss(filtersEl, memoEl)
           //     filtersEl.length > 0
@@ -193,7 +208,7 @@ const FilterPanel = ({ data, onFilter }) => {
   //   // console.log('createList');
   // };
 
-  
+  let i = 0;
   return (
     <ul>
       {/* {console.log(memoFilters)} */}
@@ -205,6 +220,7 @@ const FilterPanel = ({ data, onFilter }) => {
             // onMouseEnter={() => categoryChange(el)}
             onClick={() => handleClick(el)}
           >
+            {i++}            
             {el.key}
             {
               // isCheckBoxes && console.log(el)

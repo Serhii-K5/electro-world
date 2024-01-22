@@ -30,11 +30,11 @@ import products1 from "../../assets/json/products.json";
 
 
 const CatalogCarsPage = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  // const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
   // const products = useSelector(selectProducts); // запрос на сервер
   const products = products1;
-  // const filteredProducts = useSelector(selectFilteredProducts);
+  const filteredProducts = useSelector(selectFilteredProducts);
   const [filteredData, setFilteredData] = useState(products.length > 0 ? products : products1);
   // const searchParams = useSelector(selectSearchParams);
   // const [filteredData, setFilteredData] = useState(
@@ -165,26 +165,33 @@ const CatalogCarsPage = () => {
   const filtration = () => {
     if (filters.length > 0) {
       return products.filter(product => {
+        // const filteredProducts = products.filter(product => {
         const productKeys = [];
         for (const key in product) {
           productKeys.push(key);
         }
-        
+
         // перебор фильтра
         let result = true;
         for (const filter of filters) {
-          const index = productKeys.findIndex(el => el.toUpperCase() === filter.key.toUpperCase())
-          result = result && index >= 0 && checking(filter, product[productKeys[index]]);
-          
-          if(!result)  break;
+          const index = productKeys.findIndex(
+            el => el.toUpperCase() === filter.key.toUpperCase()
+          );
+          result =
+            result &&
+            index >= 0 &&
+            checking(filter, product[productKeys[index]]);
+
+          if (!result) break;
         }
-      
-        // if (result) {
-        //   result = true;
-        // }
+
         return result;
-      })
+      });
+      
+      // dispatch(changeFilteredProducts(filteredProducts));      
+      // return filteredProducts;
     } else {
+      // dispatch(changeFilteredProducts(products));
       return products
     }
   };
@@ -224,7 +231,8 @@ const CatalogCarsPage = () => {
         <aside style={{ minWidth: '250px' }}>
           {/* <p>Панель фильтров</p> */}
           <PriceRange />
-          <FilterPanel data={filteredData} onFilter={handleFilter} />
+          {/* <FilterPanel data={filteredData} onFilter={handleFilter} /> */}
+          <FilterPanel data={filteredData}/>
         </aside>
         <section>
           {/* {console.log('render1')} */}
