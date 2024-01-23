@@ -115,13 +115,23 @@ const FilterPanel = ({ data }) => {
     });
   };
   
-  const handleClick = e => {
+  const handleClick = () => {
     // setIsCheckBoxes(false);
     setIsCheckBoxes(!isCheckBoxes);
   };
 
-  const changeCheckbox = () => {
+  // const changeCheckbox = (e) => {
+  //   console.log('changeCheckbox');
+  //   console.log(e.target.id);
+  // };
+
+  const changeCheckbox = (key, item, e) => {
+    if (e.target.checked) {
+      
+    } else {
+    }
     console.log('changeCheckbox');
+    console.log(key, item, e.target.checked);
   };
 
   // const createList = (el, index) => {
@@ -165,7 +175,7 @@ const FilterPanel = ({ data }) => {
         <li key={key} style={{ borderTop: '1px solid grey'}}>
             <div onClick={() => { toggleDropdown(key)}} style={{ display: 'flex', padding: '16px' }}>
               {/* {key} */}
-            <img src={shevron} alt="shevron" style={isCheckBoxes ? {transform: 'rotate: 180deg'} : {transform: 'rotate: 0deg'}} />
+            <img src={shevron} alt="shevron" style={isCheckBoxes ? {rotate: '0deg'} : {rotate: '180deg'}} />
               <strong style={{ color: 'blue', paddingLeft: '10px' }}>
                 {key}
               </strong>
@@ -174,7 +184,7 @@ const FilterPanel = ({ data }) => {
             <ul style={{ padding: '0 16px 16px 16px' }}>
               {value.map((item, index) => (
                 <Li key={index}>
-                  <input type="checkbox" id={`${key}-${index}`} value={item} />
+                  <input type="checkbox" id={`${key}-${index}`} value={item} onClick={(e) => changeCheckbox(key, item, e)}/>
                   <label htmlFor={`${key}-${index}`}>{item}</label>
                 </Li>
               ))}
