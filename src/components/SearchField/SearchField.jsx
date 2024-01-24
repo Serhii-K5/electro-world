@@ -20,7 +20,9 @@ const SearchField = () => {
   useEffect(() => {
     const arr = filters.map(item => item.key);
     const index = arr.findIndex(el => el === 'name');
-    if (index >= 0) setInputValue(filters[index].value.join(' '));
+    if (index >= 0) {
+      setInputValue(filters[index].value !== "" ? filters[index].value.join(' ') : "")
+    };
   }, []);
 
   const handleSubmit = e => {

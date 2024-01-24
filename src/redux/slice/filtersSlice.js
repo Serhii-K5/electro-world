@@ -20,23 +20,33 @@ const sliceFilters = createSlice({
     changeFilters(state, action) {
       const arr = state.items.map(item => item.key);
       const index = arr.findIndex(item => item === action.payload.key);
-      // console.log(arr, "; ", action.payload.key)
-      // const index = state.items.findIndex(item =>
-      //   item.key.findIndex(key => console.log(key, '; ', action.payload.key) && key === action.payload.key))
-      // console.log(item.key) && item.key === action.payload.key);
       if (index < 0) {
-        state.items.push(action.payload);
+        // state.items.push(action.payload);
+        state.items.push({ key: action.payload.key, value: [action.payload.value]});
       } else {
-        state.items.splice(index, 1, action.payload);
+        // state.items.splice(index, 1, action.payload);
+        // [state.items[index].value].push(action.payload.value);
+        state.items[index].value.push(action.payload.value);
       }
     },
     deleteFilters(state, action) {
       const arr = state.items.map(item => item.key);
       const index = arr.findIndex(item => item === action.payload.key);
       if (index >= 0) {
-        
-        state.items.splice(0, state.items.length - 1);
-        state.items.splice(0, 1, []);
+        // if (state.items[index].value === '') {
+        if (state.items[index].value.length > 0) {
+          state.items.splice(index, 1); 
+        } else {
+          const pos = state.items[index].value.findIndex(item => item === action.payload.value);        
+          state.items.value.splice(pos, 1);
+        }
+        // console.log(state.items[index].value);
+
+        // const pos = [state.items[index].value].findIndex(item => item === console.log(item) && action.payload.value);
+        // const pos = state.items[index].value.findIndex(item => item === console.log(item) && action.payload.value);
+
+        // const pos = state.items[index].value.findIndex(item => item === action.payload.value);        
+        // state.items.value.splice(pos, 1);          
       }
       // state.items.splice(0, state.items.length - 1);
       // state.items.splice(0, 1, []);

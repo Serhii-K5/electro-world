@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 // import { useState } from 'react';
 // import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 // import { selectFilters, selectFilteredProducts } from 'redux/selectors';
+// import { selectFilters } from 'redux/selectors';
 // import { selectMemoFilters } from 'redux/selectors';
-// import { changeFilters } from "redux/slice/filtersSlice";
+import { changeFilters, deleteFilters } from "redux/slice/filtersSlice";
 // import { changeMemoFilters } from "redux/slice/memofiltersSlice";
 
 
@@ -19,8 +21,8 @@ const arr = [];
 
 // const FilterPanel = ({ data, onFilter }) => {
 const FilterPanel = ({ data }) => {
-  // const dispatch = useDispatch();
-  // const filters = useSelector(selectFilters); //Выбранные фильтры
+  const dispatch = useDispatch();
+  // const filters = useSelector(selectFilters);
   // const filteredProducts = useSelector(selectFilteredProducts);
   // const memoFilters = useSelector(selectMemoFilters);
   
@@ -31,7 +33,7 @@ const FilterPanel = ({ data }) => {
   // console.log(filters);
 
   useEffect(() => {
-     memoArray();
+    memoArray();
     // dispatch(changeFilters({key: 'name', value: ''}));
   }, []);
 
@@ -125,13 +127,14 @@ const FilterPanel = ({ data }) => {
   //   console.log(e.target.id);
   // };
 
-  const changeCheckbox = (key, item, e) => {
+  const changeCheckbox = (keyF, item, e) => {
     if (e.target.checked) {
-      
+      dispatch(changeFilters({key: keyF, value: item}));
     } else {
+      dispatch(deleteFilters({key: keyF, value: item}));
     }
-    console.log('changeCheckbox');
-    console.log(key, item, e.target.checked);
+    // console.log('changeCheckbox');
+    // console.log(keyF, item, e.target.checked);
   };
 
   // const createList = (el, index) => {
