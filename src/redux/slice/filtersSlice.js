@@ -24,9 +24,11 @@ const sliceFilters = createSlice({
         // state.items.push(action.payload);
         state.items.push({ key: action.payload.key, value: [action.payload.value]});
       } else {
-        // state.items.splice(index, 1, action.payload);
-        // [state.items[index].value].push(action.payload.value);
-        state.items[index].value.push(action.payload.value);
+        if (action.payload.key === 'name' || action.payload.key === 'price' || action.payload.key === 'cat_parentId') {
+          state.items.splice(index, 1, action.payload);
+        } else {
+          state.items[index].value.push(action.payload.value);
+        }
       }
     },
     deleteFilters(state, action) {
@@ -34,11 +36,14 @@ const sliceFilters = createSlice({
       const index = arr.findIndex(item => item === action.payload.key);
       if (index >= 0) {
         // if (state.items[index].value === '') {
-        if (state.items[index].value.length > 0) {
-          state.items.splice(index, 1); 
-        } else {
+        if (state.items[index].value.length > 1) {
           const pos = state.items[index].value.findIndex(item => item === action.payload.value);        
-          state.items.value.splice(pos, 1);
+          state.items[index].value.splice(pos, 1);
+          // state.items.splice(index, 1); 
+        } else {
+          state.items.splice(index, 1);
+          // const pos = state.items[index].value.findIndex(item => item === action.payload.value);        
+          // state.items.value.splice(pos, 1);
         }
         // console.log(state.items[index].value);
 
