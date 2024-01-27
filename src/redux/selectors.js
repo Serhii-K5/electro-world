@@ -14,6 +14,8 @@ export const selectFilteredProducts = state => state.filteredProducts.filteredPr
 
 export const selectFilters = state => state.filters.items;
 
+export const selectExpanded = state => state.expanded.items;
+
 // export const selectOrdersAll = (state) => state.ordersAll.qualitity;
 
 // export const selectIsLoading = (state) => state.adverts.isLoading;

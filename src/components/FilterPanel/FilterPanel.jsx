@@ -5,7 +5,9 @@ import { useDispatch } from 'react-redux';
 // import { selectFilters, selectFilteredProducts } from 'redux/selectors';
 // import { selectFilters } from 'redux/selectors';
 // import { selectMemoFilters } from 'redux/selectors';
+// import { selectExpanded } from 'redux/selectors';
 import { changeFilters, deleteFilters } from "redux/slice/filtersSlice";
+// import { changeExpanded } from "redux/slice/expandedSlice";
 // import { changeMemoFilters } from "redux/slice/memofiltersSlice";
 
 
@@ -22,6 +24,7 @@ const arr = [];
 // const FilterPanel = ({ data, onFilter }) => {
 const FilterPanel = ({ data }) => {
   const dispatch = useDispatch();
+  // const expanded = useSelector(selectExpanded);
   // const filters = useSelector(selectFilters);
   // const filteredProducts = useSelector(selectFilteredProducts);
   // const memoFilters = useSelector(selectMemoFilters);
@@ -151,6 +154,19 @@ const FilterPanel = ({ data }) => {
       [key]: !prevState[key],
     }));
   };
+
+  // const toggleDropdown = (key) => {
+  //   // const ss = (prevState => ({
+  //   //   ...prevState,
+  //   //   [key]: !prevState[key],
+  //   // }));
+  //   // // dispatch(changeExpanded(ss));
+  //   // dispatch(changeExpanded(key));
+  //   // // dispatch(changeExpanded(prevState => ({
+  //     ...prevState,
+  //     [key]: !prevState[key],
+  //   })));
+  // };
 
   
   return (

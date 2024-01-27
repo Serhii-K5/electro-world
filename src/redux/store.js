@@ -18,6 +18,7 @@ import { categoriesReducer } from './slice/categorySlice';
 import { searchParamsReducer } from './slice/searchParamsSlice';
 import { filteredProductsReducer } from './slice/filteredProductsSlice';
 import { filtersReducer } from './slice/filtersSlice';
+import { expandedReducer } from './slice/expandedSlice';
 // import { catalogReducer } from './slice/catalogSlice';
 // import { selectedElementReducer } from './slice/selectedElementSlice';
 // import { ordersAllReducer } from './slice/ordersAllSlice';
@@ -63,6 +64,11 @@ const memoFiltersPersistConfig = {
   storage,
 };
 
+const expandedPersistConfig = {
+  key: 'expanded',
+  storage,
+};
+
 // const catalogReducerConfig = {
 //   key: 'catalog',
 //   storage,
@@ -83,6 +89,7 @@ export const store = configureStore({
     searchParams: persistReducer(searchParamsPersistConfig, searchParamsReducer),
     filteredProducts: persistReducer(filteredProductsPersistConfig, filteredProductsReducer),
     filters: persistReducer(filtersPersistConfig, filtersReducer),
+    expanded: persistReducer(expandedPersistConfig, expandedReducer),
     // ordersAll: persistReducer(numberPurchasesPersistConfig, ordersAllReducer),
   },
   middleware: getDefaultMiddleware =>
