@@ -28,7 +28,8 @@ const FilterPanel = ({ data }) => {
   
   // const [memoFilters, setMemoFilters] = useState([]);
   // const [tempMemoFilters, setTempMemoFilters] = useState([]);
-  const [isCheckBoxes, setIsCheckBoxes] = useState(true);
+  // const [isCheckBoxes, setIsCheckBoxes] = useState(true);
+  const [isCheckBoxes, setIsCheckBoxes] = useState("");
 
   // console.log(filters);
 
@@ -118,14 +119,8 @@ const FilterPanel = ({ data }) => {
   };
   
   const handleClick = () => {
-    // setIsCheckBoxes(false);
     setIsCheckBoxes(!isCheckBoxes);
   };
-
-  // const changeCheckbox = (e) => {
-  //   console.log('changeCheckbox');
-  //   console.log(e.target.id);
-  // };
 
   const changeCheckbox = (keyF, item, e) => {
     if (e.target.checked) {
@@ -133,21 +128,9 @@ const FilterPanel = ({ data }) => {
     } else {
       dispatch(deleteFilters({key: keyF, value: item}));
     }
-    // console.log('changeCheckbox');
-    // console.log(keyF, item, e.target.checked);
   };
 
-  // const createList = (el, index) => {
-  //   return (      
-  //     <li key={0}>
-  //       {el}
-        
-  //     </li>
-  //   );
-  //   // console.log('createList');
-  // };
-
-  // let i = 0;
+  
   // const [checkedItems, setCheckedItems] = useState({});
 
   // const handleCheckboxChange = (optionKey, item) => {
@@ -162,7 +145,9 @@ const FilterPanel = ({ data }) => {
   
   const [expanded, setExpanded] = useState({});
 
-  const toggleDropdown = key => {
+  const toggleDropdown = (key, e) => {
+    setIsCheckBoxes(e.currentTarget.children[0].style.rotate === '0deg' ? e.currentTarget.children[0].id : "");
+    // console.log(e);
     setExpanded(prevState => ({
       ...prevState,
       [key]: !prevState[key],
@@ -173,12 +158,13 @@ const FilterPanel = ({ data }) => {
   return (
     <ul>
       {arr.length > 0 &&
-        arr.map(({ key, value }) => (
+        arr.map(({ key, value }, pos) => (
         // <li key={key} style={isCheckBoxes ? { borderTop: '1px solid grey'} : { borderTop: '1px solid grey', height: '55px'}}>
         <li key={key} style={{ borderTop: '1px solid grey'}}>
-            <div onClick={() => { toggleDropdown(key)}} style={{ display: 'flex', padding: '16px' }}>
+            <div onClick={(e) => { toggleDropdown(key, e)}} style={{ display: 'flex', padding: '16px' }}>
               {/* {key} */}
-            <img src={shevron} alt="shevron" style={isCheckBoxes ? {rotate: '0deg'} : {rotate: '180deg'}} />
+            {/* <img id={`img-${pos}`} src={shevron} alt="shevron" style={isCheckBoxes ? {rotate: '0deg'} : {rotate: '180deg'}} /> */}
+            <img id={`img-${pos}`} src={shevron} alt="shevron" style={isCheckBoxes !== `img-${pos}` ? {rotate: '0deg'} : {rotate: '180deg'}} />
               <strong style={{ color: 'blue', paddingLeft: '10px' }}>
                 {key}
               </strong>
@@ -196,35 +182,6 @@ const FilterPanel = ({ data }) => {
         </li>
       ))}
     </ul>
-    // <ul>
-    //   {arr.length > 0 &&
-    //     arr.map(option => (
-    //       // <li key={option.key} style={{ borderTop: '1px solid grey', height: '55px'}}>
-    //       <li key={option.key} style={isCheckBoxes ? { borderTop: '1px solid grey'} : { borderTop: '1px solid grey', height: '55px'}}>
-    //         {/* <hr /> */}
-    //         <div style={{ display: 'flex', padding: '16px' }} onClick={handleClick}>
-    //           <img src={shevron} alt="shevron" style={isCheckBoxes ? {rotate: '180deg'} : {rotate: '0deg'}} />
-    //           <strong style={{ color: 'blue', paddingLeft: '10px' }}>
-    //             {option.key}
-    //           </strong>
-    //         </div>
-    //         <ul style={{ padding: '0 16px 16px 16px' }}>
-    //           {option.value.map((item, keyId) => (
-    //             <Li key={keyId}>
-    //               <label>
-    //                 <input
-    //                   type="checkbox"
-    //                   checked={checkedItems[option.key]?.[item] || false}
-    //                   onChange={() => handleCheckboxChange(option.key, item)}
-    //                 />
-    //                 {item}
-    //               </label>
-    //             </Li>
-    //           ))}
-    //         </ul>
-    //       </li>
-    //     ))}
-    // </ul>
   );
 };
 

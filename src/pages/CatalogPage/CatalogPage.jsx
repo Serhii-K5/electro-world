@@ -114,8 +114,7 @@ const CatalogCarsPage = () => {
             el => el.toUpperCase() === filter.key.toUpperCase()
           );
           result =
-            result &&
-            index >= 0 &&
+            result && index >= 0 &&
             checking(filter, product[productKeys[index]]);
 
           if (!result) break;
