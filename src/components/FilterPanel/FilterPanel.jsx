@@ -146,8 +146,8 @@ const FilterPanel = ({ data }) => {
   const [expanded, setExpanded] = useState({});
 
   const toggleDropdown = (key, e) => {
-    setIsCheckBoxes(e.currentTarget.children[0].style.rotate === '0deg' ? e.currentTarget.children[0].id : "");
-    // console.log(e);
+    // index = expanded.include(key)
+    // setIsCheckBoxes(e.currentTarget.children[0].style.rotate === '0deg' ? e.currentTarget.children[0].id : "");
     setExpanded(prevState => ({
       ...prevState,
       [key]: !prevState[key],
@@ -164,10 +164,13 @@ const FilterPanel = ({ data }) => {
             <div onClick={(e) => { toggleDropdown(key, e)}} style={{ display: 'flex', padding: '16px' }}>
               {/* {key} */}
             {/* <img id={`img-${pos}`} src={shevron} alt="shevron" style={isCheckBoxes ? {rotate: '0deg'} : {rotate: '180deg'}} /> */}
-            <img id={`img-${pos}`} src={shevron} alt="shevron" style={isCheckBoxes !== `img-${pos}` ? {rotate: '0deg'} : {rotate: '180deg'}} />
-              <strong style={{ color: 'blue', paddingLeft: '10px' }}>
-                {key}
-              </strong>
+            {/* <img id={`img-${pos}`} src={shevron} alt="shevron" style={isCheckBoxes !== `img-${pos}` ? {rotate: '0deg'} : {rotate: '180deg'}} /> */}
+            {/* <img src={shevron} alt="shevron" style={console.log(expanded[key], expanded.length) &&
+              expanded.key.include(key) ? { rotate: '180deg' } : { rotate: '0deg' }} /> */}
+            <img src={shevron} alt="shevron" style={expanded[key] ? { rotate: '180deg' } : { rotate: '0deg' }} />
+            <strong style={{ color: 'blue', paddingLeft: '10px' }}>
+              {key}
+            </strong>
           </div>
           {expanded[key] && (
             <ul style={{ padding: '0 16px 16px 16px' }}>
