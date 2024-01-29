@@ -159,6 +159,13 @@ const FilterPanel = ({ data }) => {
     }));
   };
 
+  const toggleChecked = (e) => {
+    return true;
+    // console.log(e);
+  };
+
+
+
   // const toggleDropdown = (key) => {
   //   // const ss = (prevState => ({
   //   //   ...prevState,
@@ -176,8 +183,7 @@ const FilterPanel = ({ data }) => {
   return (
     <ul>
       {arr.length > 0 &&
-        arr.map(({ key, value }, pos) => (
-        // <li key={key} style={isCheckBoxes ? { borderTop: '1px solid grey'} : { borderTop: '1px solid grey', height: '55px'}}>
+        arr.map(({ key, value }) => (
         <LiBlock key={key}>
           <Div onClick={(e) => { toggleDropdown(key)}} >
             <img src={shevron} alt="shevron" style={expanded[key] ? { rotate: '180deg' } : { rotate: '0deg' }} />
@@ -187,7 +193,7 @@ const FilterPanel = ({ data }) => {
             <Ul>
               {value.map((item, index) => (
                 <Li key={index}>
-                  <input type="checkbox" id={`${key}-${index}`} value={item} onClick={(e) => changeCheckbox(key, item, e)}/>
+                  <input type="checkbox" id={`${key}-${index}`} value={item} defaultChecked={(e) => toggleChecked(e)} onClick={(e) => changeCheckbox(key, item, e)}/>
                   <label htmlFor={`${key}-${index}`}>{item}</label>
                 </Li>
               ))}

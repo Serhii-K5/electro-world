@@ -27,7 +27,13 @@ const sliceFilters = createSlice({
         if (action.payload.key === 'name' || action.payload.key === 'price' || action.payload.key === 'cat_parentId') {
           state.items.splice(index, 1, action.payload);
         } else {
-          state.items[index].value.push(action.payload.value);
+          const result = state.items[index].value.includes(action.payload.value);          
+          // const arrayVolue = state.items[index].value.map(item => item);
+          // const pos = arrayVolue.findIndex(item => item === action.payload.value);
+          // if (pos < 0) {
+          if (!result) {
+            state.items[index].value.push(action.payload.value);
+          }          
         }
       }
     },
