@@ -2,7 +2,7 @@ import {
   DivPagination,
   DivShift,
   DivPage,
- } from "./PaginationBar.styled";
+} from "./PaginationBar.styled";
 
 const PaginationBar = (data, page) => {
   const filteredData = data;
