@@ -85,7 +85,7 @@ const FilterPanel = ({ data }) => {
 
   const memoArray = () => {
     data.map(item => {
-      // создаёт массив мемо
+      // расшифровует мемо и создаёт массив
       const tempArray = CreateMemoArray(item.memo);
 
       tempArray.flatMap(memoEl => {
