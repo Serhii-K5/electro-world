@@ -113,8 +113,7 @@ const CatalogCarsPage = () => {
           const index = productKeys.findIndex(
             el => el.toUpperCase() === filter.key.toUpperCase()
           );
-          result =
-            result && index >= 0 &&
+          result = result && index >= 0 &&
             checking(filter, product[productKeys[index]]);
 
           if (!result) break;
