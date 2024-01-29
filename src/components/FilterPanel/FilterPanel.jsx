@@ -159,9 +159,13 @@ const FilterPanel = ({ data }) => {
     }));
   };
 
-  const toggleChecked = (e) => {
-    return true;
-    // console.log(e);
+  const toggleChecked = (key, item1) => {
+    const arr = filters.map(nameFilter => nameFilter.key);
+    const index = arr.findIndex(item => item === key);
+    
+    const result = index < 0 ? false : filters[index].value.includes(item1);
+    return result;
+
   };
 
 
@@ -193,7 +197,7 @@ const FilterPanel = ({ data }) => {
             <Ul>
               {value.map((item, index) => (
                 <Li key={index}>
-                  <input type="checkbox" id={`${key}-${index}`} value={item} defaultChecked={(e) => toggleChecked(e)} onClick={(e) => changeCheckbox(key, item, e)}/>
+                  <input type="checkbox" id={`${key}-${index}`} value={item} defaultChecked={toggleChecked(key, item, index)} onClick={(e) => changeCheckbox(key, item, e)}/>
                   <label htmlFor={`${key}-${index}`}>{item}</label>
                 </Li>
               ))}
