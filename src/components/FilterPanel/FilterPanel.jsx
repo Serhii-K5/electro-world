@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 // import { useState } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 // import { selectFilters, selectFilteredProducts } from 'redux/selectors';
-// import { selectFilters } from 'redux/selectors';
+import { selectFilters } from 'redux/selectors';
 // import { selectMemoFilters } from 'redux/selectors';
 // import { selectExpanded } from 'redux/selectors';
 import { changeFilters, deleteFilters } from "redux/slice/filtersSlice";
@@ -12,6 +12,10 @@ import { changeFilters, deleteFilters } from "redux/slice/filtersSlice";
 
 
 import {
+  LiBlock,
+  Div,
+  Strong,
+  Ul,
   Li,
 } from './FilterPanel.styled';
 
@@ -25,7 +29,7 @@ const arr = [];
 const FilterPanel = ({ data }) => {
   const dispatch = useDispatch();
   // const expanded = useSelector(selectExpanded);
-  // const filters = useSelector(selectFilters);
+  const filters = useSelector(selectFilters);
   // const filteredProducts = useSelector(selectFilteredProducts);
   // const memoFilters = useSelector(selectMemoFilters);
   
@@ -174,24 +178,22 @@ const FilterPanel = ({ data }) => {
       {arr.length > 0 &&
         arr.map(({ key, value }, pos) => (
         // <li key={key} style={isCheckBoxes ? { borderTop: '1px solid grey'} : { borderTop: '1px solid grey', height: '55px'}}>
-        <li key={key} style={{ borderTop: '1px solid grey'}}>
-          <div onClick={(e) => { toggleDropdown(key)}} style={{ display: 'flex', padding: '16px' }}>
+        <LiBlock key={key}>
+          <Div onClick={(e) => { toggleDropdown(key)}} >
             <img src={shevron} alt="shevron" style={expanded[key] ? { rotate: '180deg' } : { rotate: '0deg' }} />
-            <strong style={{ color: 'blue', paddingLeft: '10px' }}>
-              {key}
-            </strong>
-          </div>
+            <Strong> {key} </Strong>
+          </Div>
           {expanded[key] && (
-            <ul style={{ padding: '0 16px 16px 16px' }}>
+            <Ul>
               {value.map((item, index) => (
                 <Li key={index}>
                   <input type="checkbox" id={`${key}-${index}`} value={item} onClick={(e) => changeCheckbox(key, item, e)}/>
                   <label htmlFor={`${key}-${index}`}>{item}</label>
                 </Li>
               ))}
-            </ul>
+            </Ul>
           )}
-        </li>
+        </LiBlock>
       ))}
     </ul>
   );
