@@ -45,21 +45,18 @@ const SearchField = () => {
   // };
 
   const handleClick = e => {
-    // const arr = e.currentTarget[1].value !== '' ? e.currentTarget[1].value.split(' ') : '';
     const arr = e.currentTarget[1].value.split(' ');
     dispatch(changeFilters({ key: 'name', value: arr }));
     setInputValue(e.currentTarget[1].value);
   };
 
   const onKeyUp = e => {
-    // console.log(e.code, e.keyCode);
     if(e.key === 'Enter'){
       const arr = e.target.value.split(' ');
       dispatch(changeFilters({ key: 'name', value: arr }));
       setInputValue(e.target.value);
     }
   };
-
 
 
   return (

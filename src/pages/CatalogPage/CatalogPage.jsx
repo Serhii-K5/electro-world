@@ -87,6 +87,9 @@ const CatalogCarsPage = () => {
         }
       } else {
         result = true;
+        if (filter === '') {
+        } else {
+        }
         filter.value.map(item => {
           result = result && productVolue.toUpperCase().includes(item.toUpperCase());
           return 0;
@@ -168,7 +171,6 @@ const CatalogCarsPage = () => {
 
   return (
     <div style={{ backgroundColor: 'var(--bg-second)' }}>
-      {/* {productsFiltration()} */}
       <NavBar />
       <Container>
         <aside style={{ minWidth: '250px', backgroundColor: 'white' }}>

@@ -160,6 +160,7 @@ const FilterPanel = ({ data }) => {
   };
 
   const toggleChecked = (key, item1) => {
+    //Расстановка галочек
     const arr = filters.map(nameFilter => nameFilter.key);
     const index = arr.findIndex(item => item === key);
     
