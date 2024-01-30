@@ -67,7 +67,8 @@ const CatalogCarsPage = () => {
   }, [dispatch]);  
   
   const checking = (filter, productVolue) => {
-    let result = filter.value === '' || filter.value === 0 ? true : false;
+    // let result = filter.value[0][0] === '' || filter.value === 0 ? true : false;
+    let result = filter.value[0][0] === '' ? true : false;
     if (!result) {
       if (Number.isFinite(productVolue)) {    
         if (Array.isArray(filter.value)) {
@@ -87,11 +88,8 @@ const CatalogCarsPage = () => {
         }
       } else {
         result = true;
-        if (filter === '') {
-        } else {
-        }
-        filter.value.map(item => {
-          result = result && productVolue.toUpperCase().includes(item.toUpperCase());
+        filter.value[0][0] !== '' && filter.value.map(item => {
+          result = result && productVolue.toUpperCase().includes(item[0].toUpperCase());
           return 0;
         });
       }
@@ -116,8 +114,18 @@ const CatalogCarsPage = () => {
           const index = productKeys.findIndex(
             el => el.toUpperCase() === filter.key.toUpperCase()
           );
-          result = result && index >= 0 &&
-            checking(filter, product[productKeys[index]]);
+
+          if (filter === 'name') {
+            const indexCode = productKeys.findIndex(
+              el => el.toUpperCase() === 'CODE'
+            );
+            result = result && filter === 'name' && index >= 0 &&
+              ( checking(filter, product[productKeys[indexCode]]) ||
+                checking(filter, product[productKeys[index]]));
+          } else {
+            result = result && index >= 0 &&
+              checking(filter, product[productKeys[index]]);
+          }
 
           if (!result) break;
         }
