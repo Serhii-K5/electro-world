@@ -14,6 +14,8 @@ const sliceFilters = createSlice({
       } else {
         if (action.payload.key === 'name' || action.payload.key === 'price' || action.payload.key === 'cat_parentId') {
           state.items.splice(index, 1, action.payload);
+        } else if (state.items[index].value[0] === '') {
+          state.items.splice(index, 1);
         } else {
           const result = state.items[index].value.includes(action.payload.value);          
           if (!result) {

@@ -34,6 +34,8 @@ const SearchField = () => {
   const handleChange = e => {
     setInputValue(e.target.value);
 
+    e.target.value === "" && dispatch(changeFilters({ key: 'name', value: '' }));
+
     // const arr = e.target.value.split(' ');
     // dispatch(changeFilters({ key: 'name', value: arr }));
   };

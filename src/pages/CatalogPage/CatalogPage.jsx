@@ -68,7 +68,7 @@ const CatalogCarsPage = () => {
   
   const checking = (filter, productVolue) => {
     // let result = filter.value[0][0] === '' || filter.value === 0 ? true : false;
-    let result = filter.value[0][0] === '' ? true : false;
+    let result = filter.value === '' || filter.value[0] === '' || filter.value[0][0] === '' ? true : false;
     if (!result) {
       if (Number.isFinite(productVolue)) {    
         if (Array.isArray(filter.value)) {
@@ -88,7 +88,7 @@ const CatalogCarsPage = () => {
         }
       } else {
         result = true;
-        filter.value[0][0] !== '' && filter.value.map(item => {
+        filter.value[0] !== '' && filter.value[0][0] !== '' && filter.value.map(item => {
           result = result && productVolue.toUpperCase().includes(item[0].toUpperCase());
           return 0;
         });
@@ -116,15 +116,20 @@ const CatalogCarsPage = () => {
           );
 
           if (filter === 'name') {
-            const indexCode = productKeys.findIndex(
-              el => el.toUpperCase() === 'CODE'
-            );
-            result = result && filter === 'name' && index >= 0 &&
-              ( checking(filter, product[productKeys[indexCode]]) ||
-                checking(filter, product[productKeys[index]]));
-          } else {
+            // const indexCode = productKeys.findIndex(
+            //   el => el.toUpperCase() === 'CODE'
+            // );
+            result = result && index >= 0 &&
+              // ( checking(filter, product[productKeys[indexCode]]) ||
+              //   checking(filter, product[productKeys[index]]));
+              ( checking(filter, product.code) ||
+                checking(filter, product.name));
+          } else if (filter.key === 'price' || filter.key === 'parentId') {
             result = result && index >= 0 &&
               checking(filter, product[productKeys[index]]);
+          } else {
+            result = result && index >= 0 &&
+              checking(filter, product.memo);
           }
 
           if (!result) break;
@@ -153,10 +158,10 @@ const CatalogCarsPage = () => {
   // }, [activeFilter]); 
 
 
-  const handleFilter = filteredData => {
-    setActivePage(0);
-    setFilteredData(filteredData);
-  };
+  // const handleFilter = filteredData => {
+  //   setActivePage(0);
+  //   setFilteredData(filteredData);
+  // };
 
   const onClickIncrease  = () => {
     activePage < filteredData.length / 8 && setActivePage(activePage + 1);
