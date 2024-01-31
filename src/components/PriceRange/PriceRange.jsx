@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectFilteredProducts, selectLanguages } from 'redux/selectors';
+// import { selectFilteredProducts, selectLanguages } from 'redux/selectors';
+import { selectLanguages } from 'redux/selectors';
 import {
   Form,
   Input,
@@ -11,16 +12,18 @@ import {
   RangeLineEdgesDiv  
 } from './PriceRange.styled';
 
-import { changeFilteredProducts } from 'redux/slice/filteredProductsSlice';
+// import { changeFilteredProducts } from 'redux/slice/filteredProductsSlice';
 import { changeFilters } from "redux/slice/filtersSlice";
 import { SHIFT_RANGE } from 'constants/constants';
 import lang from 'assets/json/language.json';
 
 import products1 from '../../assets/json/products.json';
 
-const PriceRange = () => {
+// const PriceRange = () => {
+const PriceRange = ({ data }) => {
   const dispatch = useDispatch();
-  const filteredProducts = useSelector(selectFilteredProducts);
+  // const filteredProducts = useSelector(selectFilteredProducts);
+  const filteredProducts = data.length > 0 ? data : products1;
   const languages = useSelector(selectLanguages);
 
   const [rangeWidth, setRangeWidth] = useState(0);
@@ -34,31 +37,15 @@ const PriceRange = () => {
   const [maxPrice, setMaxPrice] = useState(0);
   const [minPrice, setMinPrice] = useState(0);  
   
-  // const [isVisable, setIsVisable] = useState(false);  
-  // const [coordText, setCoordText] = useState('');
-  // // const [coordEnd, setCoordEnd] = useState(0);
-  
   const [isMouseDownMin, setIsMouseDownMin] = useState(false);  
   const [isMouseDownMax, setIsMouseDownMax] = useState(false);  
-  // const [coordStart, setCoordStart] = useState(0);
-  // const [amendment, setAmendment] = useState(0);
-
-
-
   
-  if (filteredProducts.length === 0) {
-    dispatch(changeFilteredProducts(products1));
-  }  
   
-  useEffect(() => { 
-    const rangePriceElement = document.getElementById('range-price');
-    const rangeWidth = rangePriceElement.clientWidth;
-    setPositionStart(rangePriceElement.offsetParent.offsetLeft);
-    
-    setRangeWidth(rangeWidth);    
-    setPositionMax(rangeWidth);
-
-    const findMinMaxPrice = () => {
+  // if (filteredProducts.length === 0) {
+  //   dispatch(changeFilteredProducts(products1));
+  // } 
+  
+  const findMinMaxPrice = () => {
       const max = filteredProducts.reduce((accumulator, currentValue) => (
           accumulator = currentValue.price > accumulator ? currentValue.price : accumulator
         ), 0
@@ -76,10 +63,23 @@ const PriceRange = () => {
       setMinPrice(min);
       dispatch(changeFilters({key: 'price', value: [[min, max]]})); 
     };
+  
+  useEffect(() => { 
+    const rangePriceElement = document.getElementById('range-price');
+    const rangeWidth = rangePriceElement.clientWidth;
+    setPositionStart(rangePriceElement.offsetParent.offsetLeft);
+    
+    setRangeWidth(rangeWidth);    
+    setPositionMax(rangeWidth);
 
     findMinMaxPrice();
     
   }, []);
+
+  useEffect(() => {
+    findMinMaxPrice();
+  }, [data.length]);
+  // }, [data]);
 
   useEffect(() => {
     const handleMouseMove = e => {

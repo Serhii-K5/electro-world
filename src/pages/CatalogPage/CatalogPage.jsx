@@ -111,25 +111,29 @@ const CatalogCarsPage = () => {
         // перебор фильтра
         let result = true;
         for (const filter of filters) {
-          const index = productKeys.findIndex(
-            el => el.toUpperCase() === filter.key.toUpperCase()
-          );
+          // const index = productKeys.findIndex(
+          //   el => el.toUpperCase() === filter.key.toUpperCase()
+          // );
 
-          if (filter === 'name') {
+          if (filter.key === 'name') {
+            result = result &&
+              ( checking(filter, product.code) ||
+                checking(filter, product.name));
+
             // const indexCode = productKeys.findIndex(
             //   el => el.toUpperCase() === 'CODE'
             // );
-            result = result && index >= 0 &&
+            // result = result && index >= 0 &&
               // ( checking(filter, product[productKeys[indexCode]]) ||
               //   checking(filter, product[productKeys[index]]));
-              ( checking(filter, product.code) ||
-                checking(filter, product.name));
           } else if (filter.key === 'price' || filter.key === 'parentId') {
+            const index = productKeys.findIndex(
+              el => el.toUpperCase() === filter.key.toUpperCase()
+            );
             result = result && index >= 0 &&
               checking(filter, product[productKeys[index]]);
           } else {
-            result = result && index >= 0 &&
-              checking(filter, product.memo);
+            result = result && checking(filter, product.memo);
           }
 
           if (!result) break;
@@ -195,7 +199,8 @@ const CatalogCarsPage = () => {
           </BtnDiv>
 
           <div style={{ padding: '0 16px' }}>
-            <PriceRange />
+            {/* <PriceRange /> */}
+            <PriceRange data={filteredData}/>
           </div>
 
           {/* <FilterPanel data={filteredData} onFilter={handleFilter} /> */}
