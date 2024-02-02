@@ -182,7 +182,7 @@ const CatalogCarsPage = () => {
     //   changeFilters({ key: 'price', value: [[inputValueMin, inputValueMax]] })
     // );
 
-    // console.log("Button click");
+    console.log("Button click");
     // alert("Button click");
   };
 
