@@ -63,12 +63,15 @@ const CatalogCarsPage = () => {
 
   useEffect(() => {
     setFilteredData(applyFilters(filteredData, filters));
+    // setFilteredData(applyFilters(products, filters));
     // console.log('filters');
   }, [filters]);  
   
 
-const applyFilters = (products, CurentFilters) => {
-  return products.filter(product => {
+// const applyFilters = (products, CurentFilters) => {
+const applyFilters = (CurentProducts, CurentFilters) => {
+  // return products.filter(product => {
+  return CurentProducts.filter(product => {
     // Применяем каждый фильтр к продукту
     return CurentFilters.every(filter => {
       const { key, value } = filter;
@@ -145,7 +148,7 @@ const applyFilters = (products, CurentFilters) => {
 
           <div style={{ padding: '0 16px' }}>
             {/* <PriceRange /> */}
-            <PriceRange data={filteredData} />
+            {filteredData && <PriceRange data={filteredData} />}
             {/* {console.log('PriceRange')} */}
           </div>
 
