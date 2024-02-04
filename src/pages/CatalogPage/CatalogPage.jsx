@@ -60,128 +60,29 @@ const CatalogCarsPage = () => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-  useEffect(() => {    
-    // setFilteredData(filtration());
-    // setFilteredData(filtration);
-    setFilteredData(applyFilters);
+  useEffect(() => {
+    setFilteredData(applyFilters(filteredData, filters));
     // console.log('filters');
   }, [filters]);  
   
-  // const costMaxMin = () => {
-  //   const result = findMinMaxPrice(filteredData);
-  //   setMinPrice(result[0]);
-  //   setMaxPrice(result[1]);
-  //   // dispatch(changeFilters({ key: 'price', value: [minPrice, maxPrice] }));
-  // };
-  
-  
-  // const checking = (filter, productValue) => {
-  //   // let result = filter.value[0][0] === '' || filter.value === 0 ? true : false;
-  //   let result = filter.value === '' || filter.value[0] === '' || filter.value[0][0] === '' ? true : false;
-  //   if (!result) {
-  //     if (Number.isFinite(productValue)) {    
-  //       if (Array.isArray(filter.value)) {
-  //         for (let index = 0; index < filter.value.length; index++) {
-  //           if (Array.isArray(filter.value)) {
-  //             if (filter.value[index][0] <= productValue && filter.value[index][1] >= productValue) {
-  //               result = true;
-  //             }
-  //           } else {
-  //             result = filter.value.findIndex(index => index === productValue) >= 0;
-  //           }
-          
-  //           if (result) break;
-  //         }
-  //       } else {
-  //         result = filter.value === productValue;
-  //       }
-  //     } else {
-  //       result = true;
-  //       filter.value[0] !== '' && filter.value[0][0] !== '' && filter.value.map(item => {
-  //         result = result && productValue.toUpperCase().includes(item[0].toUpperCase());
-  //         return 0;
-  //       });
-  //     }
-  //   }    
-  //   return result;
-  // };
 
-  // Фильтрация товаров
-  // const filtration = () => {
-  //   if (filters.length > 0) {
-  //     return products.filter(product => {
-  //       // // const filteredProducts = products.filter(product => {
-  //       // const productKeys = [];
-  //       // for (const key in product) {
-  //       //   productKeys.push(key);
-  //       // }
-
-  //       // перебор фильтра
-  //       let result = true;
-  //       for (const filter of filters) {
-  //         // const index = productKeys.findIndex(
-  //         //   el => el.toUpperCase() === filter.key.toUpperCase()
-  //         // );
-
-  //         // if (filter.key === 'name') {
-  //         //   result = result && 
-  //         //     ( checking(filter, product.code) ||
-  //         //       checking(filter, product.name));
-  //         // } else if (filter.key === 'price' || filter.key === 'parentId') {
-  //         //   const index = productKeys.findIndex(
-  //         //     el => el.toUpperCase() === filter.key.toUpperCase()
-  //         //   );
-  //         //   result = result && index >= 0 &&
-  //         //     checking(filter, product[productKeys[index]]);
-  //         // } else {
-  //         //   result = result && checking(filter, product.memo);
-  //         // }
-
-  //         if (filter.key === 'name') {
-  //           result =
-  //             (checking(filter, product.code) ||
-  //               checking(filter, product.name));
-  //         } else if (filter.key === 'memo') {
-  //           result = checking(filter, product.memo);
-  //         } else {
-  //           const existingProductIndex = product.findIndex(item => item.key.toUpperCase() === filter.key.toUpperCase());
-  //           // const index = productKeys.findIndex(
-  //           //   el => el.toUpperCase() === filter.key.toUpperCase()
-  //           // );
-  //           result = existingProductIndex >= 0 &&
-  //             checking(filter, product[filter.key]);
-  //         }
-
-  //         if (!result) break;
-  //       }
-        
-  //       // console.log('filtration');
-
-  //       return result;
-  //     });
-      
-  //     // dispatch(changeFilteredProducts(filteredProducts));      
-  //     // return filteredProducts;
-  //   } else {
-  //     // dispatch(changeFilteredProducts(products));
-  //     return products
-  //   }
-  // };
-
-// const applyFilters = (products, filters) => {
-const applyFilters = () => {
-  // return products.filter(product => {
-  return filteredData.filter(product => {
+const applyFilters = (products, CurentFilters) => {
+  return products.filter(product => {
     // Применяем каждый фильтр к продукту
-    return filters.every(filter => {
+    return CurentFilters.every(filter => {
       const { key, value } = filter;
 
       // Обрабатываем различные типы фильтров
       if (Array.isArray(value)) {
         // Если значение фильтра - массив, проверяем, находится ли элемент в диапазоне
-        const [min, max] = value;
-        // если числовых массивов несколько, то применить перебор
-        return product[key] >= min && product[key] <= max;
+        // const [min, max] = value;
+        // return product[key] >= min && product[key] <= max;
+        // Если числовых массивов несколько, то применить перебор
+        let result = true;
+        value.map(el => {
+          const [min, max] = el;
+          return result = result && product[key] >= min && product[key] <= max;
+        });
       } else if (typeof value === 'object' && value !== null) {
         // Если значение фильтра - объект, рекурсивно применяем фильтры к вложенному объекту
         return applyFilters([product[key]], value).length > 0;
