@@ -20,7 +20,7 @@ const sliceFilters = createSlice({
       }
     },
     deleteFilters(state, action) {
-      const { key, value } = action.payload;
+      const { key } = action.payload;
       // Проверяем, существует ли уже объект с таким ключом
       const existingFilterIndex = state.items.findIndex(filter => filter.key === key);
       if (existingFilterIndex !== -1) {
