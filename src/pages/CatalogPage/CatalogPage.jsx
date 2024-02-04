@@ -31,6 +31,10 @@ import products1 from "../../assets/json/products.json";
 import lang from 'assets/json/language.json';
 
 
+// создать предварительную фильтрацию по каталогу, а потом 
+// фильтровать по остальным фильтрам
+
+
 const CatalogCarsPage = () => {
   // const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
