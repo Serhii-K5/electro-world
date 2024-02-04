@@ -28,21 +28,12 @@ const arr = [];
 // const FilterPanel = ({ data, onFilter }) => {
 const FilterPanel = ({ data }) => {
   const dispatch = useDispatch();
-  // const expanded = useSelector(selectExpanded);
   const filters = useSelector(selectFilters);
-  // const filteredProducts = useSelector(selectFilteredProducts);
-  // const memoFilters = useSelector(selectMemoFilters);
-  
-  // const [memoFilters, setMemoFilters] = useState([]);
-  // const [tempMemoFilters, setTempMemoFilters] = useState([]);
-  // const [isCheckBoxes, setIsCheckBoxes] = useState(true);
-  // const [isCheckBoxes, setIsCheckBoxes] = useState("");
 
   // console.log(filters);
 
   useEffect(() => {
     memoArray();
-    // dispatch(changeFilters({key: 'name', value: ''}));
   }, []);
 
   // useEffect(() => {

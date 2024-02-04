@@ -8,8 +8,8 @@ const sliceFilters = createSlice({
   reducers: {
     changeFilters(state, action) {
       // console.log('changeFilters')
-      const arrayKeys = state.items.keys;
-      const index = arrayKeys > 0 ? arrayKeys.findIndex(item => item === action.payload.key) : -1;
+      const arr = state.items.map(item => item.key);
+      const index = arr.findIndex(item => item === action.payload.key);
       if (index < 0) {
         state.items.push({ key: action.payload.key, value: [action.payload.value]});
       } else {

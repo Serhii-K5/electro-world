@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "redux/operations";
 
 import ProductCard from "components/ProductCard/ProductCard";
-// import { selectProducts, selectSearchParams } from "redux/selectors";
+import { selectProducts } from "redux/selectors";
 // import { selectProducts, selectFilteredProducts, selectFilters } from 'redux/selectors';
 // import { changeFilteredProducts } from 'redux/slice/filteredProductsSlice';
 import { selectFilters, selectLanguages } from 'redux/selectors';
@@ -34,37 +34,31 @@ import lang from 'assets/json/language.json';
 
 const CatalogCarsPage = () => {
   // const [searchParams, setSearchParams] = useSearchParams();
-  const languages = useSelector(selectLanguages);
   const dispatch = useDispatch();
-  // const products = useSelector(selectProducts); // запрос на сервер
-  const products = products1;
-  // const filteredProducts = useSelector(selectFilteredProducts);
-  const [filteredData, setFilteredData] = useState(products.length > 0 ? products : products1);
-  // const searchParams = useSelector(selectSearchParams);
-  // const [filteredData, setFilteredData] = useState(
-  //   filteredProducts.length > 0 ? filteredProducts : products.length > 0 ? products : products1
-  // );
-
-  // if (filteredProducts.length === 0) {
-  //   dispatch(changefilteredProducts(filteredData));
-  // }
-
-  // const [isAdd, setIsAdd] = useState(false);
-
-  const [activePage, setActivePage] = useState(1);
-  // const [activeFilter, setActiveFilter] = useState(false);
-  // const [activeFilter, setActiveFilter] = useState(0);
-  
+  const languages = useSelector(selectLanguages);
   const filters = useSelector(selectFilters);
 
+  const products = useSelector(selectProducts); // запрос на сервер
+  // const products = products1;
+  const [filteredData, setFilteredData] = useState(products.length > 0 ? products : products1);
+  
+  const [activePage, setActivePage] = useState(1);
 
-  useEffect(() => {
-    setFilteredData(filtration());
-  }, []);
+  // console.log('start');
+
+  // useEffect(() => {
+  //   setFilteredData(filtration());
+  // }, []);
 
   useEffect(() => {
     dispatch(fetchProducts());
-  }, [dispatch]);  
+  }, [dispatch]);
+
+  useEffect(() => {    
+    // setFilteredData(filtration());
+    setFilteredData(filtration);
+    // console.log('filters');
+  }, [filters]);  
   
   const checking = (filter, productVolue) => {
     // let result = filter.value[0][0] === '' || filter.value === 0 ? true : false;
@@ -138,6 +132,8 @@ const CatalogCarsPage = () => {
 
           if (!result) break;
         }
+        
+        // console.log('filtration');
 
         return result;
       });
@@ -149,11 +145,6 @@ const CatalogCarsPage = () => {
       return products
     }
   };
-
-  
-  useEffect(() => {
-    setFilteredData(filtration());
-  }, [filters]); 
 
   // useEffect(() => {
   //   // setActiveFilter(!activeFilter);
@@ -200,7 +191,9 @@ const CatalogCarsPage = () => {
 
           <div style={{ padding: '0 16px' }}>
             {/* <PriceRange /> */}
-            <PriceRange data={filteredData}/>
+            <PriceRange data={filteredData} />
+            {/* {console.log('PriceRange')} */}
+            {/* {console.log('PriceRange') && <PriceRange data={filteredData}/>} */}
           </div>
 
           {/* <FilterPanel data={filteredData} onFilter={handleFilter} /> */}

@@ -13,7 +13,7 @@ import {
 } from './PriceRange.styled';
 
 // import { changeFilteredProducts } from 'redux/slice/filteredProductsSlice';
-import { changeFilters } from "redux/slice/filtersSlice";
+import { changeFilters, deleteFilters } from "redux/slice/filtersSlice";
 import { SHIFT_RANGE } from 'constants/constants';
 import lang from 'assets/json/language.json';
 
@@ -46,23 +46,34 @@ const PriceRange = ({ data }) => {
   // } 
   
   const findMinMaxPrice = () => {
-      const max = filteredProducts.reduce((accumulator, currentValue) => (
-          accumulator = currentValue.price > accumulator ? currentValue.price : accumulator
-        ), 0
-      );
-      
-      const min = filteredProducts.reduce((accumulator, currentValue) => (
-          accumulator = currentValue.price < accumulator ? currentValue.price : accumulator
-        ), max
-      );
-      
-      setInputValueMin(min);
-      setInputValueMax(max);
-      
-      setMaxPrice(max);
-      setMinPrice(min);
-      dispatch(changeFilters({key: 'price', value: [[min, max]]})); 
-    };
+    const max = filteredProducts.reduce((accumulator, currentValue) => (
+        accumulator = currentValue.price > accumulator ? currentValue.price : accumulator
+      ), 0
+    );
+    
+    const min = filteredProducts.reduce((accumulator, currentValue) => (
+        accumulator = currentValue.price < accumulator ? currentValue.price : accumulator
+      ), max
+    );
+    
+    setInputValueMin(min);
+    setInputValueMax(max);
+    
+    if (maxPrice !== max || minPrice !== min) {
+      dispatch(changeFilters({ key: 'price', value: [min, max] }));
+      if (maxPrice !== max) setMaxPrice(max);
+      if (minPrice !== min) setMaxPrice(min);
+
+    }
+    
+    
+    // (maxPrice !== max || minPrice !== min) && console.log({ key: 'price', value: [min, max] }) && dispatch(changeFilters({ key: 'price', value: [min, max] })); 
+    // // dispatch(changeFilters({key: 'price', value: [[min, max]]})); 
+    // // setMaxPrice(max);
+    // // setMinPrice(min);
+    // setMaxPrice(maxPrice !== max && max);
+    // setMinPrice(minPrice !== min && min);
+  };
   
   useEffect(() => { 
     const rangePriceElement = document.getElementById('range-price');
@@ -72,8 +83,7 @@ const PriceRange = ({ data }) => {
     setRangeWidth(rangeWidth);    
     setPositionMax(rangeWidth);
 
-    findMinMaxPrice();
-    
+    findMinMaxPrice();    
   }, []);
 
   useEffect(() => {
@@ -190,13 +200,14 @@ const PriceRange = ({ data }) => {
     setIsMouseDownMin(true);
   };  
 
-  const handleMouseDownMax = e => {
+  // const handleMouseDownMax = e => {
+  const handleMouseDownMax = () => {
     setIsMouseDownMax(true);
-    // console.log('dfg');
   };  
 
   const handleClickBtn = () => {    
-    dispatch(changeFilters({ key: 'price', value: [[inputValueMin, inputValueMax]] })); 
+    // dispatch(deleteFilters({ key: 'price', value: [inputValueMin, inputValueMax] })); 
+    dispatch(deleteFilters({ key: 'price', value: [] })); 
     
     // console.log("Button click");
     // alert("Button click");

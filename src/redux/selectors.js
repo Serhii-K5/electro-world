@@ -8,13 +8,7 @@ export const selectDirectoryPath = state => state.directoryPath.items;
 
 export const selectCategories = state => state.categories.category;
 
-export const selectSearchParams = state => state.searchParams.parameter;
-
-export const selectFilteredProducts = state => state.filteredProducts.filteredProduct;
-
 export const selectFilters = state => state.filters.items;
-
-export const selectExpanded = state => state.expanded.items;
 
 // export const selectOrdersAll = (state) => state.ordersAll.qualitity;
 
