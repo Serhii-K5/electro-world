@@ -1,5 +1,5 @@
 
-const CreateMemoArray = memo => {
+const createMemoArray = memo => {
   return (memo + ';')
     .replace(';;', '')
     .split(';')
@@ -16,4 +16,4 @@ const CreateMemoArray = memo => {
     .filter(el => el);
 };
 
-export default CreateMemoArray;
+export default createMemoArray;

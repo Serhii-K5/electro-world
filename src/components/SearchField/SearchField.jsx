@@ -28,12 +28,13 @@ const SearchField = () => {
   const handleSubmit = e => {
     e.preventDefault();
     const arr = e.target[1].value.split(' ');
+    console.log('sf(hs) name');
     dispatch(changeFilters({ key: 'name', value: arr }));
   };
 
   const handleChange = e => {
     setInputValue(e.target.value);
-
+    console.log('sf(hch) name');
     e.target.value === "" && dispatch(changeFilters({ key: 'name', value: '' }));
 
     // const arr = e.target.value.split(' ');
@@ -48,6 +49,7 @@ const SearchField = () => {
 
   const handleClick = e => {
     const arr = e.currentTarget[1].value.split(' ');
+    console.log('sf(hcl) name');
     dispatch(changeFilters({ key: 'name', value: arr }));
     setInputValue(e.currentTarget[1].value);
   };
@@ -55,6 +57,7 @@ const SearchField = () => {
   const onKeyUp = e => {
     if(e.key === 'Enter'){
       const arr = e.target.value.split(' ');
+      console.log('sf(oku) name');
       dispatch(changeFilters({ key: 'name', value: arr }));
       setInputValue(e.target.value);
     }

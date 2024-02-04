@@ -44,6 +44,7 @@ const CategoryDropdownList = ({ parentId, onCloseModal}) => {
     if (index === -1) {
       // dispatch(changefilters({ key: 'parentId', value: e.cat_id }));
       // const filteredDate = products.filter(item => item.id === e.cat_id);
+      console.log('cdl parentId');
       dispatch(changeFilters({ key: 'parentId', value: el.cat_id }));
       // const result = filteredData.filter(item => item.parentId === e.cat_id);
 

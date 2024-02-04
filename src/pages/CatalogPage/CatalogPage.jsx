@@ -5,12 +5,11 @@ import { fetchProducts } from "redux/operations";
 
 import ProductCard from "components/ProductCard/ProductCard";
 import { selectProducts } from "redux/selectors";
-// import { selectProducts, selectFilteredProducts, selectFilters } from 'redux/selectors';
-// import { changeFilteredProducts } from 'redux/slice/filteredProductsSlice';
 import { selectFilters, selectLanguages } from 'redux/selectors';
 
 // import { changeFilters } from "redux/slice/filtersSlice";
 // import CreateFilteredDate from 'utilites/createFilteredDate';
+import {findMinMaxPrice} from 'utilites/searchMinMax';
 
 import {
   Container,
@@ -44,6 +43,9 @@ const CatalogCarsPage = () => {
   
   const [activePage, setActivePage] = useState(1);
 
+  // const [minPrice, setMinPrice] = useState(0);
+  // const [maxPrice, setMaxPrice] = useState(0);
+
   // console.log('start');
 
   // useEffect(() => {
@@ -59,6 +61,14 @@ const CatalogCarsPage = () => {
     setFilteredData(filtration);
     // console.log('filters');
   }, [filters]);  
+  
+  // const costMaxMin = () => {
+  //   const result = findMinMaxPrice(filteredData);
+  //   setMinPrice(result[0]);
+  //   setMaxPrice(result[1]);
+  //   // dispatch(changeFilters({ key: 'price', value: [minPrice, maxPrice] }));
+  // };
+  
   
   const checking = (filter, productVolue) => {
     // let result = filter.value[0][0] === '' || filter.value === 0 ? true : false;
@@ -193,7 +203,6 @@ const CatalogCarsPage = () => {
             {/* <PriceRange /> */}
             <PriceRange data={filteredData} />
             {/* {console.log('PriceRange')} */}
-            {/* {console.log('PriceRange') && <PriceRange data={filteredData}/>} */}
           </div>
 
           {/* <FilterPanel data={filteredData} onFilter={handleFilter} /> */}

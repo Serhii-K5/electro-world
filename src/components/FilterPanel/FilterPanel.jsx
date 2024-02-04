@@ -123,6 +123,7 @@ const FilterPanel = ({ data }) => {
   const changeCheckbox = (keyF, item, e) => {
     if (e.target.checked) {
       // dispatch(changeFilters({key: keyF, value: item}));
+      console.log('fp memo');
       dispatch(changeFilters({memo: {key: keyF, value: item}}));
     } else {
       // dispatch(deleteFilters({key: keyF, value: item}));
