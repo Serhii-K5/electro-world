@@ -28,6 +28,7 @@ import FilterPanel from 'components/FilterPanel/FilterPanel';
 
 import PriceRange from 'components/PriceRange/PriceRange';
 import products1 from "../../assets/json/products.json";
+// import categories from "../../assets/json/categories.json";
 import lang from 'assets/json/language.json';
 
 
@@ -40,15 +41,15 @@ const CatalogCarsPage = () => {
   const dispatch = useDispatch();
   const languages = useSelector(selectLanguages);
   const filters = useSelector(selectFilters);
-
-  const products = useSelector(selectProducts); // запрос на сервер
-  // const products = products1;
-  const [filteredData, setFilteredData] = useState(products.length > 0 ? products : products1);
+  
+  // const products = useSelector(selectProducts);
+  // const [filteredData, setFilteredData] = useState(products.length > 0 ? products : products1);
+  
+  const temp = useSelector(selectProducts);
+  const products = temp.length > 0 ? temp : products1; // запрос на сервер
+  const [filteredData, setFilteredData] = useState(products);
   
   const [activePage, setActivePage] = useState(1);
-
-  // const [minPrice, setMinPrice] = useState(0);
-  // const [maxPrice, setMaxPrice] = useState(0);
 
   // console.log('start');
 
@@ -75,14 +76,19 @@ const applyFilters = (products, CurentFilters) => {
       // Обрабатываем различные типы фильтров
       if (Array.isArray(value)) {
         // Если значение фильтра - массив, проверяем, находится ли элемент в диапазоне
-        // const [min, max] = value;
-        // return product[key] >= min && product[key] <= max;
-        // Если числовых массивов несколько, то применить перебор
-        let result = true;
-        value.map(el => {
-          const [min, max] = el;
-          return result = result && product[key] >= min && product[key] <= max;
-        });
+        
+        if (Array.isArray(value[0])) { 
+          // Если числовых массивов несколько, то применить перебор
+          let result = true;
+          value.map(el => {
+            const [min, max] = el;
+            return result = result && product[key] >= min && product[key] <= max;
+          });
+          return result;
+        } else {
+          const [min, max] = value;
+          return product[key] >= min && product[key] <= max;
+        };
       } else if (typeof value === 'object' && value !== null) {
         // Если значение фильтра - объект, рекурсивно применяем фильтры к вложенному объекту
         return applyFilters([product[key]], value).length > 0;
