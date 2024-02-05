@@ -62,8 +62,8 @@ const CatalogCarsPage = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    setFilteredData(applyFilters(filteredData, filters));
-    // setFilteredData(applyFilters(products, filters));
+    // setFilteredData(applyFilters(filteredData, filters));
+    setFilteredData(applyFilters(products, filters));
     // console.log('filters');
   }, [filters]);  
   
@@ -90,7 +90,19 @@ const applyFilters = (CurentProducts, CurentFilters) => {
           return result;
         } else {
           const [min, max] = value;
-          return product[key] >= min && product[key] <= max;
+          // return product[key] >= min && product[key] <= max;
+          return (min === undefined || product[key] >= min) && (max === undefined || product[key] <= max);
+      //     if (filter.key === 'price') {
+      //   // Фильтр по цене
+      //   const [min, max] = filter.value;
+      //   const productPrice = product.price;
+      //   return (min === undefined || productPrice >= min) && (max === undefined || productPrice <= max);
+      // } else {
+      //   // Фильтр по другим свойствам
+      //   return product[filter.key] === filter.value;
+      // }
+        
+        
         };
       } else if (typeof value === 'object' && value !== null) {
         // Если значение фильтра - объект, рекурсивно применяем фильтры к вложенному объекту
@@ -221,3 +233,97 @@ const applyFilters = (CurentProducts, CurentFilters) => {
 };
 
 export default CatalogCarsPage;
+
+
+// Для организации перестроения страницы при изменении одного из фильтров в массиве фильтров с использованием React и Redux, вы можете следовать примеру ниже.
+
+// Создайте компонент ProductList, который будет отображать отфильтрованный массив товаров:
+// jsx
+// Copy code
+// // ProductList.js
+
+// import React from 'react';
+
+// const ProductList = ({ filteredProducts }) => {
+//   return (
+//     <div>
+//       <h2>Отфильтрованные товары:</h2>
+//       <ul>
+//         {filteredProducts.map(product => (
+//           <li key={product.name}>
+//             {product.name} - {product.price} - {product.category}
+//           </li>
+//         ))}
+//       </ul>
+//     </div>
+//   );
+// };
+
+// export default ProductList;
+// Создайте компонент FilterForm, который будет предоставлять форму для изменения фильтров:
+// jsx
+// Copy code
+// // FilterForm.js
+
+// import React, { useState } from 'react';
+
+// const FilterForm = ({ filters, onFilterChange }) => {
+//   const [minPrice, setMinPrice] = useState('');
+//   const [maxPrice, setMaxPrice] = useState('');
+
+//   const handleFilterChange = () => {
+//     // Обновляем массив фильтров
+//     const newFilters = [
+//       ...filters,
+//       { key: 'price', value: [minPrice === '' ? undefined : parseInt(minPrice), maxPrice === '' ? undefined : parseInt(maxPrice)] },
+//     ];
+
+//     // Вызываем функцию обратного вызова для обновления фильтров
+//     onFilterChange(newFilters);
+//   };
+
+//   return (
+//     <div>
+//       <h2>Фильтры:</h2>
+//       <div>
+//         <label>Минимальная цена:</label>
+//         <input type="number" value={minPrice} onChange={e => setMinPrice(e.target.value)} />
+//       </div>
+//       <div>
+//         <label>Максимальная цена:</label>
+//         <input type="number" value={maxPrice} onChange={e => setMaxPrice(e.target.value)} />
+//       </div>
+//       <button onClick={handleFilterChange}>Применить фильтр</button>
+//     </div>
+//   );
+// };
+
+// export default FilterForm;
+// Создайте главный компонент App, который будет использовать ProductList и FilterForm:
+// jsx
+// Copy code
+// // App.js
+
+// import React, { useState } from 'react';
+// import ProductList from './ProductList';
+// import FilterForm from './FilterForm';
+
+// const App = () => {
+//   const [filters, setFilters] = useState([]);
+
+//   const handleFilterChange = newFilters => {
+//     // Обновляем состояние с новыми фильтрами
+//     setFilters(newFilters);
+//   };
+
+//   return (
+//     <div>
+//       <FilterForm filters={filters} onFilterChange={handleFilterChange} />
+//       <ProductList filteredProducts={filterProducts(products, filters)} />
+//     </div>
+//   );
+// };
+
+// export default App;
+// Используйте Redux, чтобы хранить состояние фильтров и обновлять его в соответствии с изменениями.
+// Обратите внимание, что в этом примере предполагается, что у вас уже есть настроенное окружение для React с использованием Create React App или аналогичного инструмента.Вы также должны добавить функцию filterProducts из предыдущего ответа в ваш файл.
