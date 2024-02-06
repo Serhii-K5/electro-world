@@ -234,7 +234,6 @@ const applyFilters = (CurentProducts, CurentFilters) => {
 
 export default CatalogCarsPage;
 
-//kulgkjhkj,n
 
 // Для организации перестроения страницы при изменении одного из фильтров в массиве фильтров с использованием React и Redux, вы можете следовать примеру ниже.
 
