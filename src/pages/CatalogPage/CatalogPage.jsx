@@ -31,6 +31,7 @@ import products1 from "../../assets/json/products.json";
 // import categories from "../../assets/json/categories.json";
 import lang from 'assets/json/language.json';
 
+import CreateMemoArray from "utilites/createMemoArray";
 
 // создать предварительную фильтрацию по каталогу, а потом 
 // фильтровать по остальным фильтрам
@@ -71,6 +72,7 @@ const CatalogCarsPage = () => {
 // const applyFilters = (products, CurentFilters) => {
 const applyFilters = (CurentProducts, CurentFilters) => {
   // return products.filter(product => {
+  // console.log(typeof CurentProducts);
   return CurentProducts.filter(product => {
     // Применяем каждый фильтр к продукту
     return CurentFilters.every(filter => {
@@ -106,7 +108,11 @@ const applyFilters = (CurentProducts, CurentFilters) => {
         };
       } else if (typeof value === 'object' && value !== null) {
         // Если значение фильтра - объект, рекурсивно применяем фильтры к вложенному объекту
-        return applyFilters([product[key]], value).length > 0;
+        // return applyFilters([product[key]], value).length > 0;
+        const memoArray = typeof product[key] === 'object' ? product[key] : CreateMemoArray(product[key]);
+        // const productBeingChecked = typeof product[key] === 'object' ? product[key] : { key: key, value: product[key] };
+        // return applyFilters(product[key], value).length > 0;
+        return applyFilters(memoArray, value).length > 0;
       } else {
         // Для остальных случаев просто сравниваем значения
         return product[key] === value;
