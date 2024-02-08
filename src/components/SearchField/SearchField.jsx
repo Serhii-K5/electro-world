@@ -8,7 +8,8 @@ import { Button, Input } from './SearchField.styled';
 import lang from 'assets/json/language.json';
 
 import { SlMagnifier } from 'react-icons/sl';
-import { changeFilters } from 'redux/slice/filtersSlice';
+// import { changeFilters } from 'redux/slice/filtersSlice';
+import { changeFilters, deleteFilters} from 'redux/slice/filtersSlice';
 
 const SearchField = () => {
   const dispatch = useDispatch();
@@ -27,15 +28,17 @@ const SearchField = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const arr = e.target[1].value.split(' ');
-    console.log('sf(hs) name');
-    dispatch(changeFilters({ key: 'name', value: arr }));
+    // const arr = e.target[1].value.split(' ');
+    // // console.log('sf(hs) name');
+    // dispatch(changeFilters({ key: 'name', value: arr }));
+    dispatch(changeFilters({ key: 'name', value: e.target[1].value }));
   };
 
   const handleChange = e => {
     setInputValue(e.target.value);
-    console.log('sf(hch) name');
-    e.target.value === "" && dispatch(changeFilters({ key: 'name', value: '' }));
+    // console.log('sf(hch) name');
+    // e.target.value === "" && dispatch(changeFilters({ key: 'name', value: '' }));
+    e.target.value === "" && dispatch(deleteFilters({ key: 'name', value: '' }));
 
     // const arr = e.target.value.split(' ');
     // dispatch(changeFilters({ key: 'name', value: arr }));
@@ -48,17 +51,19 @@ const SearchField = () => {
   // };
 
   const handleClick = e => {
-    const arr = e.currentTarget[1].value.split(' ');
-    console.log('sf(hcl) name');
-    dispatch(changeFilters({ key: 'name', value: arr }));
+    // const arr = e.currentTarget[1].value.split(' ');
+    // // console.log('sf(hcl) name');
+    // dispatch(changeFilters({ key: 'name', value: arr }));
+    dispatch(changeFilters({ key: 'name', value: e.currentTarget[1].value }));
     setInputValue(e.currentTarget[1].value);
   };
 
   const onKeyUp = e => {
     if(e.key === 'Enter'){
-      const arr = e.target.value.split(' ');
-      console.log('sf(oku) name');
-      dispatch(changeFilters({ key: 'name', value: arr }));
+      // const arr = e.target.value.split(' ');
+      // // console.log('sf(oku) name');
+      // dispatch(changeFilters({ key: 'name', value: arr }));
+      dispatch(changeFilters({ key: 'name', value: e.target.value }));
       setInputValue(e.target.value);
     }
   };

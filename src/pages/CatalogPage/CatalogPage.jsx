@@ -113,8 +113,16 @@ const applyFilters = (CurentProducts, CurentFilters) => {
         // const productBeingChecked = typeof product[key] === 'object' ? product[key] : { key: key, value: product[key] };
         // return applyFilters(product[key], value).length > 0;
         return applyFilters(memoArray, value).length > 0;
+      } else if (value === "") {
+        return true;
       } else {
         // Для остальных случаев просто сравниваем значения
+        if (key === 'memo') {
+          return product.memo.toUpperCase().includes(value.toUpperCase())
+        }else if (key === 'name') {
+          return product.code.toUpperCase().includes(value.toUpperCase()) || product.name.toUpperCase().includes(value.toUpperCase())
+        }
+        
         return product[key] === value;
       }
     });
