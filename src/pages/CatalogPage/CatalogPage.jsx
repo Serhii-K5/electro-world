@@ -109,6 +109,7 @@ const applyFilters = (CurentProducts, CurentFilters) => {
       } else if (typeof value === 'object' && value !== null) {
         // Если значение фильтра - объект, рекурсивно применяем фильтры к вложенному объекту
         // return applyFilters([product[key]], value).length > 0;
+        // console.log(typeof value)
         const memoArray = typeof product[key] === 'object' ? product[key] : CreateMemoArray(product[key]);
         // const productBeingChecked = typeof product[key] === 'object' ? product[key] : { key: key, value: product[key] };
         // return applyFilters(product[key], value).length > 0;
