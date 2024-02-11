@@ -123,7 +123,7 @@ const applyFilters = (CurentProducts, CurentFilters) => {
         }else if (key === 'name') {
           return product.code.toUpperCase().includes(value.toUpperCase()) || product.name.toUpperCase().includes(value.toUpperCase())
         }
-        
+        console.log('dfgsd');
         return product[key] === value;
       }
     });
