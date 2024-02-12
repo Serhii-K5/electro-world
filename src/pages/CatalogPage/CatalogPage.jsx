@@ -66,7 +66,9 @@ const CatalogCarsPage = () => {
     // setFilteredData(applyFilters(filteredData, filters));
     setFilteredData(applyFilters(products, filters));
     // console.log('filters');
-  }, [filters]);  
+  }, [filters]);
+  
+  
   
 
 // const applyFilters = (products, CurentFilters) => {
@@ -75,6 +77,7 @@ const applyFilters = (CurentProducts, CurentFilters) => {
   // console.log(typeof CurentProducts);
   return CurentProducts.filter(product => {
     // Применяем каждый фильтр к продукту
+    console.log(typeof CurentFilters);
     return CurentFilters.every(filter => {
       const { key, value } = filter;
 
@@ -113,7 +116,7 @@ const applyFilters = (CurentProducts, CurentFilters) => {
         const memoArray = typeof product[key] === 'object' ? product[key] : CreateMemoArray(product[key]);
         // const productBeingChecked = typeof product[key] === 'object' ? product[key] : { key: key, value: product[key] };
         // return applyFilters(product[key], value).length > 0;
-        return applyFilters(memoArray, value).length > 0;
+        return applyFilters(memoArray, value).length > 0;        
       } else if (value === "") {
         return true;
       } else {
