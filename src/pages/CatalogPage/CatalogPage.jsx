@@ -79,6 +79,7 @@ const applyFilters = (CurentProducts, CurentFilters) => {
     // Применяем каждый фильтр к продукту
     console.log(typeof CurentFilters);
     return CurentFilters.every(filter => {
+      console.log(filter, ' - ', typeof filter);
       const { key, value } = filter;
 
       // Обрабатываем различные типы фильтров
