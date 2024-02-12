@@ -8,6 +8,7 @@ import { selectProducts } from "redux/selectors";
 import { selectFilters, selectLanguages } from 'redux/selectors';
 
 // import { changeFilters } from "redux/slice/filtersSlice";
+import { deleteFilters } from 'redux/slice/filtersSlice';
 // import CreateFilteredDate from 'utilites/createFilteredDate';
 import {findMinMaxPrice} from 'utilites/searchMinMax';
 
@@ -112,10 +113,10 @@ const applyFilters = (CurentProducts, CurentFilters) => {
         // Если значение фильтра - объект, рекурсивно применяем фильтры к вложенному объекту
         // return applyFilters([product[key]], value).length > 0;
         // console.log(typeof value)
-        const memoArray = typeof product[key] === 'object' ? product[key] : CreateMemoArray(product[key]);
+        const tempArray = typeof product[key] === 'object' ? product[key] : CreateMemoArray(product[key]);
         // const productBeingChecked = typeof product[key] === 'object' ? product[key] : { key: key, value: product[key] };
         // return applyFilters(product[key], value).length > 0;
-        return applyFilters(memoArray, value).length > 0;        
+        return applyFilters(tempArray, value).length > 0;        
       } else if (value === "") {
         return true;
       } else {
@@ -153,12 +154,13 @@ const applyFilters = (CurentProducts, CurentFilters) => {
   };
 
   const handleClickBtn = () => {
-    
+    dispatch(
+      deleteFilters({ key: 'memo', value: [] })
+    );
 
     // dispatch(
     //   changeFilters({ key: 'price', value: [[inputValueMin, inputValueMax]] })
     // );
-
     // console.log("Button click");
     // alert("Button click");
   };
