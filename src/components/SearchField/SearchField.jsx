@@ -18,19 +18,24 @@ const SearchField = () => {
   
   const [inputValue, setInputValue] = useState('');
 
+  // useEffect(() => {
+  //   const arr = filters.map(item => item.key);
+  //   const index = arr.findIndex(el => el === 'name');
+  //   if (index >= 0) {
+  //     setInputValue(filters[index].value !== "" ? filters[index].value.join(' ') : "")
+  //   };
+  // }, []);
+
   useEffect(() => {
     const arr = filters.map(item => item.key);
     const index = arr.findIndex(el => el === 'name');
-    if (index >= 0) {
-      setInputValue(filters[index].value !== "" ? filters[index].value.join(' ') : "")
-    };
-  }, []);
+    
+    setInputValue(index >= 0 ? filters[index].value : '');
+
+  }, [filters]);
 
   const handleSubmit = e => {
     e.preventDefault();
-    // const arr = e.target[1].value.split(' ');
-    // // console.log('sf(hs) name');
-    // dispatch(changeFilters({ key: 'name', value: arr }));
     dispatch(changeFilters({ key: 'name', value: e.target[1].value }));
   };
 
