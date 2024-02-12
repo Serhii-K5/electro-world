@@ -76,9 +76,9 @@ const applyFilters = (CurentProducts, CurentFilters) => {
   // console.log(typeof CurentProducts);
   return CurentProducts.filter(product => {
     // Применяем каждый фильтр к продукту
-    console.log(typeof CurentFilters);
+    // console.log(typeof CurentFilters);
     return CurentFilters.every(filter => {
-      console.log(filter, ' - ', typeof filter);
+      // console.log(filter, ' - ', typeof filter);
       const { key, value } = filter;
 
       // Обрабатываем различные типы фильтров
@@ -111,12 +111,14 @@ const applyFilters = (CurentProducts, CurentFilters) => {
         };
       } else if (typeof value === 'object' && value !== null) {
         // Если значение фильтра - объект, рекурсивно применяем фильтры к вложенному объекту
-        // return applyFilters([product[key]], value).length > 0;
+        // // return applyFilters([product[key]], value).length > 0;
         // console.log(typeof value)
         const tempArray = typeof product[key] === 'object' ? product[key] : CreateMemoArray(product[key]);
-        // const productBeingChecked = typeof product[key] === 'object' ? product[key] : { key: key, value: product[key] };
-        // return applyFilters(product[key], value).length > 0;
-        return applyFilters(tempArray, value).length > 0;        
+        // // const productBeingChecked = typeof product[key] === 'object' ? product[key] : { key: key, value: product[key] };
+        // // return applyFilters(product[key], value).length > 0;
+        // return applyFilters(tempArray, value).length > 0;        
+        const ss = [value, value];
+        return applyFilters(tempArray, ss).length > 0;
       } else if (value === "") {
         return true;
       } else {
@@ -154,10 +156,9 @@ const applyFilters = (CurentProducts, CurentFilters) => {
   };
 
   const handleClickBtn = () => {
-    dispatch(
-      deleteFilters({ key: 'memo', value: [] })
-    );
-
+    dispatch(deleteFilters({ key: 'memo', value: [] }));
+    dispatch(deleteFilters({ key: 'name', value: "" }));
+    
     // dispatch(
     //   changeFilters({ key: 'price', value: [[inputValueMin, inputValueMax]] })
     // );
