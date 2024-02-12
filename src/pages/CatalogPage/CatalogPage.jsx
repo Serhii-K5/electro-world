@@ -68,8 +68,6 @@ const CatalogCarsPage = () => {
     // console.log('filters');
   }, [filters]);
   
-  
-  
 
 // const applyFilters = (products, CurentFilters) => {
 const applyFilters = (CurentProducts, CurentFilters) => {
