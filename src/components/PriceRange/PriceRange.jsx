@@ -72,12 +72,22 @@ const PriceRange = ({ data }) => {
     findMinMaxPrice();
   }, []);
 
+  // useEffect(() => {
+  //   const [min, max] = searchMinMaxPrice(filteredProducts);
+  //   setInputValueMin(min);
+  //   setInputValueMax(max);
+  // }, [filters]);
+
   useEffect(() => {
-    const [min, max] = searchMinMaxPrice(filteredProducts);
+    const [min, max] = searchMinMaxPrice(data);
     setInputValueMin(min);
     setInputValueMax(max);
-  }, [filters]);
+    
+    setPositionMin(Math.round(inputValueMin * rangeWidth / (max - min)));
+    setPositionMax(Math.round(inputValueMax * rangeWidth / (max - min)));
 
+  }, [data]);
+  
   useEffect(() => {
     const handleMouseMove = e => {
       if (isMouseDownMin) {
