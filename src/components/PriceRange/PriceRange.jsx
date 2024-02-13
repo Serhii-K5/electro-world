@@ -218,24 +218,44 @@ const PriceRange = ({ data }) => {
     }
   };
 
-  const onChangeMinMax = e => {
+  const onChangeMin = e => {
     const value = Math.abs(Number(e.target.value));
     if (value >= 0) {
-      if (e.target.id === 'inputMin') {
-        setInputValueMin(value);
-        changePositionMin(value);
-      }
-      if (e.target.id === 'inputMax') {
-        setInputValueMax(value);
-        changePositionMax(value);
-      }
+      setInputValueMin(value);
+      changePositionMin(value);      
     } else {
-      e.target.id === 'inputMin' && setInputValueMin(e.target.value);
-      e.target.id === 'inputMax' && setInputValueMax(e.target.value);
+      setInputValueMin(e.target.value);
     }
   };
 
-  const handleMouseDownMin = e => {
+  const onChangeMax = e => {
+    const value = Math.abs(Number(e.target.value));
+    if (value >= 0) {
+      setInputValueMax(value);
+      changePositionMax(value);
+    } else {
+      setInputValueMax(e.target.value);
+    }
+  };
+
+  // const onChangeMinMax = e => {
+  //   const value = Math.abs(Number(e.target.value));
+  //   if (value >= 0) {
+  //     if (e.target.id === 'inputMin') {
+  //       setInputValueMin(value);
+  //       changePositionMin(value);
+  //     }
+  //     if (e.target.id === 'inputMax') {
+  //       setInputValueMax(value);
+  //       changePositionMax(value);
+  //     }
+  //   } else {
+  //     e.target.id === 'inputMin' && setInputValueMin(e.target.value);
+  //     e.target.id === 'inputMax' && setInputValueMax(e.target.value);
+  //   }
+  // };
+
+  const handleMouseDownMin = () => {
     setIsMouseDownMin(true);
   };
 
@@ -264,7 +284,8 @@ const PriceRange = ({ data }) => {
           type="text"
           style={{ width: '50px' }}
           value={inputValueMin}
-          onChange={onChangeMinMax}
+          // onChange={onChangeMinMax}
+          onChange={onChangeMin}
           onBlur={handleChangeMin}
         />
         <span>{lang[languages].priceRange_labelEnd}</span>
@@ -273,7 +294,8 @@ const PriceRange = ({ data }) => {
           type="text"
           style={{ width: '70px' }}
           value={inputValueMax}
-          onChange={onChangeMinMax}
+          // onChange={onChangeMinMax}
+          onChange={onChangeMax}
           onBlur={handleChangeMax}
         />
         <span>{' грн'}</span>
