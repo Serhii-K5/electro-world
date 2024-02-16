@@ -83,10 +83,14 @@ const PriceRange = ({ data }) => {
     setInputValueMin(min);
     setInputValueMax(max);
     
-    setPositionMin(Math.round(inputValueMin * rangeWidth / (max - min)));
-    setPositionMax(Math.round(inputValueMax * rangeWidth / (max - min)));
-
-  }, [data]);
+    if (maxPrice !== minPrice) {
+      setPositionMin( Math.round(((min - minPrice) * rangeWidth) / (maxPrice - minPrice)));
+      setPositionMax(Math.round(((max - minPrice) * rangeWidth) / (maxPrice - minPrice)));
+    } else {
+      setPositionMin(0);
+      setPositionMax(rangeWidth);
+    }
+}, [data]);
   
   useEffect(() => {
     const handleMouseMove = e => {
