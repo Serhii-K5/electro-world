@@ -88,71 +88,37 @@ const PriceRange = ({ data }) => {
 
   }, [data]);
   
-  
-  const mouseDownMinFn = (offsetMin) => {
-    if (offsetMin >= 0 && offsetMin <= positionMax) {
-      setInputValueMin(
-        Math.round((offsetMin * (maxPrice - minPrice)) / rangeWidth)
-      );
-      setPositionMin(Math.round(offsetMin));
-    } else if (offsetMin > positionMax) {
-      setInputValueMin(inputValueMax);
-      // setPositionMax(positionMax);
-      setPositionMin(positionMax);
-    } else {
-      setInputValueMin(minPrice);
-      setPositionMin(0);
-    }
-  };
-  
-  const mouseDownMaxFn = (offsetMax) => {
-    if (offsetMax >= positionMin && offsetMax <= rangeWidth) {
-      setInputValueMax(
-        Math.round((offsetMax * (maxPrice - minPrice)) / rangeWidth)
-      );
-      setPositionMax(Math.round(offsetMax));
-    } else if (offsetMax < positionMin) {
-      setInputValueMax(inputValueMin);
-      setPositionMax(positionMin);
-    } else {
-      setInputValueMax(maxPrice);
-      setPositionMax(rangeWidth);
-    }
-  };
-  
   useEffect(() => {
     const handleMouseMove = e => {
       if (isMouseDownMin) {
         const offsetMin = e.clientX - positionStart - SHIFT_RANGE * 0.5;
-        mouseDownMinFn(offsetMin);
-        // if (offsetMin >= 0 && offsetMin <= positionMax) {
-        //   setInputValueMin(Math.round((offsetMin * (maxPrice - minPrice)) / rangeWidth));
-        //   setPositionMin(Math.round(offsetMin));
-        // } else if (offsetMin > positionMax) {
-        //   setInputValueMin(inputValueMax);
-        //   // setPositionMax(positionMax);
-        //   setPositionMin(positionMax);
-        // } else {
-        //   setInputValueMin(minPrice);
-        //   setPositionMin(0);
-        // }
+        if (offsetMin >= 0 && offsetMin <= positionMax) {
+          setInputValueMin(Math.round((offsetMin * (maxPrice - minPrice)) / rangeWidth));
+          setPositionMin(Math.round(offsetMin));
+        } else if (offsetMin > positionMax) {
+          setInputValueMin(inputValueMax);
+          // setPositionMax(positionMax);
+          setPositionMin(positionMax);
+        } else {
+          setInputValueMin(minPrice);
+          setPositionMin(0);
+        }
       }
       
       if (isMouseDownMax) {
         const offsetMax = e.clientX - positionStart - SHIFT_RANGE * 1.5;
-        mouseDownMaxFn(offsetMax);
-        // if (offsetMax >= positionMin && offsetMax <= rangeWidth) {
-        //   setInputValueMax(
-        //     Math.round((offsetMax * (maxPrice - minPrice)) / rangeWidth)
-        //   );
-        //   setPositionMax(Math.round(offsetMax));
-        // } else if (offsetMax < positionMin) {
-        //   setInputValueMax(inputValueMin);
-        //   setPositionMax(positionMin);
-        // } else {
-        //   setInputValueMax(maxPrice);
-        //   setPositionMax(rangeWidth);
-        // }
+        if (offsetMax >= positionMin && offsetMax <= rangeWidth) {
+          setInputValueMax(
+            Math.round((offsetMax * (maxPrice - minPrice)) / rangeWidth)
+          );
+          setPositionMax(Math.round(offsetMax));
+        } else if (offsetMax < positionMin) {
+          setInputValueMax(inputValueMin);
+          setPositionMax(positionMin);
+        } else {
+          setInputValueMax(maxPrice);
+          setPositionMax(rangeWidth);
+        }
       }
     };
 
