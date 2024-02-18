@@ -162,8 +162,8 @@ const applyFilters = (CurentProducts, CurentFilters) => {
     // dispatch(
     //   changeFilters({ key: 'price', value: [[inputValueMin, inputValueMax]] })
     // );
-    console.log("Button click");
-    alert("Button click");
+    // console.log("Button click");
+    // alert("Button click");
   };
 
   return (
