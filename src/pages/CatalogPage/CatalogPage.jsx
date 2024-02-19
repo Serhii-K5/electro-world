@@ -111,9 +111,21 @@ const applyFilters = (CurentProducts, CurentFilters) => {
         };
       } else if (typeof value === 'object' && value !== null) {
         // Если значение фильтра - объект, рекурсивно применяем фильтры к вложенному объекту
+        
+        const fn = () => {
+          const arrFull = CreateMemoArray(product[key]);
+          const a = arrFull[0].value;
+          const arr0 = Object.keys(arrFull.value);
+          const arr = Object.values(arrFull);
+          // const arr0 = Object.keys(arrFull);
+          return { key: key, value: arr };
+        }
+        
         // // return applyFilters([product[key]], value).length > 0;
         // console.log(typeof value)
-        const tempArray = typeof product[key] === 'object' ? product[key] : CreateMemoArray(product[key]);
+        // const tempArray = typeof product[key] === 'object' ? product[key] : CreateMemoArray(product[key]);
+        const tempArray = typeof product[key] === 'object' ? product[key] : fn();
+
         // // const productBeingChecked = typeof product[key] === 'object' ? product[key] : { key: key, value: product[key] };
         // // return applyFilters(product[key], value).length > 0;
         // return applyFilters(tempArray, value).length > 0;        
@@ -123,17 +135,20 @@ const applyFilters = (CurentProducts, CurentFilters) => {
         return true;
       } else {
         // Для остальных случаев просто сравниваем значения
-        if (key === 'memo') {
-          console.log(value.toUpperCase());
-          const m = product.memo.toUpperCase();
-          const inc = m.includes(value.toUpperCase());
-          console.log(inc);
-          return product.memo.toUpperCase().includes(value.toUpperCase())
-        }else if (key === 'name') {
+        // if (key === 'memo') {
+        //   return product.memo.toUpperCase().includes(value.toUpperCase())
+        // }else if (key === 'name') {
+        //   return product.code.toUpperCase().includes(value.toUpperCase()) || product.name.toUpperCase().includes(value.toUpperCase())
+        // }
+        if (key === 'name') {
           return product.code.toUpperCase().includes(value.toUpperCase()) || product.name.toUpperCase().includes(value.toUpperCase())
         }
-        
-        return product[key] === value;
+        if (product[key]) {
+          return product[key] === value;
+        } else {
+          return product.memo.toUpperCase().includes(value.toUpperCase())
+        }
+        // return product[key] === value;
       }
     });
   });
