@@ -124,10 +124,12 @@ const FilterPanel = ({ data }) => {
     if (e.target.checked) {
       // dispatch(changeFilters({key: keyF, value: item}));
       // console.log('fp memo');
-      dispatch(changeFilters({key:"memo", value:{key: keyF, value: item}}));
+      // dispatch(changeFilters({key:"memo", value:{key: keyF, value: item}}));
+      dispatch(changeFilters({ key: "memo", value: item }));
     } else {
       // dispatch(deleteFilters({key: keyF, value: item}));
-      dispatch(deleteFilters({key:"memo", value:{key: keyF, value: item}}));
+      // dispatch(deleteFilters({key:"memo", value:{key: keyF, value: item}}));
+      dispatch(deleteFilters({ key:"memo", value: item }));
     }
   };
 
