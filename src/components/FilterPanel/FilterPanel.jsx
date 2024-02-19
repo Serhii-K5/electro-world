@@ -120,7 +120,8 @@ const FilterPanel = ({ data }) => {
   //   setIsCheckBoxes(!isCheckBoxes);
   // };
 
-  const changeCheckbox = (keyF, item, e) => {
+  // const changeCheckbox = (keyF, item, e) => {
+  const changeCheckbox = (item, e) => {
     if (e.target.checked) {
       // dispatch(changeFilters({key: keyF, value: item}));
       // console.log('fp memo');
@@ -195,7 +196,8 @@ const FilterPanel = ({ data }) => {
             <Ul>
               {value.map((item, index) => (
                 <Li key={index}>
-                  <input type="checkbox" id={`${key}-${index}`} value={item} defaultChecked={toggleChecked(key, item, index)} onClick={(e) => changeCheckbox(key, item, e)}/>
+                  {/* <input type="checkbox" id={`${key}-${index}`} value={item} defaultChecked={toggleChecked(key, item, index)} onClick={(e) => changeCheckbox(key, item, e)}/> */}
+                  <input type="checkbox" id={`${key}-${index}`} value={item} defaultChecked={toggleChecked(key, item, index)} onClick={(e) => changeCheckbox(item, e)}/>
                   <label htmlFor={`${key}-${index}`}>{item}</label>
                 </Li>
               ))}
