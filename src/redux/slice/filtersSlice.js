@@ -5,7 +5,20 @@ const sliceFilters = createSlice({
   initialState: {
     items: [],
   },
-  reducers: {
+  reducers: {    
+    addFilters(state, action) {
+      const { key, value } = action.payload;
+      // Проверяем, существует ли уже объект с таким ключом
+      const existingFilterIndex = state.items.findIndex(filter => filter.key === key);
+
+      if (existingFilterIndex !== -1) {
+        // Если ключ существует, обновляем значение
+        state.items[existingFilterIndex].value.push(value);
+      } else {
+        // Если ключа нет, добавляем новый объект
+        state.items.push({ key, value });
+      }
+    },
     changeFilters(state, action) {
       const { key, value } = action.payload;
       // Проверяем, существует ли уже объект с таким ключом
@@ -37,5 +50,5 @@ const sliceFilters = createSlice({
   },
 });
 
-export const { changeFilters, deleteFilters } = sliceFilters.actions;
+export const { addFilters, changeFilters, deleteFilters } = sliceFilters.actions;
 export const filtersReducer = sliceFilters.reducer;

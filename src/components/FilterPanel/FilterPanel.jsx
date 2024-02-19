@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectFilters } from 'redux/selectors';
 // import { selectMemoFilters } from 'redux/selectors';
 // import { selectExpanded } from 'redux/selectors';
-import { changeFilters, deleteFilters } from "redux/slice/filtersSlice";
+import { addFilters, changeFilters, deleteFilters } from "redux/slice/filtersSlice";
 // import { changeExpanded } from "redux/slice/expandedSlice";
 // import { changeMemoFilters } from "redux/slice/memofiltersSlice";
 
@@ -125,7 +125,8 @@ const FilterPanel = ({ data }) => {
       // dispatch(changeFilters({key: keyF, value: item}));
       // console.log('fp memo');
       // dispatch(changeFilters({key:"memo", value:{key: keyF, value: item}}));
-      dispatch(changeFilters({ key: "memo", value: item }));
+      // dispatch(changeFilters({ key: "memo", value: item }));
+      dispatch(addFilters({ key: "memo", value: item }));
     } else {
       // dispatch(deleteFilters({key: keyF, value: item}));
       // dispatch(deleteFilters({key:"memo", value:{key: keyF, value: item}}));

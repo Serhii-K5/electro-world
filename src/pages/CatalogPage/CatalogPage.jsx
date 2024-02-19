@@ -72,21 +72,17 @@ const CatalogCarsPage = () => {
 
 // const applyFilters = (products, CurentFilters) => {
 const applyFilters = (CurentProducts, CurentFilters) => {
-  // return products.filter(product => {
-  // console.log(typeof CurentProducts);
   return CurentProducts.filter(product => {
     // Применяем каждый фильтр к продукту
-    // console.log(typeof CurentFilters);
     return CurentFilters.every(filter => {
-      // console.log(filter, ' - ', typeof filter);
       const { key, value } = filter;
 
       // Обрабатываем различные типы фильтров
       if (Array.isArray(value)) {
         // Если значение фильтра - массив, проверяем, находится ли элемент в диапазоне
-        
         if (Array.isArray(value[0])) { 
-          // Если числовых массивов несколько, то применить перебор
+        //   // Если числовых массивов несколько, то применить перебор
+          // Если  массивов несколько, то применить перебор
           let result = true;
           value.map(el => {
             const [min, max] = el;
@@ -95,52 +91,10 @@ const applyFilters = (CurentProducts, CurentFilters) => {
           return result;
         } else {
           const [min, max] = value;
-          // return product[key] >= min && product[key] <= max;
           return (min === undefined || product[key] >= min) && (max === undefined || product[key] <= max);
-      //     if (filter.key === 'price') {
-      //   // Фильтр по цене
-      //   const [min, max] = filter.value;
-      //   const productPrice = product.price;
-      //   return (min === undefined || productPrice >= min) && (max === undefined || productPrice <= max);
-      // } else {
-      //   // Фильтр по другим свойствам
-      //   return product[filter.key] === filter.value;
-      // }
-        
-        
         };
       } else if (typeof value === 'object' && value !== null) {
         // Если значение фильтра - объект, рекурсивно применяем фильтры к вложенному объекту
-        
-        // // const fn = () => {
-        // //   // const arrFull = CreateMemoArray(product[key]);
-        // //   // const aa = arrFull.map(item => item.value)
-        // //   // const a = arrFull[0].value;
-        // //   // const arr0 = Object.keys(arrFull);
-        // //   // const arr = Object.values(arrFull);
-        // //   // // const arr0 = Object.keys(arrFull);
-
-        // //   const arr = CreateMemoArray(product[key]).map(item => item.value);
-        // //   const aar = { key: key, value: arr };
-        // //   return { key: key, value: arr };
-        // // }
-        
-        // // // return applyFilters([product[key]], value).length > 0;
-        // // console.log(typeof value)
-        // // const tempArray = typeof product[key] === 'object' ? product[key] : CreateMemoArray(product[key]);
-        // // const tempArray = typeof product[key] === 'object' ? product[key] : fn();
-        // // const tempArray = typeof product[key] === 'object' ? product[key] : { key: key, value: product[key] };
-        // const tempArray = typeof product[key] === 'object' ? product[key] : { key, product[key] };
-
-        // // // const productBeingChecked = typeof product[key] === 'object' ? product[key] : { key: key, value: product[key] };
-        // // // return applyFilters(product[key], value).length > 0;
-        // // return applyFilters(tempArray, value).length > 0;        
-        // if (Number.isFinite(value)) {
-        //    return applyFilters(tempArray, [value, value]).length > 0;
-        // } else {
-        //   return applyFilters(tempArray, value).length > 0;
-        // };   
-        
         if (typeof product[key] === 'object') {
           if (Number.isFinite(value)) {
             return applyFilters(product[key], [value, value]).length > 0;
@@ -150,35 +104,17 @@ const applyFilters = (CurentProducts, CurentFilters) => {
         } else {
           return product[key].toUpperCase().includes(value.toUpperCase())
         }
-
-
-        // const ss = [value, value];
-        // return applyFilters(tempArray, ss).length > 0;
       } else if (value === "") {
         return true;
       } else {
         // Для остальных случаев просто сравниваем значения
-        // if (key === 'memo') {
-        //   return product.memo.toUpperCase().includes(value.toUpperCase())
-        // }else if (key === 'name') {
-        //   return product.code.toUpperCase().includes(value.toUpperCase()) || product.name.toUpperCase().includes(value.toUpperCase())
-        // }
-        if (key === 'name') {
+       if (key === 'name') {
           return product.code.toUpperCase().includes(value.toUpperCase()) || product.name.toUpperCase().includes(value.toUpperCase())
-        }
-        // if (product[key]) {
-        //   return product[key] === value;
-        // } else {
-        //   return product.memo.toUpperCase().includes(value.toUpperCase())
-        // }
-        if (product[key]) {
-          // return product[key] === value;
+        } else if (product[key]) {
           return product[key].toUpperCase().includes(value.toUpperCase());
         } else {
           return false;
         }
-        
-        // return product[key] === value;
       }
     });
   });
