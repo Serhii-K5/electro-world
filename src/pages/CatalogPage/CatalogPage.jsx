@@ -166,11 +166,18 @@ const applyFilters = (CurentProducts, CurentFilters) => {
         if (key === 'name') {
           return product.code.toUpperCase().includes(value.toUpperCase()) || product.name.toUpperCase().includes(value.toUpperCase())
         }
+        // if (product[key]) {
+        //   return product[key] === value;
+        // } else {
+        //   return product.memo.toUpperCase().includes(value.toUpperCase())
+        // }
         if (product[key]) {
-          return product[key] === value;
+          // return product[key] === value;
+          return product[key].toUpperCase().includes(value.toUpperCase());
         } else {
-          return product.memo.toUpperCase().includes(value.toUpperCase())
+          return false;
         }
+        
         // return product[key] === value;
       }
     });
