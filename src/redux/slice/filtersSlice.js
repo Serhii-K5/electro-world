@@ -17,8 +17,9 @@ const sliceFilters = createSlice({
       } else {
         // Если ключа нет, добавляем новый объект
         // state.items.push({ key, value });
-        const arr = [value];
-        state.items.push({ key, arr });
+        // const arr = [value];
+        // state.items.push({ key, arr });
+        state.items.push({ key: key, value: [value] });
       }
     },
     changeFilters(state, action) {
@@ -32,8 +33,9 @@ const sliceFilters = createSlice({
       } else {
         // Если ключа нет, добавляем новый объект
         // state.items.push({ key, value });
-        const arr = [value];
-        state.items.push({ key, arr });
+        // const arr = [value];
+        // state.items.push({ key, arr });
+        state.items.push({ key: key, value: [value] });
       }
     },
     deleteFilters(state, action) {
@@ -43,18 +45,21 @@ const sliceFilters = createSlice({
       const existingFilterIndex = state.items.findIndex(filter => filter.key === key);
       if (existingFilterIndex !== -1) {
         
-        state.items.splice(existingFilterIndex, 1);
+        // state.items.splice(existingFilterIndex, 1);
         
-        // if (state.items[index].value.length > 1) {
-        //   const pos = state.items[index].value.findIndex(item => item === action.payload.value);        
-        //   state.items[index].value.splice(pos, 1);
-        // } else {
-        //   state.items.splice(index, 1);
-        // }
+        // // if (state.items[index].value.length > 1) {
+        // //   const pos = state.items[index].value.findIndex(item => item === action.payload.value);        
+        // //   state.items[index].value.splice(pos, 1);
+        // // } else {
+        // //   state.items.splice(index, 1);
+        // // }
         const existingFilterValueIndex = state.items[existingFilterIndex].value.findIndex(filter => filter === value);
         if (existingFilterValueIndex !== -1) {
           state.items[existingFilterIndex].value.splice(existingFilterValueIndex, 1);
+        } else {
+          state.items.splice(existingFilterIndex, 1);
         }
+
       }
     },
   },
