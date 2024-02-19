@@ -13,17 +13,16 @@ const sliceFilters = createSlice({
 
       if (existingFilterIndex !== -1) {
         // Если ключ существует, обновляем значение
-        state.items[existingFilterIndex].value.push(value);
+        const existingFilterValueIndex = state.items[existingFilterIndex].value.findIndex(filter => filter === value);
+        if (existingFilterValueIndex === -1) {          
+          state.items[existingFilterIndex].value.push(value);
+        }
       } else {
         // Если ключа нет, добавляем новый объект
-        // // state.items.push({ key, value });
-        // // const arr = [value];
-        // // state.items.push({ key, arr });
-        // state.items.push({ key: key, value: [value] });
-        const existingFilterValueIndex = state.items[existingFilterIndex].value.findIndex(filter => filter === value);
-        if (existingFilterValueIndex === -1) {
-          state.items.push({ key: key, value: [value] });
-        }
+        // state.items.push({ key, value });
+        // const arr = [value];
+        // state.items.push({ key, arr });
+        state.items.push({ key: key, value: [value] });
       }
     },
     changeFilters(state, action) {
