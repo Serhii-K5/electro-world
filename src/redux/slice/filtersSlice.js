@@ -16,7 +16,9 @@ const sliceFilters = createSlice({
         state.items[existingFilterIndex].value.push(value);
       } else {
         // Если ключа нет, добавляем новый объект
-        state.items.push({ key, value });
+        // state.items.push({ key, value });
+        const arr = [value];
+        state.items.push({ key, arr });
       }
     },
     changeFilters(state, action) {
@@ -26,17 +28,21 @@ const sliceFilters = createSlice({
 
       if (existingFilterIndex !== -1) {
         // Если ключ существует, обновляем значение
-        state.items[existingFilterIndex].value = value;
+        state.items[existingFilterIndex].value = [value];
       } else {
         // Если ключа нет, добавляем новый объект
-        state.items.push({ key, value });
+        // state.items.push({ key, value });
+        const arr = [value];
+        state.items.push({ key, arr });
       }
     },
     deleteFilters(state, action) {
-      const { key } = action.payload;
+      // const { key } = action.payload;
+      const { key, value } = action.payload;
       // Проверяем, существует ли уже объект с таким ключом
       const existingFilterIndex = state.items.findIndex(filter => filter.key === key);
       if (existingFilterIndex !== -1) {
+        
         state.items.splice(existingFilterIndex, 1);
         
         // if (state.items[index].value.length > 1) {
@@ -45,6 +51,10 @@ const sliceFilters = createSlice({
         // } else {
         //   state.items.splice(index, 1);
         // }
+        const existingFilterValueIndex = state.items[existingFilterIndex].value.findIndex(filter => filter === value);
+        if (existingFilterValueIndex !== -1) {
+          state.items[existingFilterIndex].value.splice(existingFilterValueIndex, 1);
+        }
       }
     },
   },
