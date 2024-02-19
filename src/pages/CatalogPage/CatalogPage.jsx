@@ -124,6 +124,10 @@ const applyFilters = (CurentProducts, CurentFilters) => {
       } else {
         // Для остальных случаев просто сравниваем значения
         if (key === 'memo') {
+          console.log(value.toUpperCase());
+          const m = product.memo.toUpperCase();
+          const inc = m.includes(value.toUpperCase());
+          console.log(inc);
           return product.memo.toUpperCase().includes(value.toUpperCase())
         }else if (key === 'name') {
           return product.code.toUpperCase().includes(value.toUpperCase()) || product.name.toUpperCase().includes(value.toUpperCase())
