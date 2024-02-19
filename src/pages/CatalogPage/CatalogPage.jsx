@@ -113,11 +113,14 @@ const applyFilters = (CurentProducts, CurentFilters) => {
         // Если значение фильтра - объект, рекурсивно применяем фильтры к вложенному объекту
         
         const fn = () => {
-          const arrFull = CreateMemoArray(product[key]);
-          const a = arrFull[0].value;
-          const arr0 = Object.keys(arrFull.value);
-          const arr = Object.values(arrFull);
+          // const arrFull = CreateMemoArray(product[key]);
+          // const aa = arrFull.map(item => item.value)
+          // const a = arrFull[0].value;
           // const arr0 = Object.keys(arrFull);
+          // const arr = Object.values(arrFull);
+          // // const arr0 = Object.keys(arrFull);
+
+          const arr = CreateMemoArray(product[key]).map(item => item.value)
           return { key: key, value: arr };
         }
         
@@ -129,8 +132,13 @@ const applyFilters = (CurentProducts, CurentFilters) => {
         // // const productBeingChecked = typeof product[key] === 'object' ? product[key] : { key: key, value: product[key] };
         // // return applyFilters(product[key], value).length > 0;
         // return applyFilters(tempArray, value).length > 0;        
-        const ss = [value, value];
-        return applyFilters(tempArray, ss).length > 0;
+        if (Number.isFinite(value)) {
+           return applyFilters(tempArray, [value, value]).length > 0;
+        } else {
+          return applyFilters(tempArray, value).length > 0;
+        };        
+        // const ss = [value, value];
+        // return applyFilters(tempArray, ss).length > 0;
       } else if (value === "") {
         return true;
       } else {
