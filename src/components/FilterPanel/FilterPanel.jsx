@@ -1,15 +1,8 @@
 import { useEffect, useState } from 'react';
-// import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { useDispatch } from 'react-redux';
-// import { selectFilters, selectFilteredProducts } from 'redux/selectors';
 import { selectFilters } from 'redux/selectors';
-// import { selectMemoFilters } from 'redux/selectors';
-// import { selectExpanded } from 'redux/selectors';
 // import { addFilters, changeFilters, deleteFilters } from "redux/slice/filtersSlice";
 import { addFilters, deleteFilters } from "redux/slice/filtersSlice";
-// import { changeExpanded } from "redux/slice/expandedSlice";
-// import { changeMemoFilters } from "redux/slice/memofiltersSlice";
 
 
 import {
