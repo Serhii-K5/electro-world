@@ -80,12 +80,12 @@ const applyFilters = (CurentProducts, CurentFilters) => {
       if (value === "") {
         return true;
       } else if (Number.isFinite(product[key])) { 
-        if (Number.isFinite(value[0])) {
+        if (Number.isFinite(value[0][0])) {
           const [min, max] = value;
           return (min === undefined || product[key] >= min) && (max === undefined || product[key] <= max);
-        } else if (typeof value[0] === 'object') {
+        } else if (typeof value[0][0] === 'object') {
           // Если значение фильтра - объект, рекурсивно применяем фильтры к вложенному объекту
-          return applyFilters(product[key], value).length > 0;
+          return applyFilters(product[key], value[0]).length > 0;
         } else {
           return false;
         };          
