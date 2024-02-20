@@ -6,8 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectFilters } from 'redux/selectors';
 // import { selectMemoFilters } from 'redux/selectors';
 // import { selectExpanded } from 'redux/selectors';
-// import { addFilters, changeFilters, deleteFilters } from "redux/slice/filtersSlice";
-import { addFilters, deleteFilters } from "redux/slice/filtersSlice";
+import { addFilters, changeFilters, deleteFilters } from "redux/slice/filtersSlice";
 // import { changeExpanded } from "redux/slice/expandedSlice";
 // import { changeMemoFilters } from "redux/slice/memofiltersSlice";
 
@@ -24,6 +23,7 @@ import shevron from "assets/images/svg/chevron-down.svg";
 
 import CreateMemoArray from "utilites/createMemoArray";
 
+const arr = [];
 
 // const FilterPanel = ({ data, onFilter }) => {
 const FilterPanel = ({ data }) => {
@@ -31,7 +31,6 @@ const FilterPanel = ({ data }) => {
   const filters = useSelector(selectFilters);
 
   const [expanded, setExpanded] = useState({});
-  const [filtersArray, setFiltersArray] = useState([]);
 
   // console.log(filters);
 
@@ -40,12 +39,48 @@ const FilterPanel = ({ data }) => {
   }, []);
 
   // useEffect(() => {
+  //   // handleFilter();
   //   memoArray();
-  // }, filtersArray);
+  //   // dispatch(changeFilters({key: 'name', value: ''}));
+
+  //   // setMemoFilters(filters);
+
+  // }, [filters]);
+
+    // const createMemoArr = memo => {
+    //   return (memo + ';')
+    //     .replace(';;', '')
+    //     .split(';')
+    //     .map(item => {
+    //       const arr = item.split(':');
+    //       return arr > 0 ? { key: arr[0].trim(), value: arr.length > 0 ? arr[1].trim() : '' } : "";
+    //     });
+    // };    
+  
+  // const filtersUpdate = () => {
+  //   memoFilters.map(item => 
+  //     dispatch(
+  //       changeMemoFilters({
+  //         key: item.key.trim(),
+  //         // value: [item.value.trim()],
+  //         value: item.value,
+  //       })
+  //     )
+  //   )
+  // };
+
+  // const filtersUpdate = () => {
+  //   tempMemoFilters.map(item =>
+  //     dispatch(
+  //       changeMemoFilters({
+  //         key: item.key.trim(),
+  //         value: item.value,
+  //       })
+  //     )
+  //   );
+  // };
 
   const memoArray = () => {
-    // const arr = [];
-    const arr = filtersArray;
     data.map(item => {
       // расшифровует мемо и создаёт массив
       const tempArray = CreateMemoArray(item.memo);
@@ -77,20 +112,45 @@ const FilterPanel = ({ data }) => {
             }
           }
         }
-        setFiltersArray(arr);
         return 0;
       });
       return 0;
     });
   };
   
+  // const handleClick = () => {
+  //   setIsCheckBoxes(!isCheckBoxes);
+  // };
+
+  // const changeCheckbox = (keyF, item, e) => {
   const changeCheckbox = (item, e) => {
     if (e.target.checked) {
+      // dispatch(changeFilters({key: keyF, value: item}));
+      // console.log('fp memo');
+      // dispatch(changeFilters({key:"memo", value:{key: keyF, value: item}}));
+      // dispatch(changeFilters({ key: "memo", value: item }));
       dispatch(addFilters({ key: "memo", value: item }));
     } else {
+      // dispatch(deleteFilters({key: keyF, value: item}));
+      // dispatch(deleteFilters({key:"memo", value:{key: keyF, value: item}}));
       dispatch(deleteFilters({ key:"memo", value: item }));
     }
   };
+
+  
+  // const [checkedItems, setCheckedItems] = useState({});
+
+  // const handleCheckboxChange = (optionKey, item) => {
+  //   setCheckedItems(prevCheckedItems => ({
+  //     ...prevCheckedItems,
+  //     [optionKey]: {
+  //       ...(prevCheckedItems[optionKey] || {}),
+  //       [item]: !prevCheckedItems[optionKey]?.[item],
+  //     },
+  //   }));    
+  // };
+  
+  
 
   const toggleDropdown = (key) => {
     setExpanded(prevState => ({
@@ -99,16 +159,36 @@ const FilterPanel = ({ data }) => {
     }));
   };
 
-  const toggleChecked = (item1) => {
+  const toggleChecked = (key, item1) => {
     //Расстановка галочек
-    return filters.map(nameFilter => nameFilter.value).toString().includes(item1);
+    const arr1 = filters.map(nameFilter => nameFilter.key);
+    const index = arr1.findIndex(item => item === key);
+    
+    const result = index < 0 ? false : filters[index].value.includes(item1);
+    return result;
+
   };
 
 
+
+  // const toggleDropdown = (key) => {
+  //   // const ss = (prevState => ({
+  //   //   ...prevState,
+  //   //   [key]: !prevState[key],
+  //   // }));
+  //   // // dispatch(changeExpanded(ss));
+  //   // dispatch(changeExpanded(key));
+  //   // // dispatch(changeExpanded(prevState => ({
+  //     ...prevState,
+  //     [key]: !prevState[key],
+  //   })));
+  // };
+
+  
   return (
     <ul>
-      {filtersArray.length > 0 &&
-        filtersArray.map(({ key, value }) => (
+      {arr.length > 0 &&
+        arr.map(({ key, value }) => (
         <LiBlock key={key}>
           <Div onClick={(e) => { toggleDropdown(key)}} >
             <img src={shevron} alt="shevron" style={expanded[key] ? { rotate: '180deg' } : { rotate: '0deg' }} />
@@ -118,7 +198,8 @@ const FilterPanel = ({ data }) => {
             <Ul>
               {value.map((item, index) => (
                 <Li key={index}>
-                  <input type="checkbox" id={`${key}-${index}`} value={item} defaultChecked={toggleChecked(item)} onClick={(e) => changeCheckbox(item, e)}/>
+                  {/* <input type="checkbox" id={`${key}-${index}`} value={item} defaultChecked={toggleChecked(key, item, index)} onClick={(e) => changeCheckbox(key, item, e)}/> */}
+                  <input type="checkbox" id={`${key}-${index}`} value={item} defaultChecked={toggleChecked(key, item, index)} onClick={(e) => changeCheckbox(item, e)}/>
                   <label htmlFor={`${key}-${index}`}>{item}</label>
                 </Li>
               ))}
