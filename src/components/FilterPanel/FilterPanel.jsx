@@ -26,7 +26,6 @@ const FilterPanel = ({ data }) => {
   const [expanded, setExpanded] = useState({});
   const [filtersArray, setFiltersArray] = useState([]);
 
-  // console.log(filters);
 
   useEffect(() => {
     memoArray();
