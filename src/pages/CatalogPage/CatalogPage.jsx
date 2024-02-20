@@ -76,46 +76,23 @@ const applyFilters = (CurentProducts, CurentFilters) => {
     // Применяем каждый фильтр к продукту
     return CurentFilters.every(filter => {
       const { key, value } = filter;
-
-      // Обрабатываем различные типы фильтров
-      if (Array.isArray(value)) {
-        // Если значение фильтра - массив, проверяем, находится ли элемент в диапазоне
-        if (Array.isArray(value[0])) { 
-        //   // Если числовых массивов несколько, то применить перебор
-          // Если  массивов несколько, то применить перебор
-          let result = true;
-          value.map(el => {
-            const [min, max] = el;
-            return result = result && product[key] >= min && product[key] <= max;
-          });
-          return result;
-        } else {
+      
+      if (value === "") {
+        return true;
+      } else if (Number.isFinite(product[key])) { 
+        if (Number.isFinite(value[0])) {
           const [min, max] = value;
           return (min === undefined || product[key] >= min) && (max === undefined || product[key] <= max);
-        };
-      } else if (typeof value === 'object' && value !== null) {
-        // Если значение фильтра - объект, рекурсивно применяем фильтры к вложенному объекту
-        if (typeof product[key] === 'object') {
-          if (Number.isFinite(value)) {
-            return applyFilters(product[key], [value, value]).length > 0;
-          } else {
-            return applyFilters(product[key], value).length > 0;
-          };  
-        } else {
-          return product[key].toUpperCase().includes(value.toUpperCase())
-        }
-      } else if (value === "") {
-        return true;
-      } else {
-        // Для остальных случаев просто сравниваем значения
-       if (key === 'name') {
-          return product.code.toUpperCase().includes(value.toUpperCase()) || product.name.toUpperCase().includes(value.toUpperCase())
-        } else if (product[key]) {
-          return product[key].toUpperCase().includes(value.toUpperCase());
+        } else if (typeof value[0] === 'object') {
+          // Если значение фильтра - объект, рекурсивно применяем фильтры к вложенному объекту
+          return applyFilters(product[key], value).length > 0;
         } else {
           return false;
-        }
-      }
+        };          
+      } else {
+        const filtersString = filters.map(nameFilter => nameFilter.value).toString();
+        return filtersString !== '' ? filtersString.toUpperCase.includes(product[key].toUpperCase()) : true;
+      }       
     });
   });
 };
