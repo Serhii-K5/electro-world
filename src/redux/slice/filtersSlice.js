@@ -44,8 +44,9 @@ const sliceFilters = createSlice({
       // Проверяем, существует ли уже объект с таким ключом
       const existingFilterIndex = state.items.findIndex(filter => filter.key === key);
       if (existingFilterIndex !== -1) {
+        // Проверяем, существует ли уже такое значение в этом объекте
         const existingFilterValueIndex = state.items[existingFilterIndex].value.findIndex(filter => filter === value);
-        if (existingFilterValueIndex !== -1) {
+        if (existingFilterValueIndex !== -1 && state.items[existingFilterIndex].value.length > 1) {
           state.items[existingFilterIndex].value.splice(existingFilterValueIndex, 1);
         } else {
           state.items.splice(existingFilterIndex, 1);
