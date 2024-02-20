@@ -80,8 +80,10 @@ const applyFilters = (CurentProducts, CurentFilters) => {
       if (value === "") {
         return true;
       } else if (Number.isFinite(product[key])) { 
-        if (Number.isFinite(value[0][0])) {
-          const [min, max] = value;
+        if (Number.isFinite(value[0])) {
+          return (value[0] === undefined || product[key] === value[0]);
+        } else if (Number.isFinite(value[0][0])) {
+          const [min, max] = value[0];
           return (min === undefined || product[key] >= min) && (max === undefined || product[key] <= max);
         } else if (typeof value[0][0] === 'object') {
           // Если значение фильтра - объект, рекурсивно применяем фильтры к вложенному объекту
@@ -90,8 +92,22 @@ const applyFilters = (CurentProducts, CurentFilters) => {
           return false;
         };          
       } else {
-        const filtersString = filters.map(nameFilter => nameFilter.value).toString();
-        return filtersString !== '' ? filtersString.toUpperCase.includes(product[key].toUpperCase()) : true;
+        const result = () => {          
+          // return filters.some((nameFilter, index) => {
+          return value.some((nameFilter, index) => {
+            const a = nameFilter.value !== '' && product[key].toUpperCase();
+            // const b = a.includes(nameFilter.value[index].toUpperCase());
+            // return nameFilter.value !== '' && product[key].toUpperCase().includes(nameFilter.value.toUpperCase());
+            const b = a.includes(nameFilter.toUpperCase());
+            return nameFilter.value !== '' && product[key].toUpperCase().includes(nameFilter.toUpperCase());
+          })
+        };
+
+        // return product[key] !== '' ? product[key].toUpperCase().includes(product[key].toUpperCase()) : true;
+        return product[key] !== '' ? result() : true;
+
+        // const filtersString = filters.map(nameFilter => nameFilter.value).toString();
+        // return filtersString !== '' ? filtersString.toUpperCase().includes(product[key].toUpperCase()) : true;
       }       
     });
   });
