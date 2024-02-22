@@ -28,26 +28,27 @@ const FilterPanel = ({ data }) => {
 
 
   useEffect(() => {
-    memoArray();
+    memoArray(filtersArray);
   }, []);
 
-  const sdf = () => {
-    setFiltersArray([]);
-  }
+  // const sdf = () => {
+  //   setFiltersArray([]);
+  // }
   
   useEffect(() => {
     // setFiltersArray([]);
-    sdf();
-    memoArray();
+    // sdf();
+    // console.log(filtersArray);
+    memoArray([]);
   }, [data]);
 
   // useEffect(() => {
   //   memoArray();
   // }, filtersArray);
 
-  const memoArray = () => {
+  const memoArray = (arr) => {
     // const arr = [];
-    const arr = filtersArray;
+    // const arr = filtersArray;
     data.map(item => {
       // расшифровует мемо и создаёт массив
       const tempArray = CreateMemoArray(item.memo);
