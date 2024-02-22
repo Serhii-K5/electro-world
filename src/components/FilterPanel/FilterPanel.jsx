@@ -31,6 +31,16 @@ const FilterPanel = ({ data }) => {
     memoArray();
   }, []);
 
+  const sdf = () => {
+    setFiltersArray([]);
+  }
+  
+  useEffect(() => {
+    // setFiltersArray([]);
+    sdf();
+    memoArray();
+  }, [data]);
+
   // useEffect(() => {
   //   memoArray();
   // }, filtersArray);
