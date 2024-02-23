@@ -79,10 +79,7 @@ const CatalogCarsPage = () => {
     };
     
     setFilteredData(applyFilters(products, filters));
-  }, [products, filters]);
-  
-  
-  
+  }, [products, filters]);  
 
   const onClickIncrease  = () => {
     activePage < filteredData.length / 8 && setActivePage(activePage + 1);
