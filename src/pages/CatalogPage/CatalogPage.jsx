@@ -45,11 +45,7 @@ const CatalogCarsPage = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    setFilteredData(applyFilters(products, filters));
-  }, [filters]);
-  
-
-  const applyFilters = (CurentProducts, CurentFilters) => {
+    const applyFilters = (CurentProducts, CurentFilters) => {
     return CurentProducts.filter(product => {
       // Применяем каждый фильтр к продукту
       return CurentFilters.every(filter => {
@@ -81,6 +77,12 @@ const CatalogCarsPage = () => {
       });
     });
   };
+    
+    setFilteredData(applyFilters(products, filters));
+  }, [products, filters]);
+  
+  
+  
 
   const onClickIncrease  = () => {
     activePage < filteredData.length / 8 && setActivePage(activePage + 1);
