@@ -115,10 +115,10 @@ const NavLinkBar = () => {
             {/* Home */}
             <sup>{lang[languages].NavLinkBar_home.toUpperCase()}</sup>
           </NavLinkStyle>
-          <Img src={electricity} alt="electricity symbol" />
+          {/* <Img src={electricity} alt="electricity symbol" />
           <NavLinkStyle to="/catalog">
             <sup>{lang[languages].NavLinkBar_catalog.toUpperCase()}</sup>
-          </NavLinkStyle>
+          </NavLinkStyle> */}
           <Img src={electricity} alt="electricity symbol" />
           <NavLinkStyle to="/orders">
             <sup>{lang[languages].NavLinkBar_orders.toUpperCase()}</sup>
