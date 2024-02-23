@@ -10,6 +10,16 @@ import AboutUsPage from 'pages/AboutUsPage/AboutUsPage';
 import DeliveryPage from 'pages/DeliveryPage/DeliveryPage';
 
 export default function App() {
+  // Обработчик события beforeunload
+  window.addEventListener('beforeunload', () => {
+    // Очистка нужных ключей в localStorage
+    localStorage.clear();
+    // localStorage.removeItem('orders');
+    // localStorage.removeItem('languages');
+    // localStorage.removeItem('directoryPath');
+    // localStorage.removeItem('categories');
+    // localStorage.removeItem('filters');
+  });
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
