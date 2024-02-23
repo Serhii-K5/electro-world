@@ -11,10 +11,10 @@ import {
   Strong,
   Ul,
   Li,
+  Span,
 } from './FilterPanel.styled';
 
 import shevron from "assets/images/svg/chevron-down.svg";
-
 import CreateMemoArray from "utilites/createMemoArray";
 
 
@@ -37,11 +37,9 @@ const FilterPanel = ({ data }) => {
 
   const memoArray = (arr) => {
     data.map(item => {
-      // расшифровует мемо и создаёт массив
       const tempArray = CreateMemoArray(item.memo);
 
       tempArray.flatMap(memoEl => {
-        // перебирает массив мемо по ключам
         if (memoEl && memoEl.key !== '') {
           const keyArr = arr.map(item => item.key);
           const index = keyArr.length > 0
@@ -51,19 +49,13 @@ const FilterPanel = ({ data }) => {
             : -1;
           
           if (index < 0) {
-            arr.push({ key: memoEl.key.trim(), value: [memoEl.value.trim()] });
+            arr.push({ key: memoEl.key.trim(), values: [{ value: memoEl.value.trim(), count: 1 }] }); // Добавляем количество пунктов в группе
           } else {
-            if (Number.isFinite(memoEl.value)) {
-              if (arr[index].value[0] > memoEl.value) {
-                arr[index].value[0] = memoEl.value;
-              } else if (arr[index].value[1] < memoEl.value) {
-                arr[index].value[1] = memoEl.value;
-              }
+            const pos = arr[index].values.findIndex(el => el.value === memoEl.value);
+            if (pos < 0) {
+              arr[index].values.push({ value: memoEl.value, count: 1 }); // Добавляем количество элементов пункта
             } else {
-              const pos = arr[index].value.findIndex(el => el === memoEl.value);
-              if (pos < 0) {
-                arr[index].value.push(memoEl.value);
-              }
+              arr[index].values[pos].count++; // Увеличиваем количество элементов пункта
             }
           }
         }
@@ -98,24 +90,28 @@ const FilterPanel = ({ data }) => {
   return (
     <ul>
       {filtersArray.length > 0 &&
-        filtersArray.map(({ key, value }) => (
+      filtersArray.map(({ key, values }) => (
         <LiBlock key={key}>
           <Div onClick={(e) => { toggleDropdown(key)}} >
             <img src={shevron} alt="shevron" style={expanded[key] ? { rotate: '180deg' } : { rotate: '0deg' }} />
-            <Strong> {key} </Strong>
+            {/* <Strong> {key} ({values.length}) </Strong> Отображаем количество пунктов */}
+            <Strong> {key} </Strong> {/* Отображаем количество пунктов */}
+            <Span>({values.length})</Span> {/* Отображаем количество пунктов */}
           </Div>
           {expanded[key] && (
             <Ul>
-              {value.map((item, index) => (
+              {values.map(({ value, count }, index) => ( 
+                // Отображаем количество элементов и их значения
                 <Li key={index}>
-                  <input type="checkbox" id={`${key}-${index}`} value={item} defaultChecked={toggleChecked(item)} onClick={(e) => changeCheckbox(item, e)}/>
-                  <label htmlFor={`${key}-${index}`}>{item}</label>
+                  <input type="checkbox" id={`${key}-${index}`} value={value} defaultChecked={toggleChecked(value)} onClick={(e) => changeCheckbox(value, e)}/>
+                  <label htmlFor={`${key}-${index}`}>{value} <Span>({count})</Span></label> {/* Отображаем количество элементов пункта */}
                 </Li>
               ))}
             </Ul>
           )}
         </LiBlock>
-      ))}
+      ))
+    }
     </ul>
   );
 };

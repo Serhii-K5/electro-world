@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+const transition = `250ms linear`;
 
 export const LiBlock = styled.li`
   border-top: 1px solid var(--bg-color-grey);
@@ -8,6 +9,7 @@ export const LiBlock = styled.li`
 export const Div = styled.div`
   display: flex;
   padding: 16px;
+
 `;
 
 export const Strong = styled.strong`
@@ -21,4 +23,11 @@ export const Ul = styled.ul`
 
 export const Li = styled.li`
   padding: 5px 0;
+  // transition: color ${transition};
+`;
+
+export const Span = styled.span`
+  padding-left: 10px;
+  color: var(--text-color-grey1);
+  // transition: color ${transition};
 `;

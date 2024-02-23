@@ -9,7 +9,7 @@ const createMemoArray = memo => {
         arr.length > 0 &&
         arr[0] !== '' && {
           key: arr[0].trim(),
-          value: arr.length > 0 ? arr[1].trim() : '',
+          value: arr.length > 0 ? arr[1].trim() : ''
         }
       );
     })
