@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const userLanguage = navigator.language;
+
 const sliceLanguage = createSlice({
   name: 'languages',
   initialState: {
@@ -7,7 +9,8 @@ const sliceLanguage = createSlice({
     // language: String,
     // language: 'UA',
     // language: '',
-    language: 0,
+    // language: 0,
+    language: userLanguage === 'ru' ? 1 : 0,
   },
   reducers: {
     changeLanguage(state, action) {
