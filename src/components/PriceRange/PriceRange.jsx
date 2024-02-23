@@ -129,7 +129,8 @@ const PriceRange = ({ data }) => {
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseup', handleMouseUp);
     };
-  }, [positionStart, positionMin, positionMax, maxPrice, minPrice, rangeWidth, inputValueMin, inputValueMax, isMouseDownMin, isMouseDownMax]);
+  // }, [positionStart, positionMin, positionMax, maxPrice, minPrice, rangeWidth, inputValueMin, inputValueMax, isMouseDownMin, isMouseDownMax]);
+  }, [isMouseDownMin, isMouseDownMax]);
 
   const changePositionMin = value => {
     if (value > inputValueMax) {
