@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFilters } from 'redux/selectors';
-// import { addFilters, changeFilters, deleteFilters } from "redux/slice/filtersSlice";
 import { addFilters, deleteFilters } from "redux/slice/filtersSlice";
 
 
