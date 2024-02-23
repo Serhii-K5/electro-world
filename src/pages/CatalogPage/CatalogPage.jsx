@@ -46,14 +46,14 @@ const CatalogCarsPage = () => {
 
   useEffect(() => {
     const applyFilters = (CurentProducts, CurentFilters) => {
-      return CurentProducts.filter(product => {
+      return (CurentProducts.filter(product => {
         // Применяем каждый фильтр к продукту
         return CurentFilters.every(filter => {
           const { key, value } = filter;
           
           if (value === "") {
             return true;
-          } else if (Number.isFinite(product[key])) { 
+          } else if (Number.isFinite(product[key])) {
             if (Number.isFinite(value[0])) {
               return (value[0] === undefined || product[key] === value[0]);
             } else if (Number.isFinite(value[0][0])) {
@@ -64,18 +64,18 @@ const CatalogCarsPage = () => {
               return applyFilters(product[key], value[0]).length > 0;
             } else {
               return false;
-            };          
+            };
           } else {
-            const result = () => {          
+            const result = () => {
               return value.some((nameFilter) => {
                 return nameFilter.value !== '' && product[key].toUpperCase().includes(nameFilter.toUpperCase());
               })
             };
 
             return product[key] !== '' ? result() : true;
-          }       
+          }
         });
-      });
+      }));
     };
     
     setFilteredData(applyFilters(products, filters));
