@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector} from 'react-redux';
+import { useState } from "react";
+import { useDispatch } from 'react-redux';
 import { changeDirectoryPath } from 'redux/slice/directoryPathSlice';
 import { Link } from 'react-router-dom';
 
@@ -15,7 +15,8 @@ import categories from 'assets/json/categories.json';
 // import { changeFilteredProducts } from 'redux/slice/filteredProductsSlice';
 
 
-const CategoryDropdownList = ({ parentId, onCloseModal}) => {
+// const CategoryDropdownList = ({ parentId, onCloseModal}) => {
+const CategoryDropdownList = ({ parentId}) => {
   const dispatch = useDispatch();
   // при реальном products.json исключить filteredData
   // const products = useSelector(selectProducts);

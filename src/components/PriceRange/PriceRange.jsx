@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { selectFilteredProducts, selectLanguages } from 'redux/selectors';
-// import { selectLanguages } from 'redux/selectors';
-import { selectLanguages, selectFilters } from 'redux/selectors';
+import { selectLanguages } from 'redux/selectors';
 import { searchMinMaxPrice } from 'utilites/searchMinMax';
 
 import {
@@ -16,7 +14,7 @@ import {
 } from './PriceRange.styled';
 
 // import { changeFilteredProducts } from 'redux/slice/filteredProductsSlice';
-import { changeFilters, deleteFilters } from "redux/slice/filtersSlice";
+import { changeFilters} from "redux/slice/filtersSlice";
 import { SHIFT_RANGE } from 'constants/constants';
 import lang from 'assets/json/language.json';
 
@@ -24,7 +22,6 @@ import products1 from '../../assets/json/products.json';
 
 const PriceRange = ({ data }) => {
   const dispatch = useDispatch();
-  const filters = useSelector(selectFilters);
   const filteredProducts = data.length > 0 ? data : products1;
   const languages = useSelector(selectLanguages);
 
@@ -43,40 +40,34 @@ const PriceRange = ({ data }) => {
   const [isMouseDownMax, setIsMouseDownMax] = useState(false);
 
   
-  const changeFilter = (min, max) => {
-    dispatch(changeFilters({ key: 'price', value: [min, max] }));
-  };
-
-  const findMinMaxPrice = () => {
-    const [min, max] = searchMinMaxPrice(filteredProducts);
-
-    setInputValueMin(min);
-    setInputValueMax(max);
-
-    changeFilter(min, max);
-    if (maxPrice !== max || minPrice !== min) {
-      changeFilter(min, max);
-      if (minPrice !== min) setMinPrice(min);
-      if (maxPrice !== max) setMaxPrice(max);
-    }
-  };
-
   useEffect(() => {
     const rangePriceElement = document.getElementById('range-price');
     const rangeWidth = rangePriceElement.clientWidth;
     setPositionStart(rangePriceElement.offsetParent.offsetLeft);
 
+    const changeFilter = (min, max) => {
+      dispatch(changeFilters({ key: 'price', value: [min, max] }));
+    };
+
+    const findMinMaxPrice = () => {
+      const [min, max] = searchMinMaxPrice(filteredProducts);
+
+      setInputValueMin(min);
+      setInputValueMax(max);
+
+      changeFilter(min, max);
+      if (maxPrice !== max || minPrice !== min) {
+        changeFilter(min, max);
+        if (minPrice !== min) setMinPrice(min);
+        if (maxPrice !== max) setMaxPrice(max);
+      }
+    };
+
     setRangeWidth(rangeWidth);
     setPositionMax(rangeWidth);
 
     findMinMaxPrice();
-  }, []);
-
-  // useEffect(() => {
-  //   const [min, max] = searchMinMaxPrice(filteredProducts);
-  //   setInputValueMin(min);
-  //   setInputValueMax(max);
-  // }, [filters]);
+  }, [dispatch, filteredProducts, rangeWidth, minPrice, maxPrice]);
 
   useEffect(() => {
     const [min, max] = searchMinMaxPrice(data);
@@ -90,7 +81,7 @@ const PriceRange = ({ data }) => {
       setPositionMin(0);
       setPositionMax(rangeWidth);
     }
-}, [data]);
+}, [maxPrice, minPrice, rangeWidth, data]);
   
   useEffect(() => {
     const handleMouseMove = e => {
@@ -138,7 +129,7 @@ const PriceRange = ({ data }) => {
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseup', handleMouseUp);
     };
-  }, [isMouseDownMin, isMouseDownMax]);
+  }, [positionStart, positionMin, positionMax, maxPrice, minPrice, rangeWidth, inputValueMin, inputValueMax, isMouseDownMin, isMouseDownMax]);
 
   const changePositionMin = value => {
     if (value > inputValueMax) {
@@ -223,9 +214,9 @@ const PriceRange = ({ data }) => {
   // const handleMouseUpMax = () => {
   //   setIsMouseDownMax(false);
   // };
-
+  
   const handleClickBtn = () => {
-    changeFilter(inputValueMin, inputValueMax);
+    dispatch(changeFilters({ key: 'price', value: [inputValueMin, inputValueMax] }));
   };
 
   return (

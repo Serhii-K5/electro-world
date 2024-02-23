@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectDirectoryPath } from "redux/selectors";
 // import cross from "assets/images/svg/cross.svg";
 import categories from 'assets/json/categories.json';
-import categoriesSelection from 'components/categoriesSelection/categoriesSelection';
+// import categoriesSelection from 'components/categoriesSelection/categoriesSelection';
 import { addDirectoryPath, deleteDirectoryPath } from 'redux/slice/directoryPathSlice';
 // import MessageModule from 'components/MessageModule/MessageModule';
 
