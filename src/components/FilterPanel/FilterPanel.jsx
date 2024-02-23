@@ -30,25 +30,12 @@ const FilterPanel = ({ data }) => {
   useEffect(() => {
     memoArray(filtersArray);
   }, []);
-
-  // const sdf = () => {
-  //   setFiltersArray([]);
-  // }
   
   useEffect(() => {
-    // setFiltersArray([]);
-    // sdf();
-    // console.log(filtersArray);
-    memoArray([]);
+     memoArray([]);
   }, [data]);
 
-  // useEffect(() => {
-  //   memoArray();
-  // }, filtersArray);
-
   const memoArray = (arr) => {
-    // const arr = [];
-    // const arr = filtersArray;
     data.map(item => {
       // расшифровует мемо и создаёт массив
       const tempArray = CreateMemoArray(item.memo);
