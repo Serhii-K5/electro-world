@@ -16,10 +16,6 @@ import { languagesReducer } from './slice/languageSlice';
 import { directoryPathReducer } from './slice/directoryPathSlice';
 import { categoriesReducer } from './slice/categorySlice';
 import { filtersReducer } from './slice/filtersSlice';
-// import { catalogReducer } from './slice/catalogSlice';
-// import { selectedElementReducer } from './slice/selectedElementSlice';
-// import { ordersAllReducer } from './slice/ordersAllSlice';
-// import formReducer from './sliceForm';
 
 const ordersPersistConfig = {
   key: 'orders',

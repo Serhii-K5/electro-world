@@ -1,23 +1,12 @@
-import { 
-  DivPagination,
-  DivShift,
-  DivPage,
-} from "./PaginationBar.styled";
+import React from 'react';
+import { DivPagination, DivShift, DivPage } from './PaginationBar.styled';
 
-const PaginationBar = (data, page) => {
-  const filteredData = data;
-  let activePage = page;
-  
-  const onClickIncrease = () => {
-    // filteredData && activePage < filteredData.length / 8 && setActivePage(activePage + 1);
-    filteredData && activePage < filteredData.length / 8 && (activePage += 1);
-  };
-  
-  const onClickDecrease  = () => {
-    // activePage > 0 && setActivePage(activePage - 1);
-    activePage > 0 && (activePage -= 1);
-  };
-
+const Pagination = ({
+  activePage,
+  onClickDecrease,
+  onClickIncrease,
+  filteredData,
+}) => {
   return (
     <DivPagination>
       {activePage > 1 && <DivShift onClick={onClickDecrease}>{"<<"}</DivShift>}
@@ -32,4 +21,4 @@ const PaginationBar = (data, page) => {
   );
 };
 
-export default PaginationBar();
+export default Pagination;
