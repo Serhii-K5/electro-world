@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import {transition} from "components/ConstComponentsStyle/ConstComponentsStyle.styled";
 
-const transition = `350ms linear`;
+const transitionShift = `350ms linear`;
 
 export const LiBlock = styled.li`
   border-top: 1px solid var(--bg-color-grey);
@@ -25,7 +26,7 @@ export const Ul = styled.ul`
   // padding: 0 16px 16px 16px;
   padding: 0 16px;
   overflow: hidden;
-  transition: max-height ${transition};
+  transition: max-height ${transitionShift};
 `;
 
 export const Li = styled.li`

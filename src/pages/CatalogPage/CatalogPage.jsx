@@ -16,6 +16,7 @@ import {
   BtnDiv,
 } from './CatalogPage.styled';
 
+
 import NavBar from 'components/NavBar/NavBar';
 import FilterPanel from 'components/FilterPanel/FilterPanel';
 
