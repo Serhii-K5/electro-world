@@ -4,9 +4,10 @@ import { Outlet, Link } from 'react-router-dom';
 import {
   Div,
   Header,
-  BgLogo,
-  TextLogo,
+  // BgLogo,
+  // TextLogo,
 } from "./Layout.styled";
+import Logo from "components/Logo/Logo";
 
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
 
@@ -41,11 +42,7 @@ export default function Layout() {
       <LanguageBar />
       <Div>
         <Header>
-          <BgLogo>
-            <TextLogo>
-              <b> Electro world </b>
-            </TextLogo>
-          </BgLogo>          
+          <Logo />
           <SearchField />
           <AdressBar />
           <Link to="/orders">
