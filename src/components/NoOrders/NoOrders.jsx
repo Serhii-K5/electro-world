@@ -17,8 +17,9 @@ const NoOrders = () => {
       <H3>{lang[languages].noOrders_textH3}.</H3>
       <H4>
         {lang[languages].noOrders_textH4_1}
-        <Link to="/catalog">
-          {lang[languages].layout_navLinkCatalog}
+        {/* <Link to="/catalog"> */}
+        <Link to="/categories">
+          {lang[languages].NavLinkBar_catalog1}
         </Link>
         {lang[languages].noOrders_textH4_2}.
       </H4>      

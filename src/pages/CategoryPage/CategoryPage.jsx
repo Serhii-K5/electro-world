@@ -1,5 +1,5 @@
 // import { useDispatch, useSelector } from "react-redux";
-// import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 // import { useDispatch } from "react-redux";
 // import { useEffect } from "react";
 // import { fetchProducts } from "redux/operations";
@@ -22,22 +22,34 @@ import NavBar from 'components/NavBar/NavBar';
 import CategoryCart from 'components/CategoryCart/CategoryCart';
 
 import categories from 'assets/json/categories.json';
+import Pagination from 'components/PaginationBar/PaginationBar';
 
 const CategoryPage = () => {
   // const dispatch = useDispatch();
   const categoryId = useSelector(selectCategories);
+  const [activePage, setActivePage] = useState(1);
+  const [selectedCategories, setSelectedCategories] = useState([]);  
+  
+  useEffect(() => {
+    setSelectedCategories(categories.filter(item =>
+        item.cat_parentId === categoryId
+      )
+    )
+  }, [categoryId]);
+  
+  const onClickIncrease  = () => {
+    activePage < selectedCategories.length / 8 && setActivePage(activePage + 1);
+  };
+  
+  const onClickDecrease  = () => {
+    activePage > 0 && setActivePage(activePage - 1);
+  };
 
-  // const handleClick = value => {
-  //   dispatch(changeCategory(value));
-  // };
 
   return (
     <>
       <NavBar />
-      {/* <Container> */}
-      {/* <h2>Категории</h2> */}
-      {/* {categories.length > 0 && ( */}
-      <Ul>
+      {/* <Ul style={{paddingBottom: "20px"}}>
         {categories.map(
           item =>
             item.cat_parentId === categoryId && (
@@ -46,10 +58,24 @@ const CategoryPage = () => {
               </li>
             )
         )}
+      </Ul> */}
+      <Ul style={{paddingBottom: "20px"}}>
+        {selectedCategories.map(
+          item => (
+            <li key={item.cat_id}>
+              <CategoryCart categoryName={item.cat_name} />
+            </li>
+          )
+        )}
       </Ul>
-      {/* {console.log(category)} */}
-      {/* )} */}
-      {/* </Container> */}
+      {selectedCategories.length > 0 && (            
+        <Pagination
+          activePage={activePage}
+          onClickDecrease={onClickDecrease}
+          onClickIncrease={onClickIncrease}
+          filteredData={selectedCategories}
+        />
+      )}
     </>
   );
 };

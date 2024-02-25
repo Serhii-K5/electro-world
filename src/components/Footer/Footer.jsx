@@ -26,7 +26,7 @@ const Footer = () => {
   }
   const languages = useSelector(selectLanguages);
   return (
-    <footer  style={{ backgroundColor: 'var(--text-color-primary-black)' }}>
+    <footer  style={{ marginTop: '25px', backgroundColor: 'var(--text-color-primary-black)' }}>
       <Container style={{ color: 'var(--text-color-white)' }} >
         <Section>
           <div style={{maxWidth: '490px', padding: '0 16px' }}>
