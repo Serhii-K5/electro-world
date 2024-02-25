@@ -2,9 +2,9 @@ import styled from "styled-components";
 import { transition } from 'components/ConstComponentsStyle/ConstComponentsStyle.styled';
 
 export const Ul = styled.ul `
-  margin: 0 auto;
+  // margin: 0 auto;
   padding: 5px 10px;
-  max-width: 1440px;
+  // max-width: 1440px;
   text-align: right;
   font-size: 16px;
 `
