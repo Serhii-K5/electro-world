@@ -4,7 +4,8 @@
   --bg-second: #F6F8FD;
   --bg-primary-green: #9EE2AC;
   --bg-second-green: #02BD2A;
-  --bg-second-orange: #F07555;
+  --bg-primary-orange: #f75f25;
+  --bg-second-orange: #f38e74;
   --bg-button-color: #3470FF;
   --bg-active-button-color: #0B44CD;
   --bg-overlay: #12141780;
@@ -18,7 +19,7 @@
   --text-color-blue: #3470FF;
   --text-color-active-blue: #0B44CD;
   --text-second-green: #02BD2A;
-  --text-second-orange: #F07555;
+  --text-second-orange: #f5542c;
 
   --input-background-color: #F7F7FB;
 }

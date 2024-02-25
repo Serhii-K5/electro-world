@@ -39,7 +39,11 @@ export default function Layout() {
   
   return (
     <>
-      <LanguageBar />
+      <div style={{display: 'flex', alignItems: 'center'}}>
+        {/* <div style={{padding: '3px 16px', color: 'var(--text-color-white)', backgroundColor: 'var(--bg-primary-orange)', border: 'solid 3px var(--bg-second-orange)', borderRadius: '5px'}}> Мінімальне замовлення - 300грн </div> */}
+        <div style={{padding: '3px 16px', color: 'var(--text-color-white)', backgroundColor: 'var(--bg-primary-orange)', border: 'solid 3px #F38E74', borderRadius: '5px'}}> Мінімальне замовлення - 300грн </div>
+        <LanguageBar />
+      </div>
       <Div>
         <Header>
           <Logo />

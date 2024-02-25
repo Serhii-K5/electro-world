@@ -1,132 +1,55 @@
 import styled from 'styled-components';
-import { NavLink } from "react-router-dom";
-import BgImg from "assets/images/auto/cars-rent.jpg";
-import { transition } from 'components/ConstComponentsStyle/ConstComponentsStyle.styled';
 
-// const transition = `250ms linear`;
-
-export const Ul = styled.ul`
-  display: flex;
-  justify-content: space-between;
-  padding: 16px 24px;
-  color: var(--text-color-blue);
-  
-  gap: 30px;
-  font-size: 30px;
-  // text-shadow: 1px 1px 0px rgba(0,0,0,0.5);
-  // background-color: rgba(0, 0, 0, 0.5);
-`;
-
-export const Container = styled.div`
-  margin: 0 auto;
-  max-width: 1440px;
-  padding: 50px 16px 24px;
-`;
 
 export const Div = styled.div`
-  position: relative;
-  padding: 0 16px;
-  width: 90%;
-  background: var(--text-color-white);
-  overflow: hidden;
-  
-  &:before {
-    content: ' ';
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 2;
-    opacity: 0.1;
-    background-image: url(${BgImg});
-    background-repeat: no-repeat;
-    background-position: 50% 0;
-    background-size: cover;
-  };
-`;
-
-export const H2 = styled.h2`
-  text-align: center;
-  font-size: 50px;
+  background-color: var(--bg-second);
+  font-size: 1.25rem;  
 `;
 
 export const Section = styled.section`
-  margin-top: 50px;
-  margin-bottom: 30px;
-  position: relative;
-  z-index: 3;
+  margin: 0px auto;
+  padding: 16px;
+  max-width: 1440px;  
 `;
 
-export const Img = styled.img`
-  width: 300px;
+export const P = styled.p`
+  padding: 8px 0;  
 `;
 
-export const Aside = styled.aside`
-  padding-left: 0.5rem;
-  margin-left: 0.5rem;
-  float: right;
-  box-shadow: inset 5px 0 5px -5px #29627e;
-  font-style: italic;
-  color: #29627e;
-
-  & > p {
-    margin: 0.5rem;
-  };
+export const Ul = styled.ul`
+  list-style: inside;
 `;
 
 export const Li = styled.li`
-  transition: font-size 4s 1s;
-
-  &:active,
-  &:focus,
-  &:hover {
-    color: var(--text-color-active-blue);
-    transform: scale(1.5);
-    font-size: 20px;    
-    // font-size: bold; 
-    // font-weight: bold;
-  };
+  padding: 0 16px;
 `;
 
-export const NavContainer = styled.nav`
-  display: flex;
-  margin: 0;  
-  align-items: flex-start;
-  gap: 15px;
-  flex-direction: column;
+export const H4 = styled.h4`
+  text-aligen: center;
+  padding: 32px 0;
 `;
 
-export const NavLinkStyle = styled(NavLink)`
-  color: #000;
-  position: relative;
-  font-size: 36px;
-  font-weight: 700;
-  text-shadow: 1px 1px 0px rgba(0,0,0,0.3);
-  transition: background-color ${transition};
 
-  &.active,
-  &:active,
-  &:focus,
-  &:hover {
-    color: var(--text-color-active-blue);
-  };
-`;
-
-export const Button = styled.button`
-  border: none;
-  background-color: transparent;
-  color: #000;
-  position: relative;
-  font-size: 36px;
-  font-weight: 700;
-  text-shadow: 1px 1px 0px rgba(0,0,0,0.3);
-  transition: background-color ${transition};
-
-  &:active,
-  &:focus,
-  &:hover {
-    color: var(--text-color-active-blue);
-  };
-`;
+// export const Div = styled.div`
+//   position: relative;
+//   padding: 0 16px;
+//   width: 90%;
+//   background: var(--text-color-white);
+//   overflow: hidden;
+  
+//   &:before {
+//     content: ' ';
+//     display: block;
+//     position: absolute;
+//     left: 0;
+//     top: 0;
+//     width: 100%;
+//     height: 100%;
+//     z-index: 2;
+//     opacity: 0.1;
+//     background-image: url(${BgImg});
+//     background-repeat: no-repeat;
+//     background-position: 50% 0;
+//     background-size: cover;
+//   };
+// `;
