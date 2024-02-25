@@ -68,7 +68,7 @@ const HomePage = () => {
   return (
     <>
       <p>Home page</p>
-      <h2 style={{margin: '50px auto', textAlign: 'center', fontSize: '50px'}}>The website is under construction</h2>
+      <h2 style={{margin: '50px auto', textAlign: 'center', fontSize: '50px'}}>Page under construction</h2>
     </>
   );
 };

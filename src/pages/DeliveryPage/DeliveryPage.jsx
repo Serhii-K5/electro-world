@@ -66,6 +66,7 @@ const DeliveryPage = () => {
   return (
     <>
       <p>Delivery page</p>
+      <h2 style={{margin: '50px auto', textAlign: 'center', fontSize: '50px'}}>Page under construction</h2>
       {/* <CarsSlider />
       <Container>
         <div style={{ display: 'flex' }}>
