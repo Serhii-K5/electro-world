@@ -1,64 +1,93 @@
+import { useState } from "react";
+import { useSelector } from 'react-redux';
+import { selectLanguages } from 'redux/selectors';
 import Logo from 'components/Logo/Logo';
-import { Container, NavLinkStyle } from "./Footer.styled";
+import MessageModule from "components/MessageModule/MessageModule";
+import AdressBar from 'components/AdressBar/AdressBar';
+import {
+  Container,
+  Section,
+  NavLinkStyle,
+  Span
+} from "./Footer.styled";
+
+import lang from "assets/json/language.json";
 
 
 const Footer = () => {
+  const [isModalShown, setIsModalShown] = useState(false);
+  
+  const onOpenModal = () => {
+    setIsModalShown(true);
+  };
+  
+  const onCloseModal = () => {
+    setIsModalShown(false);
+  }
+  const languages = useSelector(selectLanguages);
   return (
     <footer  style={{ backgroundColor: 'var(--text-color-primary-black)' }}>
       <Container style={{ color: 'var(--text-color-white)' }} >
-        <section style={{display: 'flex'}}>
-          <div style={{maxWidth: '490px', padding: '16px' }}>
+        <Section>
+          <div style={{maxWidth: '490px', padding: '0 16px' }}>
             <div style={{ width: '167px' }}>
               <Logo/>
             </div>
             <p style={{paddingTop: '16px'}}>
-              Щодня оновлюється каталог, більше 100 000 товарів в асортименті. Оптові
-              ціни. Власна система логістики. Унікальна пропорційна сумі замовлення
-              знижка для кожного покупця.
+              {lang[languages].footer_p}
             </p>
             <p style={{paddingTop: '16px'}} > © 2024 Electro world. Всі права захищені</p>
           </div>
           <div style={{padding: '16px'}}>
-            <p style={{paddingTop: '16px'}}>Головне меню</p>
+            <p>
+              <b>{lang[languages].footer_mainBar}</b>
+            </p>
             <hr />
-            <NavLinkStyle>
-              ДОМАШНЯ
+            <NavLinkStyle to="/">
+              <sup>{lang[languages].NavLinkBar_home.toUpperCase()}</sup>
             </NavLinkStyle>
-            <NavLinkStyle>
-              ЗАМОВЛЕННЯ
+            {/* <NavLinkStyle to="/catalog">
+              <sup>{lang[languages].NavLinkBar_catalog.toUpperCase()}</sup>
+            </NavLinkStyle> */}
+            <NavLinkStyle to="/orders">
+              <sup>{lang[languages].NavLinkBar_orders.toUpperCase()}</sup>
             </NavLinkStyle>
-            <NavLinkStyle>
-              ДОПОМОГА
+            <NavLinkStyle to="/help">
+              <sup>{lang[languages].NavLinkBar_help.toUpperCase()}</sup>
+            </NavLinkStyle>  
+            <NavLinkStyle to="/about_us">
+              <sup>{lang[languages].NavLinkBar_aboutUs.toUpperCase()}</sup>
             </NavLinkStyle>
-            <NavLinkStyle>
-              ПРО НАС
+            <NavLinkStyle to="/delivery">
+              <sup>{lang[languages].NavLinkBar_delivery.toUpperCase()}</sup>
             </NavLinkStyle>
-            <NavLinkStyle>
-              ДОСТАВКА</NavLinkStyle>
-            <NavLinkStyle>
-              ПОВІДОМЛЕННЯ
-            </NavLinkStyle>
+            <Span onClick={onOpenModal}>
+              <sup>{lang[languages].NavLinkBar_message.toUpperCase()}</sup>
+            </Span>
           </div>
           <div style={{padding: '16px'}}>
-            <p>Контакти</p>
+            <p>
+              <b>{lang[languages].footer_contacts}</b>
+            </p>
             <hr style={{ color: '#FFF' }} />
-            <p>+38(068)976-68-80</p>
-            <p>Графік роботи:</p>
-            <p>Пн-Чт:	8:30 - 18:00</p>
-            <p>Пт:	8:30 - 17:00</p>
-            <p>Сб:	Вихідний</p>
-            <p>Нд:	9:00 - 17:00</p>
-            <p>Робота з відгуками і пропозиціями:</p>
-            <p>Пн-Пт:	10:00 - 12:00</p>
-            <p>м.Балта, вул. Плеханівська 57А</p>
+            <AdressBar />
+            <p style={{paddingTop: '16px'}}>{lang[languages].footer_schedule}</p>
+            <p style={{paddingLeft: '16px'}}>Пн-Чт:	8:30 - 18:00</p>
+            <p style={{paddingLeft: '16px'}}>Пт:	8:30 - 17:00</p>
+            <p style={{paddingLeft: '16px'}}>Сб:	Вихідний</p>
+            <p style={{paddingLeft: '16px'}}>{lang[languages].footer_Sunday}	9:00 - 17:00</p>
+            <p style={{paddingTop: '16px'}}>{lang[languages].footer_comments}</p>
+            <p style={{paddingLeft: '16px'}}>Пн-Пт:	10:00 - 12:00</p>
+            <p style={{paddingTop: '16px'}}>{lang[languages].footer_address}</p>
           </div>
           <div style={{padding: '16px'}}>
-            <p>Мій обліковий запис</p>
+            <p>{lang[languages].footer_account}</p>
             <hr style={{ color: '#FFF' }} />
-            <p>Авторизація</p>
+            <p>{lang[languages].footer_authorization}</p>
           </div>        
-        </section>
+        </Section>
       </Container>
+      {isModalShown && <MessageModule onClose={onCloseModal} />}
     </footer>
   )
 };

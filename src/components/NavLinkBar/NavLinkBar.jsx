@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-// import { Outlet } from "react-router-dom";
-// import { Link } from 'react-router-dom';
 import {
   DivNav,
   DivCatalog,
@@ -12,38 +10,25 @@ import {
   Span,
 } from "./NavLinkBar.styled";
 
-// import { useDispatch, useSelector } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { selectDirectoryPath, selectLanguages } from 'redux/selectors';
-// import { selectOrders } from "redux/selectors";
-// import { addDirectoryPath, changeDirectoryPath, deleteDirectoryPath, deleteAllDirectoryPath } from 'redux/slice/directoryPathSlice';
-// import { deleteAllDirectoryPath } from 'redux/slice/directoryPathSlice';
 
 import MessageModule from "components/MessageModule/MessageModule";
-// import CatalogModule from 'components/CatalogModule/CatalogModule';
 import CategoryDropdownList from 'components/CategoryDropdownList/CategoryDropdownList';
 import lang from "assets/json/language.json";
-// import categories from "assets/json/categories.json";
-// import DropdownButton from '../DropdownButton/DropdownButton';
 
 
 import { GiHamburgerMenu } from "react-icons/gi";
 import electricity from "assets/images/svg/electricity.svg";
 
-// import { selectCategories } from 'redux/selectors';
-// import { changeCategory } from 'redux/slice/categorySlice';
-
 
 const NavLinkBar = () => {
-  // const dispatch = useDispatch();
   const directoryPath = useSelector(selectDirectoryPath);
   const languages = useSelector(selectLanguages);
   const [isModalShown, setIsModalShown] = useState(false);
   const [isModalCatalogShown, setIsModalCatalogShown] = useState(false);
   const [isModalCatalogClick, setIsModalCatalogClick] = useState(false);
   const [isChangeModalCatalog, setIsChangeModalCatalog] = useState(false);
-
-  // const category = useSelector(selectCategories);
 
   useEffect(() => {
     directoryPath > 0
@@ -66,7 +51,6 @@ const NavLinkBar = () => {
   };
 
   const clearingDirectoryPath = () => {
-    // dispatch(deleteAllDirectoryPath());
     setIsModalCatalogShown(false);
     setIsModalCatalogClick(false);
   };

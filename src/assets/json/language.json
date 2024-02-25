@@ -30,7 +30,16 @@
     "ordersPage_sumBtn": "Оформити замовлення",    
     "priceRange_label": "Ціна",    
     "priceRange_labelStart": "Від ",    
-    "priceRange_labelEnd": " до "    
+    "priceRange_labelEnd": " до ",
+    "footer_mainBar": "Головне меню",
+    "footer_p": "Kаталог товарів оновлюється щодня. Великий асортимент товарів. Оптові ціни. Доставка. Система знижок для покупців.",
+    "footer_contacts": "Контакти",
+    "footer_schedule": "Графік роботи:",
+    "footer_Sunday": "Нд:",
+    "footer_comments": "Робота з відгуками і пропозиціями:",
+    "footer_address": "м. Балта, вул. Уварова 57А",  
+    "footer_account": "Мій обліковий запис",
+    "footer_authorization": "Авторизація"  
   },
   {
     "lang_id": 1,
@@ -63,6 +72,15 @@
     "ordersPage_sumBtn": "Оформить заказ",    
     "priceRange_label": "Цена",    
     "priceRange_labelStart": "От ",    
-    "priceRange_labelEnd": " до "
+    "priceRange_labelEnd": " до ",    
+    "footer_mainBar": "Главное меню",
+    "footer_p": "Kаталог товаров обновляется ежедневно. Большой ассортимент товаров. Оптовые цени. Доставка. Система скидок для покупателей.",
+    "footer_contacts": "Контакты",
+    "footer_schedule": "График работи:",
+    "footer_Sunday": "Вс:",
+    "footer_comments": "Работа с отзывами и предложениями:",
+    "footer_address": "г. Балта, ул. Уварова 57А",  
+    "footer_account": "Моя учётная запись",
+    "footer_authorization": "Авторизация"
   }
 ]
