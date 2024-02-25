@@ -4,11 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "redux/operations";
 
 import ProductCard from "components/ProductCard/ProductCard";
-import { selectProducts } from "redux/selectors";
-import { selectFilters, selectLanguages } from 'redux/selectors';
+import { selectProducts, selectFilters, selectLanguages } from 'redux/selectors';
 
 import { deleteFilters } from 'redux/slice/filtersSlice';
-// import { changePage } from 'redux/slice/pageSlice';
 
 import {
   Container,

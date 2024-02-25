@@ -25,7 +25,7 @@ export const Li = styled.li`
 `;
 
 export const H4 = styled.h4`
-  text-aligen: center;
+  text-align: center;
   padding: 32px 0;
 `;
 

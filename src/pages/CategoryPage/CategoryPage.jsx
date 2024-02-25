@@ -10,7 +10,7 @@ import { selectCategories } from 'redux/selectors';
 // import { changeCategory } from 'redux/slice/categorySlice';
 
 import {
-  // Container,
+  Container,
   Ul,
   // Li,
   // DivShift,
@@ -59,23 +59,25 @@ const CategoryPage = () => {
             )
         )}
       </Ul> */}
-      <Ul style={{paddingBottom: "20px"}}>
-        {selectedCategories.map(
-          item => (
-            <li key={item.cat_id}>
-              <CategoryCart categoryName={item.cat_name} />
-            </li>
-          )
+      <Container>        
+        <Ul style={{paddingBottom: "20px"}}>
+          {selectedCategories.map(
+            item => (
+              <li key={item.cat_id}>
+                <CategoryCart categoryName={item.cat_name} />
+              </li>
+            )
+          )}
+        </Ul>
+        {selectedCategories.length > 0 && (            
+          <Pagination
+            activePage={activePage}
+            onClickDecrease={onClickDecrease}
+            onClickIncrease={onClickIncrease}
+            filteredData={selectedCategories}
+          />
         )}
-      </Ul>
-      {selectedCategories.length > 0 && (            
-        <Pagination
-          activePage={activePage}
-          onClickDecrease={onClickDecrease}
-          onClickIncrease={onClickIncrease}
-          filteredData={selectedCategories}
-        />
-      )}
+      </Container>
     </>
   );
 };
