@@ -1,5 +1,6 @@
 [
   {
+    "Authorization": "Авторизація",
     "lang_id": 0,
     "lang_name": "UA",
     "lang_title": "Українська",
@@ -82,6 +83,7 @@
     "homePage_h4": "Заходьте до нас і переконайтеся самі!" 
   },
   {
+    "Authorization": "Авторизация",
     "lang_id": 1,
     "lang_name": "RU",
     "lang_title": "Русский",

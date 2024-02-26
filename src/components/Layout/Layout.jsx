@@ -24,7 +24,9 @@ import Authorization from "components/Authorization/Authorization";
 import Footer from 'components/Footer/Footer';
 
 import NavLinkBar from 'components/NavLinkBar/NavLinkBar';
-import SearchField from 'components/SearchField/SearchField'
+import SearchField from 'components/SearchField/SearchField';
+import { selectLanguages } from 'redux/selectors';
+import lang from 'assets/json/language.json';
 
 // import { useSearchParams } from 'react-router-dom';
 
@@ -32,6 +34,7 @@ export default function Layout() {
   const orderProducts = useSelector(selectOrders);
   const [isModalShown, setIsModalShown] = useState(false);
   // const [searchParams, setSearchParams] = useSearchParams();
+  const languages = useSelector(selectLanguages);
 
   const onCloseModal = () => {
     setIsModalShown(false);
@@ -43,7 +46,7 @@ export default function Layout() {
       <div style={{display: 'flex', alignItems: 'center', maxWidth: '1440px', margin: "0 auto", flexWrap: 'wrap', padding: '0 16px', justifyContent: 'center', rowGap: '10px', columnGap: '50px'}}>
         {/* <div style={{padding: '3px 16px', color: 'var(--text-color-white)', backgroundColor: 'var(--bg-primary-orange)', border: 'solid 3px var(--bg-second-orange)', borderRadius: '5px'}}> Мінімальне замовлення - 300грн </div> */}
         <div style={{ padding: '3px 16px', color: 'var(--text-color-white)', backgroundColor: 'var(--bg-primary-orange)', border: 'solid 3px #F38E74', borderRadius: '5px' }}>
-          Мінімальне замовлення - 300грн
+          {lang[languages].layout_minOrder}
         </div>
         <LanguageBar />
         <Authorization/>
