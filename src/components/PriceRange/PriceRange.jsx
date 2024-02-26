@@ -67,7 +67,9 @@ const PriceRange = ({ data }) => {
     setPositionMax(rangeWidth);
 
     findMinMaxPrice();
-  }, [dispatch, filteredProducts, rangeWidth, minPrice, maxPrice]);
+  // }, [dispatch, filteredProducts, rangeWidth, minPrice, maxPrice]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch]);
 
   useEffect(() => {
     const [min, max] = searchMinMaxPrice(data);
@@ -81,7 +83,9 @@ const PriceRange = ({ data }) => {
       setPositionMin(0);
       setPositionMax(rangeWidth);
     }
-}, [maxPrice, minPrice, rangeWidth, data]);
+  // }, [maxPrice, minPrice, rangeWidth, data]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data]);
   
   useEffect(() => {
     const handleMouseMove = e => {
@@ -130,7 +134,9 @@ const PriceRange = ({ data }) => {
       document.removeEventListener('mouseup', handleMouseUp);
     };
   // }, [positionStart, positionMin, positionMax, maxPrice, minPrice, rangeWidth, inputValueMin, inputValueMax, isMouseDownMin, isMouseDownMax]);
-  }, [isMouseDownMin, isMouseDownMax, positionStart, positionMax, maxPrice, minPrice, rangeWidth, inputValueMax, positionMin, inputValueMin]);
+  // }, [isMouseDownMin, isMouseDownMax, positionStart, positionMax, maxPrice, minPrice, rangeWidth, inputValueMax, positionMin, inputValueMin]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isMouseDownMin, isMouseDownMax]);
 
   const changePositionMin = value => {
     if (value > inputValueMax) {

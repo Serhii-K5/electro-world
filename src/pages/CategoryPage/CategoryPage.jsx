@@ -29,14 +29,15 @@ const CategoryPage = () => {
   const dispatch = useDispatch();
   const categoryId = useSelector(selectCategories);
   const [activePage, setActivePage] = useState(1);
-  const [selectedCategories, setSelectedCategories] = useState([]); 
+  // const [selectedCategories, setSelectedCategories] = useState([]); 
+  const [selectedCategories, setSelectedCategories] = useState(() => categories.filter(item =>
+      item.cat_parentId === categoryId)); 
   const [isCategory, setIsCategory] = useState(true);
   
   useEffect(() => {
     setSelectedCategories(categories.filter(item =>
-        item.cat_parentId === categoryId
-      )
-    )
+      item.cat_parentId === categoryId
+    ))
   }, [categoryId]);
   
   const onClickIncrease  = () => {
@@ -56,7 +57,8 @@ const CategoryPage = () => {
 
   const handleClick = el => {
     const index = categories.findIndex(
-      category => category.cat_parentId === el.cat_id
+      // category => category.cat_parentId === el.cat_id
+      category => category.cat_parentId === el.id
     );
     
     if (index === -1) {
@@ -94,15 +96,17 @@ const CategoryPage = () => {
               //   </Link>
               // </li>
               <Link to={!isCategory ? '/categories' : '/catalog'}>
-                {index > -1 ? 
+                {/* {index > -1 ? 
                   <li key={index}>
                     <CategoryCart categoryName={item.cat_name} />
-                    {/* {isCategory && item.cat_name + ' >'} */}
                   </li>
                   : <li key={'cat1' + index} onClick={handleClick}>
                     {isCategory && item.cat_name + ' >'}
                   </li>
-                }
+                } */}
+                <li key={index} id={item.cat_id} onClick={handleClick}>
+                    <CategoryCart categoryName={item.cat_name} />
+                  </li>
               </Link>
             )
           )}

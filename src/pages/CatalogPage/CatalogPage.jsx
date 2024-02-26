@@ -7,6 +7,7 @@ import ProductCard from "components/ProductCard/ProductCard";
 import { selectProducts, selectFilters, selectLanguages } from 'redux/selectors';
 
 import { deleteFilters } from 'redux/slice/filtersSlice';
+import { changeCategory } from 'redux/slice/categorySlice';
 
 import {
   Container,
@@ -91,6 +92,8 @@ const CatalogCarsPage = () => {
   const handleClickBtn = () => {
     dispatch(deleteFilters({ key: 'memo', value: [] }));
     dispatch(deleteFilters({ key: 'name', value: "" }));
+    dispatch(deleteFilters({ key: 'parentId', value: 0 }));
+    dispatch(changeCategory(0));
   };
 
   return (

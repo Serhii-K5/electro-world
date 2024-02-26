@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import {transition} from "components/ConstComponentsStyle/ConstComponentsStyle.styled";
 
-const transitionShift = `350ms linear`;
+const transitionShift = `550ms linear`;
 
 export const LiBlock = styled.li`
   border-top: 1px solid var(--bg-color-grey);
