@@ -58,16 +58,19 @@ const CategoryPage = () => {
   const handleClick = el => {
     const index = categories.findIndex(
       // category => category.cat_parentId === el.cat_id
-      category => category.cat_parentId === el.id
+      category => category.cat_parentId === el.currentTarget.id
     );
     
     if (index === -1) {
-      dispatch(changeFilters({ key: 'parentId', value: el.cat_id }));      
+      // dispatch(changeFilters({ key: 'parentId', value: el.cat_id }));      
+      dispatch(changeFilters({ key: 'parentId', value: +el.currentTarget.id }));      
       setIsCategory(false);
       // window.location.reload();
+    } else {
+      dispatch(changeDirectoryPath(categories[index].cat_name));      
     }
-    dispatch(changeDirectoryPath(el));
-    dispatch(changeCategory(el.cat_id));
+    // dispatch(changeCategory(el.cat_id));
+    dispatch(changeCategory(el.currentTarget.id));
   };
 
 
@@ -95,7 +98,7 @@ const CategoryPage = () => {
               //     {isCategory && item.cat_name + ' >'}
               //   </Link>
               // </li>
-              <Link to={!isCategory ? '/categories' : '/catalog'}>
+              <Link to={isCategory ? '/catalog' : '/categories'}>
                 {/* {index > -1 ? 
                   <li key={index}>
                     <CategoryCart categoryName={item.cat_name} />
@@ -104,9 +107,9 @@ const CategoryPage = () => {
                     {isCategory && item.cat_name + ' >'}
                   </li>
                 } */}
-                <li key={index} id={item.cat_id} onClick={handleClick}>
-                    <CategoryCart categoryName={item.cat_name} />
-                  </li>
+                {isCategory && <li key={index} id={+item.cat_id} onClick={handleClick}>
+                  <CategoryCart categoryName={item.cat_name} />
+                </li>}
               </Link>
             )
           )}

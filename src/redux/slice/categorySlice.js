@@ -7,7 +7,7 @@ const sliceCategory = createSlice({
   },
   reducers: {
     changeCategory(state, action) {
-      state.category = action.payload;
+      state.category = +action.payload;
     },
   },
 });

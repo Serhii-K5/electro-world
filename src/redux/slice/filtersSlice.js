@@ -16,6 +16,8 @@ const sliceFilters = createSlice({
         const existingFilterValueIndex = state.items[existingFilterIndex].value.findIndex(filter => filter === value);
         if (existingFilterValueIndex === -1) {          
           state.items[existingFilterIndex].value.push(value);
+        } else {
+          state.items[existingFilterIndex].splice(0, 1, value);
         }
       } else {
         // Если ключа нет, добавляем новый объект
