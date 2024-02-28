@@ -3,7 +3,8 @@ import { useSelector } from 'react-redux';
 import { selectLanguages } from 'redux/selectors';
 import Logo from 'components/Logo/Logo';
 import MessageModule from "components/MessageModule/MessageModule";
-import AdressBar from 'components/AdressBar/AdressBar';
+// import AdressBar from 'components/AdressBar/AdressBar';
+import AdressBarFooter from "components/AdressBarFooter/AdressBarFooter";
 import {
   Container,
   Section,
@@ -70,7 +71,7 @@ const Footer = () => {
               <b>{lang[languages].footer_contacts}</b>
             </p>
             <hr style={{ color: '#FFF' }} />
-            <AdressBar />
+            <AdressBarFooter />
             <p style={{paddingTop: '16px'}}>{lang[languages].footer_schedule}</p>
             <p style={{paddingLeft: '16px'}}>Пн-Чт:	8:30 - 18:00</p>
             <p style={{paddingLeft: '16px'}}>Пт:	8:30 - 17:00</p>
