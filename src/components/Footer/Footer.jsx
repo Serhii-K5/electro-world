@@ -82,7 +82,7 @@ const Footer = () => {
             <p style={{paddingTop: '16px'}}>{lang[languages].footer_address}</p>
           </div>
           <div style={{padding: '16px'}}>
-            <p>{lang[languages].footer_account}</p>
+            <p><b>{lang[languages].footer_account}</b></p>
             <hr style={{ color: '#FFF' }} />
             <p>{lang[languages].footer_authorization}</p>
           </div>        
