@@ -11,7 +11,7 @@ import {
 import { selectLanguages } from 'redux/selectors';
 import lang from 'assets/json/language.json';
 import img1 from "assets/images/image1.png";
-import img2 from "assets/images/image2.png";
+import img4 from "assets/images/image4.png";
 import img3 from "assets/images/image3.png";
  
 
@@ -116,9 +116,9 @@ const HomePage = () => {
             </Ul>
           </div>
           <div style={{display: 'flex'}}>
-            <img src={img1} alt="img" style={{content: "", position: "relative", height: '40%', top: '250px', left: '-55px'}}/>
-            <img src={img2} alt="img" style={{content: "", position: "relative", height: '90%', top: '-7px', right: '45px'}}/>
-            <img src={img3} alt="img" style={{content: "", position: "relative", height: 'fit-content', top: 0, right: '720px'}}/>
+            <img src={img1} alt="img" style={{content: "", position: "relative", height: '30%', top: '430px', left: '30px', zIndex: 27}}/>
+            <img src={img4} alt="img" style={{content: "", position: "relative", height: '70%', top: '100px', right: '-60px', width: '57%', zIndex: 25}}/>
+            <img src={img3} alt="img" style={{content: "", position: "relative", height: 'fit-content', top: 0, right: '750px', zIndex: 26}}/>
           </div>
         </div>
         <H4 style={{content: "", position: "relative"}}>
