@@ -2,16 +2,18 @@ import { useSelector } from "react-redux";
 import { 
   Div,
   Section,
+  DivBlock,
   P,
   Ul,
   Li,
+  Img,
   H4
 } from "./HomePage.styled";
 
 import { selectLanguages } from 'redux/selectors';
 import lang from 'assets/json/language.json';
 import img1 from "assets/images/image1.png";
-import img4 from "assets/images/image4.png";
+import img2 from "assets/images/image2.png";
 import img3 from "assets/images/image3.png";
  
 
@@ -42,37 +44,47 @@ const HomePage = () => {
         <P>
           <b><i>{lang[languages].homePage_p3}</i></b>
         </P>
-        <Ul>
-          <Li>
-            <i>{lang[languages].homePage_ul1_li1}</i>
-            {lang[languages].homePage_ul1_li1_2}
-          </Li>
-          <Li>
-            <i>{lang[languages].homePage_ul1_li2}</i>
-            {lang[languages].homePage_ul1_li2_2}
-          </Li>
-          <Li>
-            <i>{lang[languages].homePage_ul1_li3}</i>
-            {lang[languages].homePage_ul1_li3_2}
-          </Li>
-          <Li>
-            <i>{lang[languages].homePage_ul1_li4}</i>
-            {lang[languages].homePage_ul1_li4_2}
-          </Li>
-          <Li>
-            <i>{lang[languages].homePage_ul1_li5}</i>
-            {lang[languages].homePage_ul1_li5_2}
-          </Li>
-          <Li>
-            <i>{lang[languages].homePage_ul1_li6}</i>
-            {lang[languages].homePage_ul1_li6_2}
-          </Li>
-        </Ul>
-        <div style={{display: 'flex'}}>          
-          <div>          
+        <DivBlock style={{maxWidth: '900px'}}>
+          <div>
+            <Ul>
+              <Li>
+                <i>{lang[languages].homePage_ul1_li1}</i>
+                {lang[languages].homePage_ul1_li1_2}
+              </Li>
+              <Li>
+                <i>{lang[languages].homePage_ul1_li2}</i>
+                {lang[languages].homePage_ul1_li2_2}
+              </Li>
+              <Li>
+                <i>{lang[languages].homePage_ul1_li3}</i>
+                {lang[languages].homePage_ul1_li3_2}
+              </Li>
+              <Li>
+                <i>{lang[languages].homePage_ul1_li4}</i>
+                {lang[languages].homePage_ul1_li4_2}
+              </Li>
+              <Li>
+                <i>{lang[languages].homePage_ul1_li5}</i>
+                {lang[languages].homePage_ul1_li5_2}
+              </Li>
+              <Li>
+                <i>{lang[languages].homePage_ul1_li6}</i>
+                {lang[languages].homePage_ul1_li6_2}
+              </Li>
+            </Ul>
             <P>
               {lang[languages].homePage_p4}
-            </P>
+            </P>          
+          </div>
+          <div>
+            <Img src={img3} alt="electrician "/>
+          </div>
+        </DivBlock>        
+        <DivBlock>          
+          <div style={{ margin: '0 auto'}}>
+            <Img src={img1} alt="Малая бытовая техника"/>
+          </div>
+          <div>          
             <P>
               <b><i>{lang[languages].homePage_p5}</i></b>
             </P>
@@ -98,6 +110,10 @@ const HomePage = () => {
                 {lang[languages].homePage_ul2_li5_2}
               </Li>
             </Ul>
+          </div>
+        </DivBlock>
+        <DivBlock>
+          <div>
             <P>
               <b><i>{lang[languages].homePage_p6}</i></b>
             </P>  
@@ -107,7 +123,7 @@ const HomePage = () => {
               <Li>{lang[languages].homePage_ul3_li3}</Li>
             </Ul>
             <P>
-              <b><i>{lang[languages].homePage_p6}</i></b>
+              <b><i>{lang[languages].homePage_p7}</i></b>
             </P>
             <Ul>
               <Li>{lang[languages].homePage_ul4_li1}</Li>
@@ -115,13 +131,15 @@ const HomePage = () => {
               <Li>{lang[languages].homePage_ul4_li3}</Li>
             </Ul>
           </div>
-          <div style={{display: 'flex'}}>
-            <img src={img1} alt="img" style={{content: "", position: "relative", height: '30%', top: '430px', left: '30px', zIndex: 27}}/>
-            <img src={img4} alt="img" style={{content: "", position: "relative", height: '70%', top: '100px', right: '-60px', width: '57%', zIndex: 25}}/>
-            <img src={img3} alt="img" style={{content: "", position: "relative", height: 'fit-content', top: 0, right: '750px', zIndex: 26}}/>
+          <div style={{ margin: '0 auto'}}>
+            <Img src={img2} alt="arge and medium household appliances"/>
+            {/* <img src={img1} alt="img" style={{content: "", position: "relative", height: '30%', top: '430px', left: '30px', zIndex: 27}}/>
+            <img src={img2} alt="img" style={{content: "", position: "relative", height: '70%', top: '100px', right: '-60px', width: '57%', zIndex: 25}}/>
+            <img src={img3} alt="img" style={{content: "", position: "relative", height: 'fit-content', top: 0, right: '750px', zIndex: 26}}/> */}
           </div>
-        </div>
-        <H4 style={{content: "", position: "relative"}}>
+        </DivBlock>
+        {/* <H4 style={{content: "", position: "relative"}}> */}
+        <H4>
           <b>{lang[languages].homePage_h4}</b>
         </H4>
       </Section>

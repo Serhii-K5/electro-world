@@ -7,13 +7,20 @@ export const Div = styled.div`
 `;
 
 export const Section = styled.section`
-  margin: 0px auto;
-  padding: 16px;
-  max-width: 1440px;  
+margin: 0px auto;
+padding: 16px;
+max-width: 1440px;  
+`;
+
+export const DivBlock = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding-bottom: 16px; 
 `;
 
 export const P = styled.p`
-  padding: 8px 0;  
+  padding: 16px 0 8px;  
 `;
 
 export const Ul = styled.ul`
@@ -24,10 +31,15 @@ export const Li = styled.li`
   padding: 0 16px;
 `;
 
+export const Img = styled.img`
+  height: 'fit-content'
+`;
+
 export const H4 = styled.h4`
   text-align: center;
   padding: 32px 0;
 `;
+
 
 
 // export const Div = styled.div`
