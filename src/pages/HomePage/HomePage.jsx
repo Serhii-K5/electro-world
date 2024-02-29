@@ -133,12 +133,8 @@ const HomePage = () => {
           </div>
           <div style={{ margin: '0 auto'}}>
             <Img src={img2} alt="arge and medium household appliances"/>
-            {/* <img src={img1} alt="img" style={{content: "", position: "relative", height: '30%', top: '430px', left: '30px', zIndex: 27}}/>
-            <img src={img2} alt="img" style={{content: "", position: "relative", height: '70%', top: '100px', right: '-60px', width: '57%', zIndex: 25}}/>
-            <img src={img3} alt="img" style={{content: "", position: "relative", height: 'fit-content', top: 0, right: '750px', zIndex: 26}}/> */}
           </div>
         </DivBlock>
-        {/* <H4 style={{content: "", position: "relative"}}> */}
         <H4>
           <b>{lang[languages].homePage_h4}</b>
         </H4>
