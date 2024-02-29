@@ -2,10 +2,10 @@
 import { useState } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import {
-  Div,
+  Div1,
+  DivBtn,
+  Div2,
   Header,
-  // BgLogo,
-  // TextLogo,
 } from "./Layout.styled";
 import Logo from "components/Logo/Logo";
 
@@ -43,15 +43,14 @@ export default function Layout() {
   
   return (
     <>
-      <div style={{display: 'flex', alignItems: 'center', maxWidth: '1440px', margin: "0 auto", flexWrap: 'wrap', padding: '0 16px', justifyContent: 'center', rowGap: '10px', columnGap: '50px'}}>
-        {/* <div style={{padding: '3px 16px', color: 'var(--text-color-white)', backgroundColor: 'var(--bg-primary-orange)', border: 'solid 3px var(--bg-second-orange)', borderRadius: '5px'}}> Мінімальне замовлення - 300грн </div> */}
-        <div style={{ padding: '3px 16px', color: 'var(--text-color-white)', backgroundColor: 'var(--bg-primary-orange)', border: 'solid 3px #F38E74', borderRadius: '5px' }}>
+      <Div1>
+        <DivBtn>
           {lang[languages].layout_minOrder}
-        </div>
+        </DivBtn>
         <LanguageBar />
         <Authorization/>
-      </div>
-      <Div>
+      </Div1>
+      <Div2>
         <Header>
           <Logo />
           <SearchField />
@@ -60,7 +59,7 @@ export default function Layout() {
             <ShoppingCart quantity={orderProducts.length} />
           </Link>
         </Header>
-      </Div>
+      </Div2>
       <NavLinkBar />
       {isModalShown && <MessageModule onClose={onCloseModal} />}
       <Outlet />

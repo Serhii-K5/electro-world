@@ -9,7 +9,7 @@ const Authorization = () => {
   return (
     <div style={{display: "flex", alignItems: 'center'}}>
       <div>{lang[languages].Authorization}</div>
-      <img src={user} alt="user icon" />
+      <img src={user} alt="user icon" style={{width: '35px'}}/>
     </div>
 
   );

@@ -2,21 +2,27 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import { transition } from 'components/ConstComponentsStyle/ConstComponentsStyle.styled';
 
-// import BgLogoImg from "assets/images/logo.png";
+export const Div1 = styled.div`
+  display: flex;
+  align-items: center;
+  max-width: 1440px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  padding: 0 16px;
+  justify-content: center;
+  row-gap: 10px;
+  column-gap: 50px;
+`;
 
-// export const BgLogo = styled.div`
-//   position: relative;
-//   top: 8px;
-//   width: 130px;
-//   background-image: url(${BgLogoImg});
-//   background-repeat: no-repeat;
-//   // background-position: 50% 0;
-//   background-size: 100%;
-// `;
+export const DivBtn = styled.div`
+  padding: 3px 16px;
+  color: var(--text-color-white);
+  background-color: var(--bg-button-color);
+  border: solid 3px #78A0FF;
+  border-radius: 5px;
+`;
 
-// const transition = `250ms linear`;
-
-export const Div = styled.div`
+export const Div2 = styled.div`
   background-color: transparent;
   box-shadow: 0px 4px 4px rgba(0,0,0,0.5);
   background: linear-gradient(to top, var(--bg-primary-green), var(--bg-second-green), var(--bg-second-green), var(--bg-primary-green)); 

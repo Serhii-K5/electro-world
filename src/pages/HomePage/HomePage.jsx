@@ -44,9 +44,9 @@ const HomePage = () => {
         <P>
           <b><i>{lang[languages].homePage_p3}</i></b>
         </P>
-        <DivBlock style={{maxWidth: '900px'}}>
-          <div>
-            <Ul>
+        <DivBlock>
+          <div style={{maxWidth: '1000px'}}>
+            <Ul >
               <Li>
                 <i>{lang[languages].homePage_ul1_li1}</i>
                 {lang[languages].homePage_ul1_li1_2}
@@ -80,8 +80,9 @@ const HomePage = () => {
             <Img src={img3} alt="electrician "/>
           </div>
         </DivBlock>        
-        <DivBlock>          
-          <div style={{ margin: '0 auto'}}>
+        <DivBlock style={{justifyContent: 'space-evenly'}}>          
+          {/* <div style={{ margin: '0 auto'}}> */}
+          <div>
             <Img src={img1} alt="Малая бытовая техника"/>
           </div>
           <div>          

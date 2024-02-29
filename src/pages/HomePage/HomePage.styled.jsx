@@ -15,7 +15,7 @@ max-width: 1440px;
 export const DivBlock = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  // justify-content: space-around;
   padding-bottom: 16px; 
 `;
 
@@ -35,7 +35,7 @@ export const Img = styled.img`
   height: 'fit-content'
 `;
 
-export const H4 = styled.h4`
+export const H4 = styled.h3`
   text-align: center;
   padding: 32px 0;
 `;
