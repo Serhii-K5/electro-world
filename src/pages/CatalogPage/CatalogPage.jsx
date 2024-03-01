@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "redux/operations";
 
 import ProductCard from "components/ProductCard/ProductCard";
-import { selectProducts, selectFilters, selectLanguages } from 'redux/selectors';
+import { selectProducts, selectFilters, selectCategories, selectLanguages } from 'redux/selectors';
 
 import { deleteFilters } from 'redux/slice/filtersSlice';
 import { changeCategory } from 'redux/slice/categorySlice';
@@ -21,9 +21,14 @@ import FilterPanel from 'components/FilterPanel/FilterPanel';
 
 import PriceRange from 'components/PriceRange/PriceRange';
 import products1 from "../../assets/json/products.json";
-// import categories from "../../assets/json/categories.json";
+import categories from "../../assets/json/categories.json";
 import lang from 'assets/json/language.json';
 import Pagination from 'components/PaginationBar/PaginationBar';
+
+import DropdownList from "components/DropdownList/DropdownList";
+import sortingIcon from "assets/images/svg/sorting.svg";
+import linesIcon from "assets/images/svg/lines.svg";
+import tilesIcon from "assets/images/svg/tiles.svg";
 
 
 const CatalogCarsPage = () => {
@@ -31,7 +36,7 @@ const CatalogCarsPage = () => {
   const dispatch = useDispatch();
   const languages = useSelector(selectLanguages);
   const filters = useSelector(selectFilters);
-
+  const category = useSelector(selectCategories);
   
   const temp = useSelector(selectProducts);
   const products = temp.length > 0 ? temp : products1; // запрос на сервер
@@ -96,10 +101,19 @@ const CatalogCarsPage = () => {
     dispatch(changeCategory(0));
   };
 
+  
+  const handleFilterChange = (filter) => {
+    // Обработка изменений фильтра
+    const sortedProducts = setFilteredData(filter);
+    setFilteredData(sortedProducts);
+  };
+
   return (
     <div style={{ backgroundColor: 'var(--bg-second)' }}>
-      <NavBar />
+      <NavBar />      
       <Container>
+        <div>{categories.some(elem => elem.id = +category) }</div>
+        <div>Найдено: {filteredData.length} товаров</div>
         <aside style={{ minWidth: '250px', backgroundColor: 'white' }}>
           <h4 style={{ padding: '16px 0', textAlign: 'center' }}>
             {lang[languages].catalogPage_asideTitel.toUpperCase()}
@@ -115,7 +129,30 @@ const CatalogCarsPage = () => {
           <FilterPanel data={filteredData} />
         </aside>
         <section>
-          <div>Найдено: {filteredData.length} товаров</div>
+          
+          <div style={{display: 'flex', margin: '0 0 16px 16px', backgroundColor: '#FFF', alignItems: 'center', justifyContent: 'space-evenly', flexWrap: 'wrap'}}>
+            <div  style={{display: 'flex'}}>
+              <img src={sortingIcon} alt="sorting icon" width={'32px'} height={'32px'}/> 
+              {lang[languages].catalogPage_sorting}
+              <DropdownList products={products} onChange={handleFilterChange} />              
+            </div>
+            {filteredData.length > 0 && (            
+              <Pagination
+                activePage={activePage}
+                onClickDecrease={onClickDecrease}
+                onClickIncrease={onClickIncrease}
+                filteredData={filteredData}
+              />
+            )}
+            <div  style={{display: 'flex', gap: '16px'}}>
+              <div>
+                <img src={tilesIcon} alt="tiles icon" width={'32px'} height={'32px'}/>
+              </div>
+              <div>
+                <img src={linesIcon} alt="lines icon" width={'32px'} height={'32px'}/>
+              </div>
+            </div>
+          </div>          
           {filteredData.length > 0 && (
             <Ul>
               {filteredData.map(
