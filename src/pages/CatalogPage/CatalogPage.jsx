@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "redux/operations";
 
 import ProductCard from "components/ProductCard/ProductCard";
-import { selectProducts, selectFilters, selectCategories, selectLanguages } from 'redux/selectors';
+import { selectProducts, selectFilters, selectDirectoryPath, selectLanguages } from 'redux/selectors';
 
 import { deleteFilters } from 'redux/slice/filtersSlice';
 import { changeCategory } from 'redux/slice/categorySlice';
@@ -21,7 +21,7 @@ import FilterPanel from 'components/FilterPanel/FilterPanel';
 
 import PriceRange from 'components/PriceRange/PriceRange';
 import products1 from "../../assets/json/products.json";
-import categories from "../../assets/json/categories.json";
+// import categories from "../../assets/json/categories.json";
 import lang from 'assets/json/language.json';
 import Pagination from 'components/PaginationBar/PaginationBar';
 
@@ -36,7 +36,9 @@ const CatalogCarsPage = () => {
   const dispatch = useDispatch();
   const languages = useSelector(selectLanguages);
   const filters = useSelector(selectFilters);
-  const category = useSelector(selectCategories);
+  const category = useSelector(selectDirectoryPath);
+  // const category = useSelector(selectCategories);
+  
   
   const temp = useSelector(selectProducts);
   const products = temp.length > 0 ? temp : products1; // запрос на сервер
@@ -110,10 +112,22 @@ const CatalogCarsPage = () => {
 
   return (
     <div style={{ backgroundColor: 'var(--bg-second)' }}>
-      <NavBar />      
+      <NavBar /> 
+      <div style={{maxWidth: '1408px', margin: '0 auto', padding: '10px 16px', backgroundColor: '#FFF'}}>
+        <span style={{paddingRight: '20px', fontSize: '16px'}}><b>{category.length > 0 && category[category.length - 1].cat_name}</b></span>
+        <span> {lang[languages].catalogPage_finded} {filteredData.length}</span>
+      </div>
       <Container>
-        <div>{categories.some(elem => elem.id = +category) }</div>
-        <div>Найдено: {filteredData.length} товаров</div>
+        {/* {console.log(category, "; ", categories)}
+        <div>{categories.some(
+          elem => {
+            // const c = elem.cat_id = +category ? elem.cat_name : "";
+            const c = elem.cat_id === +category && elem.cat_name;
+            console.log(c);
+            return elem.cat_id === +category
+          })}
+        </div>
+        <div>Найдено: {filteredData.length} товаров</div> */}
         <aside style={{ minWidth: '250px', backgroundColor: 'white' }}>
           <h4 style={{ padding: '16px 0', textAlign: 'center' }}>
             {lang[languages].catalogPage_asideTitel.toUpperCase()}

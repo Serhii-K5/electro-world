@@ -3,11 +3,17 @@ import { useEffect, useState } from "react";
 import { changeDirectoryPath } from 'redux/slice/directoryPathSlice';
 import { Link } from 'react-router-dom';
 
+// import { useSelector } from 'react-redux';
 import { selectCategories } from 'redux/selectors';
+// import { changeCategory } from 'redux/slice/categorySlice';
 
 import {
   Container,
   Ul,
+  // Li,
+  // DivShift,
+  // DivPagination,
+  // DivPage,
 } from './CategoryPage.styled';
 
 import NavBar from 'components/NavBar/NavBar';
@@ -23,6 +29,7 @@ const CategoryPage = () => {
   const dispatch = useDispatch();
   const categoryId = useSelector(selectCategories);
   const [activePage, setActivePage] = useState(1);
+  // const [selectedCategories, setSelectedCategories] = useState([]); 
   const [selectedCategories, setSelectedCategories] = useState(() => categories.filter(item =>
       item.cat_parentId === categoryId)); 
   const [isCategory, setIsCategory] = useState(true);
@@ -41,20 +48,28 @@ const CategoryPage = () => {
     activePage > 0 && setActivePage(activePage - 1);
   };
 
-  
+
+// ------------
+
+  // const categoryChange = el => {
+  //   dispatch(changeCategory(el.cat_id));
+  // };
+
   const handleClick = el => {
     const index = categories.findIndex(
+      // category => category.cat_parentId === el.cat_id
       category => category.cat_parentId === el.currentTarget.id
     );
     
-    if (index === -1) {   
+    if (index === -1) {
+      // dispatch(changeFilters({ key: 'parentId', value: el.cat_id }));      
       dispatch(changeFilters({ key: 'parentId', value: +el.currentTarget.id }));      
       setIsCategory(false);
       // window.location.reload();
     } else {
       dispatch(changeDirectoryPath(categories[index].cat_name));      
-    };
-    
+    }
+    // dispatch(changeCategory(el.cat_id));
     dispatch(changeCategory(el.currentTarget.id));
   };
 
@@ -62,11 +77,36 @@ const CategoryPage = () => {
   return (
     <>
       <NavBar />
+      {/* <Ul style={{paddingBottom: "20px"}}>
+        {categories.map(
+          item =>
+            item.cat_parentId === categoryId && (
+              <li key={item.cat_id}>
+                <CategoryCart categoryName={item.cat_name} />
+              </li>
+            )
+        )}
+      </Ul> */}
       <Container>        
         <Ul style={{paddingBottom: "20px"}}>
           {selectedCategories.map(
             (item, index) => (
+              // <li key={item.cat_id} onClick={handleClick}>
+              //   <CategoryCart categoryName={item.cat_name} />
+                
+              //   <Link to={!isCategory ? '/categories' : '/catalog'}>
+              //     {isCategory && item.cat_name + ' >'}
+              //   </Link>
+              // </li>
               <Link to={isCategory ? '/catalog' : '/categories'}>
+                {/* {index > -1 ? 
+                  <li key={index}>
+                    <CategoryCart categoryName={item.cat_name} />
+                  </li>
+                  : <li key={'cat1' + index} onClick={handleClick}>
+                    {isCategory && item.cat_name + ' >'}
+                  </li>
+                } */}
                 {isCategory && <li key={index} id={+item.cat_id} onClick={handleClick}>
                   <CategoryCart categoryName={item.cat_name} />
                 </li>}
@@ -74,6 +114,29 @@ const CategoryPage = () => {
             )
           )}
         </Ul>
+        {/* <ul>
+          {categories.map(
+            (category, index) =>
+              category.cat_parentId === parentId && (
+                <Li
+                  key={index}
+                  className={parentId > 0 && 'parent'}
+                  onMouseEnter={() => categoryChange(category)}
+                  onClick={() => handleClick(category)}
+                >
+                  <Link to={!isCategory ? '/categories' : '/catalog'}>
+                    {isCategory && category.cat_name + ' >'}
+                  </Link>
+                </Li>
+              )
+          )}
+        </ul> */}
+        
+        
+        
+        
+        
+        
         {selectedCategories.length > 0 && (            
           <Pagination
             activePage={activePage}
