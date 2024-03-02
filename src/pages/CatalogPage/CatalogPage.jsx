@@ -132,8 +132,7 @@ const CatalogCarsPage = () => {
 
           <FilterPanel data={filteredData} />
         </aside>
-        <section>
-          
+        <section>          
           <div style={{display: 'flex', margin: '0 0 16px 16px', backgroundColor: '#FFF', alignItems: 'center', justifyContent: 'space-evenly', flexWrap: 'wrap'}}>
             <div  style={{display: 'flex'}}>
               <img src={sortingIcon} alt="sorting icon" width={'32px'} height={'32px'}/> 
