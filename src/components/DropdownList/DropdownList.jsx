@@ -1,66 +1,75 @@
-import { useState } from 'react';
-import { useDispatch, useSelector } from "react-redux";
+import { useState, useContext } from 'react';
+import { useSelector } from "react-redux";
 import { selectLanguages } from 'redux/selectors';
 import lang from 'assets/json/language.json';
+import { ProductsContext } from 'pages/CatalogPage/CatalogPage'; 
 
-function DropdownList({ products, onChange }) {  
+
+function DropdownList() {  
   const languages = useSelector(selectLanguages);
   const [isOpen, setIsOpen] = useState(false);
-  const [_selectedFilter, setSelectedFilter] = useState(null);
+  const { filteredData, setFilteredData } = useContext(ProductsContext);
+  // const [selectedFilter, setSelectedFilter] = useState(null);
+  // const [sortedProducts, setSortedProducts] = useState(products);
+  const [numberLine, setNumberLine] = useState(0);
+
+  const list = [
+    {
+      id: 'priceLowToHigh',
+      text: lang[languages].catalogPage_sortingAZ
+    },
+    {
+      id: 'priceHighToLow',
+      text: lang[languages].catalogPage_sortingZA
+    },
+    {
+      id: 'name',
+      text: lang[languages].catalogPage_sortingName
+    },
+    ];
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
   const handleSelect = (filter) => {
-    setSelectedFilter(filter);
     setIsOpen(false);
-    if (onChange) {
-      onChange(filter);
-    }
+    setFilteredData(sortProducts(filter));
   };
 
   const sortProducts = (filter) => {
-    if (!filter) return products;
+    if (!filter) return filteredData;
 
     switch (filter) {
       case 'priceLowToHigh':
-        return [...products].sort((a, b) => a.price - b.price);
-      case 'priceHighToLow':
-        return [...products].sort((a, b) => b.price - a.price);
+        setNumberLine(0);
+        return [...filteredData].sort((a, b) => a.price - b.price);
+      case 'priceHighToLow':        
+        setNumberLine(1);
+        return [...filteredData].sort((a, b) => b.price - a.price);
       case 'name':
-        return [...products].sort((a, b) => a.name.localeCompare(b.name));
+        setNumberLine(2);
+        return [...filteredData].sort((a, b) => a.name.localeCompare(b.name));
       default:
-        return products;
+        return filteredData;
     }
   };
 
+
   return (
-    <div className="dropdown">
-      <div className="dropdown-header" onClick={toggleDropdown}>
-        Filter
-      </div>
+    <div className="dropdown" style={{position: 'relative', padding: '0px 10px'}}>
+      <div onClick={toggleDropdown} style={{width: '180px'}}><u>{list[numberLine].text + " "}</u></div>
       {isOpen && (
-        <div className="dropdown-list">
-          <div onClick={() => handleSelect('priceLowToHigh')}>
-            {lang[languages].catalogPage_sortingAZ}
-          </div>
-          <div onClick={() => handleSelect('priceHighToLow')}>
-            {lang[languages].catalogPage_sortingZA}
-          </div>
-          <div onClick={() => handleSelect('name')}>
-            {lang[languages].catalogPage_sortingName}
-          </div>
-        </div>
-        // <Ul style={{maxHeight: expanded[key] ? '100vh' : '0'}}>
-        //         {expanded[key] && values.map(({ value, count }, index) => ( 
-        //           // Отображаем количество элементов и их значения
-        //           <Li key={index}>
-        //             <input type="text" id={`${key}-${index}`} value={value} defaultChecked={toggleChecked(value)} onClick={(e) => changeCheckbox(value, e)}/>
-        //             <label htmlFor={`${key}-${index}`}>{value} <Span>({count})</Span></label>
-        //           </Li>
-        //         ))}
-        //       </Ul>
+        <ul style={{ position: 'absolute', top:'30px', left: '-115px', zIndex: 5, backgroundColor: "#FFF", width: '150%', boxShadow: '0 0 5px 5px gray'}}>
+          {list && list.map((value, index) => (
+            <li key={index} style={{borderBottom: 'solid 1px grey'}}>
+              <div onClick={() => handleSelect(value.id)} style={{padding: '10px 10px'}}>
+                <u>{list[index].text}</u>
+              </div>
+              {/* <hr/> */}
+            </li>
+          ))}
+        </ul>
       )}
     </div>
   );

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, createContext } from "react";
 // import { useSearchParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "redux/operations";
@@ -30,6 +30,8 @@ import sortingIcon from "assets/images/svg/sorting.svg";
 import linesIcon from "assets/images/svg/lines.svg";
 import tilesIcon from "assets/images/svg/tiles.svg";
 
+export const ProductsContext = createContext();
+
 
 const CatalogCarsPage = () => {
   // const [searchParams, setSearchParams] = useSearchParams();
@@ -45,6 +47,8 @@ const CatalogCarsPage = () => {
   const [filteredData, setFilteredData] = useState(products);
   
   const [activePage, setActivePage] = useState(1);
+
+  // const [sortedProducts, setSortedProducts] = useState(products);
   
 
   useEffect(() => {
@@ -104,17 +108,11 @@ const CatalogCarsPage = () => {
   };
 
   
-  const handleFilterChange = (filter) => {
-    // Обработка изменений фильтра
-    const sortedProducts = setFilteredData(filter);
-    setFilteredData(sortedProducts);
-  };
-
   return (
     <div style={{ backgroundColor: 'var(--bg-second)' }}>
       <NavBar /> 
       <div style={{maxWidth: '1408px', margin: '0 auto', padding: '10px 16px', backgroundColor: '#FFF'}}>
-        <span style={{paddingRight: '20px', fontSize: '16px'}}><b>{category.length > 0 && category[category.length - 1].cat_name}</b></span>
+        <span style={{paddingRight: '20px', fontSize: '16px'}}><b>{category && category.length > 0 && category[category.length - 1].cat_name}</b></span>
         <span> {lang[languages].catalogPage_finded} {filteredData.length}</span>
       </div>
       <Container>
@@ -134,10 +132,18 @@ const CatalogCarsPage = () => {
         </aside>
         <section>          
           <div style={{display: 'flex', margin: '0 0 16px 16px', backgroundColor: '#FFF', alignItems: 'center', justifyContent: 'space-evenly', flexWrap: 'wrap'}}>
-            <div  style={{display: 'flex'}}>
+            <div  style={{display: 'flex', alignItems: 'center'}}>
               <img src={sortingIcon} alt="sorting icon" width={'32px'} height={'32px'}/> 
               {lang[languages].catalogPage_sorting}
-              <DropdownList products={products} onChange={handleFilterChange} />              
+              
+              <ProductsContext.Provider value={{ filteredData, setFilteredData }}>
+                <DropdownList/>
+              </ProductsContext.Provider>
+              
+              {/* <DropdownList products={products} onChange={handleFilterChange} />               */}
+            
+            
+            
             </div>
             {filteredData.length > 0 && (            
               <Pagination
