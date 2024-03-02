@@ -118,16 +118,6 @@ const CatalogCarsPage = () => {
         <span> {lang[languages].catalogPage_finded} {filteredData.length}</span>
       </div>
       <Container>
-        {/* {console.log(category, "; ", categories)}
-        <div>{categories.some(
-          elem => {
-            // const c = elem.cat_id = +category ? elem.cat_name : "";
-            const c = elem.cat_id === +category && elem.cat_name;
-            console.log(c);
-            return elem.cat_id === +category
-          })}
-        </div>
-        <div>Найдено: {filteredData.length} товаров</div> */}
         <aside style={{ minWidth: '250px', backgroundColor: 'white' }}>
           <h4 style={{ padding: '16px 0', textAlign: 'center' }}>
             {lang[languages].catalogPage_asideTitel.toUpperCase()}
