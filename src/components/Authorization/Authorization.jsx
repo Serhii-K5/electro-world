@@ -21,9 +21,9 @@ const Authorization = () => {
 
   return (
     <>
-      <Div onClick={onOpenModal} style={{display: "flex", alignItems: 'center', cursor: 'pointer'}}>
+      <Div onClick={onOpenModal}>
         {lang[languages].Authorization}
-        <Img src={user} alt="user icon" style={{width: '35px'}}/>
+        <Img src={user} alt="user icon"/>
       </Div>
       {isModalShown && <AutorizationModule onClose={onCloseModal} />}
     </>
