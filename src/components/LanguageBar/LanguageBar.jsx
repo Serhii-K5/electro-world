@@ -17,7 +17,7 @@ export const LanguageBar = () => {
   };
   
   return (
-    <Ul>
+    <Ul style={{cursor: 'pointer'}}>
       {lang.length > 0 && lang.map((el, index)=> 
         languages === el.lang_id ? 
           <Li key={index} onClick={() => (handleClick(el.lang_id))} style={{ backgroundColor: 'var(--bg-second-green)' }}>{el.lang_name}</Li>
