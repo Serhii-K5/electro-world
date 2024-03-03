@@ -62,36 +62,6 @@ const FilterPanel = ({ data }) => {
     memoArray([]);
   }, [data]);
 
-  // const memoArray = (arr) => {
-  //   data.map(item => {
-  //     const tempArray = CreateMemoArray(item.memo);
-  //     tempArray.flatMap(memoEl => {
-  //       if (memoEl && memoEl.key !== '') {
-  //         const keyArr = arr.map(item => item.key);
-  //         const index = keyArr.length > 0
-  //           ? keyArr.findIndex(memoKey =>
-  //             memoKey && memoEl.key.trim().toUpperCase() === memoKey.trim().toUpperCase()
-  //           )
-  //           : -1;
-          
-  //         if (index < 0) {
-  //           arr.push({ key: memoEl.key.trim(), values: [{ value: memoEl.value.trim(), count: 1 }] });
-  //         } else {
-  //           const pos = arr[index].values.findIndex(el => el.value === memoEl.value);
-  //           if (pos < 0) {
-  //             arr[index].values.push({ value: memoEl.value, count: 1 });
-  //           } else {
-  //             arr[index].values[pos].count++;
-  //           }
-  //         }
-  //       }
-  //       setFiltersArray(arr);
-  //       return 0;
-  //     });
-  //     return 0;
-  //   });
-  // };
-  
   const changeCheckbox = (item, e) => {
     if (e.target.checked) {
       dispatch(addFilters({ key: "memo", value: item }));

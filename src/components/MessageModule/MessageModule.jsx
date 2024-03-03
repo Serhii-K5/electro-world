@@ -72,6 +72,7 @@ const MessageModule = ({ onClose }) => {
           </CloseBtn>
           
           <p>Message module</p>
+          <h2 style={{margin: '50px auto', textAlign: 'center', fontSize: '50px'}}>Page under construction</h2>
         </Modal>
       </Overlay>
       {/* <CarsSlider />

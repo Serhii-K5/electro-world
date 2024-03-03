@@ -9,8 +9,6 @@ function DropdownList() {
   const languages = useSelector(selectLanguages);
   const [isOpen, setIsOpen] = useState(false);
   const { filteredData, setFilteredData } = useContext(ProductsContext);
-  // const [selectedFilter, setSelectedFilter] = useState(null);
-  // const [sortedProducts, setSortedProducts] = useState(products);
   const [numberLine, setNumberLine] = useState(0);
 
   const list = [
@@ -66,7 +64,6 @@ function DropdownList() {
               <div onClick={() => handleSelect(value.id)} style={{padding: '10px 10px'}}>
                 <u>{list[index].text}</u>
               </div>
-              {/* <hr/> */}
             </li>
           ))}
         </ul>
