@@ -13,6 +13,10 @@ function DropdownList() {
 
   const list = [
     {
+      id: 'notSorting',
+      text: lang[languages].catalogPage_notSorting
+    },
+    {
       id: 'priceLowToHigh',
       text: lang[languages].catalogPage_sortingAZ
     },
@@ -39,14 +43,17 @@ function DropdownList() {
     if (!filter) return filteredData;
 
     switch (filter) {
-      case 'priceLowToHigh':
+      case 'notSorting':
         setNumberLine(0);
+        return filteredData;
+      case 'priceLowToHigh':
+        setNumberLine(1);
         return [...filteredData].sort((a, b) => a.price - b.price);
       case 'priceHighToLow':        
-        setNumberLine(1);
+        setNumberLine(2);
         return [...filteredData].sort((a, b) => b.price - a.price);
       case 'name':
-        setNumberLine(2);
+        setNumberLine(3);
         return [...filteredData].sort((a, b) => a.name.localeCompare(b.name));
       default:
         return filteredData;

@@ -77,13 +77,27 @@ const CatalogCarsPage = () => {
               return false;
             };
           } else {
-            const result = () => {
+            if (typeof value[0] === 'object') {
               return value.some((nameFilter) => {
-                return nameFilter.value !== '' && product[key].toUpperCase().includes(nameFilter.toUpperCase());
-              })
-            };
+                const isKey = nameFilter.key !== '' && product[key].toUpperCase().includes(value[0].key.toUpperCase());
+                const isValue = (value[0].value instanceof Array) ?
+                  value[0].value.some((nameFilter) => {
+                    return nameFilter.value !== '' && product[key].toUpperCase().includes(nameFilter.value.toUpperCase());
+                  })
+                  : nameFilter.value !== '' && product[key].toUpperCase().includes(nameFilter.value.toUpperCase());
+                
+                return isKey && isValue;
+              });
 
-            return product[key] !== '' ? result() : true;
+            } else {
+              const result = () => {
+                return value.some((nameFilter) => {
+                  return nameFilter.value !== '' && product[key].toUpperCase().includes(nameFilter.toUpperCase());
+                })
+              };
+  
+              return product[key] !== '' ? result() : true;
+            } 
           }
         });
       }));
@@ -101,9 +115,10 @@ const CatalogCarsPage = () => {
   };
 
   const handleClickBtn = () => {
-    dispatch(deleteFilters({ key: 'memo', value: [] }));
+    // dispatch(deleteFilters({ key: 'memo', value: [] }));
+    dispatch(deleteFilters({ key: 'memo', value: "" }));
     dispatch(deleteFilters({ key: 'name', value: "" }));
-    dispatch(deleteFilters({ key: 'parentId', value: 0 }));
+    // dispatch(deleteFilters({ key: 'parentId', value: 0 }));
     dispatch(changeCategory(0));
   };
 
@@ -121,7 +136,7 @@ const CatalogCarsPage = () => {
             {lang[languages].catalogPage_asideTitel.toUpperCase()}
           </h4>
           <BtnDiv onClick={handleClickBtn}>
-            <b>Сбросить фильтры</b>
+            <b>{lang[languages].catalogPage_resetFilters.toUpperCase()}</b>
           </BtnDiv>
 
           <div style={{ padding: '0 16px' }}>
@@ -130,7 +145,7 @@ const CatalogCarsPage = () => {
 
           <FilterPanel data={filteredData} />
         </aside>
-        <section>          
+        <section style={{ margin: '0 auto'}}>          
           <div style={{display: 'flex', margin: '0 0 16px 16px', backgroundColor: '#FFF', alignItems: 'center', justifyContent: 'space-evenly', flexWrap: 'wrap'}}>
             <div  style={{display: 'flex', alignItems: 'center'}}>
               <img src={sortingIcon} alt="sorting icon" width={'32px'} height={'32px'}/> 

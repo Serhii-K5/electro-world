@@ -62,11 +62,11 @@ const FilterPanel = ({ data }) => {
     memoArray([]);
   }, [data]);
 
-  const changeCheckbox = (key, item, e) => {
+  const changeCheckbox = (item, e) => {
     if (e.target.checked) {
-      dispatch(addFilters({ key: "memo", value: {key: key, value: item}}));
+      dispatch(addFilters({ key: "memo", value: item }));
     } else {
-      dispatch(deleteFilters({ key:"memo", value: {key: key, value: item}}));
+      dispatch(deleteFilters({ key:"memo", value: item }));
     }
   };
 
@@ -95,7 +95,7 @@ const FilterPanel = ({ data }) => {
             {expanded[key] && values.map(({ value, count }, index) => ( 
               // Отображаем количество элементов и их значения
               <Li key={index}>
-                <input type="checkbox" id={`${key}-${index}`} value={value} defaultChecked={toggleChecked(value)} onClick={(e) => changeCheckbox(key, value, e)}/>
+                <input type="checkbox" id={`${key}-${index}`} value={value} defaultChecked={toggleChecked(value)} onClick={(e) => changeCheckbox(value, e)}/>
                 <label htmlFor={`${key}-${index}`}>{value} <Span>({count})</Span></label> {/* Отображаем количество элементов пункта */}
               </Li>
             ))}
