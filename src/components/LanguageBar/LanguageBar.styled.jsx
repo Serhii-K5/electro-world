@@ -7,6 +7,7 @@ export const Ul = styled.ul `
   // max-width: 1440px;
   text-align: right;
   font-size: 16px;
+  cursor: pointer;
 `
 
 export const Li = styled.li `
