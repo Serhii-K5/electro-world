@@ -139,11 +139,6 @@ const CatalogCarsPage = () => {
               <ProductsContext.Provider value={{ filteredData, setFilteredData }}>
                 <DropdownList/>
               </ProductsContext.Provider>
-              
-              {/* <DropdownList products={products} onChange={handleFilterChange} />               */}
-            
-            
-            
             </div>
             {filteredData.length > 0 && (            
               <Pagination

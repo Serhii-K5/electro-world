@@ -21,7 +21,7 @@ const Authorization = () => {
 
   return (
     <>
-      <div onClick={onOpenModal} style={{display: "flex", alignItems: 'center'}}>
+      <div onClick={onOpenModal} style={{display: "flex", alignItems: 'center', cursor: 'pointer'}}>
         <div>{lang[languages].Authorization}</div>
         <img src={user} alt="user icon" style={{width: '35px'}}/>
       </div>
