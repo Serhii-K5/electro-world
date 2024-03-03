@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { selectLanguages } from 'redux/selectors';
 import Logo from 'components/Logo/Logo';
 import MessageModule from "components/MessageModule/MessageModule";
+import AutorizationModule from "components/AutorizationModule/AutorizationModule";
 // import AdressBar from 'components/AdressBar/AdressBar';
 import AdressBarFooter from "components/AdressBarFooter/AdressBarFooter";
 import {
@@ -17,13 +18,19 @@ import lang from "assets/json/language.json";
 
 const Footer = () => {
   const [isModalShown, setIsModalShown] = useState(false);
+  const [isModalAutorizationShown, setIsModalAutorizationShown] = useState(false);
   
   const onOpenModal = () => {
     setIsModalShown(true);
   };
   
+  const onOpenModalAutorization = () => {
+    setIsModalAutorizationShown(true);
+  };
+  
   const onCloseModal = () => {
     setIsModalShown(false);
+    setIsModalAutorizationShown(false);
   }
   const languages = useSelector(selectLanguages);
   return (
@@ -84,11 +91,12 @@ const Footer = () => {
           <div style={{padding: '16px'}}>
             <p><b>{lang[languages].footer_account}</b></p>
             <hr style={{ color: '#FFF' }} />
-            <p>{lang[languages].footer_authorization}</p>
+            <p onClick={onOpenModalAutorization} style={{cursor: 'pointer'}}>{lang[languages].footer_authorization}</p>
           </div>        
         </Section>
       </Container>
       {isModalShown && <MessageModule onClose={onCloseModal} />}
+      {isModalAutorizationShown && <AutorizationModule onClose={onCloseModal} />}
     </footer>
   )
 };
