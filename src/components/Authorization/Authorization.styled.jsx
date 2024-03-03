@@ -6,13 +6,12 @@ export const Div = styled.div`
   align-items: center;
   cursor: pointer;
   color: inherit;
-  color: var(--text-color-white);
   transition: color ${transition};
 
   &:hover,
   &:active,
   &:focus {
-    color: var(--text-color-active-blue:);
+    color: var(--text-color-active-blue);
   };
 `;
 

@@ -48,10 +48,21 @@ export const Section = styled.section`
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
-  max-width: 1440px;
+  max-width: 1440px;  
+  color: inherit;
   justify-content: space-around;
 `;
 
+export const P = styled.p`
+  cursor: pointer;
+  transition: color ${transition};
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: var(--text-color-active-blue);
+  };
+`;
 
 
 

@@ -10,7 +10,8 @@ import {
   Container,
   Section,
   NavLinkStyle,
-  Span
+  Span,
+  P,
 } from "./Footer.styled";
 
 import lang from "assets/json/language.json";
@@ -91,7 +92,7 @@ const Footer = () => {
           <div style={{padding: '16px'}}>
             <p><b>{lang[languages].footer_account}</b></p>
             <hr style={{ color: '#FFF' }} />
-            <p onClick={onOpenModalAutorization} style={{cursor: 'pointer'}}>{lang[languages].footer_authorization}</p>
+            <P onClick={onOpenModalAutorization}>{lang[languages].footer_authorization}</P>
           </div>        
         </Section>
       </Container>

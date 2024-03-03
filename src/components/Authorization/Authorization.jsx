@@ -22,7 +22,7 @@ const Authorization = () => {
   return (
     <>
       <Div onClick={onOpenModal}>
-        {lang[languages].Authorization}
+        <b>{lang[languages].Authorization.toUpperCase()}</b>
         <Img src={user} alt="user icon"/>
       </Div>
       {isModalShown && <AutorizationModule onClose={onCloseModal} />}
