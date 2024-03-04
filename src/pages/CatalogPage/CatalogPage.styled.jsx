@@ -16,13 +16,13 @@ export const Container = styled.div`
 export const Ul = styled.ul`
   display: flex;
   margin: 0 auto;
-  padding-left: 25px;
+  padding-left: 16px;
   max-width: 1440px;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  column-gap: 10px;
-  row-gap: 10px;
+  column-gap: 8px;
+  row-gap: 8px;
   padding-bottom: 30px;
 `;
 

@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { transition } from 'components/ConstComponentsStyle/ConstComponentsStyle.styled';
+// const transition = `150ms linear`;
 
-const transition = `150ms linear`;
 
 export const Container = styled.div`
   padding: 16px 0;

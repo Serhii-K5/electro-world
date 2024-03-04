@@ -6,7 +6,8 @@ import { transition } from 'components/ConstComponentsStyle/ConstComponentsStyle
 export const Container = styled.div`
   position: relative;
   display: flex;
-  width: 430px;
+  // width: 430px;
+  width: 374px;
   height: 260px;
   flex-direction: column;
   gap: 10px; 
@@ -51,13 +52,15 @@ export const ImgDiv = styled.div`
 
 export const DivHov = styled.div`
   position: absolute;
-  padding: 15px;
+  // padding: 15px;
+  padding: 10px;
   right: 0;
   background-color: var(--bg-primary);
   transition: width ${transition}, height ${transition}, filter ${transition};
 
   overflow: hidden;
-  width: 426px;
+  // width: 426px;
+  width: 372px;
   height: 256px;
 
   &:hover,
@@ -73,15 +76,15 @@ export const DivHov = styled.div`
 export const OptionDiv = styled.div`
   display: flex;
   margin-bottom: 20px;
-  padding: 0 10px;
+  // padding: 0 10px;
   justify-content: flex-end;  
   text-align: end;
 `;
 
 export const Img = styled.img`
   margin-bottom: 14px;
-  width: 140px;
-  height: 140px;
+  width: 135px;
+  height: 135px;
 `;
 
 export const OptionContainer = styled.div`
@@ -190,69 +193,69 @@ export const Memo = styled.p`
   text-overflow: ellipsis;
 `;
 
-export const Ul = styled.ul`
-  display: flex;
-  margin-bottom: 4px;
-  width: 274px;
-  align-items: center;
-  gap: 6px;
-`;
+// export const Ul = styled.ul`
+//   display: flex;
+//   margin-bottom: 4px;
+//   width: 274px;
+//   align-items: center;
+//   gap: 6px;
+// `;
 
-export const Li = styled.li`
-  height: 18px;
-  padding-right: 6px;
-  color: var(--text-color-secondary-black);
-  font-size: 12px;
-  line-height: 1.5;
-  border-right: 1px solid var(--text-color-secondary-black);
+// export const Li = styled.li`
+//   height: 18px;
+//   padding-right: 6px;
+//   color: var(--text-color-secondary-black);
+//   font-size: 12px;
+//   line-height: 1.5;
+//   border-right: 1px solid var(--text-color-secondary-black);
 
-  &:last-child {
-    border-right: none;
-    padding: 0;
-  }
-`;
+//   &:last-child {
+//     border-right: none;
+//     padding: 0;
+//   }
+// `;
 
-export const Button = styled.button`
-  display: flex;
-  width: 274px;
-  height: 44px;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--text-color-blue);
-  color: #FFF;
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1.43;
-  border: none;
-  border-radius: 12px;
-  transition: background-color ${transition};
+// export const Button = styled.button`
+//   display: flex;
+//   width: 274px;
+//   height: 44px;
+//   align-items: center;
+//   justify-content: center;
+//   background-color: var(--text-color-blue);
+//   color: #FFF;
+//   font-family: inherit;
+//   font-size: 14px;
+//   font-weight: 600;
+//   line-height: 1.43;
+//   border: none;
+//   border-radius: 12px;
+//   transition: background-color ${transition};
 
-  &:hover,
-  &:active,
-  &:focus {
-    background-color: var(--bg-active-button-color);
-  }
-`;
+//   &:hover,
+//   &:active,
+//   &:focus {
+//     background-color: var(--bg-active-button-color);
+//   }
+// `;
 
-export const OrderBtn = styled.button`
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  display: flex;
-  margin: 0;
-  padding: 0;
-  width: 18px;
-  height: 18px;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  background: transparent;
-  transition: transform ${transition};
+// export const OrderBtn = styled.button`
+//   position: absolute;
+//   top: 16px;
+//   right: 16px;
+//   display: flex;
+//   margin: 0;
+//   padding: 0;
+//   width: 18px;
+//   height: 18px;
+//   align-items: center;
+//   justify-content: center;
+//   border: none;
+//   background: transparent;
+//   transition: transform ${transition};
 
-  &:hover,
-  &:active,
-  &:focus {
-    transform: scale(1.2);
-  }
-`;
+//   &:hover,
+//   &:active,
+//   &:focus {
+//     transform: scale(1.2);
+//   }
+// `;
