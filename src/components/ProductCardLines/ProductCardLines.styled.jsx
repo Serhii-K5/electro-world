@@ -1,67 +1,85 @@
 import styled from "styled-components";
 import { transition } from 'components/ConstComponentsStyle/ConstComponentsStyle.styled';
 
-// const transition = `150ms linear`;
+// const transition = `750ms linear`;
 
 export const Container = styled.div`
   position: relative;
   display: flex;
-  // width: 430px;
-  width: 374px;
-  height: 260px;
-  flex-direction: column;
+  // width: 374px;
+  // height: 260px;
+  // max-width: 1000px; 
+  // min-width: calc(100vw - 276px); 
+  width: calc(100vw - 276px); 
+  // heigth: 100px;
+  // heigth: 190px;
+  // min-heigth: 190px;
+  // max-heigth: 100px;
+  // flex-direction: column;
   gap: 10px; 
   cursor: pointer; 
   border: 1px solid var(--text-color-grey);
 `;
 
 export const DivHov = styled.div`
-position: absolute;
-// padding: 15px;
-padding: 10px;
-right: 0;
-background-color: var(--bg-primary);
-transition: width ${transition}, height ${transition}, filter ${transition};
+  position: absolute;
+  right: 0;
+  // padding: 15px;
+  padding: 10px;
+  right: 0;
+  background-color: var(--bg-primary);
+  transition: width ${transition}, height ${transition}, filter ${transition};
 
-overflow: hidden;
-// width: 426px;
-width: 372px;
-height: 256px;
+  overflow: hidden;
+  // width: 426px;
+  // width: 372px;
+  // min-width: calc(100vw - 276px);
+  width: calc(100vw - 276px);
+  // height: 100px;
+  height: 190px;
 
-&:hover,
-&:active,
-&:focus {
-  width: 555px;
-  height: 350px;
-  z-index: 70;
-  filter: drop-shadow(0 0 0.75rem gray);
-}
+  &:hover,
+  &:active,
+  &:focus {
+    // width: 555px;
+    // left: -5vw;
+    // width: 90vw;
+    width: calc(100vw - 200px);
+    height: 210px;
+    z-index: 70;
+    filter: drop-shadow(0 0 0.75rem gray);
+   }
 `;
 
 export const ImgDiv = styled.div`
-display: flex;
-margin: 0 auto;  
-margin-top: 20px;
-align-items: center;
-justify-content: center;
-width: 45px;
-height: 45px;
-// object-fit: cover;
-border-radius: 50%;
-border: 1px solid grey;
-transition: border-color ${transition}, fill ${transition};
+  display: flex;
+  margin: 0 auto;  
+  margin-top: 20px;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  // object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid grey;
+  transition: border-color ${transition}, fill ${transition};
 
-&:hover,
-&:active,
-&:focus {
-  border-color: var(--bg-second-green);
-  fill: var(--bg-second-green);
-}
+  &:hover,
+  &:active,
+  &:focus {
+    border-color: var(--bg-second-green);
+    fill: var(--bg-second-green);
+  }
+`;
+
+export const ImgDiv1 = styled.div`
+  width: 25px;
+  height: 25px;
 `;
 
 export const Aside = styled.aside`
-  padding-left: 0.5rem;
-  margin-left: 0.5rem;
+  // padding-left: 0.5rem;
+  // margin-left: 0.5rem;
   float: left;
   text-align: center;
   // box-shadow: inset 5px 0 5px -5px #29627e;
@@ -71,7 +89,7 @@ export const Aside = styled.aside`
   // & > p {
   //   margin: 0.5rem;
   // }
-`;
+`
 
 export const OptionDiv = styled.div`
   display: flex;
@@ -82,25 +100,33 @@ export const OptionDiv = styled.div`
 `;
 
 export const Img = styled.img`
-  margin-bottom: 14px;
-  width: 135px;
-  height: 135px;
+  // margin-bottom: 14px;
+  width: 155px;
+  height: 155px;
 `;
 
 export const OptionContainer = styled.div`
   display: block;
   margin-left: 10px;
-  min-width: 245px;
+  min-width: 100px;
 `;
 
-export const PriceOld = styled.p`
+// export const PriceOld = styled.p`
+export const PriceOld = styled.span`
   font-size: 14px;
   font-weight: 500;
   color: var(--text-color-grey); 
   text-decoration: line-through;
 `;
 
-export const Price = styled.p`
+export const PriceOld1 = styled.span`
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-color-grey);
+`;
+
+// export const Price = styled.p`
+export const Price = styled.span`
   font-size: 20px;
   font-weight: 600;
   color: var(--text-color-primary-black); 
@@ -117,7 +143,8 @@ export const Input = styled.input`
 
 export const QuantityDiv = styled.div` 
   display: flex;
-  margin: 20px;
+  // margin: 20px;
+  width: 100px;
   justify-content: flex-end;
 `;
 
@@ -139,8 +166,12 @@ export const Div = styled.div`
 `;
 
 export const ButtonDiv = styled.div` 
-  margin-top: 15px;
+  display: inline;
+  // margin-top: 15px;
   padding: 10px 16px;
+  // heigth: 30px;
+  width: fit-content;
+  height: fit-content;
   color: var(--text-color-white); 
   border-radius: 5px;
   border: solid 1px var(--bg-second-green);
@@ -192,70 +223,3 @@ export const Memo = styled.p`
   white-space: wrap;
   text-overflow: ellipsis;
 `;
-
-// export const Ul = styled.ul`
-//   display: flex;
-//   margin-bottom: 4px;
-//   width: 274px;
-//   align-items: center;
-//   gap: 6px;
-// `;
-
-// export const Li = styled.li`
-//   height: 18px;
-//   padding-right: 6px;
-//   color: var(--text-color-secondary-black);
-//   font-size: 12px;
-//   line-height: 1.5;
-//   border-right: 1px solid var(--text-color-secondary-black);
-
-//   &:last-child {
-//     border-right: none;
-//     padding: 0;
-//   }
-// `;
-
-// export const Button = styled.button`
-//   display: flex;
-//   width: 274px;
-//   height: 44px;
-//   align-items: center;
-//   justify-content: center;
-//   background-color: var(--text-color-blue);
-//   color: #FFF;
-//   font-family: inherit;
-//   font-size: 14px;
-//   font-weight: 600;
-//   line-height: 1.43;
-//   border: none;
-//   border-radius: 12px;
-//   transition: background-color ${transition};
-
-//   &:hover,
-//   &:active,
-//   &:focus {
-//     background-color: var(--bg-active-button-color);
-//   }
-// `;
-
-// export const OrderBtn = styled.button`
-//   position: absolute;
-//   top: 16px;
-//   right: 16px;
-//   display: flex;
-//   margin: 0;
-//   padding: 0;
-//   width: 18px;
-//   height: 18px;
-//   align-items: center;
-//   justify-content: center;
-//   border: none;
-//   background: transparent;
-//   transition: transform ${transition};
-
-//   &:hover,
-//   &:active,
-//   &:focus {
-//     transform: scale(1.2);
-//   }
-// `;

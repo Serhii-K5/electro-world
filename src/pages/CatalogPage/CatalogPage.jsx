@@ -4,13 +4,24 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "redux/operations";
 
 import ProductCard from "components/ProductCard/ProductCard";
+import ProductCardLines from "components/ProductCardLines/ProductCardLines";
 import { selectProducts, selectFilters, selectDirectoryPath, selectLanguages } from 'redux/selectors';
 
 import { deleteFilters } from 'redux/slice/filtersSlice';
 import { changeCategory } from 'redux/slice/categorySlice';
 
 import {
+  PageContainer,
+  PathContainer,
+  PathSpan,
   Container,
+  Aside,
+  H4,
+  AsideDiv,
+  Section,
+  SectionBar,
+  SortingDiv,
+  BuildingDiv,
   Ul,
   BtnDiv,
 } from './CatalogPage.styled';
@@ -47,6 +58,7 @@ const CatalogCarsPage = () => {
   const [filteredData, setFilteredData] = useState(products);
   
   const [activePage, setActivePage] = useState(1);
+  const [isLine, setIsLine] = useState(false);
 
   // const [sortedProducts, setSortedProducts] = useState(products);
   
@@ -145,39 +157,46 @@ const CatalogCarsPage = () => {
     dispatch(changeCategory(0));
   };
 
-  
+  const formTiles = () => {
+    setIsLine(false);
+  }
+
+  const formLines = () => {
+    setIsLine(true);
+  }
+
   return (
-    <div style={{ backgroundColor: 'var(--bg-second)' }}>
+    <PageContainer>
       <NavBar /> 
-      <div style={{maxWidth: '1408px', margin: '0 auto', padding: '10px 16px', backgroundColor: '#FFF'}}>
-        <span style={{paddingRight: '20px', fontSize: '16px'}}><b>{category && category.length > 0 && category[category.length - 1].cat_name}</b></span>
+      <PathContainer>
+        <PathSpan><b>{category && category.length > 0 && category[category.length - 1].cat_name}</b></PathSpan>
         <span> {lang[languages].catalogPage_finded} {filteredData.length}</span>
-      </div>
+      </PathContainer>
       <Container>
-        <aside style={{ minWidth: '250px', backgroundColor: 'white' }}>
-          <h4 style={{ padding: '16px 0', textAlign: 'center' }}>
+        <Aside>
+          <H4>
             {lang[languages].catalogPage_asideTitel.toUpperCase()}
-          </h4>
+          </H4>
           <BtnDiv onClick={handleClickBtn}>
             <b>{lang[languages].catalogPage_resetFilters.toUpperCase()}</b>
           </BtnDiv>
 
-          <div style={{ padding: '0 16px' }}>
+          <AsideDiv>
             {filteredData && <PriceRange data={filteredData} />}
-          </div>
+          </AsideDiv>
 
           <FilterPanel data={filteredData} />
-        </aside>
-        <section style={{ margin: '0 auto'}}>          
-          <div style={{display: 'flex', margin: '0 0 16px 16px', backgroundColor: '#FFF', alignItems: 'center', justifyContent: 'space-evenly', flexWrap: 'wrap'}}>
-            <div  style={{display: 'flex', alignItems: 'center'}}>
+        </Aside>
+        <Section>          
+          <SectionBar>
+            <SortingDiv>
               <img src={sortingIcon} alt="sorting icon" width={'32px'} height={'32px'}/> 
               {lang[languages].catalogPage_sorting}
               
               <ProductsContext.Provider value={{ filteredData, setFilteredData }}>
                 <DropdownList/>
               </ProductsContext.Provider>
-            </div>
+            </SortingDiv>
             {filteredData.length > 0 && (            
               <Pagination
                 activePage={activePage}
@@ -186,15 +205,15 @@ const CatalogCarsPage = () => {
                 filteredData={filteredData}
               />
             )}
-            <div  style={{display: 'flex', gap: '16px'}}>
-              <div>
+            <BuildingDiv>
+              <div onClick={formTiles}>
                 <img src={tilesIcon} alt="tiles icon" width={'32px'} height={'32px'}/>
               </div>
-              <div>
+              <div onClick={formLines}>
                 <img src={linesIcon} alt="lines icon" width={'32px'} height={'32px'}/>
               </div>
-            </div>
-          </div>          
+            </BuildingDiv>
+          </SectionBar>          
           {filteredData.length > 0 && (
             <Ul>
               {filteredData.map(
@@ -202,8 +221,9 @@ const CatalogCarsPage = () => {
                   index > (activePage - 1) * 8 - 1 &&
                   index < activePage * 8 && (
                     // index > (page - 1) * 8 - 1 && index < page * 8 && (
-                    <li key={item.id}>
-                      <ProductCard card={item} />
+                    <li key={item.id} style={{minHeight: '170px'}}>
+                      {!isLine && <ProductCard card={item}/>}
+                      {isLine && <ProductCardLines card={item} index={index}/>}
                     </li>
                   )
               )}
@@ -217,9 +237,9 @@ const CatalogCarsPage = () => {
               filteredData={filteredData}
             />
           )}
-        </section>
+        </Section>
       </Container>
-    </div>
+    </PageContainer>
   );
 };
 

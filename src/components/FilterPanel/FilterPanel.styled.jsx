@@ -4,7 +4,8 @@ import {transition} from "components/ConstComponentsStyle/ConstComponentsStyle.s
 const transitionShift = `550ms linear`;
 
 export const LiBlock = styled.li`
-  border-top: 1px solid var(--bg-color-grey);
+  border-top: 1px solid var(--bg-color-grey);  
+  width: 300px;
 `;
 
 export const Div = styled.div`

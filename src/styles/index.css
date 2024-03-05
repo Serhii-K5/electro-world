@@ -1,6 +1,6 @@
 :root {
   /* COLOR */
-  --bg-primary: #FFFFFF;
+  --bg-primary: #FFF;
   --bg-second: #F6F8FD;
   --bg-primary-green: #9EE2AC;
   --bg-second-green: #02BD2A;
@@ -14,7 +14,7 @@
 
   --text-color-primary-black:#121417;
   --text-color-secondary-black: #12141780;
-  --text-color-white:#FFFFFF;
+  --text-color-white:#FFF;
   --text-color-grey: #8a8a8957;
   --text-color-grey1: #8a8a897c;
   --text-color-blue: #3470FF;
