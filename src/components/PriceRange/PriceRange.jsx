@@ -15,7 +15,7 @@ import {
 
 // import { changeFilteredProducts } from 'redux/slice/filteredProductsSlice';
 import { changeFilters } from 'redux/slice/filtersSlice';
-import { SHIFT_RANGE } from 'constants/Constants';
+import { SHIFT_RANGE } from 'constantValues/constants';
 import lang from 'assets/json/language.json';
 
 import products1 from '../../assets/json/products.json';

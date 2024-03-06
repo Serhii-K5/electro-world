@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { transition } from 'components/ConstComponentsStyle/ConstComponentsStyle.styled';
-import { SHIFT_RANGE } from 'constantValues/constantValues';
+import { SHIFT_RANGE } from 'constantValues/constants';
 
 export const Form = styled.div`
   display: flex;

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { transition } from 'components/ConstComponentsStyle/ConstComponentsStyle.styled';
-import { FILTER_PANEL_WIDTH } from 'constantValues/constantValues';
+import { FILTER_PANEL_WIDTH } from 'constantValues/constants';
 // const transition = `250ms linear`;
 
 export const PageContainer = styled.div`
@@ -57,7 +57,7 @@ export const Section = styled.section`
   // min-width: 84vw;
   // min-width: calc(100vw - 300px);
   // min-width: calc(100vw - ${FILTER_PANEL_WIDTH});
-  width: calc(100vw - ${FILTER_PANEL_WIDTH});
+  width: calc(100vw - ${FILTER_PANEL_WIDTH} + 70px);
   padding-left: 16px;
 `;
 
@@ -68,6 +68,7 @@ export const SectionBar = styled.div`
   align-items: center;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  width: calc(100vw - 300px - 70px);
 `;
 
 export const SortingDiv = styled.div`

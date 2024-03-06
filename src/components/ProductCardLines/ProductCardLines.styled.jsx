@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { transition } from 'components/ConstComponentsStyle/ConstComponentsStyle.styled';
-import { FILTER_PANEL_WIDTH } from 'constantValues/constantValues';
+import { FILTER_PANEL_WIDTH } from 'constantValues/constants';
 // const transition = `750ms linear`;
 
 export const Container = styled.div`
@@ -10,7 +10,7 @@ export const Container = styled.div`
   // height: 260px;
   // max-width: 1000px;
   // min-width: calc(100vw - 276px);
-  width: calc(100vw - ${FILTER_PANEL_WIDTH});
+  width: calc(100vw - ${FILTER_PANEL_WIDTH} + 70px);
   // heigth: 100px;
   // heigth: 190px;
   // min-heigth: 190px;
@@ -18,15 +18,15 @@ export const Container = styled.div`
   // flex-direction: column;
   gap: 10px;
   cursor: pointer;
-  border: 1px solid var(--text-color-grey);
+  // border: 1px solid var(--text-color-grey);
 `;
 
 export const DivHov = styled.div`
   position: absolute;
-  right: 0;
+  // right: 0;
   // padding: 15px;
   padding: 10px;
-  right: 0;
+  right: 70px;
   background-color: var(--bg-primary);
   transition: width ${transition}, height ${transition}, filter ${transition};
 
@@ -36,7 +36,7 @@ export const DivHov = styled.div`
   // min-width: calc(100vw - 276px);
   width: calc(100vw - ${FILTER_PANEL_WIDTH});
   // height: 100px;
-  height: 190px;
+  height: 165px;
 
   &:hover,
   &:active,
@@ -170,7 +170,7 @@ export const ButtonDiv = styled.div`
   // margin-top: 15px;
   padding: 10px 16px;
   // heigth: 30px;
-  width: 170px;
+  width: 205px;
   height: fit-content;
   color: var(--text-color-white);
   border-radius: 5px;
