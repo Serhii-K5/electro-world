@@ -38,7 +38,7 @@ export const Container = styled.div`
 
 export const Aside = styled.aside`
   // width: 300px;
-  width: ${FILTER_PANEL_WIDTH};
+  width: calc(${FILTER_PANEL_WIDTH } + 70px);
   // min-width: 15vw;
   background-color: var(--bg-primary);
 `;
