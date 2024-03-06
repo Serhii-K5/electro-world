@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 import { transition } from 'components/ConstComponentsStyle/ConstComponentsStyle.styled';
-import FILTER_PANEL_WIDTH from 'pages';
+import { FILTER_PANEL_WIDTH } from 'constantValues/constantValues';
 // const transition = `750ms linear`;
 
 export const Container = styled.div`
@@ -10,7 +10,7 @@ export const Container = styled.div`
   // height: 260px;
   // max-width: 1000px;
   // min-width: calc(100vw - 276px);
-  width: calc(100vw - (FILTER_PANEL_WIDTH + px));
+  width: calc(100vw - ${FILTER_PANEL_WIDTH});
   // heigth: 100px;
   // heigth: 190px;
   // min-heigth: 190px;
@@ -34,7 +34,7 @@ export const DivHov = styled.div`
   // width: 426px;
   // width: 372px;
   // min-width: calc(100vw - 276px);
-  width: calc(100vw - 276px);
+  width: calc(100vw - ${FILTER_PANEL_WIDTH});
   // height: 100px;
   height: 190px;
 
@@ -48,12 +48,12 @@ export const DivHov = styled.div`
     height: 210px;
     z-index: 70;
     filter: drop-shadow(0 0 0.75rem gray);
-   }
+  }
 `;
 
 export const ImgDiv = styled.div`
   display: flex;
-  margin: 0 auto;  
+  margin: 0 auto;
   margin-top: 20px;
   align-items: center;
   justify-content: center;
@@ -89,13 +89,13 @@ export const Aside = styled.aside`
   // & > p {
   //   margin: 0.5rem;
   // }
-`
+`;
 
 export const OptionDiv = styled.div`
   display: flex;
   margin-bottom: 20px;
   // padding: 0 10px;
-  justify-content: flex-end;  
+  justify-content: flex-end;
   text-align: end;
 `;
 
@@ -115,7 +115,7 @@ export const OptionContainer = styled.div`
 export const PriceOld = styled.span`
   font-size: 14px;
   font-weight: 500;
-  color: var(--text-color-grey); 
+  color: var(--text-color-grey);
   text-decoration: line-through;
 `;
 
@@ -129,11 +129,11 @@ export const PriceOld1 = styled.span`
 export const Price = styled.span`
   font-size: 20px;
   font-weight: 600;
-  color: var(--text-color-primary-black); 
+  color: var(--text-color-primary-black);
 `;
 
-export const Input = styled.input` 
-  display: flex; 
+export const Input = styled.input`
+  display: flex;
   width: 35px;
   height: 30px;
   font-size: 20px;
@@ -141,15 +141,15 @@ export const Input = styled.input`
   border: solid 1px var(--text-color-grey);
 `;
 
-export const QuantityDiv = styled.div` 
+export const QuantityDiv = styled.div`
   display: flex;
   // margin: 20px;
   width: 100px;
   justify-content: flex-end;
 `;
 
-export const Div = styled.div` 
-  color: var(--text-color-primary-black); 
+export const Div = styled.div`
+  color: var(--text-color-primary-black);
   width: 30px;
   height: 30px;
   border: solid 1px var(--text-color-grey);
@@ -162,40 +162,40 @@ export const Div = styled.div`
   &:focus {
     font-size: 22px;
     font-weight: bold;
-  };
+  }
 `;
 
-export const ButtonDiv = styled.div` 
+export const ButtonDiv = styled.div`
   display: inline;
   // margin-top: 15px;
   padding: 10px 16px;
   // heigth: 30px;
-  width: fit-content;
+  width: 170px;
   height: fit-content;
-  color: var(--text-color-white); 
+  color: var(--text-color-white);
   border-radius: 5px;
   border: solid 1px var(--bg-second-green);
   text-align: center;
   font-size: 20px;
   background-color: var(--bg-second-green);
   transition: background-color ${transition}, color ${transition};
-  
+
   &.isOrder {
     border-color: var(--bg-second-orange);
     background-color: var(--bg-second-orange);
-  };
-  
+  }
+
   &:hover,
   &:active,
   &:focus {
     background-color: transparent;
     color: var(--text-second-green);
-  };
-  
+  }
+
   &.isOrder:hover {
     background-color: transparent;
     color: var(--text-second-orange);
-  };
+  }
 `;
 
 export const Name = styled.p`
@@ -204,15 +204,15 @@ export const Name = styled.p`
   font-weight: 600;
   line-height: 1.5;
   overflow: hidden;
-  whiteSpace: wrap;
-  textOverflow: ellipsis;
+  whitespace: wrap;
+  textoverflow: ellipsis;
   transition: color ${transition};
-  
+
   &:hover,
   &:active,
-  &:focus {    
-    color: var( --text-color-active-blue);
-  };
+  &:focus {
+    color: var(--text-color-active-blue);
+  }
 `;
 
 export const Memo = styled.p`

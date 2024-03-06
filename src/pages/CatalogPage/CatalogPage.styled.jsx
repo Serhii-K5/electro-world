@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { transition } from 'components/ConstComponentsStyle/ConstComponentsStyle.styled';
-import FILTER_PANEL_WIDTH from 'constantsValue/constants';
+import { FILTER_PANEL_WIDTH } from 'constantValues/constantValues';
 // const transition = `250ms linear`;
 
 export const PageContainer = styled.div`
