@@ -218,13 +218,14 @@ const CatalogCarsPage = () => {
             <Ul>
               {filteredData.map(
                 (item, index) =>
-                  index > (activePage - 1) * 8 - 1 &&
-                  index < activePage * 8 && (
+                  index > (activePage - 1) * 8 - 1 && index < activePage * 8 && (
                     // index > (page - 1) * 8 - 1 && index < page * 8 && (
-                    <li key={item.id} style={{minHeight: '170px'}}>
-                      {!isLine && <ProductCard card={item}/>}
-                      {isLine && <ProductCardLines card={item} index={index}/>}
-                    </li>
+                    isLine ? (<li key={item.id} style={{ minHeight: '170px', width: 'calc(100vw - 370px)' }}>
+                        <ProductCardLines card={item} index={index} />
+                      </li>)
+                    : (<li key={item.id} >
+                        <ProductCard card={item} />
+                      </li>)
                   )
               )}
             </Ul>

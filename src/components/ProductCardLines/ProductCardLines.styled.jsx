@@ -144,7 +144,7 @@ export const Input = styled.input`
 export const QuantityDiv = styled.div`
   display: flex;
   // margin: 20px;
-  width: 100px;
+  // width: 100px;
   justify-content: flex-end;
 `;
 
@@ -166,7 +166,7 @@ export const Div = styled.div`
 `;
 
 export const ButtonDiv = styled.div`
-  display: inline;
+  // display: inline;
   // margin-top: 15px;
   padding: 10px 16px;
   // heigth: 30px;

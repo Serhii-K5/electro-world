@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { changeDirectoryPath } from 'redux/slice/directoryPathSlice';
 import { Link } from 'react-router-dom';
 
-import { Li } from "./CategoryDropdownList.styled";
+import { Li, Span } from './CategoryDropdownList.styled';
 import { changeCategory } from 'redux/slice/categorySlice';
 import { changeFilters } from "redux/slice/filtersSlice";
 
@@ -52,7 +52,7 @@ const CategoryDropdownList = ({ parentId}) => {
               onClick={() => handleClick(category)}
             >
               <Link to={!isCategory ? '/categories' : '/catalog'}>
-                {isCategory && category.cat_name + ' >'}
+                {isCategory && <Span><b>{category.cat_name.toUpperCase() + ' >' }</b></Span>}
               </Link>
             </Li>
           )

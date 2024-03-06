@@ -69,6 +69,7 @@ export const SectionBar = styled.div`
   justify-content: space-evenly;
   flex-wrap: wrap;
   width: calc(100vw - 300px - 70px);
+  min-height: 50px;
 `;
 
 export const SortingDiv = styled.div`

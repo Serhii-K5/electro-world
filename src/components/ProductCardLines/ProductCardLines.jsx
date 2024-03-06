@@ -127,14 +127,14 @@ export default function Product({ card, index }) {
               <Img src={noPhoto} alt={card.name} />
               : <Img src={card.photo} alt={card.name} />          
             }
-            <div style={{marginRight: 'auto'}}>
+            <div style={{marginRight: 'auto', width: "45vw"}}>
               {/* <p>Код: {card.code}</p> */}
               <p>{lang[languages].productCard_codeTitle}: {card.code}</p>
               <Name onClick={onOpenModal}>{card.name}</Name>
               <Memo>{card.memo}</Memo> 
             </div>
-            <div style={{display: 'flex', gap: '16px', alignItems: 'center', flexWrap: 'wrap'}}>
-              <div style={{width: '90px'}}>
+            <div style={{display: 'flex', gap: '16px', alignContent: 'center', flexWrap: 'wrap', width: '27vw',  justifyContent: 'center' }}>
+              <div style={{width: '100px'}}>
                 <div style={{display: 'flex', gap: '16px'}}>
                   <PriceOld>{card.price}</PriceOld> <PriceOld1>грн.</PriceOld1>
                 </div>
