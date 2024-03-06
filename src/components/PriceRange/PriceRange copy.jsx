@@ -10,12 +10,12 @@ import {
   RangeContainer,
   RangeBgDiv,
   RangeActiveDiv,
-  RangeLineEdgesDiv  
+  RangeLineEdgesDiv,
 } from './PriceRange.styled';
 
 // import { changeFilteredProducts } from 'redux/slice/filteredProductsSlice';
-import { changeFilters} from "redux/slice/filtersSlice";
-import { SHIFT_RANGE } from 'constants/constants';
+import { changeFilters } from 'redux/slice/filtersSlice';
+import { SHIFT_RANGE } from 'constants/Constants';
 import lang from 'assets/json/language.json';
 
 import products1 from '../../assets/json/products.json';
@@ -39,7 +39,6 @@ const PriceRange = ({ data }) => {
   const [isMouseDownMin, setIsMouseDownMin] = useState(false);
   const [isMouseDownMax, setIsMouseDownMax] = useState(false);
 
-  
   useEffect(() => {
     const rangePriceElement = document.getElementById('range-price');
     const rangeWidth = rangePriceElement.clientWidth;
@@ -73,22 +72,28 @@ const PriceRange = ({ data }) => {
     const [min, max] = searchMinMaxPrice(data);
     setInputValueMin(min);
     setInputValueMax(max);
-    
+
     if (maxPrice !== minPrice) {
-      setPositionMin( Math.round(((min - minPrice) * rangeWidth) / (maxPrice - minPrice)));
-      setPositionMax(Math.round(((max - minPrice) * rangeWidth) / (maxPrice - minPrice)));
+      setPositionMin(
+        Math.round(((min - minPrice) * rangeWidth) / (maxPrice - minPrice))
+      );
+      setPositionMax(
+        Math.round(((max - minPrice) * rangeWidth) / (maxPrice - minPrice))
+      );
     } else {
       setPositionMin(0);
       setPositionMax(rangeWidth);
     }
-}, [maxPrice, minPrice, rangeWidth, data]);
-  
+  }, [maxPrice, minPrice, rangeWidth, data]);
+
   useEffect(() => {
     const handleMouseMove = e => {
       if (isMouseDownMin) {
         const offsetMin = e.clientX - positionStart - SHIFT_RANGE * 0.5;
         if (offsetMin >= 0 && offsetMin <= positionMax) {
-          setInputValueMin(Math.round((offsetMin * (maxPrice - minPrice)) / rangeWidth));
+          setInputValueMin(
+            Math.round((offsetMin * (maxPrice - minPrice)) / rangeWidth)
+          );
           setPositionMin(Math.round(offsetMin));
         } else if (offsetMin > positionMax) {
           setInputValueMin(inputValueMax);
@@ -99,7 +104,7 @@ const PriceRange = ({ data }) => {
           setPositionMin(0);
         }
       }
-      
+
       if (isMouseDownMax) {
         const offsetMax = e.clientX - positionStart - SHIFT_RANGE * 1.5;
         if (offsetMax >= positionMin && offsetMax <= rangeWidth) {
@@ -129,8 +134,19 @@ const PriceRange = ({ data }) => {
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseup', handleMouseUp);
     };
-  // }, [positionStart, positionMin, positionMax, maxPrice, minPrice, rangeWidth, inputValueMin, inputValueMax, isMouseDownMin, isMouseDownMax]);
-  }, [isMouseDownMin, isMouseDownMax, positionStart, positionMax, maxPrice, minPrice, rangeWidth, inputValueMax, positionMin, inputValueMin]);
+    // }, [positionStart, positionMin, positionMax, maxPrice, minPrice, rangeWidth, inputValueMin, inputValueMax, isMouseDownMin, isMouseDownMax]);
+  }, [
+    isMouseDownMin,
+    isMouseDownMax,
+    positionStart,
+    positionMax,
+    maxPrice,
+    minPrice,
+    rangeWidth,
+    inputValueMax,
+    positionMin,
+    inputValueMin,
+  ]);
 
   const changePositionMin = value => {
     if (value > inputValueMax) {
@@ -184,7 +200,7 @@ const PriceRange = ({ data }) => {
     const value = Math.abs(Number(e.target.value));
     if (value >= 0) {
       setInputValueMin(value);
-      changePositionMin(value);      
+      changePositionMin(value);
     } else {
       setInputValueMin(e.target.value);
     }
@@ -203,7 +219,7 @@ const PriceRange = ({ data }) => {
   const handleMouseDownMin = () => {
     setIsMouseDownMin(true);
   };
-  
+
   // const handleMouseUpMin = () => {
   //   setIsMouseDownMin(false);
   // };
@@ -215,9 +231,11 @@ const PriceRange = ({ data }) => {
   // const handleMouseUpMax = () => {
   //   setIsMouseDownMax(false);
   // };
-  
+
   const handleClickBtn = () => {
-    dispatch(changeFilters({ key: 'price', value: [inputValueMin, inputValueMax] }));
+    dispatch(
+      changeFilters({ key: 'price', value: [inputValueMin, inputValueMax] })
+    );
   };
 
   return (

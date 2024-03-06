@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { transition } from 'components/ConstComponentsStyle/ConstComponentsStyle.styled';
+import FILTER_PANEL_WIDTH from 'constantsValue/constants';
 // const transition = `250ms linear`;
 
 export const PageContainer = styled.div`
@@ -8,7 +9,8 @@ export const PageContainer = styled.div`
 
 export const PathContainer = styled.div`
   // maxWidth: '1408px';
-  min-width: 100vw;
+  // min-width: 100vw;
+  width: 100vw;
   margin: 0 auto;
   padding: 10px 16px;
   background-color: var(--bg-primary);
@@ -24,8 +26,10 @@ export const Container = styled.div`
   margin: 0 auto;
   padding: 16px;
   // max-width: 1440px;
-  
-  min-width: 100vw;
+
+  // min-width: 100vw;
+  // min-width: 96vw;
+  width: 100vw;
   min-height: 87vh;
 
   // background-color: #f6f8fd;
@@ -33,14 +37,15 @@ export const Container = styled.div`
 `;
 
 export const Aside = styled.aside`
-  width: 300px;
+  // width: 300px;
+  width: ${FILTER_PANEL_WIDTH};
   // min-width: 15vw;
   background-color: var(--bg-primary);
 `;
 
 export const H4 = styled.h4`
-padding: 16px 0;
-text-align: center;
+  padding: 16px 0;
+  text-align: center;
 `;
 
 export const AsideDiv = styled.div`
@@ -50,7 +55,9 @@ export const AsideDiv = styled.div`
 export const Section = styled.section`
   margin: 0 auto;
   // min-width: 84vw;
-  min-width: calc(100vw - 276px);
+  // min-width: calc(100vw - 300px);
+  // min-width: calc(100vw - ${FILTER_PANEL_WIDTH});
+  width: calc(100vw - ${FILTER_PANEL_WIDTH});
   padding-left: 16px;
 `;
 
@@ -78,9 +85,10 @@ export const Ul = styled.ul`
   // margin: 0 auto;
   // margin-bottom: 8;
   // padding-left: 16px;
-  // max-width: 1440px;  
+  // max-width: 1440px;
   // min-width: 84vw;
-  min-width: calc(100vw - 276px);
+  // min-width: calc(100vw - ${FILTER_PANEL_WIDTH});
+  width: calc(100vw - ${FILTER_PANEL_WIDTH});
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;

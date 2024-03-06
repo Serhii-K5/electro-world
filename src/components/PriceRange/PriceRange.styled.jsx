@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { transition } from "components/ConstComponentsStyle/ConstComponentsStyle.styled";
-import { SHIFT_RANGE } from "constants/constants";
+import styled from 'styled-components';
+import { transition } from 'components/ConstComponentsStyle/ConstComponentsStyle.styled';
+import { SHIFT_RANGE } from 'constants/Constants';
 
 export const Form = styled.div`
   display: flex;
@@ -12,7 +12,7 @@ export const Form = styled.div`
 export const Input = styled.input`
   padding: 7px;
   border-radius: 5px;
-  border-color: var(--bg-color-grey)
+  border-color: var(--bg-color-grey);
 `;
 
 export const BtnDiv = styled.div`
@@ -73,4 +73,3 @@ export const RangeLineEdgesDiv = styled.div`
     box-shadow: none;
   }
 `;
-

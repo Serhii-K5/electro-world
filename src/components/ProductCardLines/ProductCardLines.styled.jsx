@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { transition } from 'components/ConstComponentsStyle/ConstComponentsStyle.styled';
-
+import FILTER_PANEL_WIDTH from 'pages';
 // const transition = `750ms linear`;
 
 export const Container = styled.div`
@@ -8,16 +8,16 @@ export const Container = styled.div`
   display: flex;
   // width: 374px;
   // height: 260px;
-  // max-width: 1000px; 
-  // min-width: calc(100vw - 276px); 
-  width: calc(100vw - 276px); 
+  // max-width: 1000px;
+  // min-width: calc(100vw - 276px);
+  width: calc(100vw - (FILTER_PANEL_WIDTH + px));
   // heigth: 100px;
   // heigth: 190px;
   // min-heigth: 190px;
   // max-heigth: 100px;
   // flex-direction: column;
-  gap: 10px; 
-  cursor: pointer; 
+  gap: 10px;
+  cursor: pointer;
   border: 1px solid var(--text-color-grey);
 `;
 
