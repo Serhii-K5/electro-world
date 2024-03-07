@@ -35,7 +35,7 @@ const HomePage = () => {
           </Span>
           {lang[languages].homePage_h1_2}
         </H1>
-        <H3 style={{ padding: '8px 0px', textAlign: 'center' }}>
+        <H3>
           <i> {lang[languages].homePage_h3} </i>
         </H3>
         <P>
@@ -85,7 +85,6 @@ const HomePage = () => {
           </div>
         </DivBlock>
         <DivBlock style={{ justifyContent: 'space-evenly' }}>
-          {/* <div style={{ margin: '0 auto'}}> */}
           <div>
             <Img src={img1} alt="Малая бытовая техника" />
           </div>
