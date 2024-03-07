@@ -15,6 +15,10 @@ import {
 
 import { selectLanguages } from 'redux/selectors';
 import lang from 'assets/json/language.json';
+import delivery from 'assets/images/jpg/delivery.jpg';
+import meest from 'assets/images/jpg/meest.jpg';
+import novaPoshta from 'assets/images/jpg/novaPoshta.jpg';
+import ukrposhta from 'assets/images/jpg/ukrposhta.jpg';
 
 const DeliveryPage = () => {
   const languages = useSelector(selectLanguages);
@@ -32,38 +36,50 @@ const DeliveryPage = () => {
         </h2> */}
         <P>
           <b>
-            <i>{lang[languages].homePage_p1} Способы доставки:</i>
+            <i>{lang[languages].deliveryPage_p1}</i>
           </b>
         </P>
         <ul>
           <Li>
-            <a href="https://novaposhta.ua/basic_tariffs"> Новая Почта:</a>
-            Доставка в отделение Новой Почты в вашем населенном пункте.
+            <a href="https://novaposhta.ua/basic_tariffs">
+              <img src={novaPoshta} alt="Nova poshta icon" width={'150px'} />
+            </a>
+            {lang[languages].deliveryPage_ul1_li1}
+            {/* Доставка в отделение Новой Почты в вашем населенном пункте. */}
           </Li>
           <Li>
-            <a href="https://track.ukrposhta.ua/tracking_UA.html"> Укрпочта:</a>
-            Доставка в отделение Укрпочты в вашем населенном пункте.
+            <a href="https://track.ukrposhta.ua/tracking_UA.html">
+              <img src={ukrposhta} alt="Ukrposhta icon" width={'150px'} />
+            </a>
+            {lang[languages].deliveryPage_ul1_li2}
+            {/* Доставка в отделение Укрпочты в вашем населенном пункте. */}
           </Li>
           <Li>
             <a href="https://delivery-auto.com/?token=0f61503f-b7a5-4f5c-ab08-9668b6a6bf61">
-              {' '}
-              Delivery:
+              <img src={delivery} alt="Delivery icon" width={'150px'} />
             </a>
-            Доставка в отделение Delivery в вашем населенном пункте.
+            {lang[languages].deliveryPage_ul1_li3}
+            {/* Доставка в отделение Delivery в вашем населенном пункте. */}
           </Li>
           <Li>
-            <a href="https://novaposhta.ua/basic_tariffs"> Новая Почта:</a>
-            https://ua.meest.com/parcel-track Meest Express: Доставка в
-            отделение Meest Express в вашем населенном пункте.
+            <span>
+              <a href="https://ua.meest.com/parcel-track">
+                <img src={meest} alt="Meest icon" width={'150px'} />
+              </a>
+            </span>
+            <span>{lang[languages].deliveryPage_ul1_li4}</span>
+            {/* Доставка в отделение Meest в вашем населенном пункте. */}
           </Li>
           <Li>
-            Самовывоз: Вы можете забрать заказ самостоятельно из нашего магазина
-            в г. Балта, Одесская область.
+            <b>{lang[languages].deliveryPage_ul1_li5_1}</b>
+            {lang[languages].deliveryPage_ul1_li5_2}
+            {/* Самовывоз: Вы можете забрать заказ самостоятельно из нашего магазина
+            в г. Балта, Одесская область. */}
           </Li>
         </ul>
         <P>
           <b>
-            <i>{lang[languages].homePage_p2} Стоимость доставки:</i>
+            <i>{lang[languages].deliveryPage_p2}</i>
           </b>
         </P>
         <ul>
@@ -75,7 +91,7 @@ const DeliveryPage = () => {
         </ul>
         <P>
           <b>
-            <i>{lang[languages].homePage_p2} Сроки доставки:</i>
+            <i>{lang[languages].deliveryPage_p3} Сроки доставки:</i>
           </b>
         </P>
         <Ul>

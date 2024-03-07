@@ -15,9 +15,9 @@ import {
 
 import { selectLanguages } from 'redux/selectors';
 import lang from 'assets/json/language.json';
-import img1 from "assets/images/image1.png";
-import img2 from "assets/images/image2.png";
-import img3 from "assets/images/image3.png";
+import img1 from 'assets/images/png/image1.png';
+import img2 from 'assets/images/png/image2.png';
+import img3 from 'assets/images/png/image3.png';
  
 
 const HomePage = () => {
