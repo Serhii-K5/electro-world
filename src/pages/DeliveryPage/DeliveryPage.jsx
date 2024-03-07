@@ -3,7 +3,7 @@ import {
   Container,
   Section,
   H1,
-  Span,
+  // Span,
   H3,
   DivBlock,
   P,
@@ -13,8 +13,12 @@ import {
   H4,
 } from 'pages/HomePage/HomePage.styled';
 
+import { DeliveryLi, Span } from "./DeliveryPage.styled";
+
 import { selectLanguages } from 'redux/selectors';
 import lang from 'assets/json/language.json';
+import AdressBar from "components/AdressBar/AdressBar";
+
 import delivery from 'assets/images/jpg/delivery.jpg';
 import meest from 'assets/images/jpg/meest.jpg';
 import novaPoshta from 'assets/images/jpg/novaPoshta.jpg';
@@ -27,55 +31,49 @@ const DeliveryPage = () => {
     <Container>
       <Section>
         <H1>
-          <sup>Доставка</sup>
+          {"Доставка".toUpperCase()}
         </H1>
-        {/* <h2
-          style={{ margin: '50px auto', textAlign: 'center', fontSize: '50px' }}
-        >
-          Page under construction
-        </h2> */}
         <P>
           <b>
             <i>{lang[languages].deliveryPage_p1}</i>
           </b>
         </P>
         <ul>
-          <Li>
-            <a href="https://novaposhta.ua/basic_tariffs">
-              <img src={novaPoshta} alt="Nova poshta icon" width={'150px'} />
+          <DeliveryLi>
+            <a href="https://novaposhta.ua/basic_tariffs" target="_blank" rel="noreferrer">
+              <img src={novaPoshta} alt="Nova poshta logo" width={'150px'} />
             </a>
-            {lang[languages].deliveryPage_ul1_li1}
+            <Span>{lang[languages].deliveryPage_ul1_li1}</Span>
             {/* Доставка в отделение Новой Почты в вашем населенном пункте. */}
-          </Li>
-          <Li>
-            <a href="https://track.ukrposhta.ua/tracking_UA.html">
-              <img src={ukrposhta} alt="Ukrposhta icon" width={'150px'} />
+          </DeliveryLi>
+          <DeliveryLi>
+            <a href="https://track.ukrposhta.ua/tracking_UA.html" target="_blank" rel="noreferrer">
+              <img src={ukrposhta} alt="Ukrposhta logo" width={'150px'} />
             </a>
-            {lang[languages].deliveryPage_ul1_li2}
+            <Span>{lang[languages].deliveryPage_ul1_li2}</Span>
             {/* Доставка в отделение Укрпочты в вашем населенном пункте. */}
-          </Li>
-          <Li>
-            <a href="https://delivery-auto.com/?token=0f61503f-b7a5-4f5c-ab08-9668b6a6bf61">
-              <img src={delivery} alt="Delivery icon" width={'150px'} />
+          </DeliveryLi>
+          <DeliveryLi>
+            <a href="https://delivery-auto.com/?token=0f61503f-b7a5-4f5c-ab08-9668b6a6bf61" target="_blank" rel="noreferrer">
+              <img src={delivery} alt="Delivery logo" width={'150px'} />
             </a>
-            {lang[languages].deliveryPage_ul1_li3}
+            <Span>{lang[languages].deliveryPage_ul1_li3}</Span>
             {/* Доставка в отделение Delivery в вашем населенном пункте. */}
-          </Li>
-          <Li>
-            <span>
-              <a href="https://ua.meest.com/parcel-track">
-                <img src={meest} alt="Meest icon" width={'150px'} />
-              </a>
-            </span>
-            <span>{lang[languages].deliveryPage_ul1_li4}</span>
+          </DeliveryLi>
+          <DeliveryLi>
+            <a href="https://ua.meest.com/parcel-track" target="_blank" rel="noreferrer">
+              <img src={meest} alt="Meest logo" width={'150px'} />
+            </a>
+            <Span>{lang[languages].deliveryPage_ul1_li4}</Span>
             {/* Доставка в отделение Meest в вашем населенном пункте. */}
-          </Li>
-          <Li>
+          </DeliveryLi>
+          <DeliveryLi>
             <b>{lang[languages].deliveryPage_ul1_li5_1}</b>
-            {lang[languages].deliveryPage_ul1_li5_2}
+            <Span>{lang[languages].deliveryPage_ul1_li5_2}</Span>
             {/* Самовывоз: Вы можете забрать заказ самостоятельно из нашего магазина
             в г. Балта, Одесская область. */}
-          </Li>
+          </DeliveryLi>
+          <p><i>{lang[languages].deliveryPage_note}</i></p>
         </ul>
         <P>
           <b>
@@ -84,69 +82,64 @@ const DeliveryPage = () => {
         </P>
         <ul>
           <Li>
-            Стоимость доставки рассчитывается согласно тарифам
-            компании-перевозчика.
+            {lang[languages].deliveryPage_ul2_li1}
           </Li>
-          <Li>Самовывоз: Бесплатно.</Li>
+          <Li><b>{lang[languages].deliveryPage_ul1_li5_1}</b>{lang[languages].deliveryPage_ul2_li2}</Li>
         </ul>
         <P>
           <b>
-            <i>{lang[languages].deliveryPage_p3} Сроки доставки:</i>
+            <i>{lang[languages].deliveryPage_p3}</i>
           </b>
         </P>
         <Ul>
-          <Li> Новая Почта: 1-3 дня. </Li>
-          <Li> Укрпочта: 2-5 дней. </Li>
-          <Li> Delivery: 1-3 дня. </Li>
-          <Li> Meest Express: 1-3 дня. </Li>
-          <Li> Самовывоз: В день заказа. </Li>
+          <Li> <b>{lang[languages].deliveryPage_ul3_li1}</b> {lang[languages].deliveryPage_ul3_period1_3}</Li>
+          <Li> <b>{lang[languages].deliveryPage_ul3_li2}</b> {lang[languages].deliveryPage_ul3_period2_5}</Li>
+          <Li> <b>{lang[languages].deliveryPage_ul3_li3}</b> {lang[languages].deliveryPage_ul3_period1_3}</Li>
+          <Li> <b>{lang[languages].deliveryPage_ul3_li4}</b> {lang[languages].deliveryPage_ul3_period1_3}</Li>
+          <Li> <b>{lang[languages].deliveryPage_ul3_li5}</b> {lang[languages].deliveryPage_ul3_period0}</Li>
         </Ul>
         <P>
           <b>
-            <i>{lang[languages].homePage_p2} Оплата:</i>
+            <i>{lang[languages].deliveryPage_p4}</i>
           </b>
         </P>
         <Ul>
           <Li>
-            {' '}
-            Наложенным платежом: Вы можете оплатить заказ при получении в
-            отделении почты.{' '}
+            <b>{lang[languages].deliveryPage_ul4_li1_1}</b> {lang[languages].deliveryPage_ul4_li1_2}
+            {/* Наложенным платежом: Вы можете оплатить заказ при получении в отделении почты.{' '} */}
           </Li>
           <Li>
-            {' '}
-            Предоплата на карту: Вы можете оплатить заказ на карту ПриватБанка.{' '}
-          </Li>
-        </Ul>
-        <P>
-          <b>
-            <i>{lang[languages].homePage_p2} Обратите внимание:</i>
-          </b>
-        </P>
-        <Ul>
-          <Li>Доставка заказов осуществляется только по территории Украины.</Li>
-          <Li>
-            Сроки доставки могут быть увеличены в связи с форс-мажорными
-            обстоятельствами.
-          </Li>
-          <Li>
-            Перед отправкой заказа мы обязательно проверяем его на наличие
-            повреждений.
+            <b>{lang[languages].deliveryPage_ul4_li2_1}</b> {lang[languages].deliveryPage_ul4_li2_2}
+            {/* Предоплата на карту: Вы можете оплатить заказ на карту ПриватБанка.{' '} */}
           </Li>
         </Ul>
         <P>
           <b>
-            <i>
-              {lang[languages].homePage_p2} Если у вас есть какие-либо вопросы
-              по поводу доставки, пожалуйста, свяжитесь с нами:
-            </i>
+            <i>{lang[languages].deliveryPage_p5}</i>
           </b>
+        </P>
+        <Ul>
+          <Li>{lang[languages].deliveryPage_ul5_li1}
+            {/* Доставка заказов осуществляется только по территории Украины. */}
+          </Li>
+          <Li>
+            {lang[languages].deliveryPage_ul5_li2}
+            {/* Сроки доставки могут быть увеличены в связи с форс-мажорными обстоятельствами. */}
+          </Li>
+          <Li>
+            {lang[languages].deliveryPage_ul5_li3}
+            {/* Перед отправкой заказа мы обязательно проверяем его на наличие повреждений. */}
+          </Li>
+        </Ul>
+        <P>
+          <b><i>{lang[languages].deliveryPage_p6}</i></b>
         </P>
         <ul>
-          <Li>Телефон: +380 (097) 123-45-67</Li>
+          <Li><AdressBar color='black' /></Li>
           <Li>Email: [удаленный электронный адрес]</Li>
         </ul>
         <H4>
-          <b>{lang[languages].homePage_h4} Приятных покупок!</b>
+          <b>{lang[languages].deliveryPage_h4}</b>
         </H4>
       </Section>
     </Container>

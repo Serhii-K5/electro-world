@@ -14,9 +14,24 @@ export const Span = styled.span`
   // transition: font-size ${transition}, color ${transition};
   transition: color ${transition};
 
+  // &#black {
+  //   color: var(--text-color-primary-black);
+  //   &.isScaleKs,
+  //   &.isScaleVd {
+  //     color: red;
+  //   }
+  // };
+
+  // &#while {
+  //   color: var(--text-color-white);
+  //   &.isScaleKs,
+  //   &.isScaleVd {
+  //     color: red;
+  //   }
+  // };
+
   &.isScaleKs,
   &.isScaleVd {
-    // font-size: 17px;
     color: red;
   }
 `;

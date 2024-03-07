@@ -193,14 +193,6 @@ export const Memo = styled.p`
   text-overflow: ellipsis;
 `;
 
-// export const Ul = styled.ul`
-//   display: flex;
-//   margin-bottom: 4px;
-//   width: 274px;
-//   align-items: center;
-//   gap: 6px;
-// `;
-
 // export const Li = styled.li`
 //   height: 18px;
 //   padding-right: 6px;
@@ -212,29 +204,6 @@ export const Memo = styled.p`
 //   &:last-child {
 //     border-right: none;
 //     padding: 0;
-//   }
-// `;
-
-// export const Button = styled.button`
-//   display: flex;
-//   width: 274px;
-//   height: 44px;
-//   align-items: center;
-//   justify-content: center;
-//   background-color: var(--text-color-blue);
-//   color: #FFF;
-//   font-family: inherit;
-//   font-size: 14px;
-//   font-weight: 600;
-//   line-height: 1.43;
-//   border: none;
-//   border-radius: 12px;
-//   transition: background-color ${transition};
-
-//   &:hover,
-//   &:active,
-//   &:focus {
-//     background-color: var(--bg-active-button-color);
 //   }
 // `;
 
