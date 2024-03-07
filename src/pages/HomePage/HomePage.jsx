@@ -1,14 +1,17 @@
 import { useSelector } from "react-redux";
-import { 
-  Div,
+import {
+  Container,
   Section,
+  H1,
+  Span,
+  H3,
   DivBlock,
   P,
   Ul,
   Li,
   Img,
-  H4
-} from "./HomePage.styled";
+  H4,
+} from './HomePage.styled';
 
 import { selectLanguages } from 'redux/selectors';
 import lang from 'assets/json/language.json';
@@ -21,32 +24,35 @@ const HomePage = () => {
   const languages = useSelector(selectLanguages);
 
   return (
-    <Div>
+    <Container>
       <Section>
         {/* slider */}
-        <h1 style={{ textAlign: 'center' }}>
+        <H1>
           {lang[languages].homePage_h1}
-          <span style={{color: 'var(--text-second-orange)'}}>
-            {" "} Electro world {" "} 
-          </span>
+          <Span>
+            {' '}
+            Electro world{' '}
+          </Span>
           {lang[languages].homePage_h1_2}
-        </h1>
-        <h3 style={{ padding: '8px 0px', textAlign: 'center' }}>
+        </H1>
+        <H3 style={{ padding: '8px 0px', textAlign: 'center' }}>
           <i> {lang[languages].homePage_h3} </i>
-        </h3>
+        </H3>
         <P>
           {lang[languages].homePage_p1} <b>Electro world</b>!
-        </P>  
+        </P>
         <P>
           <b>Electro world</b>
           {lang[languages].homePage_p2}
-        </P>  
+        </P>
         <P>
-          <b><i>{lang[languages].homePage_p3}</i></b>
+          <b>
+            <i>{lang[languages].homePage_p3}</i>
+          </b>
         </P>
         <DivBlock>
-          <div style={{maxWidth: '1000px'}}>
-            <Ul >
+          <div style={{ maxWidth: '1000px' }}>
+            <Ul>
               <Li>
                 <i>{lang[languages].homePage_ul1_li1}</i>
                 {lang[languages].homePage_ul1_li1_2}
@@ -72,22 +78,22 @@ const HomePage = () => {
                 {lang[languages].homePage_ul1_li6_2}
               </Li>
             </Ul>
-            <P>
-              {lang[languages].homePage_p4}
-            </P>          
+            <P>{lang[languages].homePage_p4}</P>
           </div>
           <div>
-            <Img src={img3} alt="electrician "/>
+            <Img src={img3} alt="electrician " />
           </div>
-        </DivBlock>        
-        <DivBlock style={{justifyContent: 'space-evenly'}}>          
+        </DivBlock>
+        <DivBlock style={{ justifyContent: 'space-evenly' }}>
           {/* <div style={{ margin: '0 auto'}}> */}
           <div>
-            <Img src={img1} alt="Малая бытовая техника"/>
+            <Img src={img1} alt="Малая бытовая техника" />
           </div>
-          <div>          
+          <div>
             <P>
-              <b><i>{lang[languages].homePage_p5}</i></b>
+              <b>
+                <i>{lang[languages].homePage_p5}</i>
+              </b>
             </P>
             <Ul>
               <Li>
@@ -116,15 +122,19 @@ const HomePage = () => {
         <DivBlock>
           <div>
             <P>
-              <b><i>{lang[languages].homePage_p6}</i></b>
-            </P>  
+              <b>
+                <i>{lang[languages].homePage_p6}</i>
+              </b>
+            </P>
             <Ul>
               <Li>{lang[languages].homePage_ul3_li1}</Li>
               <Li>{lang[languages].homePage_ul3_li2}</Li>
               <Li>{lang[languages].homePage_ul3_li3}</Li>
             </Ul>
             <P>
-              <b><i>{lang[languages].homePage_p7}</i></b>
+              <b>
+                <i>{lang[languages].homePage_p7}</i>
+              </b>
             </P>
             <Ul>
               <Li>{lang[languages].homePage_ul4_li1}</Li>
@@ -132,15 +142,15 @@ const HomePage = () => {
               <Li>{lang[languages].homePage_ul4_li3}</Li>
             </Ul>
           </div>
-          <div style={{ margin: '0 auto'}}>
-            <Img src={img2} alt="arge and medium household appliances"/>
+          <div style={{ margin: '0 auto' }}>
+            <Img src={img2} alt="arge and medium household appliances" />
           </div>
         </DivBlock>
         <H4>
           <b>{lang[languages].homePage_h4}</b>
         </H4>
       </Section>
-    </Div>
+    </Container>
   );
 };
 
