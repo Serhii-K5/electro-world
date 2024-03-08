@@ -3,13 +3,13 @@ import {
   Container,
   Section,
   H1,
-  Span,
-  H3,
-  DivBlock,
+  // Span,
+  // H3,
+  // DivBlock,
   P,
   Ul,
   Li,
-  Img,
+  // Img,
   H4,
 } from 'pages/HomePage/HomePage.styled';
 
