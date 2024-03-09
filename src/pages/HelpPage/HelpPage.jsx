@@ -1,115 +1,181 @@
-// import { useDispatch, useSelector } from 'react-redux';
-// import { useEffect, useState } from 'react';
-// import { fetchAdverts } from 'redux/operations';
+import { useSelector } from 'react-redux';
+// import { DeliveryLi, Span } from "./DeliveryPage.styled";
 
-// import CarCard from 'components/CarCard/CarCard';
-// import { selectAdverts } from 'redux/selectors';
+import {
+  Container,
+  Section,
+  H1,
+  Span,
+  H3,
+  // DivBlock,
+  P,
+  Ul,
+  Li,
+  // Img,
+  H4,
+} from 'pages/HomePage/HomePage.styled';
 
-// import Hero from "components/Hero/Hero";
-// import OurOffice from "components/OurOffice/OurOffice";
-// import {
-//   Ul,
-//   NavLinkStyle,
-//   Container,
-//   Div,
-//   H2,
-//   Section,
-//   Img,
-//   Button,
-// } from './HelpPage.styled';
-
-// import Footer from '../../components/Footer/Footer';
-// import car1 from '../../assets/images/auto/car-rent-1.jpg';
-// import car2 from '../../assets/images/auto/car-rent-2.jpg';
-// import car3 from '../../assets/images/auto/car-rent-3.jpg';
-// import car4 from '../../assets/images/auto/car-rent-4.jpg';
-// import car5 from '../../assets/images/auto/car-rent-5.jpg';
-// // import cars from '../../assets/images/auto/cars-rent.jpg';
-
-// import CarsSlider from '../../components/Slider/Slider';
-// import getRandomInRange from 'utils/rendomNumber';
-// import AboutUs from 'pages/AboutUs/AboutUs';
-// import AboutUsLight from 'pages/AboutUsLight/AboutUsLight';
-// import AsideBar from "components/AsideBar/AsideBar";
-
-// // import brandList from "../../assets/jsons/makes.json";
+import { selectLanguages } from 'redux/selectors';
+import lang from 'assets/json/language.json';
 
 const HelpPage = () => {
-  // const dispatch = useDispatch();
-  // const adverts = useSelector(selectAdverts);
-  // const [isAboutUsShown, setIsAboutUsShown] = useState(false);
-
-  // useEffect(() => {
-  //   dispatch(fetchAdverts());
-  // }, [dispatch]);
-
-  // const handleCardsRandom = () => {
-  //   const cardTotall =
-  //     adverts.length > 0 && adverts.length > 4 ? 4 : adverts.length;
-  //   const cardsRandom = [];
-  //   cardsRandom.length = 4;
-
-  //   for (let index = 0; index < cardTotall; index++) {
-  //     cardsRandom.push(
-  //       <li key={index}>
-  //         <CarCard card={adverts[getRandomInRange(0, adverts.length)]} />
-  //       </li>
-  //     );
-  //   }
-  //   return cardsRandom;
-  // };
-
-  // const onOpenAboutUs = () => {
-  //   setIsAboutUsShown(!isAboutUsShown);
-  // };
+  const languages = useSelector(selectLanguages);
 
   return (
     <>
-      <p>Help page</p>
-      <h2 style={{margin: '50px auto', textAlign: 'center', fontSize: '50px'}}>Page under construction</h2>
-      {/* <CarsSlider />
+      {/* <p>Help page</p>
+      <h2 style={{margin: '50px auto', textAlign: 'center', fontSize: '50px'}}>Page under construction</h2> */}
+      
       <Container>
-        <div style={{ display: 'flex' }}>
-          <Div>
-            <Section>
-              <Hero />
-            </Section>
-
-            <Section>
-              <H2 id="section1">About Us</H2>
-                {isAboutUsShown ? <AboutUs /> : <AboutUsLight />}
-                <Button onClick={onOpenAboutUs}> {isAboutUsShown ? "... Collapse section" : "To learn more ..." }</Button>
-            </Section>
-          </Div>
-          <AsideBar />
-        </div>
-
         <Section>
-          <H2 id="section2">Our fleet</H2>
-          {adverts.length > 0 ? (
-            <Ul>{handleCardsRandom()}</Ul>
-          ) : (
-            <div style={{ display: 'flex' }}>
-              <Img src={car1} alt="Car rent 1"></Img>
-              <Img src={car2} alt="Car rent 2"></Img>
-              <Img src={car3} alt="Car rent 3"></Img>
-              <Img src={car4} alt="Car rent 4"></Img>
-              <Img src={car5} alt="Car rent 5"></Img>
-            </div>
-          )}
+          <H1>
+            {"Помощь и поддержка".toUpperCase()}
+          </H1>
+          <P>
+            {lang[languages].helpPage_p1_1}
+            <Span>
+              <b>Electro world</b>
+            </Span>
+            {lang[languages].helpPage_p1_2}            
+          </P>
+          <H3>
+            <b>{lang[languages].deliveryPage_h3_1}</b>
+          </H3>
+          
+          <ol>
+            <Li>
+              <b><i>{lang[languages].helpPage_ol_li1}</i></b>
+              <P>{lang[languages].helpPage_p2}</P>
+              <Ul>
+                <Li>выберите группу товаров из каталога в выпадающем списке;
+                </Li>
+                <Li>{lang[languages].helpPage_ul1_li1}</Li>
+                <Li>{lang[languages].helpPage_ul1_li2}</Li>
+                <Li>{lang[languages].helpPage_ul1_li3}</Li>
+                <Li>{lang[languages].helpPage_ul1_li4}</Li>
+                <Li>{lang[languages].helpPage_ul1_li5}</Li>
+                <Li>{lang[languages].helpPage_ul1_li6}</Li>
+                <Li>{lang[languages].helpPage_ul1_li7}</Li>
+              </Ul>
+            </Li>
+            <Li>
+              <b><i>{lang[languages].helpPage_ol_li2}</i></b>
+              <P>{lang[languages].helpPage_p3}</P>
+            </Li>
+            <Li>
+              <b><i>{lang[languages].helpPage_ol_li3}</i></b>
+              <P>{lang[languages].helpPage_p4}</P>
+              <Ul>
+                <Li>Телефон: </Li>
+                <Li></Li>
+                <Li></Li>
+              </Ul>
+            </Li>
+            <Li></Li>
+            <Li></Li>
+          </ol>
 
-          <p>
-            <NavLinkStyle to="/catalog"> See more... </NavLinkStyle>
-          </p>
-        </Section>
+          <ul>
+            <Li>
+              {lang[languages].deliveryPage_ul2_li1}
+            </Li>
+            <Li><b>{lang[languages].deliveryPage_ul1_li5_1}</b>{lang[languages].deliveryPage_ul2_li2}</Li>
+          </ul>
+          
+          
+          <P>
+            <b>
+              <i>{lang[languages].helpPage_p1}</i>
+            </b>
+          </P>
 
-        <Section>
-          <OurOffice />
+
+
+        <H4>
+            <b>{lang[languages].helpPage_h4}</b>
+          </H4>
         </Section>
       </Container>
-      <Footer /> */}
     </>
   );
 };
 
 export default HelpPage;
+
+// Помощь и поддержка
+// Добро пожаловать в раздел помощи и поддержки Electro World! Здесь вы найдете ответы на часто задаваемые вопросы и руководства по использованию нашего сайта.
+
+// Часто задаваемые вопросы (FAQ)
+// 1. Как оформить заказ?
+// Для оформления заказа на нашем сайте выполните следующие шаги:
+
+// Выберите необходимый товар из каталога.
+// Нажмите кнопку "Добавить в корзину".
+// Перейдите в корзину, нажав на иконку корзины в правом верхнем углу.
+// Проверьте содержимое корзины и нажмите кнопку "Оформить заказ".
+// Заполните необходимую информацию для доставки и выберите способ оплаты.
+// Нажмите кнопку "Подтвердить заказ".
+// 2. Как отследить мой заказ?
+// После оформления заказа вы получите электронное письмо с подтверждением заказа и информацией о его статусе. Вы также можете отследить статус вашего заказа, войдя в свой аккаунт на нашем сайте и перейдя в раздел "Мои заказы".
+
+// 3. Как связаться с нами для получения поддержки?
+// Если у вас возникли вопросы или проблемы, связанные с вашим заказом или использованием нашего сайта, вы можете связаться с нашей службой поддержки по следующим контактным данным:
+
+// Телефон: +123456789
+// Электронная почта: support@electro-world.com
+// Онлайн-чат: Доступен в правом нижнем углу сайта.
+
+// Руководства по использованию
+// 1. Регистрация и вход в аккаунт
+// Для создания аккаунта на нашем сайте выполните следующие шаги:
+
+// Нажмите на кнопку "Войти" в правом верхнем углу сайта.
+// Выберите "Зарегистрироваться".
+// Заполните необходимую информацию в форме регистрации и нажмите кнопку "Зарегистрироваться".
+// Для входа в аккаунт:
+
+// Нажмите на кнопку "Войти" в правом верхнем углу сайта.
+// Введите свой адрес электронной почты и пароль.
+// Нажмите кнопку "Войти".
+// 2. Изменение данных в профиле
+// Чтобы изменить свои данные в профиле, выполните следующие действия:
+
+// Войдите в свой аккаунт.
+// Перейдите в раздел "Мой профиль".
+// Нажмите кнопку "Редактировать профиль".
+// Внесите необходимые изменения и нажмите кнопку "Сохранить".
+
+
+// 1. Структура страницы:
+
+// Главная страница:
+
+// Часто задаваемые вопросы (FAQ):
+// Как оформить заказ?
+// Как оплатить заказ?
+// Как осуществляется доставка?
+// Как вернуть товар?
+// и т.д.
+// Контакты:
+// Email
+// Телефон
+// Адрес
+// Ссылки на другие разделы:
+// О магазине
+// Гарантия
+// Политика конфиденциальности
+// и т.д.
+// Подробные статьи:
+
+// Как оформить заказ:
+// Пошаговая инструкция с изображениями.
+// Ответы на возможные вопросы.
+// Как оплатить заказ:
+// Описание доступных способов оплаты.
+// Инструкции по оплате.
+// Как осуществляется доставка:
+// Информация о сроках и стоимости доставки.
+// Отслеживание заказа.
+// Как вернуть товар:
+// Условия возврата товара.
+// Процесс возврата товара.
