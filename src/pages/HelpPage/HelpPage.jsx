@@ -47,8 +47,6 @@ const HelpPage = () => {
               <b><i>{lang[languages].helpPage_ol_li1}</i></b>
               <P>{lang[languages].helpPage_p2}</P>
               <Ul>
-                <Li>выберите группу товаров из каталога в выпадающем списке;
-                </Li>
                 <Li>{lang[languages].helpPage_ul1_li1}</Li>
                 <Li>{lang[languages].helpPage_ul1_li2}</Li>
                 <Li>{lang[languages].helpPage_ul1_li3}</Li>

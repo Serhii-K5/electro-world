@@ -6,7 +6,8 @@ import { FaViber } from 'react-icons/fa';
 import ks from 'assets/images/svg/kyivstar.svg';
 import { VodafoneBg, Span } from './AdressBar.styled';
 import { PHONE_KS, PHONE_KS_STR, PHONE_MTC, PHONE_MTC_STR} from "constantValues/constants";
-const AdressBar = ({color}) => {
+
+const AdressBar = ({ color }) => {
   const [isFocus, setIsFocus] = useState(0);
   const telKS = "tel:" + PHONE_KS;
   const telMTC = "tel:" + PHONE_MTC;
