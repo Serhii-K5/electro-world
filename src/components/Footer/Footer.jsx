@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { selectLanguages } from 'redux/selectors';
 import Logo from 'components/Logo/Logo';
 import MessageModule from "components/MessageModule/MessageModule";
-import AutorizationModule from "components/AutorizationModule/AutorizationModule";
+import AutorizationModule from "components/LoginModule/LoginModule";
 // import AdressBar from 'components/AdressBar/AdressBar';
 import AdressBarFooter from "components/AdressBarFooter/AdressBarFooter";
 import {

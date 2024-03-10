@@ -3,8 +3,13 @@ import { useSelector } from "react-redux";
 import user from "assets/images/svg/user_icon.svg";
 import { selectLanguages } from 'redux/selectors';
 import lang from 'assets/json/language.json';
-import AutorizationModule from "components/AutorizationModule/AutorizationModule";
+import LoginModule from "components/LoginModule/LoginModule";
 import { Div, Img } from "./Authorization.styled";
+
+
+import { Provider } from 'react-redux';
+import { configureStore } from '@reduxjs/toolkit';
+import rootReducer from './redux/rootReducer';
 
 const Authorization = () => {
   const languages = useSelector(selectLanguages);
@@ -19,13 +24,25 @@ const Authorization = () => {
   };
 
 
+  const store = configureStore({
+  reducer: rootReducer,
+});
+
+
   return (
     <>
       <Div onClick={onOpenModal}>
         <b>{lang[languages].Authorization.toUpperCase()}</b>
         <Img src={user} alt="user icon"/>
       </Div>
-      {isModalShown && <AutorizationModule onClose={onCloseModal} />}
+
+      <Provider store={store}>
+        <div>
+          <LoginModule />
+        </div>
+      </Provider>
+
+      {isModalShown && <LoginModule onClose={onCloseModal} />}
     </>
   );
 }
