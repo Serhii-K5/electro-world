@@ -44,6 +44,7 @@ const MessageModule = ({ onClose }) => {
     console.log(formData);
     // Очистка формы после отправки
     setFormData({
+      tel: '',
       name: '',
       email: '',
       message: ''
@@ -56,22 +57,22 @@ const MessageModule = ({ onClose }) => {
     <>
       <Overlay onClick={handleOverlayClick}>
         <Modal>
+          <div style={{textAlign: 'center'}}><h1>Обратная связь</h1></div>
           <CloseBtn type="button" onClick={onClose}>
             <img src={cross} alt="close button" />
           </CloseBtn>
           
-          <p>Message module</p>
           <h2 style={{margin: '50px auto', textAlign: 'center', fontSize: '50px'}}>Page under construction</h2>
         
         
           <form onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="name">Имя:</label>
+              <label htmlFor="tel">Тел:</label>
               <input
                 type="text"
-                id="name"
-                name="name"
-                value={formData.name}
+                id="tel"
+                name="tel"
+                value={formData.tel}
                 onChange={handleChange}
                 required
               />
@@ -83,6 +84,17 @@ const MessageModule = ({ onClose }) => {
                 id="email"
                 name="email"
                 value={formData.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="name">Имя:</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
                 onChange={handleChange}
                 required
               />
