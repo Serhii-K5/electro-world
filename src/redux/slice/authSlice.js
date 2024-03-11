@@ -33,6 +33,7 @@ export const login = (credentials) => async (dispatch) => {
   try {
     dispatch(loginStart());
     // Здесь должен быть ваш API-запрос для авторизации
+    
     const user = await api.login(credentials);
     dispatch(loginSuccess(user));
   } catch (error) {
