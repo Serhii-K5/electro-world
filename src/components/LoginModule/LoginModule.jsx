@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from 'react-redux';
-import { login } from 'redux/authSlice';
+// import { useDispatch } from 'react-redux';
+// import { login } from 'redux/authSlice';
 
 import {
   Overlay,
@@ -13,7 +13,7 @@ import cross from "assets/images/svg/cross.svg";
 
 const LoginModule = ({ onClose }) => {
   const [credentials, setCredentials] = useState({ email: '', password: '' });
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -40,7 +40,7 @@ const LoginModule = ({ onClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(login(credentials));
+    // dispatch(login(credentials));
   };
 
   return (
@@ -51,9 +51,11 @@ const LoginModule = ({ onClose }) => {
             <img src={cross} alt="close button" />
           </CloseBtn>
           
-          <p>Login module</p>
-          <h2 style={{margin: '50px auto', textAlign: 'center', fontSize: '50px'}}>Page under construction</h2>
+          {/* <p>Login module</p>
+          <h2 style={{margin: '50px auto', textAlign: 'center', fontSize: '50px'}}>Page under construction</h2> */}
 
+          
+          
           <div>
             <h2>Авторизация</h2>
             <form onSubmit={handleSubmit}>

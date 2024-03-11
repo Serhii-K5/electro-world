@@ -7,9 +7,9 @@ import LoginModule from "components/LoginModule/LoginModule";
 import { Div, Img } from "./Authorization.styled";
 
 
-import { Provider } from 'react-redux';
-import { configureStore } from '@reduxjs/toolkit';
-import rootReducer from './redux/rootReducer';
+// import { Provider } from 'react-redux';
+// import { configureStore } from '@reduxjs/toolkit';
+// import rootReducer from './redux/rootReducer';
 
 const Authorization = () => {
   const languages = useSelector(selectLanguages);
@@ -24,9 +24,9 @@ const Authorization = () => {
   };
 
 
-  const store = configureStore({
-  reducer: rootReducer,
-});
+  // const store = configureStore({
+  //   reducer: rootReducer,
+  // });
 
 
   return (
@@ -36,11 +36,11 @@ const Authorization = () => {
         <Img src={user} alt="user icon"/>
       </Div>
 
-      <Provider store={store}>
+      {/* <Provider store={store}>
         <div>
           <LoginModule />
         </div>
-      </Provider>
+      </Provider> */}
 
       {isModalShown && <LoginModule onClose={onCloseModal} />}
     </>
