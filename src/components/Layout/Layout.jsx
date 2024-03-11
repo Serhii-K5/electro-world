@@ -54,7 +54,7 @@ export default function Layout() {
         <Header>
           <Logo />
           <SearchField />
-          <AdressBar />
+          <AdressBar color='blue' />
           <Link to="/orders">
             <ShoppingCart quantity={orderProducts.length} />
           </Link>

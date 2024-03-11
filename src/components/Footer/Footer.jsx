@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { selectLanguages } from 'redux/selectors';
 import Logo from 'components/Logo/Logo';
 import MessageModule from "components/MessageModule/MessageModule";
-import AutorizationModule from "components/AutorizationModule/AutorizationModule";
+import AutorizationModule from "components/LoginModule/LoginModule";
 // import AdressBar from 'components/AdressBar/AdressBar';
 import AdressBarFooter from "components/AdressBarFooter/AdressBarFooter";
 import {
@@ -78,8 +78,8 @@ const Footer = () => {
             <p>
               <b>{lang[languages].footer_contacts}</b>
             </p>
-            <hr style={{ color: '#FFF' }} />
-            <AdressBarFooter />
+            <hr style={{ color: 'var(--text-color-white)' }} />
+            <AdressBarFooter color='while'/>
             <p style={{paddingTop: '16px'}}>{lang[languages].footer_schedule}</p>
             <p style={{paddingLeft: '16px'}}>Пн-Чт:	8:30 - 18:00</p>
             <p style={{paddingLeft: '16px'}}>Пт:	8:30 - 17:00</p>
@@ -91,7 +91,7 @@ const Footer = () => {
           </div>
           <div style={{padding: '16px'}}>
             <p><b>{lang[languages].footer_account}</b></p>
-            <hr style={{ color: '#FFF' }} />
+            <hr style={{ color: 'var(--text-color-white)' }} />
             <P onClick={onOpenModalAutorization}>{lang[languages].footer_authorization}</P>
           </div>        
         </Section>

@@ -33,7 +33,7 @@ export const DivBlock = styled.div`
 `;
 
 export const P = styled.p`
-  padding: 16px 0 8px;  
+  padding: 32px 0 8px;  
 `;
 
 export const Ul = styled.ul`
