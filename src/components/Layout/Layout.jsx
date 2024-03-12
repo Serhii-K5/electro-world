@@ -44,7 +44,9 @@ export default function Layout() {
       </Div1>
       <Div2>
         <Header>
-          <Logo />
+          <Link to="/">
+            <Logo />
+          </Link>
           <SearchField />
           <AdressBar color="blue" />
           <Link to="/orders">
