@@ -21,10 +21,13 @@ const AdminPage = () => {
     <Container>
       <Section>
         <H1>Оформление заказа</H1>
-
         <h2 style={{ margin: '40px auto', textAlign: 'center' }}>
           <b>Page is under construction</b>
         </h2>
+        <p>
+          Для оформления заказа, необходимы Ваши контактные данные. Пожалуйста,
+          укажите как бы Вы хотели представиться?
+        </p>
 
         {/* <H1>{lang[languages].aboutUsPage_h1}</H1>
         <P>
