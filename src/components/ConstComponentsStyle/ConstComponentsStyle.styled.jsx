@@ -15,31 +15,54 @@ export const Overlay = styled.div`
   z-index: 100;
 `;
   
-export const Modal = styled.div`
+export const ModalBacking = styled.div`
   position: relative;
-  padding: 40px;
+  // padding: 40px;
+  // padding: 0 16px 16px;
+  padding-top: 16px;
   max-height: 90vh;
-  border-radius: 24px;
+  // border-radius: 7px;
   overflow-y: auto;
-  background-color: #FFF;
+  background-color: transparent;
+  // background-color: #fff;
 
   &::-webkit-scrollbar {
     width: 0;
     height: 0;
-  }  
+  }
+`;
+  
+export const Modal = styled.div`
+  // position: relative;
+  // padding: 40px;
+  // padding: 0 16px 16px;
+  padding: 0;
+  // max-height: calc(90vh - 16px);
+  border-radius: 7px;
+  overflow-y: auto;
+  background-color: #fff;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
 `;
   
 export const CloseBtn = styled.button`
   position: absolute;
   display: flex;
-  top: 16px;
+  // top: -16px;
+  top: 3px;
   right: 16px;
   margin: 0;
   padding: 0;
   align-items: center;
   justify-content: center;
-  border: none;
-  background: transparent;
+  // border: none;
+  border: solid 1px grey;
+  border-radius: 50%;
+  // z-index: 99;
+  // background: transparent;
   // transition: transform 250ms linear;
   transition: transform ${transition};
 
@@ -47,6 +70,7 @@ export const CloseBtn = styled.button`
   &:active,
   &:focus {
     transform: scale(1.2);
+    box-shadow: 0 0 7px var(--text-color-blue);
   }
 `;
   

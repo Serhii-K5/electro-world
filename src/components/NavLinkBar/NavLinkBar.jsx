@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 import {
   DivNav,
   DivCatalog,
@@ -8,19 +8,17 @@ import {
   NavContainer,
   NavLinkStyle,
   Span,
-} from "./NavLinkBar.styled";
+} from './NavLinkBar.styled';
 
 import { useSelector } from 'react-redux';
 import { selectDirectoryPath, selectLanguages } from 'redux/selectors';
 
-import MessageModule from "components/MessageModule/MessageModule";
+import MessageModule from 'components/Feedback/Feedback';
 import CategoryDropdownList from 'components/CategoryDropdownList/CategoryDropdownList';
-import lang from "assets/json/language.json";
+import lang from 'assets/json/language.json';
 
-
-import { GiHamburgerMenu } from "react-icons/gi";
-import electricity from "assets/images/svg/electricity.svg";
-
+import { GiHamburgerMenu } from 'react-icons/gi';
+import electricity from 'assets/images/svg/electricity.svg';
 
 const NavLinkBar = () => {
   const directoryPath = useSelector(selectDirectoryPath);
@@ -129,6 +127,6 @@ const NavLinkBar = () => {
       {isModalShown && <MessageModule onClose={onCloseModal} />}
     </>
   );
-}
+};
 
 export default NavLinkBar;
