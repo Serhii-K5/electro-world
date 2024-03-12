@@ -10,9 +10,9 @@
     "NavLinkBar_help": "Допомога",
     "NavLinkBar_aboutUs": "Про нас",
     "NavLinkBar_delivery": "Доставка",
-    "NavLinkBar_message": "Повідомлення",
+    "NavLinkBar_message": "Зворотний зв'язок",
     "NavLinkBar_catalog1": "Каталог товаров",
-    "layout_minOrder": "Мінімальне замовлення - 300 грн",
+    "layout_minOrder": "Мінімальне замовлення - 500 грн",
     "layout_find": "Пошук",
     "layout_sum": "Сума",
     "catalogPage_finded": "Знайдено товарів: ",
@@ -176,7 +176,15 @@
     "helpPage_ul5_li1": " увійдіть до свого облікового запису;",
     "helpPage_ul5_li2": " перейдіть до розділу \"Мій профіль\";",
     "helpPage_ul5_li3": " натисніть кнопку \"Редагувати профіль\";",
-    "helpPage_ul5_li4": " Внесіть необхідні зміни та натисніть кнопку \"Зберегти\"."
+    "helpPage_ul5_li4": " Внесіть необхідні зміни та натисніть кнопку \"Зберегти\".",
+    "feedback_p1": "За допомогою цієї форми Ви можете зв'язатися з нами. Будь ласка, поставте своє питання, і ми зв'яжемося з Вами протягом робочого дня.",
+    "feedback_placeholder1": "цифри у форматі +38 0xxxxxxxxx",
+    "feedback_name": "Ім'я:",
+    "feedback_placeholder3": "Як до Вас звертатися?",
+    "feedback_massage": "Повідомлення: ",
+    "feedback_placeholder4": "Залишіть Ваше повідомлення",
+    "feedback_p2": "обов'язково до заповнення",
+    "feedback_btn": "Надіслати"
   },
   {
     "Authorization": "Авторизация",
@@ -189,9 +197,9 @@
     "NavLinkBar_help": "Помощь",
     "NavLinkBar_aboutUs": "О нас",
     "NavLinkBar_delivery": "Доставка",
-    "NavLinkBar_message": "Сообщения",
+    "NavLinkBar_message": "Обратная связь",
     "NavLinkBar_catalog1": "Каталог товаров",    
-    "layout_minOrder": "Минимальный заказ - 300 грн",
+    "layout_minOrder": "Минимальный заказ - 500 грн",
     "layout_find": "Поиск",
     "layout_sum": "Сумма",
     "catalogPage_finded": "Найдено товаров: ",
@@ -356,11 +364,13 @@
     "helpPage_ul5_li2": " перейдите в раздел \"Мой профиль\";",
     "helpPage_ul5_li3": " нажмите кнопку \"Редактировать профиль\";",
     "helpPage_ul5_li4": " Внесите необходимые изменения и нажмите кнопку \"Сохранить\".",
-    "feedback_h1": "Обратная связь",
     "feedback_p1": "С помощью этой формы Вы можете связаться с нами. Пожалуйста, задайте свой вопрос, и мы свяжемся с Вами в течении рабочего дня.",
-    "feedback_name": "Имя: ",
+    "feedback_placeholder1": "цифры в формате +38 0xxxxxxxxx",
+    "feedback_name": "Имя:",
+    "feedback_placeholder3": "Как к Вам обращаться?",
     "feedback_massage": "Сообщение: ",
-    "feedback_btn": "Отправить",
-    "feedback_h4": ""
+    "feedback_placeholder4": "Оставьте Ваше сообщение",
+    "feedback_p2": " обязательно к заполнению",
+    "feedback_btn": "Отправить"
   }
 ]

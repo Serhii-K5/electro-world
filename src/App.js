@@ -8,6 +8,8 @@ import CategoryPage from 'pages/CategoryPage/CategoryPage';
 import HelpPage from 'pages/HelpPage/HelpPage';
 import AboutUsPage from 'pages/AboutUsPage/AboutUsPage';
 import DeliveryPage from 'pages/DeliveryPage/DeliveryPage';
+import AdminPage from 'pages/AdminPage/AdminPage';
+import CheckoutPage from 'pages/CheckoutPage/CheckoutPage';
 
 export default function App() {
   // Обработчик события beforeunload
@@ -30,6 +32,8 @@ export default function App() {
         <Route path="help" element={<HelpPage />} />
         <Route path="about_us" element={<AboutUsPage />} />
         <Route path="delivery" element={<DeliveryPage />} />
+        <Route path="admin" element={<AdminPage />} />
+        <Route path="checkout" element={<CheckoutPage />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

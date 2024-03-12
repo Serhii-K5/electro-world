@@ -1,13 +1,19 @@
 import styled from 'styled-components';
+import { transition } from 'components/ConstComponentsStyle/ConstComponentsStyle.styled';
 
-export const Container = styled.div`
-  margin: 0 auto;
-  max-width: 1440px;
-  padding: 50px 16px 24px;
-`;
+
+// export const Container = styled.div`
+//   margin: 0 auto;
+//   max-width: 1440px;
+//   padding: 50px 16px 24px;
+// `;
 
 export const Section = styled.section`
-  padding: 16px 24px;
+padding: 16px 24px;
+`;
+
+export const H2 = styled.h2`
+  padding: 10px;
 `;
 
 export const P = styled.p`
@@ -43,10 +49,17 @@ export const Btn = styled.button`
   margin: 20px 30% 10px;
   padding: 10px;
   font-size: 1.15rem;
-  // width: 100%;
-  // height: 10vh;
+  border: none;
   border-radius: 5px;
-  // margin-left: 30%;
   width: 40%;
+  background-color: var(--bg-button-color);
+  color: var(--bg-primary);
+  transition: background-color ${transition};
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: var(--bg-active-button-color);
+  }
 `;
 

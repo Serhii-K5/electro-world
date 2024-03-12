@@ -49,10 +49,12 @@ export const H4 = styled.h4`
 `;
 
 export const DivCheckout = styled.div`
-    display: flex;
-    align-items: center;
-    padding: 10px 0;
-`
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  justify-content: flex-end;
+  column-gap: 30px;
+`;
 
 export const DivCheckoutBtn = styled.div`
   margin: 0;

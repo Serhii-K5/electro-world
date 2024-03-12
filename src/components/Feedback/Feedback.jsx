@@ -9,6 +9,7 @@ import {
 import {
   Section,
   Form,
+  H2,
   P,
   Label,
   Input,
@@ -80,7 +81,7 @@ const MessageModule = ({ onClose }) => {
                 backgroundColor: 'var(--bg-color-grey)',
               }}
             >
-              <h1>{lang[languages].feedback_h1.toUpperCase()}</h1>
+              <H2>{lang[languages].NavLinkBar_message.toUpperCase()}</H2>
             </div>
             <CloseBtn type="button" onClick={onClose}>
               <img src={cross} alt="close button" />
@@ -98,7 +99,7 @@ const MessageModule = ({ onClose }) => {
                     name="tel"
                     value={formData.tel}
                     onChange={handleChange}
-                    placeholder="цифры в формате +38 0xxxxxxxxx"
+                    placeholder={lang[languages].feedback_placeholder1}
                     required
                     // style={{ marginLeft: '21px' }}
                   />
@@ -119,8 +120,8 @@ const MessageModule = ({ onClose }) => {
                   />
                 </div>
                 <div>
-                  <Label htmlFor="name" style={{ marginRight: '14px' }}>
-                    Имя: *
+                  <Label htmlFor="name" style={{ marginRight: '16px' }}>
+                    {lang[languages].feedback_name} *
                   </Label>
                   <Input
                     type="text"
@@ -129,23 +130,25 @@ const MessageModule = ({ onClose }) => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    placeholder="Как к Вам обращаться?"
+                    placeholder={lang[languages].feedback_placeholder3}
                   />
                 </div>
                 <div>
-                  <Label htmlFor="message">Сообщение: *</Label>
+                  <Label htmlFor="message">
+                    {lang[languages].feedback_massage} *
+                  </Label>
                   <Textarea
                     id="message"
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    placeholder="Ваше сообщение"
+                    placeholder={lang[languages].feedback_placeholder4}
                     // style={{ marginLeft: '20px' }}
                   />
                 </div>
-                <p>* - обязательно к заполнению</p>
-                <Btn type="submit">Отправить</Btn>
+                <p>* - {lang[languages].feedback_p2}</p>
+                <Btn type="submit">{lang[languages].feedback_btn}</Btn>
               </Form>
             </Section>
           </Modal>
