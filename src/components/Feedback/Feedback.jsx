@@ -13,6 +13,7 @@ import {
   Label,
   Input,
   Textarea,
+  Btn
 } from "./Feedback.styled";
 
 import { selectLanguages } from 'redux/selectors';
@@ -42,6 +43,7 @@ const MessageModule = ({ onClose }) => {
   };
 
   const [formData, setFormData] = useState({
+    tel: '',
     name: '',
     email: '',
     message: '',
@@ -54,6 +56,8 @@ const MessageModule = ({ onClose }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    
+    
     // Здесь вы можете добавить логику отправки данных на сервер или обработки формы
     console.log(formData);
     // Очистка формы после отправки
@@ -85,31 +89,39 @@ const MessageModule = ({ onClose }) => {
               <P>{lang[languages].feedback_p1}</P>
               <Form onSubmit={handleSubmit}>
                 <div>
-                  <Label htmlFor="tel">Тел:</Label>
+                  <Label htmlFor="tel" style={{ marginRight: '21px' }}>
+                    Тел: *
+                  </Label>
                   <Input
                     type="text"
                     id="tel"
                     name="tel"
                     value={formData.tel}
                     onChange={handleChange}
+                    placeholder="цифры в формате +38 0xxxxxxxxx"
                     required
-                    style={{ marginLeft: '21px' }}
+                    // style={{ marginLeft: '21px' }}
                   />
                 </div>
                 <div>
-                  <Label htmlFor="email">Email:</Label>
+                  <Label htmlFor="email" style={{ marginRight: '18px' }}>
+                    Email:
+                  </Label>
                   <Input
                     type="email"
                     id="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    required
-                    style={{ marginLeft: '6px' }}
+                    // required
+                    // style={{ marginLeft: '6px' }}
+                    placeholder="support@mail.com"
                   />
                 </div>
                 <div>
-                  <Label htmlFor="name">Имя:</Label>
+                  <Label htmlFor="name" style={{ marginRight: '14px' }}>
+                    Имя: *
+                  </Label>
                   <Input
                     type="text"
                     id="name"
@@ -117,21 +129,23 @@ const MessageModule = ({ onClose }) => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    style={{ marginLeft: '14px' }}
+                    placeholder="Как к Вам обращаться?"
                   />
                 </div>
                 <div>
-                  <Label htmlFor="message">Сообщение:</Label>
+                  <Label htmlFor="message">Сообщение: *</Label>
                   <Textarea
                     id="message"
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
                     required
+                    placeholder="Ваше сообщение"
                     // style={{ marginLeft: '20px' }}
                   />
                 </div>
-                <button type="submit">Отправить</button>
+                <p>* - обязательно к заполнению</p>
+                <Btn type="submit">Отправить</Btn>
               </Form>
             </Section>
           </Modal>

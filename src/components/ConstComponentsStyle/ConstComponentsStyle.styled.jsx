@@ -19,7 +19,7 @@ export const ModalBacking = styled.div`
   position: relative;
   // padding: 40px;
   // padding: 0 16px 16px;
-  padding-top: 16px;
+  padding-top: 20px;
   max-height: 90vh;
   // border-radius: 7px;
   overflow-y: auto;
@@ -52,7 +52,7 @@ export const CloseBtn = styled.button`
   position: absolute;
   display: flex;
   // top: -16px;
-  top: 3px;
+  top: 7px;
   right: 16px;
   margin: 0;
   padding: 0;
@@ -70,7 +70,7 @@ export const CloseBtn = styled.button`
   &:active,
   &:focus {
     transform: scale(1.2);
-    box-shadow: 0 0 7px var(--text-color-blue);
+    box-shadow: 0 0 7px var(--bg-second-green);
   }
 `;
   
