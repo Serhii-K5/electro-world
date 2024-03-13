@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import {
   Overlay,
@@ -8,14 +8,15 @@ import {
 } from 'components/ConstComponentsStyle/ConstComponentsStyle.styled';
 import {
   Section,
-  Form,
+  // Form,
   H2,
   P,
-  Label,
-  Input,
-  Textarea,
-  Btn
+  // Label,
+  // Input,
+  // Textarea,
+  // Btn
 } from "./Feedback.styled";
+import UserFormRegister from 'components/UserFormRegister/UserFormRegister';
 
 import { selectLanguages } from 'redux/selectors';
 import lang from 'assets/json/language.json';
@@ -43,32 +44,32 @@ const MessageModule = ({ onClose }) => {
     }
   };
 
-  const [formData, setFormData] = useState({
-    tel: '',
-    name: '',
-    email: '',
-    message: '',
-  });
+  // const [formData, setFormData] = useState({
+  //   tel: '',
+  //   name: '',
+  //   email: '',
+  //   message: '',
+  // });
 
-  const handleChange = e => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+  // const handleChange = e => {
+  //   const { name, value } = e.target;
+  //   setFormData({ ...formData, [name]: value });
+  // };
 
-  const handleSubmit = e => {
-    e.preventDefault();
+  // const handleSubmit = e => {
+  //   e.preventDefault();
     
     
-    // Здесь вы можете добавить логику отправки данных на сервер или обработки формы
-    console.log(formData);
-    // Очистка формы после отправки
-    setFormData({
-      tel: '',
-      name: '',
-      email: '',
-      message: '',
-    });
-  };
+  //   // Здесь вы можете добавить логику отправки данных на сервер или обработки формы
+  //   console.log(formData);
+  //   // Очистка формы после отправки
+  //   setFormData({
+  //     tel: '',
+  //     name: '',
+  //     email: '',
+  //     message: '',
+  //   });
+  // };
 
   return (
     <>
@@ -88,68 +89,7 @@ const MessageModule = ({ onClose }) => {
             </CloseBtn>
             <Section>
               <P>{lang[languages].feedback_p1}</P>
-              <Form onSubmit={handleSubmit}>
-                <div>
-                  <Label htmlFor="tel" style={{ marginRight: '21px' }}>
-                    Тел: *
-                  </Label>
-                  <Input
-                    type="text"
-                    id="tel"
-                    name="tel"
-                    value={formData.tel}
-                    onChange={handleChange}
-                    placeholder={lang[languages].feedback_placeholder1}
-                    required
-                    // style={{ marginLeft: '21px' }}
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="email" style={{ marginRight: '18px' }}>
-                    Email:
-                  </Label>
-                  <Input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    // required
-                    // style={{ marginLeft: '6px' }}
-                    placeholder="support@mail.com"
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="name" style={{ marginRight: '16px' }}>
-                    {lang[languages].feedback_name} *
-                  </Label>
-                  <Input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    placeholder={lang[languages].feedback_placeholder3}
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="message">
-                    {lang[languages].feedback_massage} *
-                  </Label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    placeholder={lang[languages].feedback_placeholder4}
-                    // style={{ marginLeft: '20px' }}
-                  />
-                </div>
-                <p>* - {lang[languages].feedback_p2}</p>
-                <Btn type="submit">{lang[languages].feedback_btn}</Btn>
-              </Form>
+              <UserFormRegister typeMassege={0} />
             </Section>
           </Modal>
         </ModalBacking>
