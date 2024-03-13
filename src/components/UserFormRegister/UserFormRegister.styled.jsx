@@ -17,6 +17,14 @@ export const Input = styled.input`
   font-size: 1.15rem;
   min-width: 50%;
   border-radius: 5px;
+
+  &.valid {
+    border: solid 2px green;
+  }
+
+  &.invalid {
+    border: solid 2px red;
+  }
 `;
 
 export const Textarea = styled.textarea`
@@ -25,6 +33,14 @@ export const Textarea = styled.textarea`
   width: 100%;
   height: 10vh;
   border-radius: 5px;
+
+  &.valid {
+    border: solid 2px green;
+  }
+
+  &.invalid {
+    border: solid 2px red;
+  }
 `;
 
 export const Btn = styled.button`

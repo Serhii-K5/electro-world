@@ -23,6 +23,36 @@ const UserFormRegister = ( {typeMassege}) => {
 
   const handleChange = e => {
     const { name, value } = e.target;
+    const isValid = value !== "";
+    validation(e, isValid);
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const validation = (e, isValid) => {    
+    const { className } = e.target;
+    if (!className.includes('valid') && isValid) {
+      e.target.className = className + ' valid';
+    } else if (!className.includes('valid') && !isValid) {
+      e.target.className = className + ' invalid';
+    } else if (isValid) {
+      e.target.className = className.replace('invalid', 'valid');
+    } else {
+      e.target.className = className.replace(' valid', ' invalid');
+    }
+  }  
+  
+  const handleChangeTel = e => {
+    const { name, value } = e.target;    
+    const phoneNumber = formatPhoneNumber(value);
+    const isValid = /^\+38\(\d{3}\)-\d{3}-\d{2}-\d{2}$/.test(phoneNumber) ? true : false;
+    validation(e, isValid);
+    setFormData({ ...formData, [name]: formatPhoneNumber(phoneNumber) });
+  };
+  
+  const handleChangeEmail = e => {
+    const { name, value } = e.target;
+    const isValid = value.length > 5 && value.includes('@') && value.includes('.');
+    validation(e, isValid);
     setFormData({ ...formData, [name]: value });
   };
 
@@ -39,8 +69,37 @@ const UserFormRegister = ( {typeMassege}) => {
       message: '',
     });
   };
-  
-  console.log(lang[languages]);
+
+  // Функция для форматирования номера телефона
+  const formatPhoneNumber = (phoneNumber) => {
+    // Очистка от ненужных символов
+    const cleanedPhoneNumber = phoneNumber.replace(/\D/g, '');
+
+    // Добавление шаблона
+    if (cleanedPhoneNumber.length === 0 || cleanedPhoneNumber === '38') {
+      return '+38(';
+    } else if (cleanedPhoneNumber.length === 1) {
+      return `+38(${cleanedPhoneNumber}`;
+    } else if (cleanedPhoneNumber.length === 5) {
+      return `+38(${cleanedPhoneNumber.slice(2)})`;
+    } else if (cleanedPhoneNumber.length < 6) {
+      return `+38(${cleanedPhoneNumber.slice(2)}`;
+    } else if (cleanedPhoneNumber.length === 8) {
+      return `+38(${cleanedPhoneNumber.slice(2, 5)})-${cleanedPhoneNumber.slice(5)}-`;
+    } else if (cleanedPhoneNumber.length < 8) {
+      return `+38(${cleanedPhoneNumber.slice(2, 5)})-${cleanedPhoneNumber.slice(5)}`;
+    } else if (cleanedPhoneNumber.length === 10) {
+      return `+38(${cleanedPhoneNumber.slice(2, 5)})-${cleanedPhoneNumber.slice(5, 8)}-${cleanedPhoneNumber.slice(8)}-`;
+    } else if (cleanedPhoneNumber.length < 10) {
+      return `+38(${cleanedPhoneNumber.slice(2, 5)})-${cleanedPhoneNumber.slice(5, 8)}-${cleanedPhoneNumber.slice(8)}`;
+    } else if (cleanedPhoneNumber.length > 12) {
+      return `+38(${cleanedPhoneNumber.slice(2, 5)})-${cleanedPhoneNumber.slice(5, 8)}-${cleanedPhoneNumber.slice(8, 10)}-${cleanedPhoneNumber.slice(10, 12)}`;
+    } else {
+      return `+38(${cleanedPhoneNumber.slice(2, 5)})-${cleanedPhoneNumber.slice(5, 8)}-${cleanedPhoneNumber.slice(8, 10)}-${cleanedPhoneNumber.slice(10)}`;
+    }
+  };
+
+
   return (
     <Form onSubmit={handleSubmit}>
       <div>
@@ -52,11 +111,9 @@ const UserFormRegister = ( {typeMassege}) => {
           id="tel"
           name="tel"
           value={formData.tel}
-          onChange={handleChange}
-          // placeholder={lang[languages].feedback_placeholder1}
-          placeholder="+38(0XX)XXX-XX-XX"
+          onChange={handleChangeTel}
+          placeholder="+38(0__)___-__-__"
           required
-          // title="Вводите только цифры в формате 380ХХХХХХХХХ"
           title={lang[languages].feedback_title1}
         />
       </div>
@@ -70,7 +127,7 @@ const UserFormRegister = ( {typeMassege}) => {
             id="email"
             name="email"
             value={formData.email}
-            onChange={handleChange}
+            onChange={handleChangeEmail}
             required
             placeholder="support@mail.com"
             title={lang[languages].feedback_title2}
