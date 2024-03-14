@@ -16,6 +16,7 @@ const Pagination = ({ activePage, onChangePage, totalItems, itemsPerPage }) => {
 
   useEffect(() => {
     setCurrentPage(activePage);
+    setCurrentBlockPage(Math.ceil(activePage / blockPage));
   }, [activePage]);
   
   // Функция для изменения текущей страницы
@@ -27,7 +28,7 @@ const Pagination = ({ activePage, onChangePage, totalItems, itemsPerPage }) => {
   // Генерируем номера страниц для отображения в пагинации
   const getPageNumbers = () => {
       const pageNumbers = [];
-      for (let i = (currentBlockPage - 1) / blockPage + 1; i <= totalPages && i <= (currentBlockPage + 1) * blockPage; i++) {
+      for (let i = (currentBlockPage - 1) * blockPage + 1; i <= totalPages && i <= currentBlockPage * blockPage; i++) {
         pageNumbers.push(i);
       }
       return pageNumbers;
@@ -39,14 +40,16 @@ const Pagination = ({ activePage, onChangePage, totalItems, itemsPerPage }) => {
 
       return pageNumbers.map(number => (
         <LiPagination key={number} className={number === currentPage ? 'active' : null}>
-          <DivPage onClick={(e) => handlePageChange(number)}>{number}</DivPage>
+          <DivPage onClick={() => handlePageChange(number)}>{number}</DivPage>
         </LiPagination>
       ));
   };
   
   const handleOnClick = (value) => {
+    const page = (currentBlockPage - 1 + value) * blockPage + 1;
+    setCurrentPage(page);
+    handlePageChange(page);    
     setCurrentBlockPage(currentBlockPage + value);
-    onChangePage((currentBlockPage + value) * blockPage + 1);
   };
 
   return (
@@ -55,13 +58,13 @@ const Pagination = ({ activePage, onChangePage, totalItems, itemsPerPage }) => {
         <li>
           {currentBlockPage > 1 && (
             <DivShift onClick={() => handleOnClick(-1)}>
-              <img src={doubleChevron} alt="double chevron to the left" style={{ transform: 'rotate(180deg)' }}/>
+              <img src={doubleChevron} alt="double chevron to the left" style={{ transform: 'rotate(180deg)' }} />
             </DivShift>
           )}
         </li>
         {renderPageNumbers()}
         <li>
-          {Math.ceil(totalItems / itemsPerPage / blockPage) > activePage && (
+          {currentBlockPage < Math.ceil(totalItems / itemsPerPage / blockPage) && (
             <DivShift onClick={() => handleOnClick(1)}>
               <img src={doubleChevron} alt="double chevron to the right" />
             </DivShift>
