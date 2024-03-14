@@ -10,26 +10,20 @@ export const DivPagination = styled.div`
 
 export const DivShift = styled.div`
   display: flex;
-  width: 30px;
-  height: 25px;
+  width: 50px;
+  height: 40px;
   align-items: center;
   justify-content: center;
 `;
 
 export const DivPage = styled.div`
   display: flex;
-  // width: 50px;
-  // height: 40px;
-  width: 30px;
-  height: 25px;
-  border: 1px solid #000;
+  width: 50px;
+  height: 40px;
+  border: 2px solid #000;
   align-items: center;
   justify-content: center;
   transition: background-color ${transition};
-
-  &.active {
-    background-color: green;
-  }
 
   &:hover,
   &:active,

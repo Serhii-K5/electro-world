@@ -43,7 +43,7 @@ import tilesIcon from "assets/images/svg/tiles.svg";
 
 export const ProductsContext = createContext();
 
-
+const itemsPerPage = 8;
 const CatalogCarsPage = () => {
   // const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
@@ -167,16 +167,23 @@ const CatalogCarsPage = () => {
 
   return (
     <PageContainer>
-      <NavBar /> 
+      <NavBar />
       <PathContainer>
-        <PathSpan><b>{category && category.length > 0 && category[category.length - 1].cat_name}</b></PathSpan>
-        <span> {lang[languages].catalogPage_finded} {filteredData.length}</span>
+        <PathSpan>
+          <b>
+            {category &&
+              category.length > 0 &&
+              category[category.length - 1].cat_name}
+          </b>
+        </PathSpan>
+        <span>
+          {' '}
+          {lang[languages].catalogPage_finded} {filteredData.length}
+        </span>
       </PathContainer>
       <Container>
         <Aside>
-          <H4>
-            {lang[languages].catalogPage_asideTitel.toUpperCase()}
-          </H4>
+          <H4>{lang[languages].catalogPage_asideTitel.toUpperCase()}</H4>
           <BtnDiv onClick={handleClickBtn}>
             <b>{lang[languages].catalogPage_resetFilters.toUpperCase()}</b>
           </BtnDiv>
@@ -187,55 +194,83 @@ const CatalogCarsPage = () => {
 
           <FilterPanel data={filteredData} />
         </Aside>
-        <Section>          
+        <Section>
           <SectionBar>
             <SortingDiv>
-              <img src={sortingIcon} alt="sorting icon" width={'32px'} height={'32px'}/> 
+              <img
+                src={sortingIcon}
+                alt="sorting icon"
+                width={'32px'}
+                height={'32px'}
+              />
               {lang[languages].catalogPage_sorting}
-              
-              <ProductsContext.Provider value={{ filteredData, setFilteredData }}>
-                <DropdownList/>
+
+              <ProductsContext.Provider
+                value={{ filteredData, setFilteredData }}
+              >
+                <DropdownList />
               </ProductsContext.Provider>
             </SortingDiv>
-            {filteredData.length > 0 && (            
+            {filteredData.length > 0 && (
               <Pagination
                 activePage={activePage}
                 onClickDecrease={onClickDecrease}
                 onClickIncrease={onClickIncrease}
-                filteredData={filteredData}
+                totalItems={filteredData.length}
+                itemsPerPage={itemsPerPage}
               />
             )}
             <BuildingDiv>
               <div onClick={formTiles}>
-                <img src={tilesIcon} alt="tiles icon" width={'32px'} height={'32px'}/>
+                <img
+                  src={tilesIcon}
+                  alt="tiles icon"
+                  width={'32px'}
+                  height={'32px'}
+                />
               </div>
               <div onClick={formLines}>
-                <img src={linesIcon} alt="lines icon" width={'32px'} height={'32px'}/>
+                <img
+                  src={linesIcon}
+                  alt="lines icon"
+                  width={'32px'}
+                  height={'32px'}
+                />
               </div>
             </BuildingDiv>
-          </SectionBar>          
+          </SectionBar>
           {filteredData.length > 0 && (
             <Ul>
-              {filteredData.map((item, index) =>
-                index > (activePage - 1) * 8 - 1 && index < activePage * 8 && (
+              {filteredData.map(
+                (item, index) =>
+                  index > (activePage - 1) * itemsPerPage - 1 &&
+                  index < activePage * itemsPerPage &&
                   // index > (page - 1) * 8 - 1 && index < page * 8 && (
-                  isLine ?
-                    (<li key={item.id} style={{ minHeight: '170px', width: 'calc(100vw - 370px)' }}>
+                  (isLine ? (
+                    <li
+                      key={item.id}
+                      style={{
+                        minHeight: '170px',
+                        width: 'calc(100vw - 370px)',
+                      }}
+                    >
                       <ProductCardLines card={item} index={index} />
-                    </li>)
-                  : (<li key={item.id} >
+                    </li>
+                  ) : (
+                    <li key={item.id}>
                       <ProductCard card={item} />
-                    </li>)
-                )
+                    </li>
+                  ))
               )}
             </Ul>
           )}
-          {filteredData.length > 0 && (            
+          {filteredData.length > 0 && (
             <Pagination
               activePage={activePage}
               onClickDecrease={onClickDecrease}
               onClickIncrease={onClickIncrease}
-              filteredData={filteredData}
+              totalItems={filteredData.length}
+              itemsPerPage={itemsPerPage}
             />
           )}
         </Section>
