@@ -1,47 +1,4 @@
-// import React from 'react';
-// import { DivPagination, DivShift, DivPage } from './PaginationBar.styled';
-
-// const Pagination = ({
-//   activePage,
-//   onClickDecrease,
-//   onClickIncrease,
-//   totalItems,
-//   itemsPerPage,
-// }) => {
-//   return (
-//     <DivPagination>
-//       {activePage > 10 && <DivShift onClick={onClickDecrease}>{'<<'}</DivShift>}
-//       {activePage === 1 && (
-//         <DivPage style={{ backgroundColor: 'var(--bg-second-green)' }}>
-//           {activePage}
-//         </DivPage>
-//       )}
-//       {/* {activePage > 2 && (
-//         <div style={{ width: '50px', textAlign: 'center' }}>{'...'}</div>
-//       )} */}
-//       {activePage > 1 && (
-//         <DivPage onClick={onClickDecrease}>{activePage - 1}</DivPage>
-//       )}
-//       {activePage > 1 && (
-//         <DivPage style={{ backgroundColor: 'green' }}>{activePage}</DivPage>
-//       )}
-//       {totalItems / itemsPerPage > activePage && (
-//         <DivPage onClick={onClickIncrease}>{activePage + 1}</DivPage>
-//       )}
-//       {/* {totalItems / itemsPerPage > activePage + 1 && (
-//         <div style={{ width: '50px', textAlign: 'center' }}>{'...'}</div>
-//       )} */}
-//       {totalItems / itemsPerPage > activePage && (
-//         <DivShift onClick={onClickIncrease}>{'>>'}</DivShift>
-//       )}
-//     </DivPagination>
-//   );
-// };
-
-// export default Pagination;
-
 import { useEffect, useState } from 'react';
-// import { MdNavigateNext } from 'react-icons/md';
 import {
   UlPagination,
   LiPagination,
@@ -54,11 +11,7 @@ import doubleChevron from "assets/images/svg/double-chevron.svg";
 const Pagination = ({ activePage, onChangePage, totalItems, itemsPerPage }) => {
   const blockPage = 3;
   const [currentPage, setCurrentPage] = useState(1);
-
-  // Вычисляем общее количество блоков
   const [currentBlockPage, setCurrentBlockPage] = useState(() => Math.ceil(activePage / blockPage));
-
-  // Вычисляем общее количество страниц
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
   useEffect(() => {
@@ -100,8 +53,10 @@ const Pagination = ({ activePage, onChangePage, totalItems, itemsPerPage }) => {
     <div className="pagination">
       <UlPagination>
         <li>
-          {activePage > blockPage && (
-            <DivShift onClick={() => handleOnClick(-1)}><img src={doubleChevron} alt="double chevron to the left" style={{transform: 'rotate(180deg)'}}/></DivShift>
+          {currentBlockPage > 1 && (
+            <DivShift onClick={() => handleOnClick(-1)}>
+              <img src={doubleChevron} alt="double chevron to the left" style={{ transform: 'rotate(180deg)' }}/>
+            </DivShift>
           )}
         </li>
         {renderPageNumbers()}
