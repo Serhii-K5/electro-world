@@ -40,18 +40,19 @@
 
 // export default Pagination;
 
-import { useState } from 'react';
-import { DivPagination, DivShift, DivPage } from './PaginationBar.styled';
+import { useEffect, useState } from 'react';
+// import { MdNavigateNext } from 'react-icons/md';
+import {
+  UlPagination,
+  LiPagination,
+  DivShift,
+  DivPage,
+} from './PaginationBar.styled';
 
-// const Pagination = ({ totalItems, itemsPerPage }) => {
-const Pagination = ({
-  activePage,
-  onClickDecrease,
-  onClickIncrease,
-  totalItems,
-  itemsPerPage,
-}) => {
-  const blockPage = 10;
+import doubleChevron from "assets/images/svg/double-chevron.svg";
+
+const Pagination = ({ activePage, onChangePage, totalItems, itemsPerPage }) => {
+  const blockPage = 3;
   const [currentPage, setCurrentPage] = useState(1);
 
   // Вычисляем общее количество блоков
@@ -60,18 +61,21 @@ const Pagination = ({
   // Вычисляем общее количество страниц
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
+  useEffect(() => {
+    setCurrentPage(activePage);
+  }, [activePage]);
+  
   // Функция для изменения текущей страницы
   const handlePageChange = (page) => {
-      setCurrentPage(page);
+    setCurrentPage(page);
+    onChangePage(page);
   };
 
   // Генерируем номера страниц для отображения в пагинации
   const getPageNumbers = () => {
       const pageNumbers = [];
-      for (let i = (currentBlockPage - 1) / blockPage + 1; i <= totalPages; i++) {
+      for (let i = (currentBlockPage - 1) / blockPage + 1; i <= totalPages && i <= (currentBlockPage + 1) * blockPage; i++) {
         pageNumbers.push(i);
-      // for (let i = 1; i <= totalPages; i++) {
-      //     pageNumbers.push(i);
       }
       return pageNumbers;
   };
@@ -81,34 +85,34 @@ const Pagination = ({
       const pageNumbers = getPageNumbers();
 
       return pageNumbers.map(number => (
-          <li key={number} className={number === currentPage ? 'active' : null}>
-              <button onClick={() => handlePageChange(number)}>
-                  {number}
-              </button>
-          </li>
+        <LiPagination key={number} className={number === currentPage ? 'active' : null}>
+          <DivPage onClick={(e) => handlePageChange(number)}>{number}</DivPage>
+        </LiPagination>
       ));
   };
   
   const handleOnClick = (value) => {
     setCurrentBlockPage(currentBlockPage + value);
-    value > 0 ? onClickDecrease() : onClickIncrease();
+    onChangePage((currentBlockPage + value) * blockPage + 1);
   };
 
   return (
     <div className="pagination">
-      <ul>
+      <UlPagination>
         <li>
           {activePage > blockPage && (
-            <DivShift onClick={() => handleOnClick(-1)}>{'<<'}</DivShift>
+            <DivShift onClick={() => handleOnClick(-1)}><img src={doubleChevron} alt="double chevron to the left" style={{transform: 'rotate(180deg)'}}/></DivShift>
           )}
         </li>
         {renderPageNumbers()}
         <li>
-          {totalItems / itemsPerPage > activePage && (
-            <DivShift onClick={() => handleOnClick(1)}>{'>>'}</DivShift>
+          {Math.ceil(totalItems / itemsPerPage / blockPage) > activePage && (
+            <DivShift onClick={() => handleOnClick(1)}>
+              <img src={doubleChevron} alt="double chevron to the right" />
+            </DivShift>
           )}
         </li>
-      </ul>
+      </UlPagination>
     </div>
   );
 };

@@ -141,12 +141,16 @@ const CatalogCarsPage = () => {
     setFilteredData(applyFilters(products, filters));
   }, [products, filters]);
   
-  const onClickIncrease  = () => {
-    activePage < filteredData.length / 8 && setActivePage(activePage + 1);
-  };
+  // const onClickIncrease  = () => {
+  //   activePage < filteredData.length / 8 && setActivePage(activePage + 1);
+  // };
   
-  const onClickDecrease  = () => {
-    activePage > 0 && setActivePage(activePage - 1);
+  // const onClickDecrease  = () => {
+  //   activePage > 0 && setActivePage(activePage - 1);
+  // };
+  
+  const onChangePage = (page) => {
+    setActivePage(page);
   };
 
   const handleClickBtn = () => {
@@ -214,8 +218,9 @@ const CatalogCarsPage = () => {
             {filteredData.length > 0 && (
               <Pagination
                 activePage={activePage}
-                onClickDecrease={onClickDecrease}
-                onClickIncrease={onClickIncrease}
+                onChangePage={onChangePage}
+                // onClickDecrease={onClickDecrease}
+                // onClickIncrease={onClickIncrease}
                 totalItems={filteredData.length}
                 itemsPerPage={itemsPerPage}
               />
@@ -267,8 +272,9 @@ const CatalogCarsPage = () => {
           {filteredData.length > 0 && (
             <Pagination
               activePage={activePage}
-              onClickDecrease={onClickDecrease}
-              onClickIncrease={onClickIncrease}
+              onChangePage={onChangePage}
+              // onClickDecrease={onClickDecrease}
+              // onClickIncrease={onClickIncrease}
               totalItems={filteredData.length}
               itemsPerPage={itemsPerPage}
             />
