@@ -21,16 +21,16 @@ export const DivShift = styled.div`
 export const LiPagination = styled.li`
   cursor: pointer;
   transition: background-color ${transition};
-  
+
   &:hover,
   &:active,
   &:focus {
     background-color: var(--bg-active-button-color);
-  };
+  }
 
   &.active {
-    background-color: green;
-  };
+    background-color: var(--bg-second-green);
+  }
 `;
 
 export const DivPage = styled.div`
