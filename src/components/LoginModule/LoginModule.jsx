@@ -44,6 +44,10 @@ const LoginModule = ({ onClose }) => {
     // dispatch(login(credentials));
   };
 
+  const handleSelect = filter => {
+    setTypeAuth(false);
+  };
+
   return (
     <>
       <Overlay onClick={handleOverlayClick}>
@@ -52,10 +56,11 @@ const LoginModule = ({ onClose }) => {
             <img src={cross} alt="close button" />
           </CloseBtn>
 
-          <span id='new'>Новый клиент</span>
-          <span>Постоянный покупатель</span>
-          <span>Быстрый заказ</span>
+          <span id="new" onClick={() => handleSelect('new')} style={{padding: '10px 10px'}}><u>Новый клиент</u></span>
+          <span id="regular" onClick={() => handleSelect('regular')} style={{padding: '10px 10px'}}><u>Постоянный покупатель</u></span>
+          <span id="quickOrder" onClick={() => handleSelect('quickOrder')} style={{padding: '10px 10px'}}><u>Быстрый заказ</u></span>
 
+          
           {/* <p>Login module</p>
           <h2
             style={{

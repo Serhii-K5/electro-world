@@ -11,11 +11,42 @@ export const Label = styled.label`
   min-width: 50px;
 `;
 
-export const Input = styled.input`
+const inputStyled = styled.input`
   margin: 10px 0;
   padding: 10px;
   font-size: 1.15rem;
+  border-radius: 5px;
+
+  &.valid {
+    border: solid 2px green;
+  }
+
+  &.invalid {
+    border: solid 2px red;
+  }
+`;
+
+export const Input = styled.input`
   min-width: 50%;
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 1.15rem;
+  border-radius: 5px;
+
+  &.valid {
+    border: solid 2px green;
+  }
+
+  &.invalid {
+    border: solid 2px red;
+  }
+`;
+
+export const InputPassword = styled.input`
+  min-width: 40%;
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 1.15rem;
   border-radius: 5px;
 
   &.valid {

@@ -4,6 +4,7 @@ import {
   Form,
   Label,
   Input,
+  InputPassword,
   Textarea,
   Btn,
 } from './UserFormRegister.styled';
@@ -18,6 +19,7 @@ const UserFormRegister = ( {typeMassege}) => {
     tel: '',
     name: '',
     email: '',
+    password: '',
     message: '',
   });
 
@@ -55,6 +57,13 @@ const UserFormRegister = ( {typeMassege}) => {
     validation(e, isValid);
     setFormData({ ...formData, [name]: value });
   };
+  
+  const handleChangePasword = e => {
+    const { name, value } = e.target;
+    const isValid = value.length > 5;
+    validation(e, isValid);
+    setFormData({ ...formData, [name]: value });
+  };
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -66,6 +75,7 @@ const UserFormRegister = ( {typeMassege}) => {
       tel: '',
       name: '',
       email: '',
+      password: '',
       message: '',
     });
   };
@@ -117,7 +127,7 @@ const UserFormRegister = ( {typeMassege}) => {
           title={lang[languages].feedback_title1}
         />
       </div>
-      {typeMassege !== 1 && (
+      {typeMassege !== 'quickOrder' && (
         <div>
           <Label htmlFor="email" style={{ marginRight: '15px' }}>
             Email: *
@@ -134,7 +144,7 @@ const UserFormRegister = ( {typeMassege}) => {
           />
         </div>
       )}
-      {typeMassege !== 2 && (
+      {typeMassege !== 'quickOrder' && (
         <div>
           <Label htmlFor="name" style={{ marginRight: '23px' }}>
             {lang[languages].feedback_name} *
@@ -145,6 +155,23 @@ const UserFormRegister = ( {typeMassege}) => {
             name="name"
             value={formData.name}
             onChange={handleChange}
+            required
+            placeholder={lang[languages].feedback_placeholder3}
+            title={lang[languages].feedback_title2}
+          />
+        </div>
+      )}
+      {(typeMassege === 'new' || typeMassege === 'regular') && (
+        <div>
+          <Label htmlFor="password" style={{ marginRight: '14px' }}>
+            Пароль: *
+          </Label>
+          <InputPassword
+            type="password"
+            id="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChangePasword}
             required
             placeholder={lang[languages].feedback_placeholder3}
             title={lang[languages].feedback_title2}
