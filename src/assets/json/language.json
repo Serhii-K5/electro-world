@@ -377,6 +377,9 @@
     "feedback_massage": "Сообщение: ",
     "feedback_placeholder5": "Оставьте Ваше сообщение",
     "feedback_p2": " обязательно к заполнению",
-    "feedback_btn": "Отправить"
+    "feedback_btn": "Отправить",
+    "feedback_RemindPassword": "Напомнить пароль",
+    "loginModule_agreement": "Отправить",
+    "loginModule_p1": "Выбирите способ авторизироваться."
   }
 ]

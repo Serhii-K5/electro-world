@@ -3,9 +3,10 @@ import { useSelector } from "react-redux";
 import { selectLanguages } from 'redux/selectors';
 import lang from 'assets/json/language.json';
 import { ProductsContext } from 'pages/CatalogPage/CatalogPage'; 
+import { Container, DropdownDiv, Ul, Li, Div } from './DropdownList.styled';
 
 
-function DropdownList() {  
+const DropdownList = () => {  
   const languages = useSelector(selectLanguages);
   const [isOpen, setIsOpen] = useState(false);
   const { filteredData, setFilteredData } = useContext(ProductsContext);
@@ -62,20 +63,20 @@ function DropdownList() {
 
 
   return (
-    <div className="dropdown" style={{position: 'relative', padding: '0px 10px'}}>
-      <div onClick={toggleDropdown} style={{width: '180px'}}><u>{list[numberLine].text + " "}</u></div>
+    <Container className="dropdown" >
+      <DropdownDiv onClick={toggleDropdown}><u>{list[numberLine].text + " "}</u></DropdownDiv>
       {isOpen && (
-        <ul style={{ position: 'absolute', top:'30px', left: '-115px', zIndex: 5, backgroundColor: "#FFF", width: '150%', boxShadow: '0 0 5px 5px gray'}}>
+        <Ul>
           {list && list.map((value, index) => (
-            <li key={index} style={{borderBottom: 'solid 1px grey'}}>
-              <div onClick={() => handleSelect(value.id)} style={{padding: '10px 10px'}}>
+            <Li key={index} >
+              <Div onClick={() => handleSelect(value.id)} >
                 <u>{list[index].text}</u>
-              </div>
-            </li>
+              </Div>
+            </Li>
           ))}
-        </ul>
+        </Ul>
       )}
-    </div>
+    </Container>
   );
 }
 

@@ -11,13 +11,8 @@ import {
 } from 'components/ConstComponentsStyle/ConstComponentsStyle.styled';
 import {
   Section,
-  // Form,
   H2,
   P,
-  // Label,
-  // Input,
-  // Textarea,
-  // Btn
 } from 'components/Feedback/Feedback.styled';
 // import { Span } from './LoginModule.styled';
 
@@ -30,7 +25,7 @@ import lang from 'assets/json/language.json';
 
 const LoginModule = ({ onClose }) => {
   const languages = useSelector(selectLanguages);
-  const [credentials, setCredentials] = useState({ email: '', password: '' });
+  // const [credentials, setCredentials] = useState({ email: '', password: '' });
   // const dispatch = useDispatch();
   const [typeAuth, setTypeAuth] = useState('');
   
@@ -83,104 +78,24 @@ const LoginModule = ({ onClose }) => {
               <img src={cross} alt="close button" />
             </CloseBtn>
             <Section>
-              <P>{lang[languages].feedback_p1}</P>
-
-              <TypeAuthentification handleSelect={handleSelect} />
-              
-              {/* <Span
-                id="new"
-                onClick={() => handleSelect('new')}
-                style={{ padding: '10px 10px' }}
-              >
-                <u>Новый клиент</u>
-              </Span>
-              <Span
-                id="regular"
-                onClick={() => handleSelect('regular')}
-                style={{ padding: '10px 10px' }}
-              >
-                <u>Постоянный покупатель</u>
-              </Span>
-              <Span
-                id="quickOrder"
-                onClick={() => handleSelect('quickOrder')}
-                style={{ padding: '10px 10px' }}
-              >
-                <u>Быстрый заказ</u>
-              </Span> */}
-              <UserFormRegister typeMassege={typeAuth} />
+              <P>{lang[languages].loginModule_p1}</P>
+              <div style={{ padding: '25px' }}>
+                <TypeAuthentification handleSelect={handleSelect} />
+              </div>
+              {/* <input
+                type="checkbox"
+                id="agreement"
+                value={value}
+                checked={checked}
+                onChange={e => changeCheckbox(key, value, e)}
+              />
+              <label htmlFor="agreement">
+                <Span>({count})</Span>
+              </label> */}
+              {typeAuth !== "" && <UserFormRegister typeMassege={typeAuth} />}
             </Section>
           </Modal>
         </ModalBacking>
-
-        {/* <Modal>
-          <CloseBtn type="button" onClick={onClose}>
-            <img src={cross} alt="close button" />
-          </CloseBtn>
-          <span
-            id="new"
-            onClick={() => handleSelect('new')}
-            style={{ padding: '10px 10px' }}
-          >
-            <u>Новый клиент</u>
-          </span>
-          <span
-            id="regular"
-            onClick={() => handleSelect('regular')}
-            style={{ padding: '10px 10px' }}
-          >
-            <u>Постоянный покупатель</u>
-          </span>
-          <span
-            id="quickOrder"
-            onClick={() => handleSelect('quickOrder')}
-            style={{ padding: '10px 10px' }}
-          >
-            <u>Быстрый заказ</u>
-          </span>
-
-          <UserFormRegister type={typeAuth} /> */}
-
-        {/* <p>Login module</p>
-          <h2
-            style={{
-              margin: '50px auto',
-              textAlign: 'center',
-              fontSize: '50px',
-            }}
-          >
-            Page under construction
-          </h2>
-
-          <div>
-            <h2>Авторизация</h2>
-            <form onSubmit={handleSubmit}>
-              <div>
-                <label htmlFor="email">Email:</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={credentials.email}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div>
-                <label htmlFor="password">Пароль:</label>
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  value={credentials.password}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <button type="submit">Войти</button>
-            </form>
-          </div> */}
-        {/* </Modal> */}
       </Overlay>
     </>
   );

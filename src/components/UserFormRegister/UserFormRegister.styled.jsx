@@ -27,7 +27,8 @@ const inputStyled = styled.input`
 `;
 
 export const Input = styled.input`
-  min-width: 50%;
+  // min-width: 50%;
+  min-width: 55%;
   margin: 10px 0;
   padding: 10px;
   font-size: 1.15rem;
@@ -43,9 +44,9 @@ export const Input = styled.input`
 `;
 
 export const InputPassword = styled.input`
-  min-width: 40%;
+  width: 51%;
   margin: 10px 0;
-  padding: 10px;
+  padding: 10px 35px 10px 10px;
   font-size: 1.15rem;
   border-radius: 5px;
 
@@ -90,4 +91,9 @@ export const Btn = styled.button`
   &:focus {
     background-color: var(--bg-active-button-color);
   }
+`;
+
+export const RemindPassword = styled.div`
+  margin: 10px 0;
+  text-align: center;
 `;
