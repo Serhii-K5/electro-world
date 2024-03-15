@@ -88,6 +88,8 @@ const MessageModule = ({ onClose }) => {
               <img src={cross} alt="close button" />
             </CloseBtn>
             <Section>
+              <span></span>
+              
               <P>{lang[languages].feedback_p1}</P>
               <UserFormRegister typeMassege={0} />
             </Section>

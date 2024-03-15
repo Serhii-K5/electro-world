@@ -14,6 +14,7 @@ import cross from "assets/images/svg/cross.svg";
 const LoginModule = ({ onClose }) => {
   const [credentials, setCredentials] = useState({ email: '', password: '' });
   // const dispatch = useDispatch();
+  const [typeAuth, setTypeAuth] = useState('');
   
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -50,9 +51,21 @@ const LoginModule = ({ onClose }) => {
           <CloseBtn type="button" onClick={onClose}>
             <img src={cross} alt="close button" />
           </CloseBtn>
-          
-          <p>Login module</p>
-          <h2 style={{margin: '50px auto', textAlign: 'center', fontSize: '50px'}}>Page under construction</h2>
+
+          <span id='new'>Новый клиент</span>
+          <span>Постоянный покупатель</span>
+          <span>Быстрый заказ</span>
+
+          {/* <p>Login module</p>
+          <h2
+            style={{
+              margin: '50px auto',
+              textAlign: 'center',
+              fontSize: '50px',
+            }}
+          >
+            Page under construction
+          </h2>
 
           <div>
             <h2>Авторизация</h2>
@@ -81,7 +94,7 @@ const LoginModule = ({ onClose }) => {
               </div>
               <button type="submit">Войти</button>
             </form>
-          </div>        
+          </div> */}
         </Modal>
       </Overlay>
     </>
