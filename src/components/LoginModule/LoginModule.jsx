@@ -86,6 +86,7 @@ const LoginModule = ({ onClose }) => {
               <P>{lang[languages].feedback_p1}</P>
 
               <TypeAuthentification handleSelect={handleSelect} />
+              
               {/* <Span
                 id="new"
                 onClick={() => handleSelect('new')}

@@ -1,6 +1,6 @@
 import { Span } from './AuthenticationType.styled';
 
-const TypeAuthentification = handleSelect => {
+const TypeAuthentification = ({handleSelect}) => {
 
   
   return (

@@ -67,7 +67,7 @@ const UserFormRegister = ( {typeMassege}) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-
+    
     // Здесь вы можете добавить логику отправки данных на сервер или обработки формы
     console.log(formData);
     // Очистка формы после отправки
@@ -173,8 +173,8 @@ const UserFormRegister = ( {typeMassege}) => {
             value={formData.password}
             onChange={handleChangePasword}
             required
-            placeholder={lang[languages].feedback_placeholder3}
-            title={lang[languages].feedback_title2}
+            placeholder='******'
+            title={lang[languages].feedback_title3}
           />
         </div>
       )}
@@ -186,7 +186,7 @@ const UserFormRegister = ( {typeMassege}) => {
           value={formData.message}
           onChange={handleChange}
           required
-          placeholder={lang[languages].feedback_placeholder4}
+          placeholder={lang[languages].feedback_placeholder5}
           title={lang[languages].feedback_title2}
         />
       </div>

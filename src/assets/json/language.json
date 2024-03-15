@@ -182,9 +182,10 @@
     "feedback_title1": "Вводіть тільки цифри у форматі 380ХХХХХХХХХ",
     "feedback_title2": "Поле має бути заповненим",
     "feedback_name": "Ім'я:",
-    "feedback_placeholder3": "Як до Вас звертатися?",
+    "feedback_placeholder3": "Як до Вас звертатися?",    
+    "feedback_title3": "Довжина пароля не менше 6 символів",
     "feedback_massage": "Повідомлення: ",
-    "feedback_placeholder4": "Залишіть Ваше повідомлення",
+    "feedback_placeholder5": "Залишіть Ваше повідомлення",
     "feedback_p2": "обов'язково до заповнення",
     "feedback_btn": "Надіслати"
   },
@@ -372,8 +373,9 @@
     "feedback_title2": "Поле должно быть заполненым",
     "feedback_name": "Имя:",
     "feedback_placeholder3": "Как к Вам обращаться?",
+    "feedback_title3": "Длина пароля не менее 6 символов",
     "feedback_massage": "Сообщение: ",
-    "feedback_placeholder4": "Оставьте Ваше сообщение",
+    "feedback_placeholder5": "Оставьте Ваше сообщение",
     "feedback_p2": " обязательно к заполнению",
     "feedback_btn": "Отправить"
   }
