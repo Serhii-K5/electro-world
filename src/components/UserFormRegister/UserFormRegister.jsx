@@ -113,7 +113,7 @@ const UserFormRegister = ( {typeMassege}) => {
   return (
     <Form onSubmit={handleSubmit}>
       <div>
-        <Label htmlFor="tel" style={{ marginRight: '29px' }}>
+        <Label htmlFor="tel" style={{ marginRight: '30px' }}>
           Тел: *
         </Label>
         <Input
@@ -129,8 +129,8 @@ const UserFormRegister = ( {typeMassege}) => {
       </div>
       {typeMassege !== 'quickOrder' && (
         <div>
-          <Label htmlFor="email" style={{ marginRight: '15px' }}>
-            Email: *
+          <Label htmlFor="email" style={{ marginRight: '29px' }}>
+            Email:
           </Label>
           <Input
             type="email"
@@ -138,15 +138,15 @@ const UserFormRegister = ( {typeMassege}) => {
             name="email"
             value={formData.email}
             onChange={handleChangeEmail}
-            required
+            // required
             placeholder="support@mail.com"
             title={lang[languages].feedback_title2}
           />
         </div>
       )}
-      {typeMassege !== 'quickOrder' && (
+      {typeMassege !== 'quickOrder' && typeMassege !== 'regular' && (
         <div>
-          <Label htmlFor="name" style={{ marginRight: '23px' }}>
+          <Label htmlFor="name" style={{ marginRight: '24px' }}>
             {lang[languages].feedback_name} *
           </Label>
           <Input

@@ -1,17 +1,35 @@
 import { useEffect, useState } from "react";
+import { useSelector } from 'react-redux';
 // import { useDispatch } from 'react-redux';
 // import { login } from 'redux/authSlice';
 
 import {
   Overlay,
+  ModalBacking,
   Modal,
   CloseBtn,
-} from "components/ConstComponentsStyle/ConstComponentsStyle.styled"
+} from 'components/ConstComponentsStyle/ConstComponentsStyle.styled';
+import {
+  Section,
+  // Form,
+  H2,
+  P,
+  // Label,
+  // Input,
+  // Textarea,
+  // Btn
+} from 'components/Feedback/Feedback.styled';
+// import { Span } from './LoginModule.styled';
+
+import TypeAuthentification from 'components/AuthenticationType/AuthenticationType';
 
 import cross from "assets/images/svg/cross.svg";
-
+import UserFormRegister from 'components/UserFormRegister/UserFormRegister';
+import { selectLanguages } from 'redux/selectors';
+import lang from 'assets/json/language.json';
 
 const LoginModule = ({ onClose }) => {
+  const languages = useSelector(selectLanguages);
   const [credentials, setCredentials] = useState({ email: '', password: '' });
   // const dispatch = useDispatch();
   const [typeAuth, setTypeAuth] = useState('');
@@ -34,34 +52,95 @@ const LoginModule = ({ onClose }) => {
     }
   };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setCredentials({ ...credentials, [name]: value });
-  };
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setCredentials({ ...credentials, [name]: value });
+  // };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // dispatch(login(credentials));
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   // dispatch(login(credentials));
+  // };
 
-  const handleSelect = filter => {
-    setTypeAuth(false);
+  const handleSelect = type => {
+    setTypeAuth(type);
   };
 
   return (
     <>
       <Overlay onClick={handleOverlayClick}>
-        <Modal>
+        <ModalBacking>
+          <Modal style={{ maxWidth: '40vw' }}>
+            <div
+              style={{
+                textAlign: 'center',
+                backgroundColor: 'var(--bg-color-grey)',
+              }}
+            >
+              <H2>{lang[languages].Authorization.toUpperCase()}</H2>
+            </div>
+            <CloseBtn type="button" onClick={onClose}>
+              <img src={cross} alt="close button" />
+            </CloseBtn>
+            <Section>
+              <P>{lang[languages].feedback_p1}</P>
+
+              <TypeAuthentification handleSelect={handleSelect} />
+              {/* <Span
+                id="new"
+                onClick={() => handleSelect('new')}
+                style={{ padding: '10px 10px' }}
+              >
+                <u>Новый клиент</u>
+              </Span>
+              <Span
+                id="regular"
+                onClick={() => handleSelect('regular')}
+                style={{ padding: '10px 10px' }}
+              >
+                <u>Постоянный покупатель</u>
+              </Span>
+              <Span
+                id="quickOrder"
+                onClick={() => handleSelect('quickOrder')}
+                style={{ padding: '10px 10px' }}
+              >
+                <u>Быстрый заказ</u>
+              </Span> */}
+              <UserFormRegister typeMassege={typeAuth} />
+            </Section>
+          </Modal>
+        </ModalBacking>
+
+        {/* <Modal>
           <CloseBtn type="button" onClick={onClose}>
             <img src={cross} alt="close button" />
           </CloseBtn>
+          <span
+            id="new"
+            onClick={() => handleSelect('new')}
+            style={{ padding: '10px 10px' }}
+          >
+            <u>Новый клиент</u>
+          </span>
+          <span
+            id="regular"
+            onClick={() => handleSelect('regular')}
+            style={{ padding: '10px 10px' }}
+          >
+            <u>Постоянный покупатель</u>
+          </span>
+          <span
+            id="quickOrder"
+            onClick={() => handleSelect('quickOrder')}
+            style={{ padding: '10px 10px' }}
+          >
+            <u>Быстрый заказ</u>
+          </span>
 
-          <span id="new" onClick={() => handleSelect('new')} style={{padding: '10px 10px'}}><u>Новый клиент</u></span>
-          <span id="regular" onClick={() => handleSelect('regular')} style={{padding: '10px 10px'}}><u>Постоянный покупатель</u></span>
-          <span id="quickOrder" onClick={() => handleSelect('quickOrder')} style={{padding: '10px 10px'}}><u>Быстрый заказ</u></span>
+          <UserFormRegister type={typeAuth} /> */}
 
-          
-          {/* <p>Login module</p>
+        {/* <p>Login module</p>
           <h2
             style={{
               margin: '50px auto',
@@ -100,7 +179,7 @@ const LoginModule = ({ onClose }) => {
               <button type="submit">Войти</button>
             </form>
           </div> */}
-        </Modal>
+        {/* </Modal> */}
       </Overlay>
     </>
   );
