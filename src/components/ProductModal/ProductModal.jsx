@@ -5,9 +5,10 @@ import {
 } from "./ProductModal.styled";
 import {
   Overlay,
+  ModalBacking,
   Modal,
   CloseBtn,
-} from "components/ConstComponentsStyle/ConstComponentsStyle.styled";
+} from 'components/ConstComponentsStyle/ConstComponentsStyle.styled';
 
 import {
   Name,
@@ -42,24 +43,26 @@ export default function AdvertModal({ card, onClose }) {
 
   return (
     <Overlay onClick={handleOverlayClick}>
-      <Modal>
-        {/* <p>Module page</p> */}
+      <ModalBacking>
+        <Modal>
+          {/* <p>Module page</p> */}
 
-        <CloseBtn type="button" onClick={onClose}>
-          <img src={cross} alt="close button" />
-        </CloseBtn>
-        {card.photo === '' ? (
-          <Img src={noPhoto} alt={card.name} />
-        ) : (
-          <Img src={card.photo} alt={card.name} />
-        )}
+          <CloseBtn type="button" onClick={onClose}>
+            <img src={cross} alt="close button" />
+          </CloseBtn>
+          {card.photo === '' ? (
+            <Img src={noPhoto} alt={card.name} />
+          ) : (
+            <Img src={card.photo} alt={card.name} />
+          )}
 
-        <div>
-          <p>Код: {card.code}</p>
-          <Name >{card.name}</Name>
-          <Memo>{card.memo}</Memo>
-        </div>        
-      </Modal>
+          <div>
+            <p>Код: {card.code}</p>
+            <Name>{card.name}</Name>
+            <Memo>{card.memo}</Memo>
+          </div>
+        </Modal>
+      </ModalBacking>
     </Overlay>
   );
 }
