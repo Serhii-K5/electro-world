@@ -1,3 +1,4 @@
+
 // import { useSelector } from 'react-redux';
 
 import {
@@ -46,3 +47,29 @@ const AdminPage = () => {
 };
 
 export default AdminPage;
+
+// import { useState, useEffect } from 'react';
+
+// const App = () => {
+//   const [file, setFile] = useState(null);
+
+//   useEffect(() => {
+//     const handleChange = (e) => {
+//       setFile(e.target.files[0]);
+//     };
+
+//     document.getElementById("file-input").addEventListener("change", handleChange);
+
+//     return () => {
+//       document.getElementById("file-input").removeEventListener("change", handleChange);
+//     };
+//   }, []);
+
+//   return (
+//     <div>
+//       <input type="file" id="file-input" />
+//     </div>
+//   );
+// };
+
+// export default App;
