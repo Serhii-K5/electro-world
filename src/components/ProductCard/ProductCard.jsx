@@ -162,7 +162,6 @@ export default function Product({ card }) {
                 <ButtonDiv 
                   className={isOrder && "isOrder"}
                   onClick={handleClick}
-                  
                   // style={{ backgroundColor: isOrder ? "var(--bg-second-orange)" : "var(--bg-second-green)" }}
                 >
                   {isOrder ? 
