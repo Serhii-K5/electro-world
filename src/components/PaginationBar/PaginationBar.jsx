@@ -6,7 +6,7 @@ import {
   DivPage,
 } from './PaginationBar.styled';
 
-import doubleChevron from "assets/images/svg/double-chevron.svg";
+// import doubleChevron from "assets/images/svg/double-chevron.svg";
 
 const Pagination = ({ activePage, onChangePage, totalItems, itemsPerPage }) => {
   const blockPage = 3;
@@ -25,7 +25,7 @@ const Pagination = ({ activePage, onChangePage, totalItems, itemsPerPage }) => {
     onChangePage(page);
   };
 
-  // Генерируем номера страниц для отображения в пагинации
+  // Генерация номера страниц для отображения в пагинации
   const getPageNumbers = () => {
       const pageNumbers = [];
       for (let i = (currentBlockPage - 1) * blockPage + 1; i <= totalPages && i <= currentBlockPage * blockPage; i++) {
