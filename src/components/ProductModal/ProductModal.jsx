@@ -1,4 +1,3 @@
-// import { nanoid } from "@reduxjs/toolkit";
 import { useEffect } from "react";
 import {
   Img,
@@ -19,8 +18,6 @@ import cross from "assets/images/svg/cross.svg";
 import noPhoto from 'assets/images/jpg/no_photo.jpg';
 
 export default function AdvertModal({ card, onClose }) {
-  // const arrayConditions = card.rentalConditions.split("\n");  
-  // const mileage = String(card.mileage / 1000).replace(/\./g, ",");
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -45,8 +42,6 @@ export default function AdvertModal({ card, onClose }) {
     <Overlay onClick={handleOverlayClick}>
       <ModalBacking>
         <Modal>
-          {/* <p>Module page</p> */}
-
           <CloseBtn type="button" onClick={onClose}>
             <img src={cross} alt="close button" />
           </CloseBtn>
