@@ -1,51 +1,36 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { deleteOrders, updateOrders, deleteAllOrders } from "redux/slice/orderSlice";
 import { deleteOrders, updateOrders } from 'redux/slice/orderSlice';
 import { selectOrders } from 'redux/selectors';
-// import { selectOrdersAll } from "redux/selectors";
 import CardModal from 'components/ProductModal/ProductModal';
 import CheckoutModal from 'components/-CheckoutModal/CheckoutModal';
-// import { changeQuantity } from "redux/slice/numberPurchasesSlice";
-// import { increaseOrder, decreaseOrder } from "redux/slice/ordersAllSlice";
 
 import {
   Container,
-  // Aside,
-  // ImgDiv,
-  // DivHov,
   OptionDiv,
+  PhotoDiv,
+  OrdersDiv,
   Img,
-  // OptionContainer,
-  // Price,
-  // PriceOld,
   Input,
   QuantityDiv,
   Div,
   ButtonDiv,
   Name,
-  // Memo,
 } from './OrdersCard.styled';
 
-import noPhoto from '../../assets/images/jpg/no_photo.jpg';
+import noPhoto from 'assets/images/jpg/productPhoto/no_photo.jpg';
 import lang from 'assets/json/language.json';
 import { selectLanguages } from 'redux/selectors';
 
-// export default function Product({ card }) {
 const Product = ({ card }) => {
   const dispatch = useDispatch();
   const orderProducts = useSelector(selectOrders);
   const languages = useSelector(selectLanguages);
-  // const ordersAll = useSelector(selectOrdersAll);
   const [isModalShown, setIsModalShown] = useState(false);
   const [isCheckoutModalShown, setIsCheckoutModalShown] = useState(false);
   const [isOrder, setIsOrder] = useState(false);
 
-  // const [NumberPurchases, setNumberPurchases] = useState(0);
-  // const [quantityGoods, setQuantityGoods] = useState(1);
   const [quantityGoods, setQuantityGoods] = useState(card.ordered);
-
-  // const [isVisible, setIsVisible] = useState(false);
   const [sum, setSum] = useState(card.price * card.ordered);
 
   useEffect(() => {
@@ -66,30 +51,11 @@ const Product = ({ card }) => {
     setIsModalShown(true);
   };
 
-  // const onAdd = () => {
-  //   // card.ordered === 0 && (card.ordered = 1);
-  //   // dispatch(addOrders(card));
-  //   dispatch(addOrders({ ...card, ordered: quantityGoods }));
-  //   setIsOrder(true);
-  // };
-
   const onDelete = () => {
     dispatch(deleteOrders(card.id));
     setIsOrder(false);
     setQuantityGoods(1);
   };
-
-  // const productName = (name) => {
-  //   return name.replace('\"'/i,'"');
-  // };
-
-  // const onMouseMove = () => {
-  //   setIsVisible(true);
-  // };
-
-  // const onMouseOut = () => {
-  //   setIsVisible(false);
-  // };
 
   const handleChange = e => {
     try {
@@ -113,14 +79,10 @@ const Product = ({ card }) => {
     setSum(card.price * (quantityGoods + 1));
   };
 
-  // const deletedOrders = () => {
-  //   dispatch(deleteAllOrders([]));
-  // }
-
   return (
     <Container>
       <OptionDiv>
-        <div style={{ display: 'flex' }}>
+        <PhotoDiv>
           {card.photo === '' ? (
             <Img src={noPhoto} alt={card.name} />
           ) : (
@@ -132,8 +94,8 @@ const Product = ({ card }) => {
             </p>
             <Name onClick={onOpenModal}>{card.name}</Name>
           </div>
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+        </PhotoDiv>
+        <OrdersDiv>
           <QuantityDiv>
             <Div onClick={decrease}> - </Div>
             <Input onChange={handleChange} value={Number(quantityGoods)} />
@@ -142,7 +104,6 @@ const Product = ({ card }) => {
 
           <div style={{ minWidth: '70px' }}>
             <p>{lang[languages].layout_sum}:</p>
-            {/* <p>{calculation()} грн.</p> */}
             <p>{sum} грн.</p>
           </div>
 
@@ -151,12 +112,10 @@ const Product = ({ card }) => {
               ? lang[languages].productCard_orderDel
               : lang[languages].productCard_orderAdd}
           </ButtonDiv>
-        </div>
+        </OrdersDiv>
       </OptionDiv>
       {isModalShown && <CardModal card={card} onClose={onCloseModal} />}
-      {isCheckoutModalShown && (
-        <CheckoutModal card={card} onClose={onCloseModal} />
-      )}
+      {isCheckoutModalShown && <CheckoutModal card={card} onClose={onCloseModal} />}
     </Container>
   );
 };

@@ -15,7 +15,7 @@ import {
 } from '../ProductCard/ProductCard.styled';
 
 import cross from "assets/images/svg/cross.svg";
-import noPhoto from 'assets/images/jpg/no_photo.jpg';
+import noPhoto from 'assets/images/jpg/productPhoto/no_photo.jpg';
 
 export default function AdvertModal({ card, onClose }) {
 

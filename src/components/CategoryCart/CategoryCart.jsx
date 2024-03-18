@@ -2,7 +2,7 @@ import {
   Div,
 } from "./CategoryCart.styled";
 
-import photo from "assets/images/jpg/no_photo.jpg";
+import photo from 'assets/images/jpg/productPhoto/no_photo.jpg';
 
 const CategoryCart = ({ categoryName }) => {
   return (

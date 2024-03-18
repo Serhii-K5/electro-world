@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { transition } from 'components/ConstComponentsStyle/ConstComponentsStyle.styled';
-// const transition = `150ms linear`;
 
 
 export const Container = styled.div`
@@ -11,6 +10,16 @@ export const Container = styled.div`
 export const OptionDiv = styled.div`
   display: flex;
   justify-content: space-between;
+`;
+
+export const PhotoDiv = styled.div`
+  display: flex;
+`;
+
+export const OrdersDiv = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 20px;
 `;
 
 export const Img = styled.img`
