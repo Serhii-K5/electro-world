@@ -1,28 +1,22 @@
 :root {
   /* COLOR */
-  --bg-primary: #FFF;
-  --bg-second: #F6F8FD;
-  --bg-primary-green: #9EE2AC;
-  --bg-second-green: #02BD2A;
-  --bg-primary-orange: #f75f25;
-  --bg-second-orange: #f38e74;
-  --bg-button-color: #3470FF;
-  /* --bg-button-color: #78a0ff; */
-  --bg-active-button-color: #0B44CD;
-  --bg-overlay: #12141780;
-  --bg-color-grey: #8A8A8957;
-
-  --text-color-primary-black:#121417;
-  --text-color-secondary-black: #12141780;
-  --text-color-white:#FFF;
-  --text-color-grey: #8a8a8957;
-  --text-color-grey1: #8a8a897c;
-  --text-color-blue: #3470FF;
-  --text-color-active-blue: #0B44CD;
-  --text-second-green: #02BD2A;
-  --text-second-orange: #f5542c;
-
+  --primary-white: #FFF;
+  --second-white: #F6F8FD;
   --input-background-color: #F7F7FB;
+  --third-white: rgba(255,255,255,0.15);
+  --primary-grey: #8A8A8957;
+  --second-grey: #8A8A897C;
+  --primary-green: #9EE2AC;
+  --second-green: #02BD2A;
+  --primary-orange: #F75F25;
+  --second-orange: #F38E74;
+  --third-orange: #F5542C;
+  --primary-blue: #3470FF;
+  --active-blue: #0B44CD;
+  --primary-black: #121417;
+  --second-black: #12141780;
+  --third-black: rgba(0,0,0,0.5);
+
 }
 
 html {
@@ -36,8 +30,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--bg-primary);
-  color: var(--text-color-primary-white);
+  background-color: var(--primary-white);
+  color: var(--primary-white);
 }
 
 ul {

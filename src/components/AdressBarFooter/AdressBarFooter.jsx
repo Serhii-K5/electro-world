@@ -1,5 +1,4 @@
 import { useState } from 'react';
-// import { BsFillTelephoneFill } from 'react-icons/bs';
 import { SiVodafone } from 'react-icons/si';
 import { FaViber } from 'react-icons/fa';
 
@@ -19,7 +18,6 @@ const AdressBarFooter = ({color}) => {
           <div style={{ display: 'flex' }}>            
             <img src={ks} alt="kyivstar logo" style={{marginRight: '2px' }}/>
             <Span className={isFocus === 1 && 'isScaleKs'} > +38(068)976-68-80 </Span>
-            {/* <Span id={color} className={isFocus === 1 && 'isScaleKs'} > +38(068)976-68-80 </Span> */}
           </div>
         </a>
         <FaViber style={{ marginLeft: '3px', fill: 'blueviolet' }} />
@@ -33,7 +31,6 @@ const AdressBarFooter = ({color}) => {
           <VodafoneBg style={{ position: 'relative', top: '3px'}}>
             <SiVodafone style={{ fill: 'red' }} />
           </VodafoneBg>
-          {/* <Span id={color} className={isFocus === 2 && 'isScaleVd'}> +38(068)976-68-80 </Span> */}
           <Span className={isFocus === 2 && 'isScaleVd'}> +38(068)976-68-80 </Span>
         </a>
       </div>

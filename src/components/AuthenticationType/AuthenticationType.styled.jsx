@@ -7,6 +7,6 @@ export const Span = styled.span`
   &:hover,
   &:active,
   &:focus {
-    color: var(--bg-active-button-color);
+    color: var(--active-blue);
   }
 `;

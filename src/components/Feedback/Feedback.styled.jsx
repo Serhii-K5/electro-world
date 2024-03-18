@@ -2,14 +2,13 @@ import styled from 'styled-components';
 import { transition } from 'components/ConstComponentsStyle/ConstComponentsStyle.styled';
 
 
-// export const Container = styled.div`
-//   margin: 0 auto;
-//   max-width: 1440px;
-//   padding: 50px 16px 24px;
-// `;
+export const TitleDiv = styled.div`
+  text-align: center;
+  background-color: var(--primary-grey);
+`;
 
 export const Section = styled.section`
-padding: 16px 24px;
+  padding: 16px 24px;
 `;
 
 export const H2 = styled.h2`

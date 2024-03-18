@@ -11,7 +11,7 @@ export const Div = styled.div`
   &:hover,
   &:active,
   &:focus {
-    color: var(--text-color-active-blue);
+    color: var(--active-blue);
   };
 `;
 

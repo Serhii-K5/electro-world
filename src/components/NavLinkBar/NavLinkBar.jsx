@@ -57,7 +57,6 @@ const NavLinkBar = () => {
     setIsModalCatalogClick(true);
   };
 
-  // const st = { marginRight: '10px', fontSize: '24px' };
 
   return (
     <>
@@ -71,7 +70,6 @@ const NavLinkBar = () => {
             <DivCatalog>
               <GiHamburgerMenu
                 style={{ marginRight: '10px', fontSize: '24px' }}
-                // style={st}
               />
               <div>
                 <Sup>{lang[languages].NavLinkBar_catalog1.toUpperCase()}</Sup>

@@ -29,10 +29,7 @@ const HomePage = () => {
         {/* slider */}
         <H1>
           {lang[languages].homePage_h1}
-          <Span>
-            {' '}
-            Electro world{' '}
-          </Span>
+          <Span> Electro world </Span>
           {lang[languages].homePage_h1_2}
         </H1>
         <H3>
@@ -86,7 +83,7 @@ const HomePage = () => {
         </DivBlock>
         <DivBlock style={{ justifyContent: 'space-evenly' }}>
           <div>
-            <Img src={img1} alt="Малая бытовая техника" />
+            <Img src={img1} alt="Small household appliances" />
           </div>
           <div>
             <P>

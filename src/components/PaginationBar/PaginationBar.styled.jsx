@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-
-const transition = `250ms linear`;
+import { transition } from 'components/ConstComponentsStyle/ConstComponentsStyle.styled';
 
 
 export const UlPagination = styled.ul`
@@ -25,18 +24,16 @@ export const LiPagination = styled.li`
   &:hover,
   &:active,
   &:focus {
-    background-color: var(--bg-active-button-color);
+    background-color: var(--active-blue);
   }
 
   &.active {
-    background-color: var(--bg-second-green);
+    background-color: var(--second-green);
   }
 `;
 
 export const DivPage = styled.div`
   display: flex;
-  // width: 50px;
-  // height: 40px;
   width: 30px;
   height: 25px;
   border: 1px solid #000;

@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { useSelector } from "react-redux";
 import lang from "assets/json/language.json";
 import { selectLanguages, selectFilters } from "redux/selectors";
@@ -14,15 +14,14 @@ const NoOrders = () => {
   const languages = useSelector(selectLanguages);
   const filters = useSelector(selectFilters);
   // eslint-disable-next-line no-unused-vars
-  const [isCategory, setIsCategory] = useState(() => filters.findIndex(filter => filter.key === 'parentId') > -1);
+  // const [isCategory, setIsCategory] = useState(() => filters.findIndex(filter => filter.key === 'parentId') > -1);
+  const isCategory = (() => filters.findIndex(filter => filter.key === 'parentId') > -1);
 
   return (
     <Div>
       <H3>{lang[languages].noOrders_textH3}.</H3>
       <H4>
         {lang[languages].noOrders_textH4_1}
-        {/* <Link to="/catalog"> */}
-        {/* <Link to="/categories"> */}
         <Link to={isCategory ? '/catalog' : '/categories'}>
           {lang[languages].NavLinkBar_catalog1}
         </Link>

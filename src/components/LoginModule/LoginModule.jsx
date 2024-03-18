@@ -10,6 +10,7 @@ import {
   CloseBtn,
 } from 'components/ConstComponentsStyle/ConstComponentsStyle.styled';
 import {
+  TitleDiv,
   Section,
   H2,
   P,
@@ -66,14 +67,9 @@ const LoginModule = ({ onClose }) => {
       <Overlay onClick={handleOverlayClick}>
         <ModalBacking>
           <Modal style={{ maxWidth: '40vw' }}>
-            <div
-              style={{
-                textAlign: 'center',
-                backgroundColor: 'var(--bg-color-grey)',
-              }}
-            >
-              <H2>{lang[languages].Authorization.toUpperCase()}</H2>
-            </div>
+            <TitleDiv>
+              <H2>{lang[languages].authorization.toUpperCase()}</H2>
+            </TitleDiv>
             <CloseBtn type="button" onClick={onClose}>
               <img src={cross} alt="close button" />
             </CloseBtn>
@@ -92,7 +88,7 @@ const LoginModule = ({ onClose }) => {
               <label htmlFor="agreement">
                 <Span>({count})</Span>
               </label> */}
-              {typeAuth !== "" && <UserFormRegister typeMassege={typeAuth} />}
+              {typeAuth !== '' && <UserFormRegister typeMassege={typeAuth} />}
             </Section>
           </Modal>
         </ModalBacking>

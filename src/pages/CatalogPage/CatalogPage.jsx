@@ -50,7 +50,6 @@ const CatalogCarsPage = () => {
   const languages = useSelector(selectLanguages);
   const filters = useSelector(selectFilters);
   const category = useSelector(selectDirectoryPath);
-  // const category = useSelector(selectCategories);
   
   
   const temp = useSelector(selectProducts);
@@ -60,8 +59,6 @@ const CatalogCarsPage = () => {
   const [activePage, setActivePage] = useState(1);
   const [isLine, setIsLine] = useState(false);
 
-  // const [sortedProducts, setSortedProducts] = useState(products);
-  
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -93,7 +90,6 @@ const CatalogCarsPage = () => {
             }
           } else {
             if (typeof value[0] === 'object') {
-              // return value.some((nameFilter) => {
               return value.every(nameFilter => {
                 const isKey =
                   nameFilter.key !== '' &&
@@ -102,7 +98,6 @@ const CatalogCarsPage = () => {
                     .includes(value[0].key.toUpperCase());
                 const isValue =
                   value[0].value instanceof Array
-                    // ? value[0].value.some(nameFilter => {
                     ? value[0].value.every(nameFilter => {
                         return (
                           nameFilter.value !== '' &&
@@ -120,7 +115,6 @@ const CatalogCarsPage = () => {
               });
             } else {
               const result = () => {
-                // return value.some(nameFilter => {
                 return value.every(nameFilter => {
                   return (
                     nameFilter.value !== '' &&
@@ -141,23 +135,13 @@ const CatalogCarsPage = () => {
     setFilteredData(applyFilters(products, filters));
   }, [products, filters]);
   
-  // const onClickIncrease  = () => {
-  //   activePage < filteredData.length / 8 && setActivePage(activePage + 1);
-  // };
-  
-  // const onClickDecrease  = () => {
-  //   activePage > 0 && setActivePage(activePage - 1);
-  // };
-  
   const onChangePage = (page) => {
     setActivePage(page);
   };
 
   const handleClickBtn = () => {
-    // dispatch(deleteFilters({ key: 'memo', value: [] }));
     dispatch(deleteFilters({ key: 'memo', value: "" }));
     dispatch(deleteFilters({ key: 'name', value: "" }));
-    // dispatch(deleteFilters({ key: 'parentId', value: 0 }));
     dispatch(changeCategory(0));
   };
 
@@ -219,8 +203,6 @@ const CatalogCarsPage = () => {
               <Pagination
                 activePage={activePage}
                 onChangePage={onChangePage}
-                // onClickDecrease={onClickDecrease}
-                // onClickIncrease={onClickIncrease}
                 totalItems={filteredData.length}
                 itemsPerPage={itemsPerPage}
               />
@@ -273,8 +255,6 @@ const CatalogCarsPage = () => {
             <Pagination
               activePage={activePage}
               onChangePage={onChangePage}
-              // onClickDecrease={onClickDecrease}
-              // onClickIncrease={onClickIncrease}
               totalItems={filteredData.length}
               itemsPerPage={itemsPerPage}
             />

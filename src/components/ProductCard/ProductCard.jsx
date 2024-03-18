@@ -170,10 +170,10 @@ export default function Product({ card }) {
                       isVisible
                         ? {
                             display: isOrder ? 'none' : 'flex',
-                            color: 'var(--text-color-primary-black)',
-                            borderColor: 'var(--text-color-grey)',
+                            color: 'var(--primary-black)',
+                            borderColor: 'var(--primary-grey)',
                           }
-                        : { color: 'white', borderColor: 'white' }
+                        : {color: 'var(--primary-white)', borderColor: 'var(--primary-white)',}
                     }
                     onClick={decrease}
                   >
@@ -182,16 +182,14 @@ export default function Product({ card }) {
                   <Input
                     style={
                       isVisible || isOrder
-                        ? {
-                            color: 'var(--text-color-primary-black)',
-                            borderColor: 'var(--text-color-grey)',
-                          }
-                        : isOrder
-                        ? {
-                            color: 'var(-text-color-white)',
-                            borderColor: 'var(-text-color-white)',
-                          }
-                        : { color: 'white', borderColor: 'white' }
+                        ? {color: 'var(--primary-black)', borderColor: 'var(--primary-grey)',}
+                        : isOrder && {color: 'var(--primary-white)', borderColor: 'var(--primary-white)',}
+                      // : isOrder
+                      // ? {
+                      //     color: 'var(--color-primary-white)',
+                      //     borderColor: 'var(--color-primary-white)',
+                      //   }
+                      // : { color: 'white', borderColor: 'white' }
                     }
                     onChange={handleChange}
                     value={Number(quantityGoods)}
@@ -201,13 +199,13 @@ export default function Product({ card }) {
                       isVisible
                         ? {
                             display: isOrder ? 'none' : 'flex',
-                            color: 'var(--text-color-primary-black)',
-                            borderColor: 'var(--text-color-grey)',
+                            color: 'var(--primary-black)',
+                            borderColor: 'var(--primary-grey)',
                           }
                         : {
                             display: isOrder ? 'none' : 'flex',
-                            color: 'white',
-                            borderColor: 'white',
+                            color: 'var(--primary-white)',
+                            borderColor: 'var(--primary-white)',
                           }
                     }
                     onClick={increase}

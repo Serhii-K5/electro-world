@@ -1,19 +1,17 @@
 import styled from 'styled-components';
 import { transition } from 'components/ConstComponentsStyle/ConstComponentsStyle.styled';
 import { FILTER_PANEL_WIDTH } from 'constantValues/constants';
-// const transition = `250ms linear`;
+
 
 export const PageContainer = styled.div`
-  background-color: var(--bg-second);
+  background-color: var(--second-white);
 `;
 
 export const PathContainer = styled.div`
-  // maxWidth: '1408px';
-  // min-width: 100vw;
   width: 100vw;
   margin: 0 auto;
   padding: 10px 16px;
-  background-color: var(--bg-primary);
+  background-color: var(--primary-white);
 `;
 
 export const PathSpan = styled.span`
@@ -25,22 +23,13 @@ export const Container = styled.div`
   display: flex;
   margin: 0 auto;
   padding: 16px;
-  // max-width: 1440px;
-
-  // min-width: 100vw;
-  // min-width: 96vw;
   width: 100vw;
   min-height: 87vh;
-
-  // background-color: #f6f8fd;
-  // box-shadow: 0 0 0.75rem;
 `;
 
 export const Aside = styled.aside`
-  // width: 300px;
   width: calc(${FILTER_PANEL_WIDTH } + 70px);
-  // min-width: 15vw;
-  background-color: var(--bg-primary);
+  background-color: var(--primary-white);
 `;
 
 export const H4 = styled.h4`
@@ -54,9 +43,6 @@ export const AsideDiv = styled.div`
 
 export const Section = styled.section`
   margin: 0 auto;
-  // min-width: 84vw;
-  // min-width: calc(100vw - 300px);
-  // min-width: calc(100vw - ${FILTER_PANEL_WIDTH});
   width: calc(100vw - ${FILTER_PANEL_WIDTH} + 70px);
   padding-left: 16px;
 `;
@@ -64,7 +50,7 @@ export const Section = styled.section`
 export const SectionBar = styled.div`
   display: flex;
   margin: 0 0 16px 0;
-  background-color: var(--bg-primary);
+  background-color: var(--primary-white);
   align-items: center;
   justify-content: space-evenly;
   flex-wrap: wrap;
@@ -84,12 +70,6 @@ export const BuildingDiv = styled.div`
 
 export const Ul = styled.ul`
   display: flex;
-  // margin: 0 auto;
-  // margin-bottom: 8;
-  // padding-left: 16px;
-  // max-width: 1440px;
-  // min-width: 84vw;
-  // min-width: calc(100vw - ${FILTER_PANEL_WIDTH});
   width: calc(100vw - ${FILTER_PANEL_WIDTH});
   flex-wrap: wrap;
   align-items: center;
@@ -106,14 +86,14 @@ export const BtnDiv = styled.div`
   height: 40px;
   align-items: center;
   justify-content: center;
-  background-color: var(--bg-button-color);
+  background-color: var(--primary-blue);
   border-radius: 5px;
-  color: var(--bg-primary);
+  color: var(--primary-white);
   transition: background-color ${transition};
 
   &:hover,
   &:active,
   &:focus {
-    background-color: var(--bg-active-button-color);
+    background-color: var(--active-blue);
   }
 `;

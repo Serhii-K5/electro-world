@@ -3,11 +3,11 @@ import { transition } from 'components/ConstComponentsStyle/ConstComponentsStyle
 
 
 export const Span = styled.span`
-  transition: color ${transition};
+  transform: color ${transition};
 
   &:hover,
   &:active,
   &:focus {
-    color: var(--bg-active-button-color);
+    color: var(--active-blue);
   }
 `;

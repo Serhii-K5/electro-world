@@ -4,7 +4,7 @@ import { transition } from 'components/ConstComponentsStyle/ConstComponentsStyle
 
 export const Container = styled.div`
   padding: 16px 0;
-  border-bottom: 1px solid var(--text-color-grey);
+  border-bottom: 1px solid var(--primary-grey);
 `;
 
 export const OptionDiv = styled.div`
@@ -33,35 +33,35 @@ export const QuantityDiv = styled.div`
 export const PriceOld = styled.p`
   font-size: 14px;
   font-weight: 500;
-  color: var(--text-color-grey); 
+  color: var(--primary-grey);
   text-decoration: line-through;
 `;
 
 export const Price = styled.p`
   font-size: 20px;
   font-weight: 600;
-  color: var(--text-color-primary-black); 
+  color: var(--primary-black); 
 `;
 
-export const Input = styled.input` 
-  display: flex; 
+export const Input = styled.input`
+  display: flex;
   width: 35px;
   height: 30px;
   font-size: 20px;
   text-align: center;
-  color: var(--text-color-primary-black);
-  border: solid 1px var(--text-color-grey);
+  color: var(--primary-black);
+  border: solid 1px var(--primary-grey);
 `;
 
-export const Div = styled.div` 
-  color: var(--text-color-primary-black); 
+export const Div = styled.div`
+  color: var(--primary-black);
   width: 30px;
   height: 30px;
-  border: solid 1px var(--text-color-grey);
+  border: solid 1px var(--primary-grey);
   font-size: 20px;
   text-align: center;
   transition: font-size ${transition}, font-weight ${transition};
-  
+
   &:hover,
   &:active,
   &:focus {
@@ -70,48 +70,48 @@ export const Div = styled.div`
   }
 `;
 
-export const ButtonDiv = styled.div` 
+export const ButtonDiv = styled.div`
   width: 250px;
   padding: 10px 16px;
-  color: var(--text-color-white); 
+  color: var(--primary-white);
   border-radius: 5px;
-  border: solid 1px var(--bg-second-green);
+  border: solid 1px var(--second-green);
   text-align: center;
   font-size: 20px;
-  background-color: var(--bg-second-green);
+  background-color: var(--second-green);
   transition: background-color ${transition}, color ${transition};
-  
+
   &.isOrder {
-    border-color: var(--bg-second-orange);
-    background-color: var(--bg-second-orange);
+    border-color: var(--second-orange);
+    background-color: var(--second-orange);
   }
-  
+
   &:hover,
   &:active,
   &:focus {
     background-color: transparent;
-    color: var(--text-second-green);
+    color: var(--second-green);
   }
-  
+
   &.isOrder:hover {
     background-color: transparent;
-    color: var(--text-second-orange);
+    color: var(--third-orange);
   }
 `;
 
 export const Name = styled.p`
-  color: var(--text-color-blue);
+  color: var(--primary-blue);
   font-size: 18px;
   font-weight: 600;
   line-height: 1.5;
   overflow: hidden;
-  whiteSpace: wrap;
-  textOverflow: ellipsis;
+  whitespace: wrap;
+  textoverflow: ellipsis;
 
   &:hover,
   &:active,
-  &:focus {    
-    color: var( --text-color-active-blue);
+  &:focus {
+    color: var(--active-blue);
   }
 `;
 
@@ -135,10 +135,10 @@ export const Ul = styled.ul`
 export const Li = styled.li`
   height: 18px;
   padding-right: 6px;
-  color: var(--text-color-secondary-black);
+  color: var(--second-black);
   font-size: 12px;
   line-height: 1.5;
-  border-right: 1px solid var(--text-color-secondary-black);
+  border-right: 1px solid var(--second-black);
 
   &:last-child {
     border-right: none;
@@ -152,8 +152,8 @@ export const Button = styled.button`
   height: 44px;
   align-items: center;
   justify-content: center;
-  background-color: var(--text-color-blue);
-  color: #FFF;
+  background-color: var(--primary-blue);
+  color: var(--primary-white);
   font-family: inherit;
   font-size: 14px;
   font-weight: 600;
@@ -165,7 +165,7 @@ export const Button = styled.button`
   &:hover,
   &:active,
   &:focus {
-    background-color: var(--bg-active-button-color);
+    background-color: var(--active-blue);
   }
 `;
 

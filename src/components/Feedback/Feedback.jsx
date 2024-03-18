@@ -7,14 +7,10 @@ import {
   CloseBtn,
 } from 'components/ConstComponentsStyle/ConstComponentsStyle.styled';
 import {
+  TitleDiv,
   Section,
-  // Form,
   H2,
   P,
-  // Label,
-  // Input,
-  // Textarea,
-  // Btn
 } from "./Feedback.styled";
 import UserFormRegister from 'components/UserFormRegister/UserFormRegister';
 
@@ -44,50 +40,18 @@ const MessageModule = ({ onClose }) => {
     }
   };
 
-  // const [formData, setFormData] = useState({
-  //   tel: '',
-  //   name: '',
-  //   email: '',
-  //   message: '',
-  // });
-
-  // const handleChange = e => {
-  //   const { name, value } = e.target;
-  //   setFormData({ ...formData, [name]: value });
-  // };
-
-  // const handleSubmit = e => {
-  //   e.preventDefault();
-    
-    
-  //   // Здесь вы можете добавить логику отправки данных на сервер или обработки формы
-  //   console.log(formData);
-  //   // Очистка формы после отправки
-  //   setFormData({
-  //     tel: '',
-  //     name: '',
-  //     email: '',
-  //     message: '',
-  //   });
-  // };
-
   return (
     <>
       <Overlay onClick={handleOverlayClick}>
         <ModalBacking>
           <Modal style={{ maxWidth: '40vw' }}>
-            <div
-              style={{
-                textAlign: 'center',
-                backgroundColor: 'var(--bg-color-grey)',
-              }}
-            >
+            <TitleDiv>
               <H2>{lang[languages].NavLinkBar_message.toUpperCase()}</H2>
-            </div>
+            </TitleDiv>
             <CloseBtn type="button" onClick={onClose}>
               <img src={cross} alt="close button" />
             </CloseBtn>
-            <Section>              
+            <Section>
               <P>{lang[languages].feedback_p1}</P>
               <UserFormRegister typeMassege={''} />
             </Section>

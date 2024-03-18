@@ -11,7 +11,6 @@ import categories from 'assets/json/categories.json';
 // import products1 from "../../assets/json/products.json";
 
 
-// const CategoryDropdownList = ({ parentId, onCloseModal}) => {
 const CategoryDropdownList = ({ parentId}) => {
   const dispatch = useDispatch();
   // при реальном products.json исключить filteredData

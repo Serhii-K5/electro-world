@@ -13,7 +13,6 @@ import {
   RangeLineEdgesDiv,
 } from './PriceRange.styled';
 
-// import { changeFilteredProducts } from 'redux/slice/filteredProductsSlice';
 import { changeFilters } from 'redux/slice/filtersSlice';
 import { SHIFT_RANGE } from 'constantValues/constants';
 import lang from 'assets/json/language.json';
@@ -66,7 +65,6 @@ const PriceRange = ({ data }) => {
     setPositionMax(rangeWidth);
 
     findMinMaxPrice();
-    // }, [dispatch, filteredProducts, rangeWidth, minPrice, maxPrice]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
@@ -86,7 +84,6 @@ const PriceRange = ({ data }) => {
       setPositionMin(0);
       setPositionMax(rangeWidth);
     }
-    // }, [maxPrice, minPrice, rangeWidth, data]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
@@ -101,7 +98,6 @@ const PriceRange = ({ data }) => {
           setPositionMin(Math.round(offsetMin));
         } else if (offsetMin > positionMax) {
           setInputValueMin(inputValueMax);
-          // setPositionMax(positionMax);
           setPositionMin(positionMax);
         } else {
           setInputValueMin(minPrice);
@@ -138,8 +134,6 @@ const PriceRange = ({ data }) => {
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseup', handleMouseUp);
     };
-    // }, [positionStart, positionMin, positionMax, maxPrice, minPrice, rangeWidth, inputValueMin, inputValueMax, isMouseDownMin, isMouseDownMax]);
-    // }, [isMouseDownMin, isMouseDownMax, positionStart, positionMax, maxPrice, minPrice, rangeWidth, inputValueMax, positionMin, inputValueMin]);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMouseDownMin, isMouseDownMax]);
 
@@ -215,17 +209,9 @@ const PriceRange = ({ data }) => {
     setIsMouseDownMin(true);
   };
 
-  // const handleMouseUpMin = () => {
-  //   setIsMouseDownMin(false);
-  // };
-
   const handleMouseDownMax = () => {
     setIsMouseDownMax(true);
   };
-
-  // const handleMouseUpMax = () => {
-  //   setIsMouseDownMax(false);
-  // };
 
   const handleClickBtn = () => {
     dispatch(

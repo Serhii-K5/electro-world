@@ -4,7 +4,7 @@ import {transition} from "components/ConstComponentsStyle/ConstComponentsStyle.s
 const transitionShift = `550ms linear`;
 
 export const LiBlock = styled.li`
-  border-top: 1px solid var(--bg-color-grey);  
+  border-top: 1px solid var(--primary-grey);
   width: 300px;
 `;
 
@@ -14,17 +14,16 @@ export const Div = styled.div`
   cursor: pointer;
   transition: background-color ${transition};
   &:hover {
-    background-color: #f5f5f5;
+    background-color: #F5F5F5;
   }
 `;
 
 export const Strong = styled.strong`
-  color: var(--text-color-blue);
+  color: var(--primary-blue);
   padding-left: 10px;
 `;
 
 export const Ul = styled.ul`
-  // padding: 0 16px 16px 16px;
   padding: 0 16px;
   overflow: hidden;
   transition: max-height ${transitionShift};
@@ -37,5 +36,5 @@ export const Li = styled.li`
 
 export const Span = styled.span`
   padding-left: 10px;
-  color: var(--text-color-grey1);  
+  color: var(--second-grey);
 `;

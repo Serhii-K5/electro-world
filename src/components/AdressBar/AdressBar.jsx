@@ -21,7 +21,7 @@ const AdressBar = ({ color }) => {
       >
         <a href={telKS}>
           <div style={{ display: 'flex' }}>
-            <BsFillTelephoneFill style={{ position: 'relative', top: '3px', right: '-17px', color: '#FFF'}}/>
+            <BsFillTelephoneFill style={{ position: 'relative', top: '3px', right: '-17px', color: 'var(--primary-white)'}}/>
             <BsFillTelephoneFill style={{ position: 'relative', top: '3px' }} />
             <img src={ks} alt="kyivstar logo" />
             <Span id={color} className={isFocus === 1 && 'isScaleKs'}> {PHONE_KS_STR} </Span>
@@ -35,7 +35,7 @@ const AdressBar = ({ color }) => {
         onMouseOut={() => setIsFocus(0)}
       >
         <a href={telMTC} style={{ display: 'block' }}>
-          <BsFillTelephoneFill style={{ position: 'relative', top: '3px', right: '-18px', color: '#FFF'}}/>
+          <BsFillTelephoneFill style={{ position: 'relative', top: '3px', right: '-18px', color: 'var(--primary-white)'}}/>
           <BsFillTelephoneFill style={{ position: 'relative', top: '3px' }} />
           <VodafoneBg>
             <SiVodafone style={{ fill: 'red' }} />

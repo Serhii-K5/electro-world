@@ -3,13 +3,9 @@ import {
   Container,
   Section,
   H1,
-  // Span,
-  // H3,
-  // DivBlock,
   P,
   Ul,
   Li,
-  // Img,
   H4,
 } from 'pages/HomePage/HomePage.styled';
 
@@ -44,34 +40,28 @@ const DeliveryPage = () => {
               <img src={novaPoshta} alt="Nova poshta logo" width={'150px'} />
             </a>
             <Span>{lang[languages].deliveryPage_ul1_li1}</Span>
-            {/* Доставка в отделение Новой Почты в вашем населенном пункте. */}
           </DeliveryLi>
           <DeliveryLi>
             <a href="https://track.ukrposhta.ua/tracking_UA.html" target="_blank" rel="noreferrer">
               <img src={ukrposhta} alt="Ukrposhta logo" width={'150px'} />
             </a>
             <Span>{lang[languages].deliveryPage_ul1_li2}</Span>
-            {/* Доставка в отделение Укрпочты в вашем населенном пункте. */}
           </DeliveryLi>
           <DeliveryLi>
             <a href="https://delivery-auto.com/?token=0f61503f-b7a5-4f5c-ab08-9668b6a6bf61" target="_blank" rel="noreferrer">
               <img src={delivery} alt="Delivery logo" width={'150px'} />
             </a>
             <Span>{lang[languages].deliveryPage_ul1_li3}</Span>
-            {/* Доставка в отделение Delivery в вашем населенном пункте. */}
           </DeliveryLi>
           <DeliveryLi>
             <a href="https://ua.meest.com/parcel-track" target="_blank" rel="noreferrer">
               <img src={meest} alt="Meest logo" width={'150px'} />
             </a>
             <Span>{lang[languages].deliveryPage_ul1_li4}</Span>
-            {/* Доставка в отделение Meest в вашем населенном пункте. */}
           </DeliveryLi>
           <DeliveryLi>
             <b>{lang[languages].deliveryPage_ul1_li5_1}</b>
             <Span>{lang[languages].deliveryPage_ul1_li5_2}</Span>
-            {/* Самовывоз: Вы можете забрать заказ самостоятельно из нашего магазина
-            в г. Балта, Одесская область. */}
           </DeliveryLi>
           <p><i>{lang[languages].deliveryPage_note}</i></p>
         </ul>
@@ -106,11 +96,9 @@ const DeliveryPage = () => {
         <Ul>
           <Li>
             <b>{lang[languages].deliveryPage_ul4_li1_1}</b> {lang[languages].deliveryPage_ul4_li1_2}
-            {/* Наложенным платежом: Вы можете оплатить заказ при получении в отделении почты.{' '} */}
           </Li>
           <Li>
             <b>{lang[languages].deliveryPage_ul4_li2_1}</b> {lang[languages].deliveryPage_ul4_li2_2}
-            {/* Предоплата на карту: Вы можете оплатить заказ на карту ПриватБанка.{' '} */}
           </Li>
         </Ul>
         <P>
@@ -120,15 +108,12 @@ const DeliveryPage = () => {
         </P>
         <Ul>
           <Li>{lang[languages].deliveryPage_ul5_li1}
-            {/* Доставка заказов осуществляется только по территории Украины. */}
           </Li>
           <Li>
             {lang[languages].deliveryPage_ul5_li2}
-            {/* Сроки доставки могут быть увеличены в связи с форс-мажорными обстоятельствами. */}
           </Li>
           <Li>
             {lang[languages].deliveryPage_ul5_li3}
-            {/* Перед отправкой заказа мы обязательно проверяем его на наличие повреждений. */}
           </Li>
         </Ul>
         <P>

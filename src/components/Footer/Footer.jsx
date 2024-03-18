@@ -4,7 +4,6 @@ import { selectLanguages } from 'redux/selectors';
 import Logo from 'components/Logo/Logo';
 import MessageModule from 'components/Feedback/Feedback';
 import AutorizationModule from 'components/LoginModule/LoginModule';
-// import AdressBar from 'components/AdressBar/AdressBar';
 import AdressBarFooter from 'components/AdressBarFooter/AdressBarFooter';
 import { Container, Section, NavLinkStyle, Span, P } from './Footer.styled';
 
@@ -29,8 +28,8 @@ const Footer = () => {
   };
   const languages = useSelector(selectLanguages);
   return (
-    <footer style={{ backgroundColor: 'var(--text-color-primary-black)' }}>
-      <Container style={{ color: 'var(--text-color-white)' }}>
+    <footer style={{ backgroundColor: 'var(--primary-black)' }}>
+      <Container style={{ color: 'var(--primary-white)' }}>
         <Section>
           <div style={{ maxWidth: '490px', padding: '0 16px' }}>
             <div style={{ width: '167px' }}>
@@ -39,7 +38,7 @@ const Footer = () => {
             <p style={{ paddingTop: '16px' }}>{lang[languages].footer_p}</p>
             <p style={{ paddingTop: '16px' }}>
               {' '}
-              © 2024 Electro world. Всі права захищені
+              © 2024 Electro world. {lang[languages].footer_reserved}
             </p>
           </div>
           <div style={{ padding: '16px' }}>
@@ -73,7 +72,7 @@ const Footer = () => {
             <p>
               <b>{lang[languages].footer_contacts}</b>
             </p>
-            <hr style={{ color: 'var(--text-color-white)' }} />
+            <hr style={{ color: 'var(--primary-white)' }} />
             <AdressBarFooter color="while" />
             <p style={{ paddingTop: '16px' }}>
               {lang[languages].footer_schedule}
@@ -96,9 +95,9 @@ const Footer = () => {
             <p>
               <b>{lang[languages].footer_account}</b>
             </p>
-            <hr style={{ color: 'var(--text-color-white)' }} />
+            <hr style={{ color: 'var(----primary-white)' }} />
             <P onClick={onOpenModalAutorization}>
-              {lang[languages].footer_authorization}
+              {lang[languages].authorization}
             </P>
           </div>
         </Section>

@@ -16,16 +16,16 @@ export const Div1 = styled.div`
 
 export const DivBtn = styled.div`
   padding: 3px 16px;
-  color: var(--text-color-white);
-  background-color: var(--bg-button-color);
-  border: solid 3px #78A0FF;
+  color: var(--primary-white);
+  background-color: var(--primary-blue);
+  border: solid 3px #78a0ff;
   border-radius: 5px;
 `;
 
 export const Div2 = styled.div`
   background-color: transparent;
-  box-shadow: 0px 4px 4px rgba(0,0,0,0.5);
-  background: linear-gradient(to top, var(--bg-primary-green), var(--bg-second-green), var(--bg-second-green), var(--bg-primary-green)); 
+  box-shadow: 0px 4px 4px var(--third-black);
+  background: linear-gradient(to top, var(--primary-green), var(--second-green), var(--second-green), var(--primary-green)); 
 `;
 
 export const Header = styled.div`
@@ -48,28 +48,10 @@ export const BgLogo = styled.div`
 
 export const TextLogo = styled.p`
   font-size: 20px;
-  text-shadow: 1px 1px 0px rgba(255,255,255,20);
+  // text-shadow: 1px 1px 0px rgba(255,255,255,20);
+  text-shadow: 1px 1px 0px var(--third-white);
   color: #d96040;
 `;
-
-// export const Button = styled.button`
-//   position: absolute;
-//   top: 7px;
-//   left: 8px;
-//   padding: 0;
-//   width: 27px;
-//   height: 27px;
-//   border: none;
-//   background-color: transparent;
-// `;
-
-// export const Input = styled.input`
-//   padding: 8px 10px 8px 43px;
-//   width: 100%;
-//   border-radius: 5px;
-//   font-size: 20px;
-//   border: none;
-// `;
 
 
 export const DivNav = styled.div`
@@ -87,20 +69,21 @@ export const NavContainer = styled.nav`
 `;
 
 const ConstNavLinkStyle = `
-  color: var(--text-color-primary-black);
+  color: var(--primary-black);
   position: relative;
   font-size: 24px;
   font-weight: 700;  
-  text-shadow: 1px 1px 0px rgba(255,255,255,20);
+  // text-shadow: 1px 1px 0px rgba(255,255,255,20);
+  text-shadow: 1px 1px 0px var(--third-white);
   transition: color ${transition};
   
   &:hover,
   &.active,
   &:active,
   &:focus {
-    color: var(--text-color-active-blue);
+    color: var(--active-blue);
   };
-`
+`;
 
 export const NavLinkStyle = styled(NavLink)`
   ${ConstNavLinkStyle};
@@ -121,6 +104,6 @@ export const LoginBtn = styled.button`
   &:hover,
   &:active,
   &:focus {
-    color: var(--text-color-active-blue);
+    color: var(--active-blue);
   };
 `;

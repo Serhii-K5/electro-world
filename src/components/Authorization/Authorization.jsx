@@ -32,7 +32,7 @@ const Authorization = () => {
   return (
     <>
       <Div onClick={onOpenModal}>
-        <b>{lang[languages].Authorization.toUpperCase()}</b>
+        <b>{lang[languages].authorization.toUpperCase()}</b>
         <Img src={user} alt="user icon"/>
       </Div>
 

@@ -6,9 +6,9 @@ export const Aside = styled.aside`
   padding-left: 0.5rem;
   margin-left: 0.5rem;
   float: right;
-  box-shadow: inset 5px 0 5px -5px #29627e;
+  box-shadow: inset 5px 0 5px -5px #29627E;
   font-style: italic;
-  color: #29627e;
+  color: #29627E;
 
   & > p {
     margin: 0.5rem;
@@ -21,7 +21,7 @@ export const Li = styled.li`
   &:hover,
   &:focus,
   &:active {
-    color: var(--text-color-active-blue);
+    color: var(--active-blue);
     font-weight: bold;
     // font-size: bold; 
     // transform: scale(1.5);
@@ -48,6 +48,6 @@ export const NavLinkStyle = styled(NavLink)`
   &:hover,
   &:focus,
   &:active {
-    color: var(--text-color-active-blue);
+    color: var(--active-blue);
   };
 `;

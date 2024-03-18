@@ -12,7 +12,7 @@ export const Form = styled.div`
 export const Input = styled.input`
   padding: 7px;
   border-radius: 5px;
-  border-color: var(--bg-color-grey);
+  border-color: var(--primary-grey);
 `;
 
 export const BtnDiv = styled.div`
@@ -22,15 +22,15 @@ export const BtnDiv = styled.div`
   height: 40px;
   align-items: center;
   justify-content: center;
-  background-color: var(--bg-button-color);
+  background-color: var(--primary-grey);
   border-radius: 5px;
-  color: var(--bg-primary);
+  color: var(--primary-white);
   transition: background-color ${transition};
 
   &:hover,
   &:active,
   &:focus {
-    background-color: var(--bg-active-button-color);
+    background-color: var(--active-blue);
   }
 `;
 
@@ -42,7 +42,7 @@ export const RangeContainer = styled.div`
 export const RangeBgDiv = styled.div`
   height: 4px;
   border: none;
-  background-color: var(--bg-color-grey);
+  background-color: var(--primary-grey);
 `;
 
 export const RangeActiveDiv = styled.div`
@@ -50,7 +50,7 @@ export const RangeActiveDiv = styled.div`
   // width: inhiret;
   height: 4px;
   top: ${SHIFT_RANGE}px;
-  background-color: var(--bg-button-color);
+  background-color: var(--primary-blue);
   // transition: width ${transition};
 `;
 
@@ -59,17 +59,17 @@ export const RangeLineEdgesDiv = styled.div`
   width: ${SHIFT_RANGE}px;
   height: ${SHIFT_RANGE}px;
   top: -9px;
-  background-color: var(--bg-primary);
+  background-color: var(--primary-white);
   border-radius: 50%;
-  border: 2px solid var(--bg-button-color);
-  box-shadow: 0 0 5px var(--bg-button-color);
+  border: 2px solid var(--primary-blue);
+  box-shadow: 0 0 5px var(--primary-blue);
   transition: background-color ${transition}, box-shadow ${transition};
   cursor: pointer;
 
   &:hover,
   &:active,
   &:focus {
-    background-color: var(--bg-second);
+    background-color: var(--second-white);
     box-shadow: none;
   }
 `;

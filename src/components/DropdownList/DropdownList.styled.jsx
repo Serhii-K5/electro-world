@@ -15,13 +15,13 @@ export const Ul = styled.ul`
   top: 30px;
   left: -115px;
   zindex: 5;
-  background-color: var(--bg-primary);
+  background-color: var(--primary-white);
   width: 150%;
-  box-shadow: 0 0 5px 5px var(--bg-color-grey);
+  box-shadow: 0 0 5px 5px var(--primary-grey);
 `;
 
 export const Li = styled.li`
-  border-bottom: solid 1px var(--bg-color-grey);
+  border-bottom: solid 1px var(--primary-grey);
 `;
 
 export const Div = styled.div`

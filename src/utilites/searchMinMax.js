@@ -1,4 +1,4 @@
-// const findMinMaxPrice = (filteredProducts) => {
+
 export const searchMinMaxPrice = filteredProducts => {
   const max = filteredProducts.reduce(
     (accumulator, currentValue) =>
@@ -16,5 +16,3 @@ export const searchMinMaxPrice = filteredProducts => {
 
   return [min, max];
 };
-
-// export default findMinMaxPrice;
