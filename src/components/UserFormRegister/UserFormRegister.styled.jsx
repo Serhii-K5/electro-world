@@ -11,21 +11,6 @@ export const Label = styled.label`
   min-width: 50px;
 `;
 
-const inputStyled = styled.input`
-  margin: 10px 0;
-  padding: 10px;
-  font-size: 1.15rem;
-  border-radius: 5px;
-
-  &.valid {
-    border: solid 2px green;
-  }
-
-  &.invalid {
-    border: solid 2px red;
-  }
-`;
-
 export const Input = styled.input`
   // min-width: 50%;
   min-width: 55%;
