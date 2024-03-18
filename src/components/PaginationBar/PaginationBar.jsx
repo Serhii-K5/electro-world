@@ -58,15 +58,18 @@ const Pagination = ({ activePage, onChangePage, totalItems, itemsPerPage }) => {
         <li>
           {currentBlockPage > 1 && (
             <DivShift onClick={() => handleOnClick(-1)}>
-              <img src={doubleChevron} alt="double chevron to the left" style={{ transform: 'rotate(180deg)' }} />
+              {/* <img src={doubleChevron} alt="double chevron to the left" style={{ transform: 'rotate(180deg)' }} /> */}
+              &#10094;
             </DivShift>
           )}
         </li>
         {renderPageNumbers()}
         <li>
-          {currentBlockPage < Math.ceil(totalItems / itemsPerPage / blockPage) && (
+          {currentBlockPage <
+            Math.ceil(totalItems / itemsPerPage / blockPage) && (
             <DivShift onClick={() => handleOnClick(1)}>
-              <img src={doubleChevron} alt="double chevron to the right" />
+              {/* <img src={doubleChevron} alt="double chevron to the right" /> */}
+              &#10095;
             </DivShift>
           )}
         </li>
