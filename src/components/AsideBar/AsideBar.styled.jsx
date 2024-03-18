@@ -22,11 +22,7 @@ export const Li = styled.li`
   &:focus,
   &:active {
     color: var(--active-blue);
-    font-weight: bold;
-    // font-size: bold; 
-    // transform: scale(1.5);
-    // font-size: 20px;
-    
+    font-weight: bold;    
   };
 `
 export const NavContainer = styled.nav`
