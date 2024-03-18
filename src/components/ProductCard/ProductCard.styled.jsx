@@ -25,7 +25,7 @@ transition: width ${transition}, height ${transition}, filter ${transition};
 
 overflow: hidden;
 // width: 426px;
-width: 372px;
+width: 371px;
 height: 256px;
 
 &:hover,
