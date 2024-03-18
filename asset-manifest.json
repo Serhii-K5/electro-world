@@ -1,13 +1,12 @@
 {
   "files": {
-    "main.css": "/electro-world/static/css/main.44eb1346.css",
-    "main.js": "/electro-world/static/js/main.54de5d5d.js",
+    "main.css": "/electro-world/static/css/main.23cd7e97.css",
+    "main.js": "/electro-world/static/js/main.3170d549.js",
     "static/media/image2.png": "/electro-world/static/media/image2.73b940fbacd31d1a6198.png",
     "static/media/image1.png": "/electro-world/static/media/image1.2965fd16f1771a7d8d4e.png",
     "static/media/image3.png": "/electro-world/static/media/image3.dfb5f992e53f1c0f05d9.png",
     "static/media/ukrposhta.jpg": "/electro-world/static/media/ukrposhta.c9b9d5126def364008ba.jpg",
     "static/media/delivery.jpg": "/electro-world/static/media/delivery.416370ab442ac9dfbabc.jpg",
-    "static/media/double-chevron.svg": "/electro-world/static/media/double-chevron.6ae75fd903565b4a9562b9def2e0879e.svg",
     "static/media/lines.svg": "/electro-world/static/media/lines.78e845ef1652b0532dd7413be2abf4a5.svg",
     "static/media/user_icon.svg": "/electro-world/static/media/user_icon.a5141d2ce80597b28f66a7d0643864bc.svg",
     "static/media/tiles.svg": "/electro-world/static/media/tiles.0f2929657ba38fd28bd6499356373a0e.svg",
@@ -17,11 +16,11 @@
     "static/media/cross.svg": "/electro-world/static/media/cross.f3cbdd58dc25ca7cbb3d242106b56fb9.svg",
     "static/media/chevron-down.svg": "/electro-world/static/media/chevron-down.24cd320d509ea2ebbeb4265f8030bafb.svg",
     "static/media/electricity.svg": "/electro-world/static/media/electricity.4a827cb619163689d39f9f9c55eac9f1.svg",
-    "main.44eb1346.css.map": "/electro-world/static/css/main.44eb1346.css.map",
-    "main.54de5d5d.js.map": "/electro-world/static/js/main.54de5d5d.js.map"
+    "main.23cd7e97.css.map": "/electro-world/static/css/main.23cd7e97.css.map",
+    "main.3170d549.js.map": "/electro-world/static/js/main.3170d549.js.map"
   },
   "entrypoints": [
-    "static/css/main.44eb1346.css",
-    "static/js/main.54de5d5d.js"
+    "static/css/main.23cd7e97.css",
+    "static/js/main.3170d549.js"
   ]
 }
