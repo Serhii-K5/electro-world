@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+
 export const BgLogo = styled.div`
   background-repeat: no-repeat;
   background-size: 100%;
@@ -11,7 +12,6 @@ export const BgLogo = styled.div`
 
 export const TextLogo = styled.p`
   font-size: 20px;
-  // text-shadow: 1px 1px 0px rgba(255, 255, 255, 20);
-  text-shadow: 1px 1px 0px var(--third-white);
-  color: #D96040;
+  text-shadow: 1px 1px 0px var(--primary-grey);
+  color: #d96040;
 `;

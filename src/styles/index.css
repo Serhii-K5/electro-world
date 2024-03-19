@@ -3,9 +3,7 @@
   --primary-white: #FFF;
   --second-white: #F6F8FD;
   --input-background-color: #F7F7FB;
-  --third-white: rgba(255,255,255,0.15);
   --primary-grey: #8A8A8957;
-  --second-grey: #8A8A897C;
   --primary-green: #9EE2AC;
   --second-green: #02BD2A;
   --primary-orange: #F75F25;
@@ -15,8 +13,6 @@
   --active-blue: #0B44CD;
   --primary-black: #121417;
   --second-black: #12141780;
-  --third-black: rgba(0,0,0,0.5);
-
 }
 
 html {

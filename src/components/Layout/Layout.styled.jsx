@@ -48,8 +48,7 @@ export const BgLogo = styled.div`
 
 export const TextLogo = styled.p`
   font-size: 20px;
-  // text-shadow: 1px 1px 0px rgba(255,255,255,20);
-  text-shadow: 1px 1px 0px var(--third-white);
+  text-shadow: 1px 1px 0px var(--primary-grey);
   color: #d96040;
 `;
 
@@ -72,9 +71,8 @@ const ConstNavLinkStyle = `
   color: var(--primary-black);
   position: relative;
   font-size: 24px;
-  font-weight: 700;  
-  // text-shadow: 1px 1px 0px rgba(255,255,255,20);
-  text-shadow: 1px 1px 0px var(--third-white);
+  font-weight: 700;
+  text-shadow: 1px 1px 0px var(--primary-grey);
   transition: color ${transition};
   
   &:hover,

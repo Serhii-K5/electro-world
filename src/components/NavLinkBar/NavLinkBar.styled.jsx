@@ -53,7 +53,7 @@ const ConstNavLinkStyle = `
   position: relative;
   font-size: 20px;
   font-weight: 700;
-  text-shadow: 1px 1px 0px var(--third-black);
+  text-shadow: 1px 1px 0px var(--second-black);
   transition: color ${transition};
   
   &:hover,
