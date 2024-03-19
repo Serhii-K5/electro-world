@@ -41,13 +41,11 @@ import sortingIcon from "assets/images/svg/sorting.svg";
 import linesIcon from "assets/images/svg/lines.svg";
 import tilesIcon from "assets/images/svg/tiles.svg";
 
-console.log('католог 1');
 
 export const ProductsContext = createContext();
 
-console.log('католог 2');
-
 const itemsPerPage = 8;
+
 const CatalogPage = () => {
   // const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
