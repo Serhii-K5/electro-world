@@ -41,16 +41,19 @@ import sortingIcon from "assets/images/svg/sorting.svg";
 import linesIcon from "assets/images/svg/lines.svg";
 import tilesIcon from "assets/images/svg/tiles.svg";
 
+console.log('католог 1');
+
 export const ProductsContext = createContext();
 
+console.log('католог 2');
+
 const itemsPerPage = 8;
-const CatalogCarsPage = () => {
+const CatalogPage = () => {
   // const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
   const languages = useSelector(selectLanguages);
   const filters = useSelector(selectFilters);
   const category = useSelector(selectDirectoryPath);
-  
   
   const temp = useSelector(selectProducts);
   const products = temp.length > 0 ? temp : products1; // запрос на сервер
@@ -265,4 +268,4 @@ const CatalogCarsPage = () => {
   );
 };
 
-export default CatalogCarsPage;
+export default CatalogPage;
