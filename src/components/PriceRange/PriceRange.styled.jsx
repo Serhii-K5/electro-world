@@ -22,7 +22,7 @@ export const BtnDiv = styled.div`
   height: 40px;
   align-items: center;
   justify-content: center;
-  background-color: var(--primary-grey);
+  background-color: var(--primary-blue);
   border-radius: 5px;
   color: var(--primary-white);
   transition: background-color ${transition};
