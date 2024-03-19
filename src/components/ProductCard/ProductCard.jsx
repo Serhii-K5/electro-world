@@ -183,7 +183,8 @@ export default function Product({ card }) {
                     style={
                       isVisible || isOrder
                         ? {color: 'var(--primary-black)', borderColor: 'var(--primary-grey)',}
-                        : isOrder && {color: 'var(--primary-white)', borderColor: 'var(--primary-white)',}
+                        : {color: 'var(--primary-white)', borderColor: 'var(--primary-white)',}
+                        // : (isOrder && {color: 'var(--primary-white)', borderColor: 'var(--primary-white)',})
                       // : isOrder
                       // ? {
                       //     color: 'var(--color-primary-white)',
