@@ -22,7 +22,9 @@ import {
   SectionBar,
   SortingDiv,
   BuildingDiv,
+  ImgContainer,
   Ul,
+  Li,
   BtnDiv,
 } from './CatalogPage.styled';
 
@@ -209,22 +211,22 @@ const CatalogPage = () => {
               />
             )}
             <BuildingDiv>
-              <div onClick={formTiles}>
+              <ImgContainer onClick={formTiles}>
                 <img
                   src={tilesIcon}
                   alt="tiles icon"
                   width={'32px'}
                   height={'32px'}
                 />
-              </div>
-              <div onClick={formLines}>
+              </ImgContainer>
+              <ImgContainer onClick={formLines}>
                 <img
                   src={linesIcon}
                   alt="lines icon"
                   width={'32px'}
                   height={'32px'}
                 />
-              </div>
+              </ImgContainer>
             </BuildingDiv>
           </SectionBar>
           {filteredData.length > 0 && (
@@ -235,15 +237,11 @@ const CatalogPage = () => {
                   index < activePage * itemsPerPage &&
                   // index > (page - 1) * 8 - 1 && index < page * 8 && (
                   (isLine ? (
-                    <li
+                    <Li
                       key={item.id}
-                      style={{
-                        minHeight: '170px',
-                        width: 'calc(100vw - 370px)',
-                      }}
                     >
                       <ProductCardLines card={item} index={index} />
-                    </li>
+                    </Li>
                   ) : (
                     <li key={item.id}>
                       <ProductCard card={item} />

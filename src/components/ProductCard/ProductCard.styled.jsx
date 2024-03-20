@@ -54,6 +54,11 @@ transition: border-color ${transition}, fill ${transition};
 }
 `;
 
+export const ImgContainer = styled.div`
+  width: 25px;
+  height: 25px;
+`;
+
 export const Aside = styled.aside`
   padding-left: 0.5rem;
   margin-left: 0.5rem;

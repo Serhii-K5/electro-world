@@ -12,7 +12,7 @@ export const Container = styled.div`
 `;
 
 export const DivHov = styled.div`
-  position: absolute;
+position: absolute;
   padding: 10px;
   right: 70px;
   background-color: var(--primary-white);
@@ -30,43 +30,11 @@ export const DivHov = styled.div`
     z-index: 70;
     filter: drop-shadow(0 0 0.75rem gray);
   }
-`;
-
-export const ImgDiv = styled.div`
-  display: flex;
-  margin: 0 auto;
-  margin-top: 20px;
-  align-items: center;
-  justify-content: center;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  border: 1px solid grey;
-  transition: border-color ${transition}, fill ${transition};
-
-  &:hover,
-  &:active,
-  &:focus {
-    border-color: var(--second-green);
-    fill: var(--second-green);
-  }
-`;
-
-export const ImgDiv1 = styled.div`
-  width: 25px;
-  height: 25px;
-`;
+  `;
 
 export const Aside = styled.aside`
   float: left;
   text-align: center;
-`;
-
-export const OptionDiv = styled.div`
-  display: flex;
-  margin-bottom: 20px;
-  justify-content: flex-end;
-  text-align: end;
 `;
 
 export const Img = styled.img`
@@ -74,10 +42,44 @@ export const Img = styled.img`
   height: 155px;
 `;
 
-export const OptionContainer = styled.div`
-  display: block;
-  margin-left: 10px;
-  min-width: 100px;
+export const ContainerDiscription = styled.div`
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+`;
+
+export const DiscriptionDiv = styled.div`
+  margin-right: auto;
+  width: 45vw;
+`;
+
+export const ValuesDiv = styled.div`
+  display: flex;
+  gap: 16px;
+  align-content: center;
+  flex-wrap: wrap;
+  width: 27vw;
+  justify-content: center;
+`;
+
+export const СurrencyDiv = styled.div`
+  width: 100px;
+`;
+
+export const PriceOldDiv = styled.div`
+  display: flex;
+  gap: 16px;
+`;
+
+export const PriceDiv = styled.div`
+  display: flex;
+  gap: 5px;
+`;
+
+export const Price = styled.span`
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--primary-black);
 `;
 
 export const PriceOld = styled.span`
@@ -87,47 +89,15 @@ export const PriceOld = styled.span`
   text-decoration: line-through;
 `;
 
-export const PriceOld1 = styled.span`
+export const PriceOldСurrency = styled.span`
   font-size: 14px;
   font-weight: 500;
   color: var(--primary-grey);
 `;
 
-export const Price = styled.span`
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--primary-black);
-`;
-
-export const Input = styled.input`
-  display: flex;
-  width: 35px;
-  height: 30px;
-  font-size: 20px;
-  text-align: center;
-  border: solid 1px var(--primary-grey);
-`;
-
 export const QuantityDiv = styled.div`
   display: flex;
   justify-content: flex-end;
-`;
-
-export const Div = styled.div`
-  color: var(--primary-black);
-  width: 30px;
-  height: 30px;
-  border: solid 1px var(--primary-grey);
-  justify-content: center;
-  font-size: 20px;
-  transition: font-size ${transition}, font-weight ${transition};
-
-  &:hover,
-  &:active,
-  &:focus {
-    font-size: 22px;
-    font-weight: bold;
-  }
 `;
 
 export const ButtonDiv = styled.div`
@@ -158,30 +128,4 @@ export const ButtonDiv = styled.div`
     background-color: transparent;
     color: var(--third-orange);
   }
-`;
-
-export const Name = styled.p`
-  color: var(--primary-blue);
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 1.5;
-  overflow: hidden;
-  whitespace: wrap;
-  textoverflow: ellipsis;
-  transition: color ${transition};
-
-  &:hover,
-  &:active,
-  &:focus {
-    color: var(--active-blue);
-  }
-`;
-
-export const Memo = styled.p`
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.5;
-  overflow: hidden;
-  white-space: wrap;
-  text-overflow: ellipsis;
 `;

@@ -68,6 +68,10 @@ export const BuildingDiv = styled.div`
   gap: 16px;
 `;
 
+export const ImgContainer = styled.div`
+  cursor: pointer;
+`;
+
 export const Ul = styled.ul`
   display: flex;
   width: calc(100vw - ${FILTER_PANEL_WIDTH});
@@ -77,6 +81,11 @@ export const Ul = styled.ul`
   column-gap: 8px;
   row-gap: 8px;
   padding-bottom: 30px;
+`;
+
+export const Li = styled.li`
+  min-height: 170px;
+  width: calc(100vw - 370px);
 `;
 
 export const BtnDiv = styled.div`
