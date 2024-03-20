@@ -223,8 +223,8 @@ export default function Product({ card, index }) {
             </ValuesDiv>
           </ContainerDiscription>
         </DivHov>
-        {/* {isVisible && isAlternativesShown && <ProductGallery date={card.alternatives} numberOfSlides={7} />}
-        {isVisible && isRelatedShown && <ProductGallery date={card.related} numberOfSlides={7} />} */}
+        {/* {isVisible && isAlternativesShown && <ProductGallery date={card.alternatives} slidesToShow={7} />}
+        {isVisible && isRelatedShown && <ProductGallery date={card.related} slidesToShow={7} />} */}
       </Container>
       {isModalShown && <CardModal card={card} onClose={onCloseModal} />}
     </>

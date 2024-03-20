@@ -23,7 +23,7 @@ import {
   Memo,
 } from "./ProductCard.styled";
 
-// import ProductQuantity from 'components/ProductQuantity/ProductQuantity';
+// import ProductGallery from 'components/ProductGallery/ProductGallery';
 
 import noPhoto from 'assets/images/jpg/productPhoto/no_photo.jpg';
 
@@ -188,7 +188,7 @@ export default function Product({ card }) {
                     -
                   </Div>
                   <Input
-                    style={(isVisible || isOrder) ? visibleStyle : hideStyle}
+                    style={isVisible || isOrder ? visibleStyle : hideStyle}
                     onChange={handleChange}
                     value={Number(quantityGoods)}
                   />
@@ -218,8 +218,8 @@ export default function Product({ card }) {
             </div>
           </div>
         </DivHov>
-        {/* {isVisible && isAlternativesShown && <ProductGallery date={card.alternatives} numberOfSlides={4} />}
-        {isVisible && isRelatedShown && <ProductGallery date={card.related} numberOfSlides={4} />} */}
+        {/* {isVisible && isAlternativesShown && <ProductGallery data={card.alternatives} slidesToShow={4} />}
+        {isVisible && isRelatedShown && <ProductGallery data={card.related} slidesToShow={4} />} */}
       </Container>
       {isModalShown && <CardModal card={card} onClose={onCloseModal} />}
     </>
