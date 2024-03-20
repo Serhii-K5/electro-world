@@ -161,6 +161,7 @@ export default function Product({ card, index }) {
             ) : (
               <Img src={card.photo} alt={card.name} />
             )}
+            
             <div style={{ marginRight: 'auto', width: '45vw' }}>
               <p>
                 {lang[languages].productCard_codeTitle}: {card.code}
@@ -190,8 +191,15 @@ export default function Product({ card, index }) {
                 <Div
                   style={
                     isVisible
-                      ? {display: isOrder ? 'none' : 'flex', color: 'var(--primary-black)', borderColor: 'var(--primary-grey)',}
-                      : {color: 'var(--primary-white)', borderColor: 'var(--primary-white)',}
+                      ? {
+                          display: isOrder ? 'none' : 'flex',
+                          color: 'var(--primary-black)',
+                          borderColor: 'var(--primary-grey)',
+                        }
+                      : {
+                          color: 'var(--primary-white)',
+                          borderColor: 'var(--primary-white)',
+                        }
                   }
                   onClick={decrease}
                 >
@@ -200,8 +208,14 @@ export default function Product({ card, index }) {
                 <Input
                   style={
                     isVisible || isOrder
-                      ? {color: 'var(--primary-black)', borderColor: 'var(--primary-grey)',}
-                      : {color: 'var(--primary-white)', borderColor: 'var(--primary-white)',}
+                      ? {
+                          color: 'var(--primary-black)',
+                          borderColor: 'var(--primary-grey)',
+                        }
+                      : {
+                          color: 'var(--primary-white)',
+                          borderColor: 'var(--primary-white)',
+                        }
                   }
                   onChange={handleChange}
                   value={Number(quantityGoods)}
@@ -209,8 +223,15 @@ export default function Product({ card, index }) {
                 <Div
                   style={
                     isVisible
-                      ? {display: isOrder ? 'none' : 'flex', color: 'var(--primary-black)', borderColor: 'var(--primary-grey)',}
-                      : {color: 'var(--primary-white)', borderColor: 'var(--primary-white)', }
+                      ? {
+                          display: isOrder ? 'none' : 'flex',
+                          color: 'var(--primary-black)',
+                          borderColor: 'var(--primary-grey)',
+                        }
+                      : {
+                          color: 'var(--primary-white)',
+                          borderColor: 'var(--primary-white)',
+                        }
                   }
                   onClick={increase}
                 >
@@ -225,8 +246,8 @@ export default function Product({ card, index }) {
             </div>
           </div>
         </DivHov>
-        {/* {isAlternativesShown && <ProductGallery date={card} />}
-        {isRelatedShown && <ProductGallery date={card} />} */}
+        {/* {isVisible && isAlternativesShown && <ProductGallery date={card.alternatives} />}
+        {isVisible && isRelatedShown && <ProductGallery date={card.related} />} */}
       </Container>
       {isModalShown && <CardModal card={card} onClose={onCloseModal} />}
     </>
