@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import {
+  Container,
+  // Removal,
   Img,
 } from "./ProductModal.styled";
 import {
@@ -42,20 +44,24 @@ export default function AdvertModal({ card, onClose }) {
     <Overlay onClick={handleOverlayClick}>
       <ModalBacking>
         <Modal>
-          <CloseBtn type="button" onClick={onClose}>
-            <img src={cross} alt="close button" />
-          </CloseBtn>
-          {card.photo === '' ? (
-            <Img src={noPhoto} alt={card.name} />
-          ) : (
-            <Img src={card.photo} alt={card.name} />
-          )}
-
-          <div>
-            <p>Код: {card.code}</p>
-            <Name>{card.name}</Name>
-            <Memo>{card.memo}</Memo>
-          </div>
+          <Container>
+            <CloseBtn type="button" onClick={onClose}>
+              {/* <Removal> */}
+                <img src={cross} alt="close button" />
+              {/* </Removal> */}
+            </CloseBtn>
+            {/* <Removal /> */}
+            {card.photo === '' ? (
+              <Img src={noPhoto} alt={card.name} />
+            ) : (
+              <Img src={card.photo} alt={card.name} />
+            )}
+            <div>
+              <p>Код: {card.code}</p>
+              <Name>{card.name}</Name>
+              <Memo>{card.memo}</Memo>
+            </div>
+          </Container>
         </Modal>
       </ModalBacking>
     </Overlay>

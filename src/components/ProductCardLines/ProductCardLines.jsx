@@ -189,7 +189,7 @@ export default function Product({ card, index }) {
                   style={
                     isVisible || isOrder
                       ? {color: 'var(--primary-black)', borderColor: 'var(--primary-grey)',}
-                      : isOrder && {color: 'var(--primary-white)', borderColor: 'var(--primary-white)',}
+                      : {color: 'var(--primary-white)', borderColor: 'var(--primary-white)',}
                   }
                   onChange={handleChange}
                   value={Number(quantityGoods)}
@@ -207,8 +207,7 @@ export default function Product({ card, index }) {
               </QuantityDiv>
               <ButtonDiv className={isOrder && 'isOrder'} onClick={handleClick}>
                 {isOrder
-                  ? // "Видалити замовлення" : "Додати до замовлення"
-                    lang[languages].productCard_orderDel
+                  ? lang[languages].productCard_orderDel
                   : lang[languages].productCard_orderAdd}
               </ButtonDiv>
             </div>

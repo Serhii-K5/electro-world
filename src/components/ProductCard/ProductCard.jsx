@@ -52,15 +52,11 @@ export default function Product({ card }) {
     }
   }, [card, orderProducts]);
   
-  const onCloseModal = () => {
-    setIsModalShown(false);
-  };
-
   const onAdd = () => {    
     dispatch(addOrders({ ...card, ordered: quantityGoods }));
     setIsOrder(true);
   };
-
+  
   const onDelete = () => {
     dispatch(deleteOrders(card.id));
     setIsOrder(false);
@@ -81,18 +77,22 @@ export default function Product({ card }) {
     }
   };
   
-    const handleClick = () => {
-      isOrder ? onDelete() : onAdd();
-    };
+  const handleClick = () => {
+    isOrder ? onDelete() : onAdd();
+  };
   
   const increase = () => {
     setQuantityGoods(quantityGoods + 1);
   };
-    
+  
   const onOpenModal = () => {
     setIsModalShown(true);
   };
-
+  
+  const onCloseModal = () => {
+    setIsModalShown(false);
+  };
+  
   const onMouseMove = () => {
     setIsVisible(true);
   };
@@ -156,9 +156,9 @@ export default function Product({ card }) {
           <div>
             <OptionDiv>
               {card.photo === '' ? (
-                <Img src={noPhoto} alt={card.name} />
+                <Img src={noPhoto} alt={card.name} onClick={onOpenModal} />
               ) : (
-                <Img src={card.photo} alt={card.name} />
+                <Img src={card.photo} alt={card.name} onClick={onOpenModal} />
               )}
               <OptionContainer>
                 <PriceOld>{card.oldPrice} грн.</PriceOld>
@@ -173,7 +173,10 @@ export default function Product({ card }) {
                             color: 'var(--primary-black)',
                             borderColor: 'var(--primary-grey)',
                           }
-                        : {color: 'var(--primary-white)', borderColor: 'var(--primary-white)',}
+                        : {
+                            color: 'var(--primary-white)',
+                            borderColor: 'var(--primary-white)',
+                          }
                     }
                     onClick={decrease}
                   >
@@ -182,9 +185,15 @@ export default function Product({ card }) {
                   <Input
                     style={
                       isVisible || isOrder
-                        ? {color: 'var(--primary-black)', borderColor: 'var(--primary-grey)',}
-                        : {color: 'var(--primary-white)', borderColor: 'var(--primary-white)',}
-                        // : (isOrder && {color: 'var(--primary-white)', borderColor: 'var(--primary-white)',})
+                        ? {
+                            color: 'var(--primary-black)',
+                            borderColor: 'var(--primary-grey)',
+                          }
+                        : {
+                            color: 'var(--primary-white)',
+                            borderColor: 'var(--primary-white)',
+                          }
+                      // : (isOrder && {color: 'var(--primary-white)', borderColor: 'var(--primary-white)',})
                       // : isOrder
                       // ? {
                       //     color: 'var(--color-primary-white)',
@@ -225,11 +234,14 @@ export default function Product({ card }) {
                 </ButtonDiv>
               </OptionContainer>
             </OptionDiv>
-            <p>
-              {lang[languages].productCard_codeTitle}: {card.code}
-            </p>
-            <Name onClick={onOpenModal}>{card.name}</Name>
-            <Memo>{card.memo}</Memo>
+            <div onClick={onOpenModal}>
+              <p>
+                {lang[languages].productCard_codeTitle}: {card.code}
+              </p>
+              {/* <Name onClick={onOpenModal}>{card.name}</Name> */}
+              <Name>{card.name}</Name>
+              <Memo>{card.memo}</Memo>
+            </div>
           </div>
         </DivHov>
         {/* {isVisible && isAlternatives && <Alternatives />}
