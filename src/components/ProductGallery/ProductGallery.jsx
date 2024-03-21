@@ -33,7 +33,7 @@ const ProductsSlider = ({ data, slidesToShow }) => {
 
 
 
-  const index = products;
+  // const index = products;
 
   // const slides = [...date];
 
