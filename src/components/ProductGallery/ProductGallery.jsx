@@ -2,7 +2,8 @@ import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import productPhotos from 'assets/images/jpg/productPhoto/';
+// import { listOfPictures } from 'components/ListOfPictures/ListOfPictures';
+import { listOfPictures } from 'utilites/listOfPictures';
 
 // import products from 'assets/json/products.json';
 
@@ -14,23 +15,22 @@ import productPhotos from 'assets/images/jpg/productPhoto/';
 
 const ProductsSlider = ({ data, slidesToShow }) => {
   
-  console.log(productPhotos);
-  const photos = productPhotos.map(item => item);
-
-  console.log(photos);
-  
   const createArray = () => {
     return (data + ';')
-      .replace(';;', '')
-      .split(';')
-      .filter(el => el);
+    .replace(';;', '')
+    .split(';')
+    .filter(el => el);
   };
-
+  
   console.log(data);
-
-  const slides = createArray();
-  console.log(slides);
-
+  const photosArray = data ? createArray() : [];
+  console.log(photosArray);
+  
+  const productPhotos = photosArray.length > 0 && listOfPictures(photosArray);
+  // const slides = createArray();
+  // console.log(slides);
+  
+  // const photos = productPhotos.map(item => item);
 
 
   // const index = products;
@@ -47,7 +47,7 @@ const ProductsSlider = ({ data, slidesToShow }) => {
     // ]
     render() {
       const settings = {
-        dots: true, // Показать точки (индикаторы)
+        dots: slidesToShow === 1 ? false : true, // Показать точки (индикаторы)
         infinite: true, // Бесконечная прокрутка
         speed: 3000, // Скорость анимации
         // slidesToShow: 4, // Количество отображаемых слайдов
@@ -70,18 +70,17 @@ const ProductsSlider = ({ data, slidesToShow }) => {
           }}
         >
           <Slider {...settings}>
-            {slides.map(
-              (slide, index) => (
+            {productPhotos.map((photo, index) => (
                 <div>
                   <img
-                    src={productPhotos + `/${slide}`}
+                    src={photo}
                     alt={'slide ' + { index }}
-                    style={{ width: '300px', height: '200px' }}
+                    // style={{ width: '300px', height: '200px' }}
                   />
                 </div>
-              )
+              ))}
 
-              // typePhoto.map(item => (
+              {/* // typePhoto.map(item => (
               //   <div>
               //     <img
               //       src={photo + `/${item}`}
@@ -90,8 +89,24 @@ const ProductsSlider = ({ data, slidesToShow }) => {
               //     />
               //   </div>
               // ))
-            )}
+            // )} */}
           </Slider>
+          {/* настроить подсветку     */}
+          {slidesToShow === 1 &&
+            <ul>
+              {productPhotos.map((photo, index) => (
+                <li>
+                {/* <div> */}
+                  <img
+                    src={photo}
+                    alt={'slide ' + { index }}
+                    style={{ width: '25px', height: '25px' }}
+                  />
+                {/* </div> */}
+                </li>
+              ))}
+            </ul>
+          }
         </div>
       );
     }
