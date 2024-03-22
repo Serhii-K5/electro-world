@@ -5,6 +5,7 @@ import {
   Label,
   Input,
   PasswordDiv,
+  InputDiv,
   InputPassword,
   Textarea,
   Btn,
@@ -194,7 +195,7 @@ const UserFormRegister = ( {typeMassege}) => {
         )}
         {typeMassege !== 'quickOrder' && typeMassege !== 'regular' && (
           <div>
-            <Label htmlFor="name" style={{ marginRight: '24px' }}>
+            <Label htmlFor="name" style={{ marginRight: '28px' }}>
               {lang[languages].feedback_name} *
             </Label>
             <Input
@@ -210,12 +211,11 @@ const UserFormRegister = ( {typeMassege}) => {
           </div>
         )}
         {(typeMassege === 'new' || typeMassege === 'regular') && (
-          // <div style={{ display: 'flex', alignItems: 'center' }}>
-          <div>
+          <PasswordDiv>
             <Label htmlFor="password" style={{ marginRight: '14px' }}>
               Пароль: *
             </Label>
-            <PasswordDiv>
+            <InputDiv>
               <InputPassword
                 type={isVisibility ? 'text' : 'password'}
                 id="password"
@@ -237,8 +237,8 @@ const UserFormRegister = ( {typeMassege}) => {
                   />
                 )}
               </div>
-            </PasswordDiv>
-          </div>
+            </InputDiv>
+          </PasswordDiv>
         )}
         {typeMassege === 'regular' && (
           <RemindPassword onClick={onOpenModal}>

@@ -12,6 +12,7 @@ export const Label = styled.label`
 `;
 
 const inputs = `
+  width: 100%;
   font-size: 1.15rem;
   border-radius: 5px;
 
@@ -25,20 +26,28 @@ const inputs = `
 `;
 
 export const Input = styled.input`
-  min-width: 55%;
   margin: 10px 0;
   padding: 10px;
+  max-width: 300px;
 
   ${inputs};
 `;
 
 export const PasswordDiv = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+`;
+
+export const InputDiv = styled.div`
+  display: flex;
   align-items: center;
 `;
 
 export const InputPassword = styled.input`
-  width: 51%;
+  // width: 100%;
+  max-width: 273px;
   margin: 10px 0;
   padding: 10px 35px 10px 10px;
   
@@ -48,7 +57,7 @@ export const InputPassword = styled.input`
 export const Textarea = styled.textarea`
   padding: 10px;
   // font-size: 1.15rem;
-  width: 100%;
+  // width: 100%;
   height: 10vh;
   
   ${inputs};
