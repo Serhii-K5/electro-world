@@ -212,7 +212,7 @@ const UserFormRegister = ( {typeMassege}) => {
         )}
         {(typeMassege === 'new' || typeMassege === 'regular') && (
           <PasswordDiv>
-            <Label htmlFor="password" style={{ marginRight: '14px' }}>
+            <Label htmlFor="password" style={{ marginRight: '22px' }}>
               Пароль: *
             </Label>
             <InputDiv>
