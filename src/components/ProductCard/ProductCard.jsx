@@ -218,10 +218,10 @@ export default function Product({ card }) {
             </div>
           </div>
         </DivHov>
-        {isVisible && isAlternativesShown && <ProductGallery data={card.alternatives} slidesToShow={4} />}
-        {isVisible && isRelatedShown && <ProductGallery data={card.related} slidesToShow={4} />}
-        {isVisible && isAlternativesShown && <ProductGallery data={card.alternatives} slidesToShow={4} />}
-        {isVisible && isRelatedShown && <ProductGallery data={card.related} slidesToShow={4} />}
+        {/* {isVisible && isAlternativesShown && <ProductGallery data={card.alternatives} slidesToShow={4} />}
+        {isVisible && isRelatedShown && <ProductGallery data={card.related} slidesToShow={4} />} */}
+        {isVisible && isAlternativesShown && <ProductGallery data={card} slidesToShow={4} />}
+        {isVisible && isRelatedShown && <ProductGallery data={card} slidesToShow={4} />}
       </Container>
       {isModalShown && <CardModal card={card} onClose={onCloseModal} />}
     </>
