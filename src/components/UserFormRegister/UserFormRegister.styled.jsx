@@ -46,7 +46,6 @@ export const InputDiv = styled.div`
 `;
 
 export const InputPassword = styled.input`
-  // width: 100%;
   max-width: 273px;
   margin: 10px 0;
   padding: 10px 35px 10px 10px;
@@ -56,8 +55,6 @@ export const InputPassword = styled.input`
 
 export const Textarea = styled.textarea`
   padding: 10px;
-  // font-size: 1.15rem;
-  // width: 100%;
   height: 10vh;
   
   ${inputs};
