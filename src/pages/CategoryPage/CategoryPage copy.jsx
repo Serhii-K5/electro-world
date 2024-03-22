@@ -1,5 +1,5 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 import { changeDirectoryPath } from 'redux/slice/directoryPathSlice';
 import { Link } from 'react-router-dom';
 
@@ -16,11 +16,11 @@ import {
   // DivPage,
 } from './CategoryPage.styled';
 
-import NavBar from 'components/NavBar/NavBar';
-import CategoryCart from 'components/CategoryCart/CategoryCart';
+import NavBar from 'components/DirectoryPath/DirectoryPath';
+import CategoryCart from 'components/CategoryCard/CategoryCard';
 
 import { changeCategory } from 'redux/slice/categorySlice';
-import { changeFilters } from "redux/slice/filtersSlice";
+import { changeFilters } from 'redux/slice/filtersSlice';
 
 import categories from 'assets/json/categories.json';
 import Pagination from 'components/PaginationBar/PaginationBar';
@@ -29,27 +29,27 @@ const CategoryPage = () => {
   const dispatch = useDispatch();
   const categoryId = useSelector(selectCategories);
   const [activePage, setActivePage] = useState(1);
-  // const [selectedCategories, setSelectedCategories] = useState([]); 
-  const [selectedCategories, setSelectedCategories] = useState(() => categories.filter(item =>
-      item.cat_parentId === categoryId)); 
+  // const [selectedCategories, setSelectedCategories] = useState([]);
+  const [selectedCategories, setSelectedCategories] = useState(() =>
+    categories.filter(item => item.cat_parentId === categoryId)
+  );
   const [isCategory, setIsCategory] = useState(true);
-  
+
   useEffect(() => {
-    setSelectedCategories(categories.filter(item =>
-      item.cat_parentId === categoryId
-    ))
+    setSelectedCategories(
+      categories.filter(item => item.cat_parentId === categoryId)
+    );
   }, [categoryId]);
-  
-  const onClickIncrease  = () => {
+
+  const onClickIncrease = () => {
     activePage < selectedCategories.length / 8 && setActivePage(activePage + 1);
   };
-  
-  const onClickDecrease  = () => {
+
+  const onClickDecrease = () => {
     activePage > 0 && setActivePage(activePage - 1);
   };
 
-
-// ------------
+  // ------------
 
   // const categoryChange = el => {
   //   dispatch(changeCategory(el.cat_id));
@@ -60,19 +60,18 @@ const CategoryPage = () => {
       // category => category.cat_parentId === el.cat_id
       category => category.cat_parentId === el.currentTarget.id
     );
-    
+
     if (index === -1) {
-      // dispatch(changeFilters({ key: 'parentId', value: el.cat_id }));      
-      dispatch(changeFilters({ key: 'parentId', value: +el.currentTarget.id }));      
+      // dispatch(changeFilters({ key: 'parentId', value: el.cat_id }));
+      dispatch(changeFilters({ key: 'parentId', value: +el.currentTarget.id }));
       setIsCategory(false);
       // window.location.reload();
     } else {
-      dispatch(changeDirectoryPath(categories[index].cat_name));      
+      dispatch(changeDirectoryPath(categories[index].cat_name));
     }
     // dispatch(changeCategory(el.cat_id));
     dispatch(changeCategory(el.currentTarget.id));
   };
-
 
   return (
     <>
@@ -87,19 +86,18 @@ const CategoryPage = () => {
             )
         )}
       </Ul> */}
-      <Container>        
-        <Ul style={{paddingBottom: "20px"}}>
-          {selectedCategories.map(
-            (item, index) => (
-              // <li key={item.cat_id} onClick={handleClick}>
-              //   <CategoryCart categoryName={item.cat_name} />
-                
-              //   <Link to={!isCategory ? '/categories' : '/catalog'}>
-              //     {isCategory && item.cat_name + ' >'}
-              //   </Link>
-              // </li>
-              <Link to={isCategory ? '/catalog' : '/categories'}>
-                {/* {index > -1 ? 
+      <Container>
+        <Ul style={{ paddingBottom: '20px' }}>
+          {selectedCategories.map((item, index) => (
+            // <li key={item.cat_id} onClick={handleClick}>
+            //   <CategoryCart categoryName={item.cat_name} />
+
+            //   <Link to={!isCategory ? '/categories' : '/catalog'}>
+            //     {isCategory && item.cat_name + ' >'}
+            //   </Link>
+            // </li>
+            <Link to={isCategory ? '/catalog' : '/categories'}>
+              {/* {index > -1 ? 
                   <li key={index}>
                     <CategoryCart categoryName={item.cat_name} />
                   </li>
@@ -107,12 +105,13 @@ const CategoryPage = () => {
                     {isCategory && item.cat_name + ' >'}
                   </li>
                 } */}
-                {isCategory && <li key={index} id={+item.cat_id} onClick={handleClick}>
+              {isCategory && (
+                <li key={index} id={+item.cat_id} onClick={handleClick}>
                   <CategoryCart categoryName={item.cat_name} />
-                </li>}
-              </Link>
-            )
-          )}
+                </li>
+              )}
+            </Link>
+          ))}
         </Ul>
         {/* <ul>
           {categories.map(
@@ -131,13 +130,8 @@ const CategoryPage = () => {
               )
           )}
         </ul> */}
-        
-        
-        
-        
-        
-        
-        {selectedCategories.length > 0 && (            
+
+        {selectedCategories.length > 0 && (
           <Pagination
             activePage={activePage}
             onClickDecrease={onClickDecrease}

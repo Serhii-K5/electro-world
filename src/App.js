@@ -14,13 +14,8 @@ import CheckoutPage from 'pages/CheckoutPage/CheckoutPage';
 export default function App() {
   // Обработчик события beforeunload
   window.addEventListener('beforeunload', () => {
-    // Очистка нужных ключей в localStorage
+    // Очистка ненужных ключей в localStorage
     localStorage.clear();
-    // localStorage.removeItem('orders');
-    // localStorage.removeItem('languages');
-    // localStorage.removeItem('directoryPath');
-    // localStorage.removeItem('categories');
-    // localStorage.removeItem('filters');
   });
   return (
     <Routes>

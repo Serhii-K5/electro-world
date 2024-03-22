@@ -6,7 +6,7 @@ import { transition } from 'components/ConstComponentsStyle/ConstComponentsStyle
 export const DivNav = styled.div`
   display: flex;
   margin: auto;
-  padding: 10px 10px 0;
+  padding: 10px;
   max-width: 1440px;
   column-gap: 10px;
   align-items: center;
@@ -18,7 +18,7 @@ export const DivCatalog = styled.div`
   cursor: pointer;
 `;
 
-export const Sup = styled.sup`
+export const TitleSpan = styled.span`
   font-size: 22px;
   font-weight: 700;
 `;
@@ -27,21 +27,23 @@ export const UlCatalog = styled.ul`
   display: flex;
   position: absolute;
   z-index: 100;
-  background-color: var(--bg-primary);
-  box-shadow: 0px 100vw 0px 100vw var(--bg-overlay);
+  background-color: var(--primary-white);
+  box-shadow: 0px 100vw 0px 100vw var(--second-black);
+`;
+
+export const Li = styled.li`
+  border: 1px solid grey;
 `;
 
 export const Img = styled.img`
   margin: 0;
   position: relative;
-  top: -3px;
+  top: 2px;
 `;
 
 export const NavContainer = styled.nav`
   display: flex;
   flex-wrap: wrap;
-  position: relative;
-  top: 6px;
   align-items: center;
   column-gap: 10px;
   justify-content: center;
@@ -50,10 +52,9 @@ export const NavContainer = styled.nav`
 
 const ConstNavLinkStyle = `
   color: var(--primary-black);
-  position: relative;
   font-size: 20px;
   font-weight: 700;
-  text-shadow: 1px 1px 0px var(--second-black);
+  // text-shadow: 1px 1px 0px var(--second-black);
   transition: color ${transition};
   
   &:hover,

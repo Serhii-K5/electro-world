@@ -4,6 +4,7 @@ import {
   Form,
   Label,
   Input,
+  PasswordDiv,
   InputPassword,
   Textarea,
   Btn,
@@ -187,7 +188,7 @@ const UserFormRegister = ( {typeMassege}) => {
               onChange={handleChangeEmail}
               // required
               placeholder="support@mail.com"
-              title={lang[languages].feedback_title2}
+              title={lang[languages].feedback_title3}
             />
           </div>
         )}
@@ -209,27 +210,34 @@ const UserFormRegister = ( {typeMassege}) => {
           </div>
         )}
         {(typeMassege === 'new' || typeMassege === 'regular') && (
-          <div style={{ display: 'flex', alignItems: 'center' }}>
+          // <div style={{ display: 'flex', alignItems: 'center' }}>
+          <div>
             <Label htmlFor="password" style={{ marginRight: '14px' }}>
               Пароль: *
             </Label>
-            <InputPassword
-              type={isVisibility ? 'text' : 'password'}
-              id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChangePasword}
-              required
-              placeholder="******"
-              title={lang[languages].feedback_title3}
-            />
-            <div onClick={clickVisibility}>
-              {isVisibility ? (
-                <MdOutlineVisibility style={{ fontSize: '25px', marginLeft: '-30px'}} />
-              ) : (
-                <MdOutlineVisibilityOff style={{ fontSize: '25px', marginLeft: '-30px' }} />
-              )}
-            </div>
+            <PasswordDiv>
+              <InputPassword
+                type={isVisibility ? 'text' : 'password'}
+                id="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChangePasword}
+                required
+                placeholder="******"
+                title={lang[languages].feedback_title4}
+              />
+              <div onClick={clickVisibility}>
+                {isVisibility ? (
+                  <MdOutlineVisibility
+                    style={{ fontSize: '25px', marginLeft: '-30px' }}
+                  />
+                ) : (
+                  <MdOutlineVisibilityOff
+                    style={{ fontSize: '25px', marginLeft: '-30px' }}
+                  />
+                )}
+              </div>
+            </PasswordDiv>
           </div>
         )}
         {typeMassege === 'regular' && (

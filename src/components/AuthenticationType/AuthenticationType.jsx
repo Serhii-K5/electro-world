@@ -1,4 +1,4 @@
-import { Span } from './AuthenticationType.styled';
+import { Ul, Li } from './AuthenticationType.styled';
 import { useSelector } from 'react-redux';
 import { selectLanguages } from 'redux/selectors';
 import lang from 'assets/json/language.json';
@@ -7,29 +7,26 @@ const TypeAuthentification = ({ handleSelect }) => {
   const languages = useSelector(selectLanguages);
   
   return (
-    <>
-      <Span
+    <Ul>
+      <Li
         id="new"
         onClick={() => handleSelect('new')}
-        style={{ padding: '10px 10px' }}
       >
         <u>{lang[languages].authenticationType_newUser}</u>
-      </Span>
-      <Span
+      </Li>
+      <Li
         id="regular"
         onClick={() => handleSelect('regular')}
-        style={{ padding: '10px 10px' }}
       >
         <u>{lang[languages].authenticationType_regularUser}</u>
-      </Span>
-      <Span
+      </Li>
+      <Li
         id="quickOrder"
         onClick={() => handleSelect('quickOrder')}
-        style={{ padding: '10px 10px' }}
       >
         <u>{lang[languages].authenticationType_quickOrder}</u>
-      </Span>
-    </>
+      </Li>
+    </Ul>
   );
 };
 

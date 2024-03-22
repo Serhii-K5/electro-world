@@ -79,9 +79,12 @@ const Footer = () => {
             </p>
             <p style={{ paddingLeft: '16px' }}>Пн-Чт: 8:30 - 18:00</p>
             <p style={{ paddingLeft: '16px' }}>Пт: 8:30 - 17:00</p>
-            <p style={{ paddingLeft: '16px' }}>Сб: Вихідний</p>
             <p style={{ paddingLeft: '16px' }}>
-              {lang[languages].footer_Sunday} 9:00 - 17:00
+              {'Сб: '} {lang[languages].footer_dayOff}
+            </p>
+            <p style={{ paddingLeft: '16px' }}>
+              {/* {lang[languages].footer_Sunday} 9:00 - 17:00 */}
+              {lang[languages].footer_Sunday} {' '} {lang[languages].footer_dayOff}
             </p>
             <p style={{ paddingTop: '16px' }}>
               {lang[languages].footer_comments}

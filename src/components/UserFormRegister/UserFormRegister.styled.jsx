@@ -32,6 +32,11 @@ export const Input = styled.input`
   ${inputs};
 `;
 
+export const PasswordDiv = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 export const InputPassword = styled.input`
   width: 51%;
   margin: 10px 0;

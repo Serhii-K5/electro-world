@@ -25,7 +25,7 @@ import {
 
 import ProductGallery from 'components/ProductGallery/ProductGallery';
 
-import noPhoto from 'assets/images/jpg/productPhoto/no_photo.jpg';
+import noPhoto from 'assets/images/jpg/productPhotos/no_photo.jpg';
 
 import lang from "assets/json/language.json";
 import { selectLanguages } from "redux/selectors";
@@ -218,10 +218,10 @@ export default function Product({ card }) {
             </div>
           </div>
         </DivHov>
-        {/* {isVisible && isAlternativesShown && <ProductGallery data={card.alternatives} slidesToShow={4} />}
-        {isVisible && isRelatedShown && <ProductGallery data={card.related} slidesToShow={4} />} */}
-        {isVisible && isAlternativesShown && <ProductGallery data={card} slidesToShow={4} />}
-        {isVisible && isRelatedShown && <ProductGallery data={card} slidesToShow={4} />}
+        {isVisible && isAlternativesShown && <ProductGallery data={card.alternatives} slidesToShow={4} />}
+        {isVisible && isRelatedShown && <ProductGallery data={card.related} slidesToShow={4} />}
+        {/* {isVisible && isAlternativesShown && <ProductGallery data={card} slidesToShow={4} />}
+        {isVisible && isRelatedShown && <ProductGallery data={card} slidesToShow={4} />} */}
       </Container>
       {isModalShown && <CardModal card={card} onClose={onCloseModal} />}
     </>

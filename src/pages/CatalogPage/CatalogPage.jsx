@@ -1,11 +1,16 @@
-import { useEffect, useState, createContext } from "react";
+import { useEffect, useState, createContext } from 'react';
 // import { useSearchParams } from 'react-router-dom';
-import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "redux/operations";
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchProducts } from 'redux/operations';
 
-import ProductCard from "components/ProductCard/ProductCard";
-import ProductCardLines from "components/ProductCardLines/ProductCardLines";
-import { selectProducts, selectFilters, selectDirectoryPath, selectLanguages } from 'redux/selectors';
+import ProductCard from 'components/ProductCard/ProductCard';
+import ProductCardLines from 'components/ProductCardLines/ProductCardLines';
+import {
+  selectProducts,
+  selectFilters,
+  selectDirectoryPath,
+  selectLanguages,
+} from 'redux/selectors';
 
 import { deleteFilters } from 'redux/slice/filtersSlice';
 import { changeCategory } from 'redux/slice/categorySlice';
@@ -28,21 +33,19 @@ import {
   BtnDiv,
 } from './CatalogPage.styled';
 
-
-import NavBar from 'components/NavBar/NavBar';
+import NavBar from 'components/DirectoryPath/DirectoryPath';
 import FilterPanel from 'components/FilterPanel/FilterPanel';
 
 import PriceRange from 'components/PriceRange/PriceRange';
-import products1 from "../../assets/json/products.json";
+import products1 from '../../assets/json/products.json';
 // import categories from "../../assets/json/categories.json";
 import lang from 'assets/json/language.json';
 import Pagination from 'components/PaginationBar/PaginationBar';
 
-import DropdownList from "components/DropdownList/DropdownList";
-import sortingIcon from "assets/images/svg/sorting.svg";
-import linesIcon from "assets/images/svg/lines.svg";
-import tilesIcon from "assets/images/svg/tiles.svg";
-
+import DropdownList from 'components/DropdownList/DropdownList';
+import sortingIcon from 'assets/images/svg/sorting.svg';
+import linesIcon from 'assets/images/svg/lines.svg';
+import tilesIcon from 'assets/images/svg/tiles.svg';
 
 export const ProductsContext = createContext();
 
@@ -54,14 +57,13 @@ const CatalogPage = () => {
   const languages = useSelector(selectLanguages);
   const filters = useSelector(selectFilters);
   const category = useSelector(selectDirectoryPath);
-  
+
   const temp = useSelector(selectProducts);
   const products = temp.length > 0 ? temp : products1; // запрос на сервер
   const [filteredData, setFilteredData] = useState(products);
-  
+
   const [activePage, setActivePage] = useState(1);
   const [isLine, setIsLine] = useState(false);
-
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -137,24 +139,24 @@ const CatalogPage = () => {
 
     setFilteredData(applyFilters(products, filters));
   }, [products, filters]);
-  
-  const onChangePage = (page) => {
+
+  const onChangePage = page => {
     setActivePage(page);
   };
 
   const handleClickBtn = () => {
-    dispatch(deleteFilters({ key: 'memo', value: "" }));
-    dispatch(deleteFilters({ key: 'name', value: "" }));
+    dispatch(deleteFilters({ key: 'memo', value: '' }));
+    dispatch(deleteFilters({ key: 'name', value: '' }));
     dispatch(changeCategory(0));
   };
 
   const formTiles = () => {
     setIsLine(false);
-  }
+  };
 
   const formLines = () => {
     setIsLine(true);
-  }
+  };
 
   return (
     <PageContainer>
@@ -237,9 +239,7 @@ const CatalogPage = () => {
                   index < activePage * itemsPerPage &&
                   // index > (page - 1) * 8 - 1 && index < page * 8 && (
                   (isLine ? (
-                    <Li
-                      key={item.id}
-                    >
+                    <Li key={item.id}>
                       <ProductCardLines card={item} index={index} />
                     </Li>
                   ) : (

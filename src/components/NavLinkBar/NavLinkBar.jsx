@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react';
 import {
   DivNav,
   DivCatalog,
-  Sup,
+  TitleSpan,
   UlCatalog,
+  Li,
   Img,
   NavContainer,
   NavLinkStyle,
@@ -66,59 +67,62 @@ const NavLinkBar = () => {
           onMouseLeave={clearingDirectoryPath}
           onClick={onOpenCatalogModal}
         >
-          <div>
-            <DivCatalog>
-              <GiHamburgerMenu
-                style={{ marginRight: '10px', fontSize: '24px' }}
-              />
-              <div>
+          {/* <div> */}
+          <DivCatalog>
+            <GiHamburgerMenu
+              style={{ marginRight: '10px', fontSize: '24px' }}
+            />
+            <TitleSpan>
+              {lang[languages].NavLinkBar_catalog1.toUpperCase()}
+            </TitleSpan>
+            {/* <div>
                 <Sup>{lang[languages].NavLinkBar_catalog1.toUpperCase()}</Sup>
-              </div>
-            </DivCatalog>
-            {isModalCatalogShown && !isModalCatalogClick && (
-              <UlCatalog onClick={handleClick}>
-                <li key={0} style={{ border: '1px solid grey' }}>
-                  <CategoryDropdownList parentId={0} />
-                </li>
-                {directoryPath.map((item, index) => (
-                  <li key={index + 1} style={{ border: '1px solid grey' }}>
-                    <CategoryDropdownList parentId={item.cat_id} />
-                  </li>
-                ))}
-              </UlCatalog>
-            )}
-          </div>
+              </div> */}
+          </DivCatalog>
+          {isModalCatalogShown && !isModalCatalogClick && (
+            <UlCatalog onClick={handleClick}>
+              <Li key={0}>
+                <CategoryDropdownList parentId={0} />
+              </Li>
+              {directoryPath.map((item, index) => (
+                <Li key={index + 1}>
+                  <CategoryDropdownList parentId={item.cat_id} />
+                </Li>
+              ))}
+            </UlCatalog>
+          )}
+          {/* </div> */}
         </div>
 
         <NavContainer>
           <NavLinkStyle to="/">
             {/* Home */}
-            <sup>{lang[languages].NavLinkBar_home.toUpperCase()}</sup>
+            {lang[languages].NavLinkBar_home.toUpperCase()}
           </NavLinkStyle>
           {/* <Img src={electricity} alt="electricity symbol" />
           <NavLinkStyle to="/catalog">
-            <sup>{lang[languages].NavLinkBar_catalog.toUpperCase()}</sup>
+            {lang[languages].NavLinkBar_catalog.toUpperCase()}
           </NavLinkStyle> */}
           <Img src={electricity} alt="electricity symbol" />
           <NavLinkStyle to="/orders">
-            <sup>{lang[languages].NavLinkBar_orders.toUpperCase()}</sup>
+            {lang[languages].NavLinkBar_orders.toUpperCase()}
           </NavLinkStyle>
           <Img src={electricity} alt="electricity symbol" />
           <NavLinkStyle to="/help">
-            <sup>{lang[languages].NavLinkBar_help.toUpperCase()}</sup>
+            {lang[languages].NavLinkBar_help.toUpperCase()}
           </NavLinkStyle>
           <Img src={electricity} alt="electricity symbol" />
           <NavLinkStyle to="/about_us">
-            <sup>{lang[languages].NavLinkBar_aboutUs.toUpperCase()}</sup>
+            {lang[languages].NavLinkBar_aboutUs.toUpperCase()}
           </NavLinkStyle>
           <Img src={electricity} alt="electricity symbol" />
           <NavLinkStyle to="/delivery">
-            <sup>{lang[languages].NavLinkBar_delivery.toUpperCase()}</sup>
+            {lang[languages].NavLinkBar_delivery.toUpperCase()}
           </NavLinkStyle>
           <Img src={electricity} alt="electricity symbol" />
           {/* Message */}
           <Span onClick={onOpenModal}>
-            <sup>{lang[languages].NavLinkBar_message.toUpperCase()}</sup>
+            {lang[languages].NavLinkBar_message.toUpperCase()}
           </Span>
         </NavContainer>
       </DivNav>

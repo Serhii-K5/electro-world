@@ -75,7 +75,8 @@ const LoginModule = ({ onClose }) => {
             </CloseBtn>
             <Section>
               <P>{lang[languages].loginModule_p1}</P>
-              <div style={{ padding: '25px' }}>
+              {/* <div style={{ padding: '25px' }}> */}
+              <div>
                 <TypeAuthentification handleSelect={handleSelect} />
               </div>
               {/* <input

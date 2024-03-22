@@ -4,7 +4,7 @@
 export const listOfPictures = ( photosArray ) => {
   // Получаем список всех изображений из папки (может быть и асинхронно)
   const images = require.context(
-    'assets/images/jpg/productPhoto',
+    'assets/images/jpg/productPhotos',
     false,
     /\.(png|jpe?g|svg)$/
   );

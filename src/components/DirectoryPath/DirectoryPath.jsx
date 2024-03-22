@@ -3,7 +3,7 @@ import { selectDirectoryPath, selectLanguages } from 'redux/selectors';
 import lang from 'assets/json/language.json';
 import { Link } from 'react-router-dom';
 
-import { Ul } from "./NavBar.styled";
+import { Ul } from "./DirectoryPath.styled";
 
 const NavBar = () => {
   const directoryPath = useSelector(selectDirectoryPath);

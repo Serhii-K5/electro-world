@@ -1,16 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const userLanguage = navigator.language;
+// подключить для определения языка по языку системы
+// const userLanguage = navigator.language;
 
 const sliceLanguage = createSlice({
   name: 'languages',
   initialState: {
-    // language: Boolean,
-    // language: String,
     // language: 'UA',
-    // language: '',
-    // language: 0,
-    language: userLanguage === 'ru' ? 1 : 0,
+    // отключить при определении языка по языку системы
+    language: 0,
+    // подключить при определении языка по языку системы
+    // language: userLanguage === 'ru' ? 1 : 0,
   },
   reducers: {
     changeLanguage(state, action) {

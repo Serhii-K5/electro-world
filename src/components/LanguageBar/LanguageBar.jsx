@@ -17,12 +17,12 @@ export const LanguageBar = () => {
   };
   
   return (
-    <Ul style={{cursor: 'pointer'}}>
+    <Ul>
       {lang.length > 0 && lang.map((el, index)=> 
         languages === el.lang_id ? 
           <Li key={index} onClick={() => (handleClick(el.lang_id))} style={{ backgroundColor: 'var(--second-green)' }}>{el.lang_name}</Li>
           : <Li key={index} onClick={() => (handleClick(el.lang_id))} >{el.lang_name}</Li>
-        )}
+      )}
     </Ul>
   )
 };
