@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 
 import { Li, Span } from './CategoryDropdownList.styled';
 import { changeCategory } from 'redux/slice/categorySlice';
-import { changeFilters } from "redux/slice/filtersSlice";
+// import { changeFilters } from "redux/slice/filtersSlice";
+import { addFilters, deleteFilters } from "redux/slice/filtersSlice";
 
 import categories from 'assets/json/categories.json';
 // import products1 from "../../assets/json/products.json";
@@ -31,7 +32,10 @@ const CategoryDropdownList = ({ parentId}) => {
     );
     
     if (index === -1) {
-      dispatch(changeFilters({ key: 'parentId', value: el.cat_id }));      
+      // dispatch(changeFilters({ key: 'parentId', value: el.cat_id }));      
+      dispatch(deleteFilters({ key: 'parentId', value: el.cat_id }));      
+      dispatch(addFilters({ key: 'parentId', value: el.cat_id }));      
+      
       setIsCategory(false);
       // window.location.reload();
     }
