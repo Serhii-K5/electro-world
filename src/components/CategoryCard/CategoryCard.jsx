@@ -1,6 +1,7 @@
 import {
   Div,
   Img,
+  P,
 } from "./CategoryCard.styled";
 
 import noPhoto from 'assets/images/jpg/productPhotos/no_photo.jpg';
@@ -17,7 +18,7 @@ const CategoryCard = ({ photo, categoryName }) => {
           alt={'category ' && categoryName}
         />
       </div>
-      <p>{categoryName}</p>
+      <P>{categoryName.toUpperCase()}</P>
     </Div>
   );
 };

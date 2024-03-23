@@ -26,8 +26,7 @@ const NoOrders = () => {
       <H4>
         {lang[languages].noOrders_textH4_1}
         <Link to={isCategory() ? '/catalog' : '/categories'}>
-          {lang[languages].NavLinkBar_catalog1}
-          {console.log(isCategory())}
+          {lang[languages].NavLinkBar_catalog}
         </Link>
         {lang[languages].noOrders_textH4_2}.
       </H4>
