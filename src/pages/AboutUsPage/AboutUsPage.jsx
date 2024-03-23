@@ -5,7 +5,7 @@ import {
   Section,
   H1,
   P,
-  Span,
+  // Span,
   Ul,
   Li,
   H4
@@ -24,9 +24,9 @@ const AboutUsPage = () => {
         <H1>{lang[languages].aboutUsPage_h1}</H1>
         <P>
           {lang[languages].aboutUsPage_p1_1}
-          <Span>
-            <b>Electro world</b>
-          </Span>
+          {/* <Span> */}
+            <b>{' Electro world '}</b> 
+          {/* </Span> */}
           {lang[languages].aboutUsPage_p1_2}
         </P>
         <P>
@@ -49,9 +49,9 @@ const AboutUsPage = () => {
         </P>
         <ul>
           <Li>
-            <Span>
-              <b>Electro world</b>
-            </Span>{' '}
+            {/* <Span> */}
+            <b>{' Electro world '}</b> 
+          {/* </Span> */}
             {lang[languages].aboutUsPage_ul3_li}
           </Li>
         </ul>
@@ -61,9 +61,9 @@ const AboutUsPage = () => {
         <ul>
           <Li>
             {lang[languages].aboutUsPage_ul4_li_1}
-            <Span>
-              <b>Electro world</b>
-            </Span>
+            {/* <Span> */}
+            <b>{' Electro world '}</b> 
+          {/* </Span> */}
             {lang[languages].aboutUsPage_ul4_li_2}
           </Li>
         </ul>
