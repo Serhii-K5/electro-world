@@ -36,5 +36,5 @@ export const Li = styled.li`
 
 export const Span = styled.span`
   padding-left: 10px;
-  color: var(--primary-grey);
+  color: var(--second-grey);
 `;
