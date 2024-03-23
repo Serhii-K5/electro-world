@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/electro-world/static/css/main.47af8a18.css",
-    "main.js": "/electro-world/static/js/main.e5df3b93.js",
+    "main.css": "/electro-world/static/css/main.43b2c7e3.css",
+    "main.js": "/electro-world/static/js/main.3ad05c59.js",
     "static/media/image2.png": "/electro-world/static/media/image2.73b940fbacd31d1a6198.png",
     "static/media/image1.png": "/electro-world/static/media/image1.2965fd16f1771a7d8d4e.png",
     "static/media/image3.png": "/electro-world/static/media/image3.dfb5f992e53f1c0f05d9.png",
@@ -16,11 +16,11 @@
     "static/media/cross.svg": "/electro-world/static/media/cross.f3cbdd58dc25ca7cbb3d242106b56fb9.svg",
     "static/media/chevron-down.svg": "/electro-world/static/media/chevron-down.24cd320d509ea2ebbeb4265f8030bafb.svg",
     "static/media/electricity.svg": "/electro-world/static/media/electricity.4a827cb619163689d39f9f9c55eac9f1.svg",
-    "main.47af8a18.css.map": "/electro-world/static/css/main.47af8a18.css.map",
-    "main.e5df3b93.js.map": "/electro-world/static/js/main.e5df3b93.js.map"
+    "main.43b2c7e3.css.map": "/electro-world/static/css/main.43b2c7e3.css.map",
+    "main.3ad05c59.js.map": "/electro-world/static/js/main.3ad05c59.js.map"
   },
   "entrypoints": [
-    "static/css/main.47af8a18.css",
-    "static/js/main.e5df3b93.js"
+    "static/css/main.43b2c7e3.css",
+    "static/js/main.3ad05c59.js"
   ]
 }
