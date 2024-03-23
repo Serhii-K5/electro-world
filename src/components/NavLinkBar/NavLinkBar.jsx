@@ -73,10 +73,10 @@ const NavLinkBar = () => {
               style={{ marginRight: '10px', fontSize: '24px' }}
             />
             <TitleSpan>
-              {lang[languages].NavLinkBar_catalog1.toUpperCase()}
+              {lang[languages].NavLinkBar_catalog.toUpperCase()}
             </TitleSpan>
             {/* <div>
-                <Sup>{lang[languages].NavLinkBar_catalog1.toUpperCase()}</Sup>
+                <Sup>{lang[languages].NavLinkBar_catalog.toUpperCase()}</Sup>
               </div> */}
           </DivCatalog>
           {isModalCatalogShown && !isModalCatalogClick && (
@@ -101,7 +101,7 @@ const NavLinkBar = () => {
           </NavLinkStyle>
           {/* <Img src={electricity} alt="electricity symbol" />
           <NavLinkStyle to="/catalog">
-            {lang[languages].NavLinkBar_catalog.toUpperCase()}
+            {lang[languages].NavLinkBar_catalog1.toUpperCase()}
           </NavLinkStyle> */}
           <Img src={electricity} alt="electricity symbol" />
           <NavLinkStyle to="/orders">
