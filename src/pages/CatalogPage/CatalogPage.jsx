@@ -43,13 +43,14 @@ import lang from 'assets/json/language.json';
 import Pagination from 'components/PaginationBar/PaginationBar';
 
 import DropdownList from 'components/DropdownList/DropdownList';
+import QuantityToDisplay from "components/QuantityToDisplay/QuantityToDisplay";
 import sortingIcon from 'assets/images/svg/sorting.svg';
 import linesIcon from 'assets/images/svg/lines.svg';
 import tilesIcon from 'assets/images/svg/tiles.svg';
 
 export const ProductsContext = createContext();
 
-const itemsPerPage = 8;
+// const itemsPerPage = 8;
 
 const CatalogPage = () => {
   // const [searchParams, setSearchParams] = useSearchParams();
@@ -64,6 +65,9 @@ const CatalogPage = () => {
 
   const [activePage, setActivePage] = useState(1);
   const [isLine, setIsLine] = useState(false);
+  const [isFocus, setIsFocus] = useState(false);
+  // const [itemsPerPage, setItemsPerPage] = useState(8);
+  const [itemsPerPage, setItemsPerPage] = useState(10);
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -158,6 +162,17 @@ const CatalogPage = () => {
     setIsLine(true);
   };
 
+  const handleFocus = () => {
+    setIsFocus(true);
+  };
+
+  const handleChange = (quantityToDisplay) => {
+    // const quantity = filteredData.length > quantityToDisplay ? quantityToDisplay : filteredData.length
+    // setItemsPerPage(quantity);
+    setItemsPerPage(quantityToDisplay);
+    setIsFocus(false);
+  };
+
   return (
     <PageContainer>
       <NavBar />
@@ -204,6 +219,7 @@ const CatalogPage = () => {
                 <DropdownList />
               </ProductsContext.Provider>
             </SortingDiv>
+
             {filteredData.length > 0 && (
               <Pagination
                 activePage={activePage}
@@ -212,7 +228,15 @@ const CatalogPage = () => {
                 itemsPerPage={itemsPerPage}
               />
             )}
+
             <BuildingDiv>
+              <QuantityToDisplay
+                itemsPerPage={itemsPerPage}
+                isFocus={isFocus}
+                handleFocus={handleFocus}
+                handleChange={handleChange}
+              />
+
               <ImgContainer onClick={formTiles}>
                 <img
                   src={tilesIcon}

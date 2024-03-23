@@ -66,6 +66,7 @@ export const SortingDiv = styled.div`
 export const BuildingDiv = styled.div`
   display: flex;
   gap: 16px;
+  align-items: center;
 `;
 
 export const ImgContainer = styled.div`

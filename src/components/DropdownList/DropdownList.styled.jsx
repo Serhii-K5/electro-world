@@ -14,7 +14,8 @@ export const Ul = styled.ul`
   position: absolute;
   top: 30px;
   left: -115px;
-  zindex: 5;
+  // zindex: 5;
+  z-index: 100;
   background-color: var(--primary-white);
   width: 150%;
   box-shadow: 0 0 5px 5px var(--primary-grey);
