@@ -18,7 +18,7 @@ const CategoryCard = ({ photo, categoryName }) => {
           alt={'category ' && categoryName}
         />
       </div>
-      <P>{categoryName.toUpperCase()}</P>
+      <P><b>{categoryName.toUpperCase()}</b></P>
     </Div>
   );
 };
