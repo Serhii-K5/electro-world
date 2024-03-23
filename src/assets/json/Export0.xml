@@ -16,7 +16,6 @@
     <PRODUCT>
       <ID>1029</ID>
       <CODE>50Ah 400A EURO SRT</CODE>
-      <BARCODE>2000998900663</BARCODE>
       <NAME>Аккумулятор 50Ah 400A SRT А, З, Е (EURO) Україна</NAME>
       <MEMO>
       </MEMO>
@@ -28,7 +27,6 @@
     <PRODUCT>
       <ID>865</ID>
       <CODE>ACTIVE</CODE>
-      <BARCODE>4820173050147</BARCODE>
       <NAME>АНТИФРІЗ -40 *G11*  1л/0,97кг "СТАНДАРТ" *ACTIVE*MFC* -ЗЕЛЕНИЙ-</NAME>
       <MEMO>
       </MEMO>
@@ -40,7 +38,6 @@
     <PRODUCT>
       <ID>863</ID>
       <CODE>ACTIVE</CODE>
-      <BARCODE>4820250120299</BARCODE>
       <NAME>АНТИФРІЗ -40 *G11* 10л/9,65кг "СТАНДАРТ" *ACTIVE*MFC* -ЗЕЛЕНИЙ-</NAME>
       <MEMO>
       </MEMO>
@@ -52,7 +49,6 @@
     <PRODUCT>
       <ID>1533</ID>
       <CODE>102</CODE>
-      <BARCODE>4820123075077</BARCODE>
       <NAME>АНТИФРІЗ -40 *G12*  1л/0,9кг "KRAMER-W" *ЮГ-СМ* -КРАСНИЙ-</NAME>
       <MEMO>
       </MEMO>
@@ -61,12 +57,10 @@
       <PARENTID>859</PARENTID>
       <PHOTO>002602.png</PHOTO>
       <PARAM11>D:\Document\BENEFICIARY.docx</PARAM11>
-      <PHOTO>11897.jpg</PHOTO>
     </PRODUCT>
     <PRODUCT>
       <ID>864</ID>
       <CODE>ACTIVE</CODE>
-      <BARCODE>4820250120268</BARCODE>
       <NAME>АНТИФРІЗ -40 *G12*  5л/4,93кг "СТАНДАРТ" *ACTIVE*MFC* -КРАСНИЙ-</NAME>
       <MEMO>
       </MEMO>
@@ -78,7 +72,6 @@
     <PRODUCT>
       <ID>1532</ID>
       <CODE>105</CODE>
-      <BARCODE>4820123075084</BARCODE>
       <NAME>АНТИФРІЗ -40 *G12*  5л/4.24кг "KRAMER-W" *ЮГ-СМ* -КРАСНИЙ-</NAME>
       <MEMO>
       </MEMO>
@@ -90,7 +83,6 @@
     <PRODUCT>
       <ID>872</ID>
       <CODE>8050.08.WH1</CODE>
-      <BARCODE>2000502148512</BARCODE>
       <NAME>Бездротовий датчик виявлення затоплення Ajax LeaksProtect White (000001147/8050.08.WH1)</NAME>
       <MEMO>
       </MEMO>
@@ -102,7 +94,6 @@
     <PRODUCT>
       <ID>873</ID>
       <CODE>25434.16.WH1</CODE>
-      <BARCODE>2000502148529</BARCODE>
       <NAME>Бездротовий датчик диму Ajax FireProtect Plus White (8219.16.WH1/25434.16.WH1)</NAME>
       <MEMO>
       </MEMO>
@@ -115,7 +106,6 @@
       <ID>1463</ID>
       <CODE>
       </CODE>
-      <BARCODE>4820046671967</BARCODE>
       <NAME>ВОДА дистильована  1л "KRAMER-W", ПЕ</NAME>
       <MEMO>
       </MEMO>
@@ -128,7 +118,6 @@
       <ID>1464</ID>
       <CODE>
       </CODE>
-      <BARCODE>4820046671974</BARCODE>
       <NAME>ВОДА дистильована  5л "KRAMER-W", ПЕ</NAME>
       <MEMO>
       </MEMO>
@@ -140,7 +129,6 @@
     <PRODUCT>
       <ID>874</ID>
       <CODE>Кобра-1н  58</CODE>
-      <BARCODE>2000502148536</BARCODE>
       <NAME>Газовий балончик Кобра-1н,  58 мл</NAME>
       <MEMO>
       </MEMO>
@@ -152,7 +140,6 @@
     <PRODUCT>
       <ID>875</ID>
       <CODE>Кобра-1н 100</CODE>
-      <BARCODE>2000502148543</BARCODE>
       <NAME>Газовий балончик Кобра-1н, 100 мл</NAME>
       <MEMO>
       </MEMO>
@@ -164,7 +151,6 @@
     <PRODUCT>
       <ID>1035</ID>
       <CODE>090007</CODE>
-      <BARCODE>5011987068964</BARCODE>
       <NAME>Мастило *SHELL* HELIX - HX7* 4T 10W-40 - 1л (синій)</NAME>
       <MEMO>
       </MEMO>
@@ -177,7 +163,6 @@
       <ID>1081</ID>
       <CODE>
       </CODE>
-      <BARCODE>2000000010816</BARCODE>
       <NAME>Мастило *WOLVER SUPER DYNAMIC SAE* 10W-40 -  1л, каністра, жерсть</NAME>
       <MEMO>
       </MEMO>
@@ -189,7 +174,6 @@
     <PRODUCT>
       <ID>1033</ID>
       <CODE>680032</CODE>
-      <BARCODE>4820070242065</BARCODE>
       <NAME>Мастило *YUKO* *4T 10W-40 -  1л, Dynamic  API SG/CD (авто/мото-п/синт.)</NAME>
       <MEMO>
       </MEMO>
@@ -201,7 +185,6 @@
     <PRODUCT>
       <ID>1462</ID>
       <CODE>680047</CODE>
-      <BARCODE>4820070242041</BARCODE>
       <NAME>Мастило *YUKO* *4T 10W-40 -  1л, TURBOSYNT DIESEL  API CF-4/SG (турбодизель-п/синт.) ПЕ</NAME>
       <MEMO>
       </MEMO>
@@ -213,7 +196,6 @@
     <PRODUCT>
       <ID>1034</ID>
       <CODE>680033</CODE>
-      <BARCODE>4820070242072</BARCODE>
       <NAME>Мастило *YUKO* *4T 10W-40 -  4л, Dynamic  API SG/CD (4)</NAME>
       <MEMO>
       </MEMO>
@@ -226,7 +208,6 @@
       <ID>1032</ID>
       <CODE>
       </CODE>
-      <BARCODE>4823110401576</BARCODE>
       <NAME>Мастило *YUKO* *4T 15W-40 -  5л, Dynamic  API SG/CD (авто/мото-мінералка)</NAME>
       <MEMO>
       </MEMO>
@@ -239,7 +220,6 @@
       <ID>1465</ID>
       <CODE>
       </CODE>
-      <BARCODE>2000998903213</BARCODE>
       <NAME>Мастило *YUKO* *Літол-24* дой-пак 150гр, ПЕ</NAME>
       <MEMO>
       </MEMO>
@@ -251,7 +231,6 @@
     <PRODUCT>
       <ID>1534</ID>
       <CODE>6800311</CODE>
-      <BARCODE>4820070240740</BARCODE>
       <NAME>Мастило трансміссійне *YUKO* TRANS 75W-90 GL-4  - 1л (п/синтет, мехКПП, раздатк)</NAME>
       <MEMO>
       </MEMO>
@@ -263,7 +242,6 @@
     <PRODUCT>
       <ID>1536</ID>
       <CODE>6800311</CODE>
-      <BARCODE>4820070244458</BARCODE>
       <NAME>Мастило трансміссійне *YUKO* TRANS 80W-90 API GL-4  - 1л ( мехКПП, раздатк, диференц)</NAME>
       <MEMO>
       </MEMO>
@@ -275,7 +253,6 @@
     <PRODUCT>
       <ID>1535</ID>
       <CODE>680027</CODE>
-      <BARCODE>4820070241570</BARCODE>
       <NAME>Мастило трансміссійне АВТОМАТ *YUKO* ATF IID  - 1л (автоматКПП, сервопривод)</NAME>
       <MEMO>
       </MEMO>
@@ -287,7 +264,6 @@
     <PRODUCT>
       <ID>1037</ID>
       <CODE>01</CODE>
-      <BARCODE>2000998901042</BARCODE>
       <NAME>Очищувач скла ЛІТО "KRAMER-W" -АНТІМОШКА- -5л- BUBBLE GUM (ЖОВТИЙ ящик)</NAME>
       <MEMO>
       </MEMO>
@@ -300,7 +276,6 @@
       <ID>1036</ID>
       <CODE>
       </CODE>
-      <BARCODE>4820046671929</BARCODE>
       <NAME>Очищувач скла ЛІТО "KRAMER-W" -АНТІМОШКА- -5л- ГОЛУБИЙ (червоний ящик)</NAME>
       <MEMO>
       </MEMO>
@@ -313,7 +288,6 @@
       <ID>1030</ID>
       <CODE>
       </CODE>
-      <BARCODE>4820046672247</BARCODE>
       <NAME>Тормозна рідина 0,5л DOT-4 т.ж. "KRAMER-W"</NAME>
       <MEMO>
       </MEMO>
@@ -325,7 +299,6 @@
     <PRODUCT>
       <ID>1466</ID>
       <CODE>K20066</CODE>
-      <BARCODE>5906534390004</BARCODE>
       <NAME>Тормозна рідина 0,5л DOT-4 т.ж. *K2* TURBO DOT-4 BRAKE FLUID</NAME>
       <MEMO>
       </MEMO>
@@ -338,7 +311,6 @@
       <ID>1031</ID>
       <CODE>
       </CODE>
-      <BARCODE>4820046672254</BARCODE>
       <NAME>Тормозна рідина 1,0л DOT-4 т.ж. "KRAMER-W"</NAME>
       <MEMO>
       </MEMO>
@@ -350,7 +322,6 @@
     <PRODUCT>
       <ID>860</ID>
       <CODE>KRAMER-W</CODE>
-      <BARCODE>4820123075107</BARCODE>
       <NAME>ТОСОЛ -40 "KRAMER-W"  1л / 0,9кг</NAME>
       <MEMO>
       </MEMO>
@@ -362,7 +333,6 @@
     <PRODUCT>
       <ID>861</ID>
       <CODE>KRAMER-W</CODE>
-      <BARCODE>2000502148444</BARCODE>
       <NAME>ТОСОЛ -40 "KRAMER-W"  5л / 4,5кг</NAME>
       <MEMO>
       </MEMO>
@@ -374,7 +344,6 @@
     <PRODUCT>
       <ID>862</ID>
       <CODE>NORDWAY</CODE>
-      <BARCODE>4820173050215</BARCODE>
       <NAME>ТОСОЛ -40 *МФК*  1л "NORDWAY" *ECO*</NAME>
       <MEMO>
       </MEMO>
