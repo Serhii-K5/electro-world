@@ -1,16 +1,12 @@
 {
   "files": {
-    "main.css": "/electro-world/static/css/main.de94e693.css",
-    "main.js": "/electro-world/static/js/main.b7e65e10.js",
+    "main.css": "/electro-world/static/css/main.47af8a18.css",
+    "main.js": "/electro-world/static/js/main.e5df3b93.js",
     "static/media/image2.png": "/electro-world/static/media/image2.73b940fbacd31d1a6198.png",
     "static/media/image1.png": "/electro-world/static/media/image1.2965fd16f1771a7d8d4e.png",
     "static/media/image3.png": "/electro-world/static/media/image3.dfb5f992e53f1c0f05d9.png",
     "static/media/ukrposhta.jpg": "/electro-world/static/media/ukrposhta.c9b9d5126def364008ba.jpg",
     "static/media/delivery.jpg": "/electro-world/static/media/delivery.416370ab442ac9dfbabc.jpg",
-    "static/media/slick.svg": "/electro-world/static/media/slick.2630a3e3eab21c607e21.svg",
-    "static/media/slick.eot": "/electro-world/static/media/slick.a4e97f5a2a64f0ab1323.eot",
-    "static/media/slick.ttf": "/electro-world/static/media/slick.c94f7671dcc99dce43e2.ttf",
-    "static/media/slick.woff": "/electro-world/static/media/slick.295183786cd8a1389865.woff",
     "static/media/lines.svg": "/electro-world/static/media/lines.78e845ef1652b0532dd7413be2abf4a5.svg",
     "static/media/user_icon.svg": "/electro-world/static/media/user_icon.a5141d2ce80597b28f66a7d0643864bc.svg",
     "static/media/tiles.svg": "/electro-world/static/media/tiles.0f2929657ba38fd28bd6499356373a0e.svg",
@@ -20,11 +16,11 @@
     "static/media/cross.svg": "/electro-world/static/media/cross.f3cbdd58dc25ca7cbb3d242106b56fb9.svg",
     "static/media/chevron-down.svg": "/electro-world/static/media/chevron-down.24cd320d509ea2ebbeb4265f8030bafb.svg",
     "static/media/electricity.svg": "/electro-world/static/media/electricity.4a827cb619163689d39f9f9c55eac9f1.svg",
-    "main.de94e693.css.map": "/electro-world/static/css/main.de94e693.css.map",
-    "main.b7e65e10.js.map": "/electro-world/static/js/main.b7e65e10.js.map"
+    "main.47af8a18.css.map": "/electro-world/static/css/main.47af8a18.css.map",
+    "main.e5df3b93.js.map": "/electro-world/static/js/main.e5df3b93.js.map"
   },
   "entrypoints": [
-    "static/css/main.de94e693.css",
-    "static/js/main.b7e65e10.js"
+    "static/css/main.47af8a18.css",
+    "static/js/main.e5df3b93.js"
   ]
 }
