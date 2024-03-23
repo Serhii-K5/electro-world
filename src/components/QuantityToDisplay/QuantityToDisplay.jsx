@@ -24,7 +24,7 @@ const QuantityToDisplay = ({ itemsPerPage, isFocus, handleFocus, handleChange })
           onChange={handleFocus}       
         />
       </div>
-      {isFocus && <Select name="quantityToDisplay" size="5">
+      {isFocus && <Select name="quantityToDisplay" size="4">
         {/* <option value="8" selected="selected" onClick={() => handleChange(8)}>8</option> */}
         {/* <Option value="8" onClick={() => handleChange(8)}>8</Option> */}
         <Option value="10" onClick={() => handleChange(10)}>10</Option>
