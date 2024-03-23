@@ -12,6 +12,7 @@ import CategoryCard from 'components/CategoryCard/CategoryCard';
 
 import { changeCategory } from 'redux/slice/categorySlice';
 import { changeFilters } from 'redux/slice/filtersSlice';
+// import { addFilters, deleteFilters } from 'redux/slice/filtersSlice';
 
 import categories from 'assets/json/categories.json';
 import Pagination from 'components/PaginationBar/PaginationBar';
@@ -44,6 +45,8 @@ const CategoryPage = () => {
 
     if (index === -1) {
       dispatch(changeFilters({ key: 'parentId', value: +el.currentTarget.id }));
+      // dispatch(deleteFilters({ key: 'parentId', value: +el.currentTarget.id }));
+      // dispatch(addFilters({ key: 'parentId', value: +el.currentTarget.id }));
       setIsCategory(false);
       // window.location.reload();
     } else {
