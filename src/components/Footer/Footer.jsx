@@ -47,25 +47,25 @@ const Footer = () => {
             </p>
             <hr />
             <NavLinkStyle to="/">
-              <sup>{lang[languages].NavLinkBar_home.toUpperCase()}</sup>
+              {lang[languages].NavLinkBar_home.toUpperCase()}
             </NavLinkStyle>
             {/* <NavLinkStyle to="/catalog">
-              <sup>{lang[languages].NavLinkBar_catalog.toUpperCase()}</sup>
+              {lang[languages].NavLinkBar_catalog.toUpperCase()}
             </NavLinkStyle> */}
             <NavLinkStyle to="/orders">
-              <sup>{lang[languages].NavLinkBar_orders.toUpperCase()}</sup>
+              {lang[languages].NavLinkBar_orders.toUpperCase()}
             </NavLinkStyle>
             <NavLinkStyle to="/help">
-              <sup>{lang[languages].NavLinkBar_help.toUpperCase()}</sup>
+              {lang[languages].NavLinkBar_help.toUpperCase()}
             </NavLinkStyle>
             <NavLinkStyle to="/about_us">
-              <sup>{lang[languages].NavLinkBar_aboutUs.toUpperCase()}</sup>
+              {lang[languages].NavLinkBar_aboutUs.toUpperCase()}
             </NavLinkStyle>
             <NavLinkStyle to="/delivery">
-              <sup>{lang[languages].NavLinkBar_delivery.toUpperCase()}</sup>
+              {lang[languages].NavLinkBar_delivery.toUpperCase()}
             </NavLinkStyle>
             <Span onClick={onOpenModal}>
-              <sup>{lang[languages].NavLinkBar_message.toUpperCase()}</sup>
+              {lang[languages].NavLinkBar_message.toUpperCase()}
             </Span>
           </div>
           <div style={{ padding: '16px' }}>

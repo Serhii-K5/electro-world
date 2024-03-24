@@ -51,7 +51,7 @@ const SearchField = () => {
   return (
     <form onSubmit={handleSubmit} onClick={handleClick} style={{ position: 'relative' }}>
       <Link to="/catalog">
-        <Button type="submit" >
+        <Button type="submit" aria-label="search">
           <SlMagnifier style={{ width: '25px', height: '25px' }} />
         </Button>
         <Input

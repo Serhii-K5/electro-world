@@ -12,7 +12,7 @@ export const Container = styled.div`
 const ConstNavLinkStyle = `
   display: block;
   color: var(--input-background-color);  
-  font-size: 20px;
+  font-size: 18px;
   transition: color ${transition};
   
   &:hover,
