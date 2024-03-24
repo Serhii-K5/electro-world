@@ -13,6 +13,7 @@ export const Div = styled.div`
   padding: 16px;
   cursor: pointer;
   transition: background-color ${transition};
+  
   &:hover {
     background-color: #F5F5F5;
   }
