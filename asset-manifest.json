@@ -1,26 +1,21 @@
 {
   "files": {
     "main.css": "/electro-world/static/css/main.43b2c7e3.css",
-    "main.js": "/electro-world/static/js/main.1060eb0c.js",
-    "static/media/image2.png": "/electro-world/static/media/image2.73b940fbacd31d1a6198.png",
-    "static/media/image1.png": "/electro-world/static/media/image1.2965fd16f1771a7d8d4e.png",
-    "static/media/image3.png": "/electro-world/static/media/image3.dfb5f992e53f1c0f05d9.png",
-    "static/media/ukrposhta.jpg": "/electro-world/static/media/ukrposhta.c9b9d5126def364008ba.jpg",
-    "static/media/delivery.jpg": "/electro-world/static/media/delivery.416370ab442ac9dfbabc.jpg",
-    "static/media/lines.svg": "/electro-world/static/media/lines.78e845ef1652b0532dd7413be2abf4a5.svg",
-    "static/media/user_icon.svg": "/electro-world/static/media/user_icon.a5141d2ce80597b28f66a7d0643864bc.svg",
-    "static/media/tiles.svg": "/electro-world/static/media/tiles.0f2929657ba38fd28bd6499356373a0e.svg",
-    "static/media/sorting.svg": "/electro-world/static/media/sorting.d1230e5da8a5555146cd119229c5ba0b.svg",
+    "main.js": "/electro-world/static/js/main.95b053c4.js",
+    "static/media/sorting.svg": "/electro-world/static/media/sorting.071b229893ebbd567984267956484c05.svg",
+    "static/media/user_icon.svg": "/electro-world/static/media/user_icon.fb7f4f165dc00e3c65244be3942eca65.svg",
     "index.html": "/electro-world/index.html",
-    "static/media/kyivstar.svg": "/electro-world/static/media/kyivstar.bc9ebcc953971f4881ac49c59bd664c1.svg",
-    "static/media/cross.svg": "/electro-world/static/media/cross.f3cbdd58dc25ca7cbb3d242106b56fb9.svg",
-    "static/media/chevron-down.svg": "/electro-world/static/media/chevron-down.24cd320d509ea2ebbeb4265f8030bafb.svg",
-    "static/media/electricity.svg": "/electro-world/static/media/electricity.4a827cb619163689d39f9f9c55eac9f1.svg",
+    "static/media/tiles.svg": "/electro-world/static/media/tiles.7d413d142ed778d687cd8b2fbfa581e7.svg",
+    "static/media/lines.svg": "/electro-world/static/media/lines.e9e062807ade73521cfc282b0585b580.svg",
+    "static/media/kyivstar.svg": "/electro-world/static/media/kyivstar.7727622482819204947485726d76b36b.svg",
+    "static/media/electricity.svg": "/electro-world/static/media/electricity.86e50ba32343b800f4e9180125884907.svg",
+    "static/media/cross.svg": "/electro-world/static/media/cross.a356a9d23b0c95a1f71eded679de3c0e.svg",
+    "static/media/chevron-down.svg": "/electro-world/static/media/chevron-down.438d8e3277ae93917ceec01bb2eab2bb.svg",
     "main.43b2c7e3.css.map": "/electro-world/static/css/main.43b2c7e3.css.map",
-    "main.1060eb0c.js.map": "/electro-world/static/js/main.1060eb0c.js.map"
+    "main.95b053c4.js.map": "/electro-world/static/js/main.95b053c4.js.map"
   },
   "entrypoints": [
     "static/css/main.43b2c7e3.css",
-    "static/js/main.1060eb0c.js"
+    "static/js/main.95b053c4.js"
   ]
 }
