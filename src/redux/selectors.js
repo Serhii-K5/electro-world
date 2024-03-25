@@ -9,3 +9,5 @@ export const selectDirectoryPath = state => state.directoryPath.items;
 export const selectCategories = state => state.categories.category;
 
 export const selectFilters = state => state.filters.items;
+
+export const selectUserName = state => state.userName.name;

@@ -2,9 +2,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectOrders } from "redux/selectors";
 import { deleteAllOrders } from "redux/slice/orderSlice";
 import { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 import OrdersCard from "components/OrdersCard/OrdersCard";
+import LoginModule from 'components/LoginModule/LoginModule';
 
 import {
   Container,
@@ -23,6 +24,15 @@ const OrdersPage = () => {
   const languages = useSelector(selectLanguages);
   const orderProducts = useSelector(selectOrders);
   const [sum, setSum] = useState(0);
+  const [isModalShown, setIsModalShown] = useState(false);
+
+  const onCloseModal = () => {
+    setIsModalShown(false);
+  };
+
+  const onOpenModal = () => {
+    setIsModalShown(true);
+  };
 
   useEffect(() => {
     setSum(orderProducts.reduce((acc, value) =>
@@ -57,9 +67,18 @@ const OrdersPage = () => {
           <p>
             {lang[languages].ordersPage_sum} <b>{sum}</b> грн.
           </p>
-          <Link to="/checkout">
-            <DivCheckoutBtn style={{marginRight: 0}}>{lang[languages].ordersPage_sumBtn}</DivCheckoutBtn>
-          </Link>
+          {/* <Link to="/checkout">
+            <DivCheckoutBtn>{lang[languages].ordersPage_sumBtn}</DivCheckoutBtn>
+          </Link> */}
+          <DivCheckoutBtn onClick={onOpenModal}>
+            {lang[languages].ordersPage_sumBtn}
+          </DivCheckoutBtn>
+          {isModalShown && (
+            <LoginModule
+              onClose={onCloseModal}
+              nameWindows={lang[languages].checkoutPage_h1}
+            />
+          )}
         </DivCheckout>
       </Container>
     </div>

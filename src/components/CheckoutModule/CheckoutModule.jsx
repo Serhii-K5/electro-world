@@ -9,12 +9,18 @@ import {
   Modal,
   CloseBtn,
 } from 'components/ConstComponentsStyle/ConstComponentsStyle.styled';
+
 import {
   TitleDiv,
   Section,
   H2,
   P,
 } from 'components/Feedback/Feedback.styled';
+
+import {
+  H1,
+} from 'pages/HomePage/HomePage.styled';
+
 // import { Span } from './LoginModule.styled';
 
 import TypeAuthentification from 'components/AuthenticationType/AuthenticationType';
@@ -76,6 +82,45 @@ const LoginModule = ({ onClose, nameWindows }) => {
               <img src={cross} alt="close button" />
             </CloseBtn>
             <Section>
+                <H1>{lang[languages].checkoutPage_h1.toUpperCase()}</H1>
+                <h2 style={{ margin: '40px auto', textAlign: 'center' }}>
+                  <b>Page is under construction</b>
+                </h2>
+                <p>Ваш заказ на сумму </p>
+                <span>[сумма] грн.</span>
+                <p>
+                  Для оформления заказа, необходимы Ваши контактные данные.
+                  Пожалуйста, укажите как бы Вы хотели представиться?
+                </p>
+
+                {/* <H1>{lang[languages].aboutUsPage_h1}</H1>
+        <P>
+          {lang[languages].aboutUsPage_p1_1}
+          <Span>
+            <b>Electro world</b>
+          </Span>
+          {lang[languages].aboutUsPage_p1_2}
+        </P>
+        <P>
+          <b>{lang[languages].aboutUsPage_p2}</b>
+        </P>
+        <ul>
+          <Li>{lang[languages].aboutUsPage_ul1_li}</Li>
+        </ul> */}
+
+                {/* <input
+                type="checkbox"
+                id="agreement"
+                value={value}
+                checked={checked}
+                onChange={e => changeCheckbox(key, value, e)}
+              />
+              <label htmlFor="agreement">
+                <Span>({count})</Span>
+              </label> */}
+                
+
+
               <P>{lang[languages].loginModule_p1}</P>
               {/* <div style={{ padding: '25px' }}> */}
               <div>

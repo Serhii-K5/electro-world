@@ -57,8 +57,10 @@ export const DivCheckout = styled.div`
 `;
 
 export const DivCheckoutBtn = styled.div`
-  margin: 0;
-  margin-left: auto;
+  // margin: 0;
+  // margin-left: auto;
+  // margin-right: 0;
+  // margin: 0 0 0 auto;
   width: 250px;
   border: 1px solid var(--second-green);
   text-align: center;

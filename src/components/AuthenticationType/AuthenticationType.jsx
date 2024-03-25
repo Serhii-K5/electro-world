@@ -1,19 +1,20 @@
 import { Ul, Li } from './AuthenticationType.styled';
 import { useSelector } from 'react-redux';
-import { selectLanguages } from 'redux/selectors';
+import { selectLanguages, selectUserName } from 'redux/selectors';
 import lang from 'assets/json/language.json';
 
 const TypeAuthentification = ({ handleSelect }) => {
   const languages = useSelector(selectLanguages);
+  const user = useSelector(selectUserName);
   
   return (
     <Ul>
-      <Li
+      {user === '' && <Li
         id="new"
         onClick={() => handleSelect('new')}
       >
         <u>{lang[languages].authenticationType_newUser}</u>
-      </Li>
+      </Li>}
       <Li
         id="regular"
         onClick={() => handleSelect('regular')}

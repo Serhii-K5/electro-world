@@ -16,6 +16,8 @@ import { languagesReducer } from './slice/languageSlice';
 import { directoryPathReducer } from './slice/directoryPathSlice';
 import { categoriesReducer } from './slice/categorySlice';
 import { filtersReducer } from './slice/filtersSlice';
+import { userNameReducer } from './slice/userNameSlice';
+
 
 const ordersPersistConfig = {
   key: 'orders',
@@ -42,6 +44,11 @@ const filtersPersistConfig = {
   storage,
 };
 
+const userNamePersistConfig = {
+  key: 'userName',
+  storage,
+};
+
 
 export const store = configureStore({
   reducer: {
@@ -51,6 +58,7 @@ export const store = configureStore({
     directoryPath: persistReducer(directoryPathPersistConfig, directoryPathReducer),
     categories: persistReducer(categoriesPersistConfig, categoriesReducer),
     filters: persistReducer(filtersPersistConfig, filtersReducer),
+    userName: persistReducer(userNamePersistConfig, userNameReducer),
     // ordersAll: persistReducer(numberPurchasesPersistConfig, ordersAllReducer),
   },
   middleware: getDefaultMiddleware =>

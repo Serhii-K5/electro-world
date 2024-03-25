@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeUserName } from 'redux/slice/userNameSlice';
 import {
   Form,
   Label,
@@ -12,22 +13,26 @@ import {
   RemindPassword,
 } from './UserFormRegister.styled';
 
-import { selectLanguages } from 'redux/selectors';
+import { selectLanguages, selectUserName } from 'redux/selectors';
 import lang from 'assets/json/language.json';
 import { MdOutlineVisibility, MdOutlineVisibilityOff } from 'react-icons/md';
 
 // убрать после настройки отправки формы
 import Stub from "components/Stub/Stub";
 
-const UserFormRegister = ( {typeMassege}) => {
+const UserFormRegister = ({ typeMassege }) => {
+  const dispatch = useDispatch();
   const languages = useSelector(selectLanguages);
+  const user = useSelector(selectUserName);
   const [isVisibility, setIsVisibility] = useState(false);
+  // const curentUser = user === '' ? lang[languages].authorization : user;
+
   // убрать после настройки отправки формы
   const [isStub, setIsStub] = useState(false);
 
   const [formData, setFormData] = useState({
     tel: '',
-    name: '',
+    name: user,
     email: '',
     password: '',
     message: '',
@@ -38,6 +43,7 @@ const UserFormRegister = ( {typeMassege}) => {
     const isValid = value !== '';
     validation(e, isValid);
     setFormData({ ...formData, [name]: value });
+    dispatch(changeUserName(value));
   };
 
   const validation = (e, isValid) => {
@@ -93,6 +99,8 @@ const UserFormRegister = ( {typeMassege}) => {
 
     // убрать после настройки отправки формы
     setIsStub(true);
+
+
     // Здесь вы можете добавить логику отправки данных на сервер или обработки формы
     console.log(formData);
 

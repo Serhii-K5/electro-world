@@ -193,7 +193,13 @@
     "feedback_massage": "Повідомлення: ",
     "feedback_placeholder5": "Залишіть Ваше повідомлення",
     "feedback_p2": "обов'язково до заповнення",
-    "feedback_btn": "Надіслати"
+    "feedback_btn": "Надіслати",
+    "feedback_RemindPassword": "нагадати пароль",
+    "loginModule_agreement": "Надіслати",
+    "loginModule_p1": "Виберіть спосіб авторизуватися.",
+    "checkoutPage_h1": "Оформлення замовлення",
+    "checkoutPage_p1": "Ваше замовлення на суму",
+    "checkoutPage_h2": "Page is under construction"
   },
   {
     "authorization": "Авторизация",
@@ -392,6 +398,9 @@
     "feedback_btn": "Отправить",
     "feedback_RemindPassword": "Напомнить пароль",
     "loginModule_agreement": "Отправить",
-    "loginModule_p1": "Выбирите способ авторизироваться."
+    "loginModule_p1": "Выбирите способ авторизироваться.",
+    "checkoutPage_h1": "Оформление заказа",
+    "checkoutPage_p1": "Ваш заказ на сумму",
+    "checkoutPage_h2": "Page is under construction"
   }
 ]
