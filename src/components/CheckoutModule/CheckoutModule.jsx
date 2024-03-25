@@ -17,9 +17,9 @@ import {
   P,
 } from 'components/Feedback/Feedback.styled';
 
-import {
-  H1,
-} from 'pages/HomePage/HomePage.styled';
+// import {
+//   H1,
+// } from 'pages/HomePage/HomePage.styled';
 
 // import { Span } from './LoginModule.styled';
 
@@ -30,7 +30,7 @@ import UserFormRegister from 'components/UserFormRegister/UserFormRegister';
 import { selectLanguages } from 'redux/selectors';
 import lang from 'assets/json/language.json';
 
-const LoginModule = ({ onClose, nameWindows }) => {
+const CheckoutModule = ({ onClose, sum, numbeOfPositions }) => {
   const languages = useSelector(selectLanguages);
   // const [credentials, setCredentials] = useState({ email: '', password: '' });
   // const dispatch = useDispatch();
@@ -74,26 +74,31 @@ const LoginModule = ({ onClose, nameWindows }) => {
         <ModalBacking>
           <Modal style={{ maxWidth: '40vw' }}>
             <TitleDiv>
-              {/* <H2>{lang[languages].authorization.toUpperCase()}</H2> */}
-              <H2>{nameWindows.toUpperCase()}</H2>
-              {/* <H2>{nameWindows}</H2> */}
+              <H2>{lang[languages].checkoutModule_h1.toUpperCase()}</H2>
             </TitleDiv>
             <CloseBtn type="button" onClick={onClose}>
               <img src={cross} alt="close button" />
             </CloseBtn>
             <Section>
-                <H1>{lang[languages].checkoutPage_h1.toUpperCase()}</H1>
-                <h2 style={{ margin: '40px auto', textAlign: 'center' }}>
-                  <b>Page is under construction</b>
-                </h2>
-                <p>Ваш заказ на сумму </p>
-                <span>[сумма] грн.</span>
-                <p>
-                  Для оформления заказа, необходимы Ваши контактные данные.
-                  Пожалуйста, укажите как бы Вы хотели представиться?
-                </p>
+              <h2 style={{ margin: '40px auto', textAlign: 'center' }}>
+                <b>Page is under construction</b>
+              </h2>
+              <p>
+                <span>Ваш заказ: </span>
+                <span>позиций: </span>
+                {numbeOfPositions}
+                <span>на сумму: </span>
+                {sum}
+                грн.
+              </p>
+              <p>
+                Для оформления заказа, необходимы Ваши контактные данные.
+                Пожалуйста, укажите как бы Вы хотели представиться и заполните
+                выбранную форму.
+              </p>
+              <TypeAuthentification handleSelect={handleSelect} />
 
-                {/* <H1>{lang[languages].aboutUsPage_h1}</H1>
+              {/* <H1>{lang[languages].aboutUsPage_h1}</H1>
         <P>
           {lang[languages].aboutUsPage_p1_1}
           <Span>
@@ -108,7 +113,7 @@ const LoginModule = ({ onClose, nameWindows }) => {
           <Li>{lang[languages].aboutUsPage_ul1_li}</Li>
         </ul> */}
 
-                {/* <input
+              {/* <input
                 type="checkbox"
                 id="agreement"
                 value={value}
@@ -118,8 +123,6 @@ const LoginModule = ({ onClose, nameWindows }) => {
               <label htmlFor="agreement">
                 <Span>({count})</Span>
               </label> */}
-                
-
 
               <P>{lang[languages].loginModule_p1}</P>
               {/* <div style={{ padding: '25px' }}> */}
@@ -145,7 +148,7 @@ const LoginModule = ({ onClose, nameWindows }) => {
   );
 };
 
-export default LoginModule;
+export default CheckoutModule;
 
 
 // Создайте компонент LoginPage:

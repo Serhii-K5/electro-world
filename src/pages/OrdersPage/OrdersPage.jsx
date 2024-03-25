@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 // import { Link } from 'react-router-dom';
 
 import OrdersCard from "components/OrdersCard/OrdersCard";
-import LoginModule from 'components/LoginModule/LoginModule';
+import CheckoutModule from 'components/CheckoutModule/CheckoutModule';
 
 import {
   Container,
@@ -74,9 +74,11 @@ const OrdersPage = () => {
             {lang[languages].ordersPage_sumBtn}
           </DivCheckoutBtn>
           {isModalShown && (
-            <LoginModule
+            <CheckoutModule
               onClose={onCloseModal}
-              nameWindows={lang[languages].checkoutPage_h1}
+              // nameWindows={lang[languages].checkoutModule_h1}
+              sum={sum}
+              numbeOfPositions={orderProducts.length}
             />
           )}
         </DivCheckout>

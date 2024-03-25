@@ -197,9 +197,9 @@
     "feedback_RemindPassword": "нагадати пароль",
     "loginModule_agreement": "Надіслати",
     "loginModule_p1": "Виберіть спосіб авторизуватися.",
-    "checkoutPage_h1": "Оформлення замовлення",
-    "checkoutPage_p1": "Ваше замовлення на суму",
-    "checkoutPage_h2": "Page is under construction"
+    "checkoutModule_h1": "Оформлення замовлення",
+    "checkoutModule_p1": "Ваше замовлення на суму",
+    "checkoutModule_h2": "Page is under construction"
   },
   {
     "authorization": "Авторизация",
