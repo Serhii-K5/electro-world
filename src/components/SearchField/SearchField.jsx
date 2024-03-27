@@ -69,6 +69,7 @@ const SearchField = () => {
           // onBlur={onBlurInp}
           value={inputValue}
           onKeyUp={onKeyUp}
+          title={lang[languages].searchField_title}
         />
       </Link>
     </form>

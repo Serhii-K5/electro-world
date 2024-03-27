@@ -199,6 +199,7 @@
     "loginModule_p1": "Виберіть спосіб авторизуватися.",
     "checkoutModule_h1": "Оформлення замовлення",
     "checkoutModule_p1": "Ваше замовлення на суму",
+    "searchField_title": "Пошук окремо по словам",
     "checkoutModule_h2": "Page is under construction"
   },
   {
@@ -401,6 +402,7 @@
     "loginModule_p1": "Выбирите способ авторизироваться.",
     "checkoutPage_h1": "Оформление заказа",
     "checkoutPage_p1": "Ваш заказ на сумму",
+    "searchField_title": "Поиск отельно по словам",
     "checkoutPage_h2": "Page is under construction"
   }
 ]
