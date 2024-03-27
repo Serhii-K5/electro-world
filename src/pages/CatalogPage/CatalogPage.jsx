@@ -79,6 +79,14 @@ const CatalogPage = () => {
 
           if (value === '') {
             return true;
+          } else if (key === 'name') {
+            const arrayOfWord = value[0].trim().split(' ');
+            const result = arrayOfWord.filter(word => {
+              const isContainsCode = product['code'].toUpperCase().includes(word.toUpperCase());
+              const isContainsName = product['name'].toUpperCase().includes(word.toUpperCase());
+              return isContainsCode || isContainsName;
+            });
+            return result.length > 0 && result[0] !== '';
           } else if (Number.isFinite(product[key])) {
             if (Number.isFinite(value[0])) {
               return value[0] === undefined || product[key] === value[0];
