@@ -54,13 +54,6 @@ const SearchField = () => {
     cleanedFilters();
     // inputValue !== "" && dispatch(changeFilters({ key: 'name', value: inputValue }));
     inputValue !== "" && dispatch(addFilters({ key: 'name', value: inputValue }));
-    // try {
-    //   dispatch(changeFilters({ key: 'name', value: e.currentTarget[1].value }));
-    //   setInputValue(e.currentTarget[1].value);
-    // } catch {
-    //   dispatch(changeFilters({ key: 'name', value: '' }));
-    //   setInputValue('');
-    // }
   };
 
   const onKeyUp = e => {
@@ -75,13 +68,9 @@ const SearchField = () => {
 
 
   return (
-    // <form onSubmit={handleSubmit} onClick={handleClick} style={{ position: 'relative' }}>
-    // <form onClick={handleClick} style={{ position: 'relative' }}>
-    // <form onSubmit={handleSubmit} style={{ position: 'relative' }}>
     <form style={{ position: 'relative' }}>
       <Link to="/catalog">
         <Button type="submit" aria-label="search" onClick={handleClick}>
-        {/* <Button type="submit" aria-label="search"> */}
           <SlMagnifier style={{ width: '25px', height: '25px' }} />
         </Button>
         <Input
