@@ -168,8 +168,8 @@ const CatalogPage = () => {
 
   const handleChange = (quantityToDisplay) => {
     // const quantity = filteredData.length > quantityToDisplay ? quantityToDisplay : filteredData.length
-    // setItemsPerPage(quantity);
     setItemsPerPage(quantityToDisplay);
+    setActivePage(1);
     setIsFocus(false);
   };
 
@@ -261,7 +261,6 @@ const CatalogPage = () => {
                 (item, index) =>
                   index > (activePage - 1) * itemsPerPage - 1 &&
                   index < activePage * itemsPerPage &&
-                  // index > (page - 1) * 8 - 1 && index < page * 8 && (
                   (isLine ? (
                     <Li key={item.id}>
                       <ProductCardLines card={item} index={index} />
