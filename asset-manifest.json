@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/electro-world/static/css/main.43b2c7e3.css",
-    "main.js": "/electro-world/static/js/main.8f481249.js",
+    "main.js": "/electro-world/static/js/main.50144151.js",
     "static/media/sorting.svg": "/electro-world/static/media/sorting.071b229893ebbd567984267956484c05.svg",
     "static/media/user_icon.svg": "/electro-world/static/media/user_icon.fb7f4f165dc00e3c65244be3942eca65.svg",
     "index.html": "/electro-world/index.html",
@@ -12,10 +12,10 @@
     "static/media/cross.svg": "/electro-world/static/media/cross.a356a9d23b0c95a1f71eded679de3c0e.svg",
     "static/media/chevron-down.svg": "/electro-world/static/media/chevron-down.438d8e3277ae93917ceec01bb2eab2bb.svg",
     "main.43b2c7e3.css.map": "/electro-world/static/css/main.43b2c7e3.css.map",
-    "main.8f481249.js.map": "/electro-world/static/js/main.8f481249.js.map"
+    "main.50144151.js.map": "/electro-world/static/js/main.50144151.js.map"
   },
   "entrypoints": [
     "static/css/main.43b2c7e3.css",
-    "static/js/main.8f481249.js"
+    "static/js/main.50144151.js"
   ]
 }
