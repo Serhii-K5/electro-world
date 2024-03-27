@@ -8,7 +8,8 @@ import { Button, Input } from './SearchField.styled';
 import lang from 'assets/json/language.json';
 
 import { SlMagnifier } from 'react-icons/sl';
-import { addFilters, changeFilters, deleteFilters} from 'redux/slice/filtersSlice';
+// import { addFilters, deleteFilters} from 'redux/slice/filtersSlice';
+import { changeFilters, deleteFilters } from 'redux/slice/filtersSlice';
 
 const SearchField = () => {
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ const SearchField = () => {
   const languages = useSelector(selectLanguages);
   
   const [inputValue, setInputValue] = useState('');
+  const [isChange, setIsChange] = useState(false);
 
   useEffect(() => {
     const arr = filters.map(item => item.key);
@@ -25,44 +27,31 @@ const SearchField = () => {
 
   }, [filters]);
 
-  // const handleSubmit = e => {
-  //   e.preventDefault();
-  //   dispatch(changeFilters({ key: 'name', value: e.target[1].value }));
-  // };
-
   const handleChange = e => {
+    setIsChange(true);
     setInputValue(e.target.value);
     // e.target.value === "" && dispatch(deleteFilters({ key: 'name', value: '' }));
     e.target.value === '' && cleanedFilters();
   };
 
-  // const handleClick = e => {
-  //   try {
-  //     dispatch(changeFilters({ key: 'name', value: e.currentTarget[1].value }));
-  //     setInputValue(e.currentTarget[1].value);
-  //   } catch {
-  //     dispatch(changeFilters({ key: 'name', value: '' }));
-  //     setInputValue('');
-  //   }
-  // };
   const cleanedFilters = () => {
     dispatch(deleteFilters({ key: 'name', value: '' }));
   }
   
   const handleClick = () => {
-    // dispatch(deleteFilters({ key: 'name', value: '' }));
-    cleanedFilters();
-    // inputValue !== "" && dispatch(changeFilters({ key: 'name', value: inputValue }));
-    inputValue !== "" && dispatch(addFilters({ key: 'name', value: inputValue }));
+    if (isChange) {
+      cleanedFilters();
+      // inputValue !== '' && dispatch(addFilters({ key: 'name', value: inputValue }));
+      inputValue !== '' && dispatch(changeFilters({ key: 'name', value: inputValue }));
+      setIsChange(false);
+    }
   };
 
   const onKeyUp = e => {
-    if (e.key === 'Enter') {
-      // dispatch(deleteFilters({ key: 'name', value: '' }));
+    if (e.key === 'Enter' && isChange) {
       cleanedFilters();
-      // inputValue !== '' && dispatch(changeFilters({ key: 'name', value: e.target.value }));
-      inputValue !== '' && dispatch(addFilters({ key: 'name', value: e.target.value }));
-      // setInputValue(e.target.value);
+      inputValue !== '' && dispatch(changeFilters({ key: 'name', value: e.target.value }));
+      setIsChange(false);
     }
   };
 
