@@ -38,7 +38,6 @@ import FilterPanel from 'components/FilterPanel/FilterPanel';
 
 import PriceRange from 'components/PriceRange/PriceRange';
 import products1 from '../../assets/json/products.json';
-// import categories from "../../assets/json/categories.json";
 import lang from 'assets/json/language.json';
 import Pagination from 'components/PaginationBar/PaginationBar';
 
@@ -50,7 +49,6 @@ import tilesIcon from 'assets/images/svg/tiles.svg';
 
 export const ProductsContext = createContext();
 
-// const itemsPerPage = 8;
 
 const CatalogPage = () => {
   // const [searchParams, setSearchParams] = useSearchParams();
@@ -66,7 +64,6 @@ const CatalogPage = () => {
   const [activePage, setActivePage] = useState(1);
   const [isLine, setIsLine] = useState(false);
   const [isFocus, setIsFocus] = useState(false);
-  // const [itemsPerPage, setItemsPerPage] = useState(8);
   const [itemsPerPage, setItemsPerPage] = useState(10);
 
   useEffect(() => {
