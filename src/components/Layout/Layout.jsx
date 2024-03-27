@@ -1,7 +1,7 @@
 // import { useState } from "react";
 import { useState } from 'react';
 import { Outlet, Link } from 'react-router-dom';
-import { Div1, DivBtn, Div2, Header } from './Layout.styled';
+import { DivUpper, DivBtn, Div, Header } from './Layout.styled';
 import Logo from 'components/Logo/Logo';
 
 import ShoppingCart from '../ShoppingCart/ShoppingCart';
@@ -37,12 +37,12 @@ export default function Layout() {
 
   return (
     <>
-      <Div1>
+      <DivUpper>
         <DivBtn>{lang[languages].layout_minOrder}</DivBtn>
         <LanguageBar />
         <Authorization />
-      </Div1>
-      <Div2>
+      </DivUpper>
+      <Div>
         <Header>
           <Link to="/">
             <Logo />
@@ -53,7 +53,7 @@ export default function Layout() {
             <ShoppingCart quantity={orderProducts.length} />
           </Link>
         </Header>
-      </Div2>
+      </Div>
       <NavLinkBar />
       {isModalShown && <MessageModule onClose={onCloseModal} />}
       <Outlet />

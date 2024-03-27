@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import { transition } from 'components/ConstComponentsStyle/ConstComponentsStyle.styled';
 
-export const Div1 = styled.div`
+export const DivUpper = styled.div`
   display: flex;
   align-items: center;
   max-width: 1440px;
@@ -22,7 +22,7 @@ export const DivBtn = styled.div`
   border-radius: 5px;
 `;
 
-export const Div2 = styled.div`
+export const Div = styled.div`
   background-color: transparent;
   box-shadow: 0px 4px 4px var(--third-black);
   background: linear-gradient(to top, var(--primary-green), var(--second-green), var(--second-green), var(--primary-green)); 
