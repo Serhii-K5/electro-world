@@ -90,14 +90,15 @@ export const Li = styled.li`
 `;
 
 export const BtnDiv = styled.div`
-  display: flex;
+  // display: flex;
   margin: 0 auto 16px;
   padding: 10px;
   // width: 180px;
   // height: 40px;
   max-width: 180px;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
+  // align-items: center;
+  // justify-content: center;
   background-color: var(--primary-blue);
   border-radius: 5px;
   color: var(--primary-white);
