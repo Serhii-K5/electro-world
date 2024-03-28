@@ -76,6 +76,7 @@ const OrdersPage = () => {
           {isModalShown && (
             <CheckoutModule
               onClose={onCloseModal}
+              // nameWindows={lang[languages].checkoutModule_h1}
               sum={sum}
               numbeOfPositions={orderProducts.length}
             />
