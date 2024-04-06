@@ -59,7 +59,6 @@ export const store = configureStore({
     categories: persistReducer(categoriesPersistConfig, categoriesReducer),
     filters: persistReducer(filtersPersistConfig, filtersReducer),
     userName: persistReducer(userNamePersistConfig, userNameReducer),
-    // ordersAll: persistReducer(numberPurchasesPersistConfig, ordersAllReducer),
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

@@ -1,8 +1,20 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createReducer } from '@reduxjs/toolkit';
 import { fetchProducts } from '../operations';
+
+const initialState = {
+  items: [],
+  isLoading: false,
+  error: null,
+};
 
 const handlePending = state => {
   state.isLoading = true;
+};
+
+const handleFulfilled = (state, action) => {
+  state.isLoading = false;
+  state.error = null;
+  state.error = action.payload;
 };
 
 const handleRejected = (state, action) => {
@@ -10,22 +22,24 @@ const handleRejected = (state, action) => {
   state.error = action.payload;
 };
 
-const productSlice = createSlice({
-  name: 'products',
-  initialState: {
-    items: [],
-    isLoading: false,
-    error: null,
-  },
-  extraReducers: {
+export const productsReducer = createReducer(
+  initialState,
+  // {
+  //   [fetchProducts.pending]: (state) => {
+  //     state.isLoading = true;
+  //   },
+  //   [fetchProducts.fulfilled]: (state, action) => {
+  //     state.isLoading = false;
+  //     state.items = action.payload;
+  //   },
+  //   [fetchProducts.rejected]: (state, action) => {
+  //     state.isLoading = false;
+  //     state.error = action.payload;
+  //   },
+  // }
+  {
     [fetchProducts.pending]: handlePending,
-    [fetchProducts.fulfilled](state, action) {
-      state.isLoading = false;
-      state.error = null;
-      state.items = action.payload;
-    },
+    [fetchProducts.fulfilled]: handleFulfilled,
     [fetchProducts.rejected]: handleRejected,
-  },
-});
-
-export const productsReducer = productSlice.reducer;
+  }
+);
